@@ -19,7 +19,7 @@
           </div>
 
           <h1 class="title__text mb-md-2">
-            Start Learning Backend Development Now
+            A great resource for backend engineers.
           </h1>
           <p class="title__subtext">
             “I thought the blog was good. But the newsletter? Even better!”

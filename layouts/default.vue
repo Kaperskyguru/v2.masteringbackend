@@ -1,6 +1,8 @@
 <template>
   <main>
-    <header><Nav /></header>
+    <header>
+      <Nav />
+    </header>
     <Nuxt />
 
     <Footer />

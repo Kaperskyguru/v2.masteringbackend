@@ -12,23 +12,22 @@
           </div>
         </div>
         <div class="col-md-4 text-col">
-          <p class="mb-4">Menu</p>
-          <div class="d-md-flex">
+          <p class="mb-4">Learn</p>
+          <div class="d-md-flex text-white">
             <ul class="footer-nav">
-              <li class="mb-3"><a href=""></a>Home</li>
-              <li><a href="/blog/"></a>Articles</li>
-            </ul>
-            <ul class="footer-nav">
-              <li class="mb-3"><a href=""></a>Jobs</li>
-              <li><a href=""></a>Projects</li>
+              <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
+              <li class="mb-3"><a href="/blog/">Newsletter</a></li>
+              <li class="mb-3"><a href="">Join the Academy </a></li>
+              <li><a href="">Join our Community</a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-4 text-col">
-          <p class="mb-4">Learn</p>
-          <ul>
-            <li class="mb-3"><a href=""></a>Join the Academy</li>
-            <li><a href=""></a>Join our Community</li>
+          <p class="mb-4">Company</p>
+          <ul class="footer-nav">
+            <li class="mb-3"><a href="">Home</a></li>
+            <li class="mb-3"><a href="">About</a></li>
+            <li class="mb-3"><a href="">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -36,23 +35,30 @@
 
       <div class="d-md-flex align-items-center justify-content-between">
         <div class="d-flex socia-links mb-3 align-items-center">
-          <div class="socia-link p-2">
-            <img
-              class="img-fluid face"
-              src="~/assets/img/facebook.png"
-              alt=""
-            />
-          </div>
-          <div class="socia-link p-2">
-            <img class="img-fluid" src="~/assets/img/twitter.png" alt="" />
-          </div>
-          <div class="socia-link p-2">
-            <img class="img-fluid" src="~/assets/img/instagram.png" alt="" />
-          </div>
+          <a href="https://facebook.com/masteringbackend">
+            <div class="socia-link p-2">
+              <img
+                class="img-fluid face"
+                src="~/assets/img/facebook.png"
+                alt=""
+              />
+            </div>
+          </a>
+          <a href="https://twitter.com/master_backend">
+            <div class="socia-link p-2">
+              <img class="img-fluid" src="~/assets/img/twitter.png" alt="" />
+            </div>
+          </a>
+          <a href="https://instagram.com/kaperskyguru">
+            <div class="socia-link p-2">
+              <img class="img-fluid" src="~/assets/img/instagram.png" alt="" />
+            </div>
+          </a>
         </div>
         <div>
           <small class="text-light fs-7"
-            >© 2022 Masteringbacked. All right reserved.</small
+            >© {{ new Date().getFullYear() }} Masteringbackend. All right
+            reserved.</small
           >
         </div>
       </div>
@@ -73,6 +79,11 @@ footer {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.6rem;
   font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 footer ul {

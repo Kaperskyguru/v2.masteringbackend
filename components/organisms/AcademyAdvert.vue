@@ -30,7 +30,7 @@
       <div class="col-md-6 right-col">
         <div class="d-sm-flex patt-box">
           <img class="pattern" src="~/assets/img/Pattern.png" alt="" />
-          <img src="~/assets/img/user.png" class="img-fluid img-flu" alt="" />
+          <img src="~/assets/img/image.png" class="img-fluid img-flu" alt="" />
         </div>
       </div>
     </div>

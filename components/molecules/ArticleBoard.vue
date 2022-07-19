@@ -2,12 +2,12 @@
   <div class="col-lg-6">
     <div class="card py-4 px-3 shadow">
       <div class="mb-5">
-        <Button href="../blog/" appearance="primary" class="mb-3 mt-3"
-          >Backend Content Hubs</Button
-        >
+        <Button href="../blog/" appearance="primary" class="mb-3 mt-3">{{
+          title
+        }}</Button>
         <h3 class="card-head-text mt-3">
-          <a class="link" href="../blog_detail/"
-            >Pursuing a Full-Time Career as a Backend Developer</a
+          <nuxt-link class="link" to="/posts/test"
+            >Pursuing a Full-Time Career as a Backend Developer</nuxt-link
           >
         </h3>
         <div class="mb-4">
@@ -23,8 +23,8 @@
       </div>
       <div>
         <h3 class="card-head-text">
-          <a class="link" href="../blog_detail/"
-            >Pursuing a Full-Time Career as a Backend Developer</a
+          <nuxt-link class="link" to="/posts/test"
+            >Pursuing a Full-Time Career as a Backend Developer</nuxt-link
           >
         </h3>
         <div class="mb-4">
@@ -38,7 +38,9 @@
           with the knowledge you need to make
         </p>
       </div>
-      <a href="../blog/" class="btn btn-sm ms-auto btn-col">Read more </a>
+      <nuxt-link :to="`/posts#${slug}`" class="btn btn-sm ms-auto btn-col"
+        >Read more
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -47,6 +49,21 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'ArticleBoard',
+
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    slug: {
+      type: String,
+      default: '',
+    },
+    articles: {
+      type: [Array, Object],
+      default: () => [],
+    },
+  },
 }
 </script>
 

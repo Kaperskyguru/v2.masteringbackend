@@ -25,10 +25,8 @@
           </template>
 
           <p class="Dev-art__para-text mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
-            placerat
-            <br />
-            est nulla enim nibh tellus mattis sit risus.
+            Latest Backend Development Articles curated daily by the engineers
+            for engineers.
           </p>
         </PageTitle>
         <ArticleBoards />
@@ -36,12 +34,6 @@
     </section>
 
     <section class="Article mb-5 text-center p-3">
-      <PageTitle>
-        <template #title>
-          <h2 class="article-intro-text py-5">See more articles</h2>
-        </template>
-      </PageTitle>
-
       <AcademyAdvert />
     </section>
 
@@ -52,12 +44,11 @@
     <section id="jobs" class="dev-job text-center mt-5">
       <PageTitle class="col-lg-6 mx-auto p-5 text-center">
         <template #title>
-          <h3 class="dev-header-text">Latest Backend Dev Job</h3>
+          <h3 class="dev-header-text">Latest Backend Dev. Job</h3>
         </template>
         <p class="dev-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci auctor
-          et, ac lobortis viverra scelerisque amet faucibus libero. Ac cras
-          adipiscing nunc, id ullamcorper cursus nibh netus. Leo.
+          Highly vetted backend software engineering jobs for highly vetted and
+          qualified backend engineers.
         </p>
       </PageTitle>
       <div class="container">
