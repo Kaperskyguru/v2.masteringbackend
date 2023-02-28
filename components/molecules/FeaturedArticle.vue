@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <article class="Updated">
     <div class="container">
@@ -13,8 +14,8 @@
             </div>
             <div class="col-lg-10">
               <h1 class="fs-1 fw-bold mb-1 Career-header-text">
-                <nuxt-link class="title_header" to="/posts/asas">
-                  Pursuing a Full-Time Career as a Backend Developer</nuxt-link
+                <nuxt-link class="title_header" :to="`/posts/${post.slug}`">
+                  {{ post.title || '' }}</nuxt-link
                 >
               </h1>
               <small class="fw-bold"
@@ -26,39 +27,22 @@
           <div
             class="col-lg-10 col-md-12 mx-lg-auto col-sm-12 text-sm-start mt-5"
           >
-            <p class="lh-md fs-5">
-              I’m super excited to announce the completely updated Content
-              Marketing Hub. I’m super excited to announce the completely
-              updated Content Marketing I’m super excited to announce the
-              completely updated Content Marketing
-            </p>
+            <article class="lh-md fs-5" v-html="getFirstParagraph()"></article>
           </div>
           <div class="row">
             <div class="col-lg-10 col-md-12 mx-lg-auto">
               <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                  <p class="lh-md fs-5">
-                    I’m super excited to announce the completely updated Content
-                    Marketing Hub. I’m super excited to announce the completely
-                    updated Content Marketing I’m super excited to announce the
-                    completely updated Content Marketing
-                  </p>
-                  <p class="lh-md fs-5">
-                    I’m super excited to announce the completely updated Content
-                    Marketing Hub. I’m super excited to announce the completely
-                    updated Content Marketing I’m super excited to announce the
-                    completely updated Content Marketing
-                  </p>
-                  <p class="lh-md fs-5">
-                    I’m super excited to announce the completely updated Content
-                    Marketing Huub.
-                  </p>
+                  <article
+                    class="lh-md fs-5"
+                    v-html="get2Paragraphs()"
+                  ></article>
                 </div>
                 <div class="col-lg-4 col-md-10 col-sm-10">
                   <img
                     class="img-fluid car-img"
-                    src="~/assets/img/featured1.png"
-                    alt=""
+                    :src="image"
+                    :alt="post.title"
                   />
                 </div>
               </div>
@@ -66,16 +50,13 @@
           </div>
 
           <div class="col-lg-10 mx-lg-auto col-sm-12 text-sm-start">
-            <p class="lh-md fs-5">
-              I’m super excited to announce the completely updated Content
-              Marketing Hub. I’m super excited to announce the completely
-              updated Content Marketing I’m super excited to announce the
-              completely updated Content Marketing
-            </p>
+            <article class="lh-md fs-5" v-html="getLastParagraph()"></article>
           </div>
 
           <div class="d-grid col-md-10 col-sm-12 mx-md-auto">
-            <a href="#" class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
+            <a
+              :href="`/posts/${post.slug}`"
+              class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
               >Continue Reading</a
             >
           </div>
@@ -86,7 +67,66 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    post: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
+  computed: {
+    image() {
+      if (this.post) {
+        if (this.post.thumbnail_images) {
+          if (this.post.thumbnail_images['post-thumbnail']) {
+            return this.post.thumbnail_images['post-thumbnail'].url
+          } else {
+            if (this.post.thumbnail_images.full) {
+              return this.post.thumbnail_images.full.url
+            }
+            return '/img/Importance-of-UI-UX-3.png'
+          }
+        }
+      }
+      return '/img/Importance-of-UI-UX-3.png'
+    },
+  },
+
+  methods: {
+    getPostExcerpt(str, start = 0, limit = 150) {
+      if (str.length > 0) {
+        return str.substring(start, limit) + '...'
+      }
+    },
+
+    getFirstParagraph() {
+      const arr = this.paragraphs()
+      return arr[0][0]
+    },
+
+    get2Paragraphs() {
+      const arr = this.paragraphs()
+      return arr[1][0] + arr[2][0]
+    },
+
+    getLastParagraph() {
+      const arr = this.paragraphs()
+      return arr[3][0]
+    },
+
+    paragraphs() {
+      const firstPara = this.post?.content.matchAll('<p>(.*?)</p>')
+      return [...firstPara]
+    },
+
+    stripTags(text) {
+      if (text) {
+        return text.replace(/(<([^>]+)>)/gi, '')
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>

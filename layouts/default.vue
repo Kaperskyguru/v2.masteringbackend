@@ -19,6 +19,24 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+pre > code {
+  display: block !important;
+  margin-bottom: 1rem !important;
+  margin-top: 1rem;
+}
+
+p > code {
+  font-style: italic;
+  font-size: 90%;
+  color: #bd4147 !important;
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  padding: 0.2rem 0.4rem !important;
+  background-color: #bababb !important;
+  border-radius: 0.25rem;
+  display: inline !important;
+}
+
 :root {
   --primary-color: #0a083b;
   --danger: #ff6652;

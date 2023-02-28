@@ -21,11 +21,11 @@
           <h1 class="title__text mb-md-2">
             A great resource for backend engineers.
           </h1>
-          <p class="title__subtext">
+          <!-- <p class="title__subtext">
             “I thought the blog was good. But the newsletter? Even better!”
           </p>
           <p class="fw-bold user-name">Katy Grey</p>
-          <p class="job-title fs-6 fw-bold">Product Engineer, SPDC</p>
+          <p class="job-title fs-6 fw-bold">Product Engineer, SPDC</p> -->
 
           <!-- ---------------input--------------------------------------------- -->
           <div class="col-md-8">

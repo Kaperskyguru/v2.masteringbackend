@@ -1,5 +1,35 @@
 <template>
-  <button href="#" class="btn" :class="classNames">
+  <div v-if="type.includes('link')">
+    <NuxtLink
+      v-if="!link.includes('http')"
+      :to="link"
+      :class="classNames"
+      class="btn"
+      ><div v-if="waiting" class="custom-icon" role="presentation">
+        <!-- <SvgLoader class="-my-px" /> -->
+      </div>
+
+      <template v-else>
+        <slot />
+        <div v-if="$slots.icon" class="custom-icon" role="presentation">
+          <slot name="icon" />
+        </div> </template
+    ></NuxtLink>
+
+    <a v-else v-bind="$attrs" target="_blank" :class="classNames" class="btn">
+      <div v-if="waiting" class="custom-icon" role="presentation">
+        <!-- <SvgLoader class="-my-px" /> -->
+      </div>
+
+      <template v-else>
+        <slot />
+        <div v-if="$slots.icon" class="custom-icon" role="presentation">
+          <slot name="icon" />
+        </div>
+      </template>
+    </a>
+  </div>
+  <button v-else class="btn" :class="classNames">
     <div v-if="waiting" class="custom-icon" role="presentation">
       <!-- <SvgLoader class="-my-px" /> -->
     </div>
@@ -45,10 +75,15 @@ export default {
       default: false,
     },
 
-    // to: {
-    //   type: [Object, String],
-    //   default: ''
-    // },
+    type: {
+      type: String,
+      default: 'btn',
+    },
+
+    link: {
+      type: [Object, String],
+      default: '#',
+    },
 
     disabled: {
       type: Boolean,

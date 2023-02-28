@@ -2,42 +2,34 @@
   <div class="col-lg-6">
     <div class="card py-4 px-3 shadow">
       <div class="mb-5">
-        <Button href="../blog/" appearance="primary" class="mb-3 mt-3">{{
-          title
-        }}</Button>
-        <h3 class="card-head-text mt-3">
-          <nuxt-link class="link" to="/posts/test"
-            >Pursuing a Full-Time Career as a Backend Developer</nuxt-link
-          >
-        </h3>
-        <div class="mb-4">
-          <small>By Solomon Eseme. Updated Oct. 12, 2021</small>
+        <Button
+          type="link"
+          :link="`categories/${slug}`"
+          appearance="primary"
+          class="mb-3 mt-3"
+          >{{ title }}</Button
+        >
+        <div v-for="(post, i) in posts" :key="i">
+          <h3 class="card-head-text mt-3">
+            <nuxt-link class="link" :to="`/posts/${post.slug}`">{{
+              post.title
+            }}</nuxt-link>
+          </h3>
+          <div class="mb-4">
+            <small
+              >By<a :href="'/authors/' + post.author.slug" class="subtitle">
+                {{ post.author.name }} </a
+              >. Updated Oct. 12, 2021</small
+            >
+          </div>
+          <article
+            class="card-text text-justify"
+            style="text-align: justify"
+            v-html="getPostExcerpt(stripTags(post.excerpt), 150)"
+          ></article>
         </div>
-        <p class="card-text text-justify" style="text-align: justify">
-          This article will aim to equip you with the knowledge you need to make
-          that all-important decision to become a backend developer. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Quis placerat est nulla
-          enim nibh tellus mattis sit risus. This article will aim to equip you
-          with the knowledge you need to make
-        </p>
       </div>
-      <div>
-        <h3 class="card-head-text">
-          <nuxt-link class="link" to="/posts/test"
-            >Pursuing a Full-Time Career as a Backend Developer</nuxt-link
-          >
-        </h3>
-        <div class="mb-4">
-          <small>By Solomon Eseme. Updated Oct. 12, 2021</small>
-        </div>
-        <p class="card-text" style="text-align: justify">
-          This article will aim to equip you with the knowledge you need to make
-          that all-important decision to become a backend developer. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Quis placerat est nulla
-          enim nibh tellus mattis sit risus. This article will aim to equip you
-          with the knowledge you need to make
-        </p>
-      </div>
+
       <nuxt-link :to="`/posts#${slug}`" class="btn btn-sm ms-auto btn-col"
         >Read more
       </nuxt-link>
@@ -49,7 +41,6 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'ArticleBoard',
-
   props: {
     title: {
       type: String,
@@ -62,6 +53,52 @@ export default {
     articles: {
       type: [Array, Object],
       default: () => [],
+    },
+  },
+  data: () => ({
+    posts: [],
+  }),
+
+  watch: {
+    slug: {
+      immediate: true,
+      handler() {
+        this.getCategoryPosts()
+      },
+    },
+  },
+
+  updated() {
+    // this.getCategoryPosts()
+  },
+
+  methods: {
+    getPostExcerpt(str, limit) {
+      if (str.length > 0) {
+        return str.substring(0, limit) + '...'
+      }
+    },
+
+    stripTags(text) {
+      if (text) {
+        return text.replace(/(<([^>]+)>)/gi, '')
+      }
+    },
+
+    async getCategoryPosts() {
+      try {
+        const getPosts = this.$store.getters['post/getCategoryPosts']
+        this.posts = getPosts()
+        if (!this.posts.length) {
+          const data = {}
+          data.count = 2
+          data.slug = this.slug
+          this.posts = await this.$store.dispatch('post/getCategoryPosts', data)
+          console.log(this.posts)
+        }
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 }

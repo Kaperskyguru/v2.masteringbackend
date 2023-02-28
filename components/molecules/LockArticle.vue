@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <article class="Career py-5">
     <div class="container mt-5">
@@ -13,9 +14,9 @@
             </div>
             <div class="col-lg-10">
               <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
-                <nuxt-link class="title_header" to="/posts/asas"
-                  >Video Marketing Guidelines for beginners</nuxt-link
-                >
+                <nuxt-link class="title_header" to="/posts/asas">{{
+                  post.title || ''
+                }}</nuxt-link>
               </h1>
               <small class="fw-bold"
                 >By Solomon Eseme. Updated Oct. 12, 2021</small
@@ -25,22 +26,13 @@
             <div
               class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
             >
-              <img
-                class="img-fluid base-img"
-                src="~/assets/img/Base.png"
-                alt=""
-              />
+              <img class="img-fluid base-img" :src="image" :alt="post.title" />
             </div>
             <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
-              <p class="blur-text text lh-md fs-5 mt-4">
-                I’m super excited to announce the completely updated Content
-                Marketing Hub. We launched the first version of Content
-                Marketing Hub last year. Since then, we’ve made hundreds of
-                edits, additions, improvements and updates. This new resource
-                30+ covers pretty much everything you need to know about content
-                marketing all in one place… including content promotion,
-                copywriting, blog design, content repurposing, and more.
-              </p>
+              <p
+                class="blur-text text lh-md fs-5 mt-4"
+                v-html="post.excerpt"
+              ></p>
             </div>
             <div class="d-grid col-lg-10 col-md-10 col-sm-12 mx-auto my-4">
               <a href="#" class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
@@ -56,7 +48,32 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    post: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
+  computed: {
+    image() {
+      if (this.post) {
+        if (this.post.thumbnail_images) {
+          if (this.post.thumbnail_images['post-thumbnail']) {
+            return this.post.thumbnail_images['post-thumbnail'].url
+          } else {
+            if (this.post.thumbnail_images.full) {
+              return this.post.thumbnail_images.full.url
+            }
+            return '/img/Importance-of-UI-UX-3.png'
+          }
+        }
+      }
+      return '/img/Importance-of-UI-UX-3.png'
+    },
+  },
+}
 </script>
 
 <style scoped>
