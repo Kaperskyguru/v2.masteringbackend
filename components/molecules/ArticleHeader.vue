@@ -12,8 +12,8 @@
 
         <div class="d-flex justify-content-end gap-3">
           <div class="share">
-            <a :href="'/authors/' + post.author.slug" class="subtitle is-6">
-              <p>{{ post.author.name }}</p>
+            <a :href="'/authors/' + authorSlug" class="subtitle is-6">
+              <p>{{ authorName }}</p>
             </a>
             <p>May 5, 3 min read</p>
           </div>
@@ -36,6 +36,14 @@ export default {
     },
   },
   computed: {
+    authorSlug() {
+      return this.post?.author?.slug
+    },
+
+    authorName() {
+      return this.post?.author?.name
+    },
+
     image() {
       if (this.post) {
         if (this.post.thumbnail_images) {

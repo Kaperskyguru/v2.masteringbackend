@@ -8,26 +8,20 @@
         data-bs-target="#nav-menu"
       ></i>
       <div id="nav-menu" class="collapse navbar-collapse">
-        <!-- <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item active">
-            <a href="/posts" class="active links nav-link">Articles</a>
+            <a href="/" class="active links nav-link">Home</a>
           </li>
-          <li class="nav-item"><a href="#Jobs" class="nav-link">Jobs</a></li>
+          <li class="nav-item active">
+            <a href="/posts" class="links nav-link">Blog</a>
+          </li>
+          <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li>
           <li class="nav-item">
-            <a href="#events" class="nav-link">Events</a>
+            <a href="/slack" class="nav-link">Community</a>
           </li>
-          <li class="nav-item">
-            <a href="/projects" class="nav-link">Projects</a>
-          </li>
-        </ul> -->
+        </ul>
 
         <ul class="d-flex navbar-ul navbar-nav ms-auto">
-          <!-- <li class="nav-item">
-            <a href="/hub" class="nav-link">Content Hub</a>
-          </li> -->
-          <li class="nav-item">
-            <a href="" class="nav-link nav-link-bg">Join Our Community</a>
-          </li>
           <div class="d-grid gap-2 d-sm-block">
             <Button href="/dashboard" class="btn-warning"
               >Join Our Academy</Button

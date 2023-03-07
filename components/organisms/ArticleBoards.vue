@@ -1,6 +1,6 @@
 <template>
   <div class="row g-4">
-    <ArticleBoard title="Content Hubs" slug="laravel" />
+    <ArticleBoard title="Content Hubs" slug="freelancing" />
     <ArticleBoard title="Ultimate Guides" slug="backend" />
     <ArticleBoard title="Definitive Guides" slug="frontend" />
     <ArticleBoard title="Tips and Tricks" slug="laravel-tips-tricks" />

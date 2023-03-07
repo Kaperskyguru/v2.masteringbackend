@@ -19,7 +19,7 @@
         <PageTitle>
           <template #title>
             <h2 class="Dev-art__header-text mt-5">
-              Latest Backend Dev.<br />
+              Latest Backend<br />
               Articles for you
             </h2>
           </template>

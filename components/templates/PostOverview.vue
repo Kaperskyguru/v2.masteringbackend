@@ -115,22 +115,23 @@ export default {
 
   computed: {
     featuredPost() {
-      return [
-        ...this.posts.filter(
-          (post) => !post.categories.find((cat) => cat.slug === 'sponsored')
-        ),
-      ].shift()
+      const posts = this.removeSponsored
+      return posts.shift()
     },
 
     getAllArticles() {
-      return [...this.posts]
-        .filter(
-          (post) => !post.categories.find((cat) => cat.slug === 'sponsored')
-        )
-        .filter((post) => {
-          const fPost = this.featuredPost
-          return post.slug !== fPost.slug
-        })
+      const posts = this.removeSponsored
+
+      return posts.filter((post) => {
+        const fPost = this.featuredPost
+        return post.slug !== fPost?.slug
+      })
+    },
+
+    removeSponsored() {
+      return [...this.posts].filter(
+        (post) => !post?.categories?.find((cat) => cat.slug === 'sponsored')
+      )
     },
   },
 }

@@ -71,12 +71,12 @@ export default {
   computed: {
     image() {
       if (this.post) {
-        if (this.post.thumbnail_images) {
-          if (this.post.thumbnail_images['post-thumbnail']) {
-            return this.post.thumbnail_images['post-thumbnail'].url
+        if (this.post?.image?.formats) {
+          if (this.post?.image?.formats?.thumbnail) {
+            return this.post?.image?.thumbnail?.url
           } else {
-            if (this.post.thumbnail_images.full) {
-              return this.post.thumbnail_images.full.url
+            if (this.post?.image?.url) {
+              return this.post?.image?.url
             }
             return '/img/Importance-of-UI-UX-3.png'
           }

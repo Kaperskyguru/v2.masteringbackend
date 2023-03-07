@@ -78,12 +78,12 @@ export default {
   computed: {
     image() {
       if (this.post) {
-        if (this.post.thumbnail_images) {
-          if (this.post.thumbnail_images['post-thumbnail']) {
-            return this.post.thumbnail_images['post-thumbnail'].url
+        if (this.post?.image?.formats) {
+          if (this.post?.image?.formats?.thumbnail) {
+            return this.post?.image?.thumbnail?.url
           } else {
-            if (this.post.thumbnail_images.full) {
-              return this.post.thumbnail_images.full.url
+            if (this.post?.image?.url) {
+              return this.post?.image?.url
             }
             return '/img/Importance-of-UI-UX-3.png'
           }
@@ -102,20 +102,24 @@ export default {
 
     getFirstParagraph() {
       const arr = this.paragraphs()
+      if (!arr.length) return
       return arr[0][0]
     },
 
     get2Paragraphs() {
       const arr = this.paragraphs()
+      if (!arr.length) return
       return arr[1][0] + arr[2][0]
     },
 
     getLastParagraph() {
       const arr = this.paragraphs()
+      if (!arr.length) return
       return arr[3][0]
     },
 
     paragraphs() {
+      if (!this.post) return
       const firstPara = this.post?.content.matchAll('<p>(.*?)</p>')
       return [...firstPara]
     },

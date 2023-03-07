@@ -17,8 +17,8 @@
           </h3>
           <div class="mb-4">
             <small
-              >By<a :href="'/authors/' + post.author.slug" class="subtitle">
-                {{ post.author.name }} </a
+              >By<a :href="'/authors/' + authorSlug(post)" class="subtitle">
+                {{ authorName(post) }} </a
               >. Updated Oct. 12, 2021</small
             >
           </div>
@@ -59,20 +59,29 @@ export default {
     posts: [],
   }),
 
-  watch: {
-    slug: {
-      immediate: true,
-      handler() {
-        this.getCategoryPosts()
-      },
-    },
-  },
+  computed: {},
 
-  updated() {
-    // this.getCategoryPosts()
+  // watch: {
+  //   slug: {
+  //     immediate: true,
+  //     handler() {
+  //       this.getCategoryPosts()
+  //     },
+  //   },
+  // },
+
+  created() {
+    this.getCategoryPosts()
   },
 
   methods: {
+    authorSlug(post) {
+      return post?.author?.slug
+    },
+
+    authorName(post) {
+      return post?.author?.name
+    },
     getPostExcerpt(str, limit) {
       if (str.length > 0) {
         return str.substring(0, limit) + '...'
@@ -94,7 +103,6 @@ export default {
           data.count = 2
           data.slug = this.slug
           this.posts = await this.$store.dispatch('post/getCategoryPosts', data)
-          console.log(this.posts)
         }
       } catch (error) {
         console.log(error)

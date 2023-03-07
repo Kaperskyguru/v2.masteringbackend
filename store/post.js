@@ -20,7 +20,7 @@ export const state = () => ({
 export const getters = {
   getPost: (state) => (slug) => {
     // eslint-disable-next-line array-callback-return
-    return state.posts.find((post) => {
+    return state.posts?.find((post) => {
       if (post.slug === slug) {
         return post
       }
@@ -108,16 +108,18 @@ export const actions = {
   async getPosts({ commit }, { page, count = 22 }) {
     try {
       const res = await this.$axios.get(
-        `/get_posts?page=${page}&count=${count}`
+        `/posts?populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
       )
 
       const { data } = res
-      if (data?.posts) {
-        commit('setPosts', data)
+
+      if (data?.data) {
+        commit('setPosts', mapPosts(data.data))
       }
-      return data.posts
+      return mapPosts(data.data)
     } catch (error) {
       commit('setPostState', 'error')
+      throw error
     }
   },
 
@@ -167,18 +169,19 @@ export const actions = {
     }
   },
 
-  async getCategoryPosts({ commit }, { count, slug }) {
+  async getCategoryPosts({ commit }, { count, page = 1, slug }) {
     try {
       const res = await this.$axios.get(
-        `/get_category_posts?slug=${slug}&count=${count}`
+        `/posts?filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}`
       )
 
       const { data } = res
 
-      if (data.posts) {
-        commit('setCategoryPosts', data)
+      if (data?.data.length) {
+        const posts = mapPosts(data?.data)
+        commit('setCategoryPosts', posts)
+        return posts
       }
-      return data.posts
     } catch (error) {
       commit('setPostState', 'error')
     }
@@ -186,14 +189,14 @@ export const actions = {
 
   async getPost({ commit }, slug) {
     try {
-      const res = await this.$axios.get(`/get_post/?slug=${slug}`)
+      const res = await this.$axios.get(`/posts/?filters[slug][$eq]=${slug}`)
 
       const { data } = res
 
-      if (data.post) {
-        commit('setPost', data.post)
+      if (data?.data?.length) {
+        commit('setPost', mapPosts(data.data)[0])
+        return mapPosts(data.data)[0]
       }
-      return data.post
     } catch (error) {
       commit('setPostState', 'error')
     }
@@ -214,4 +217,29 @@ export const actions = {
   getLatestPosts({ commit }, page = 1, perPage = 3) {},
 }
 
-// http://172.19.78.154:35430/
+function mapPosts(posts) {
+  return posts?.map((post) => {
+    return {
+      id: post.id,
+      ...post.attributes,
+      categories: post.attributes?.categories?.data?.map((cat) => ({
+        id: cat.id,
+        ...cat.attributes,
+      })),
+      tags: post.attributes?.tags?.data?.map((tag) => ({
+        id: tag.id,
+        ...tag.attributes,
+      })),
+      user: {
+        id: post.attributes?.user?.data?.id,
+        ...post.attributes?.user?.data?.attributes,
+      },
+      image: post?.attributes?.image?.data
+        ? {
+            id: post.attributes?.image?.data?.id,
+            ...post.attributes?.image?.data?.attributes,
+          }
+        : null,
+    }
+  })
+}

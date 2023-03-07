@@ -14,6 +14,7 @@ export default {
 
   env: {
     BASE_ENDPOINT_URL: process.env.BASE_ENDPOINT_URL,
+    STRAPI_TOKEN: process.env.STRAPI_TOKEN,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -62,6 +63,7 @@ export default {
     baseURL: process.env.BASE_ENDPOINT_URL,
     // Proxy: true,
     headers: {
+      Authorization: `bearer ${process.env.STRAPI_TOKEN}`,
       'Content-Type': 'application/json',
     },
   },
