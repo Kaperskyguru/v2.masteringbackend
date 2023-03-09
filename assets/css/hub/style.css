@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #0A083B;
+    --para-color: #57586E;
+    --gradient-warning: linear-gradient(180deg, #EDAC3D 8.09%, #F0C419 69.16%);
+    --gradient-skyblue: linear-gradient(180deg, #3B43F2 8.09%, #2178FF 69.16%);
+    --gradient-sea-blue: linear-gradient(180deg, #18AACD 8.09%, #19E3F0 69.16%);
+    --gradient-pink: linear-gradient(180deg, #F22452 37.71%, #FF5364 60.98%);
+    --gradient-purple: linear-gradient(180deg, #8214FC 8.09%, #9E6CFF 69.16%);
+    --gradient-dark-blue: linear-gradient(181.08deg, #001ED3 47.89%, #247BDE 106.65%);
+    --skyblue: #3B43F2;
+    --sea-blue: #18AACD;
+    --pink: #F22452;
+    --warning: #EDAC3D;
+    --dark-blue: #011ED3;
+    --purple: #8214FC;
+    --card-radius: 15px;
+}
+
+body {
+    font-family: 'Avenir Next', 'inter', sans-serif;
+    background: rgb(241, 241, 241);
+    overflow-x: hidden;
+    color: #0A083B;
+
+}
+
+.form-control {
+    color: #5d5a6f;
+    opacity: 60%;
+    font-size: 0.8rem;
+}
+
+
+.btn-outline-secondary {
+    background: #191489;
+    color: #fff;
+}
+
+.hero {
+    margin-bottom: 100px;
+}
+
+.hero__grid {
+    margin-top: 10%;
+}
+
+.title__text {
+    padding-top: 10%;
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.hub {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-right: 1rem;
+    padding: 1.25rem 1.5rem;
+    background-repeat: no-repeat;
+    -webkit-background-position: 50% 80%;
+    background-position: 50% 80%;
+    -webkit-background-size: 50%;
+    background-size: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}

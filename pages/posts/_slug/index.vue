@@ -54,7 +54,7 @@ export default {
 
       let post = await getPost(params.slug)
       if (post === undefined || !post || post === null) {
-        post = await store.dispatch('post/getPost', params.slug)
+        post = await store.dispatch('post/getPost', { slug: params.slug })
       }
 
       // const getPosts = await store.getters['post/getStickyPosts']

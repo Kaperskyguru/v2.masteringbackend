@@ -187,9 +187,11 @@ export const actions = {
     }
   },
 
-  async getPost({ commit }, slug) {
+  async getPost({ commit }, { slug, populate = '' }) {
     try {
-      const res = await this.$axios.get(`/posts/?filters[slug][$eq]=${slug}`)
+      const res = await this.$axios.get(
+        `/posts/?filters[slug][$eq]=${slug}&populate=${populate}`
+      )
 
       const { data } = res
 
@@ -233,6 +235,10 @@ function mapPosts(posts) {
       user: {
         id: post.attributes?.user?.data?.id,
         ...post.attributes?.user?.data?.attributes,
+      },
+      chapter: {
+        id: post.attributes?.chapter?.data?.id,
+        ...post.attributes?.chapter?.data?.attributes,
       },
       image: post?.attributes?.image?.data
         ? {
