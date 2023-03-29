@@ -11,10 +11,10 @@
                 now
               </h2>
               <p class="art-card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
-                quisque magna facilisis dictumst. Dictumst nulla augue posuere
-                sed egestas nunc diam aliquam. Dolor porttitor donec sed diam
-                eleifend.
+                Starting Backend Development is a journey into a career that can
+                open many great opportunities from working on complex projects
+                to landing your dream job and the best way to get the most out
+                of it is to start now.
               </p>
               <a href="" class="btn btn-lg-primary mb-4 px-4 button"
                 >Register Now</a
@@ -45,7 +45,7 @@ h1 {
 }
 
 p {
-  color: #57586e;
+  /* color: #57586e; */
   font-size: 0.8rem;
 }
 

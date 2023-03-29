@@ -51,6 +51,7 @@ export default {
     },
 
     hub() {
+      console.log(this.chapter)
       return this.chapter?.hub ?? {}
     },
 

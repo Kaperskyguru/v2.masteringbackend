@@ -1,38 +1,41 @@
 <template>
-  <div class="col-lg-6">
-    <div class="card py-4 px-3 shadow">
-      <div class="mb-5">
-        <Button
-          type="link"
-          :link="`categories/${slug}`"
-          appearance="primary"
-          class="mb-3 mt-3"
-          >{{ title }}</Button
-        >
-        <div v-for="(post, i) in posts" :key="i">
-          <h3 class="card-head-text mt-3">
+  <div class="col-lg-6 position-relative">
+    <div class="ellipse"></div>
+    <div class="card shadow z-1" style="border: none; height: 650px">
+      <div class="card-header p-0 m-0" :style="{ backgroundColor: color }">
+        <Button appearance="none" class="text-white" style="outline: none">{{
+          title
+        }}</Button>
+      </div>
+      <div class="card-body py-4 px-3">
+        <div v-for="(post, i) in posts" :key="i" class="pb-5">
+          <h3 class="card-head-text fs-4 mt-3">
             <nuxt-link class="link" :to="`/posts/${post.slug}`">{{
               post.title
             }}</nuxt-link>
           </h3>
-          <div class="mb-4">
+          <!-- <div class="mb-2">
             <small
               >By<a :href="'/authors/' + authorSlug(post)" class="subtitle">
                 {{ authorName(post) }} </a
               >. Updated Oct. 12, 2021</small
             >
-          </div>
+          </div> -->
           <article
-            class="card-text text-justify"
-            style="text-align: justify"
+            class="card-text mt-4"
             v-html="getPostExcerpt(stripTags(post.excerpt), 150)"
           ></article>
         </div>
       </div>
 
-      <nuxt-link :to="`/posts#${slug}`" class="btn btn-sm ms-auto btn-col"
-        >Read more
-      </nuxt-link>
+      <div class="card-footer text-right">
+        <nuxt-link
+          :to="`/posts#${slug}`"
+          :style="{ color: color }"
+          class="btn btn-sm ms-auto btn-col fs-5"
+          >Read more
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +49,7 @@ export default {
       type: String,
       default: '',
     },
+    color: { type: String, default: '' },
     slug: {
       type: String,
       default: '',
@@ -83,6 +87,7 @@ export default {
       return post?.author?.name
     },
     getPostExcerpt(str, limit) {
+      if (str.length <= limit) return str
       if (str.length > 0) {
         return str.substring(0, limit) + '...'
       }
@@ -118,10 +123,14 @@ export default {
 }
 
 .ellipse {
-  width: 500px;
+  width: 100px;
+  height: 100px;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  left: -1.67%;
+  right: 88.85%;
+  top: 2%;
+  bottom: 70.14%;
+  background-image: url('~/assets/img/combined-shape.png');
 }
 
 .article-intro-text {
@@ -144,7 +153,7 @@ export default {
 
 .card-head-text {
   color: #0a083b;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .art-card-text {
@@ -215,6 +224,6 @@ small {
 
 .card-text {
   color: #57586e;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 </style>

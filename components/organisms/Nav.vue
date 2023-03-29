@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-xl mt-3">
+  <nav class="navbar navbar-expand-xl pt-3">
     <div class="container">
       <Logo />
       <i
@@ -21,13 +21,14 @@
           </li>
         </ul>
 
-        <ul class="d-flex navbar-ul navbar-nav ms-auto">
+        <!-- <ul class="d-flex navbar-ul navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="/login" class="nav-link">Login</a>
+          </li>
           <div class="d-grid gap-2 d-sm-block">
-            <Button href="/dashboard" class="btn-warning"
-              >Join Our Academy</Button
-            >
+            <Button href="/dashboard" class="btn-warning">Join Academy</Button>
           </div>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>

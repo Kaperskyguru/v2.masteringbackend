@@ -12,9 +12,12 @@ export default {
       const getPosts = store.getters['post/getPosts']
       let posts = await getPosts()
       if (!posts?.length) {
-        const data = {}
-        data.page = query.page ? query.page : 1
-        data.count = 22
+        const data = {
+          populate: 'author',
+          page: query.page ? query.page : 1,
+          count: 22,
+        }
+
         posts = await store.dispatch('post/getPosts', data)
       }
       return { posts }

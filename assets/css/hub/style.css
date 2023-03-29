@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+
+
 :root {
     --primary-color: #0A083B;
     --para-color: #57586E;
@@ -22,7 +24,7 @@ body {
     font-family: 'Avenir Next', 'inter', sans-serif;
     background: rgb(241, 241, 241);
     overflow-x: hidden;
-    color: #0A083B;
+    color: #000;
 
 }
 
@@ -46,10 +48,9 @@ body {
     margin-top: 10%;
 }
 
-.title__text {
-    padding-top: 10%;
-    font-weight: 800;
-    font-size: 50px;
+button {
+    border: none;
+    outline: none;
 }
 
 .hub {
@@ -80,4 +81,23 @@ a {
 a:hover {
     text-decoration: none;
     color: inherit;
+}
+
+
+a.btn {
+    border: 0 !important;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+#article a,
+#article a:hover {
+    color: rgb(187, 74, 3);
+    transition: all 0.2s ease-in-out 0s;
+    background-color: transparent;
 }

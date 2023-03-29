@@ -3,6 +3,7 @@ export const state = () => ({
   hubs: [],
   worldHubs: [],
   hub: [],
+  definitiveGuides: [],
   chapters: [],
   chapter: [],
   total_hub_pages: 0,
@@ -119,7 +120,7 @@ export const actions = {
   async getHubs({ commit }, { page, count = 22 }) {
     try {
       const res = await this.$axios.get(
-        `/hubs?populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+        `/hubs?filters[type][$eq]=0&populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
       )
 
       const { data } = res
@@ -184,7 +185,7 @@ export const actions = {
   async getCategoryHubs({ commit }, { count, page = 1, slug }) {
     try {
       const res = await this.$axios.get(
-        `/hubs?filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}`
+        `/hubs?filters[type][$eq]=0&filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}`
       )
 
       const { data } = res
@@ -223,7 +224,6 @@ export const actions = {
       )
 
       const { data } = res
-
       if (data?.data?.length) {
         commit('setChapter', mapChapters(data.data)[0])
         return mapChapters(data.data)[0]

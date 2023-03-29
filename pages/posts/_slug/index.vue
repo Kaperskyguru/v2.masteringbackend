@@ -1,39 +1,7 @@
 <template>
   <span v-if="post">
-    <ArticleHeader :post="post" />
-    <section class="Newsletter mt-5">
-      <div class="container-fluid mx-auto">
-        <div class="row m-0">
-          <div class="col-md-8 pe-5">
-            <ReadArticle :post="post" />
-          </div>
-          <!------------------>
-
-          <div class="col-md-4">
-            <div class="row">
-              <div class="col-lg-12 mb-3">
-                <SideNewsletter />
-              </div>
-              <div class="col-lg-12 mb-4">
-                <PopularPosts />
-              </div>
-
-              <!-- Image -->
-              <div class="col-lg-12 mb-4">
-                <VerticalAd />
-              </div>
-
-              <!-- Image Card -->
-              <div class="col-lg-12 mb-3"><RecentPosts /></div>
-
-              <div class="col-lg-12">
-                <JoinCommunity />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <DefinitiveArticleOverview v-if="post.type === 'DEFINITIVE'" :post="post" />
+    <ArticleOverview v-else :post="post" />
   </span>
 
   <p v-else class="text-center">
@@ -54,14 +22,19 @@ export default {
 
       let post = await getPost(params.slug)
       if (post === undefined || !post || post === null) {
-        post = await store.dispatch('post/getPost', { slug: params.slug })
+        post = await store.dispatch('post/getPost', {
+          slug: params.slug,
+          populate: {
+            categories: true,
+            author: true,
+            tags: true,
+            chapters: {
+              populate: ['posts'],
+            },
+          },
+        })
       }
 
-      // const getPosts = await store.getters['post/getStickyPosts']
-      // const stickyPosts = await getPosts()
-      // if (!stickyPosts.length) {
-      //   await await store.dispatch('post/getStickyPosts')
-      // }
       return { post }
     } catch (error) {
       console.log(error, 'error')

@@ -1,19 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <!-- <span class="px-5 container mx-auto"> -->
   <div id="article" class="container mx-auto w-md-100 w-75">
     <article v-highlight class="w-100" v-html="post.content"></article>
-
-    <div class="p-2 d-flex my-5">
-      <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
-        {{ tag.name }},
-      </a>
-    </div>
   </div>
-  <!-- </span> -->
 </template>
-
-<script>
+  
+  <script>
 export default {
   props: {
     post: {
@@ -23,8 +15,8 @@ export default {
   },
 }
 </script>
-
-<style>
+  
+  <style>
 figure iframe {
   width: 100%;
   height: 400px !important;

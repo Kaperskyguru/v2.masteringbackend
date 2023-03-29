@@ -12,16 +12,7 @@
                 alt=""
               />
             </div>
-            <div class="col-lg-10">
-              <h1 class="fs-1 fw-bold mb-1 Career-header-text">
-                <nuxt-link class="title_header" :to="`/posts/${post.slug}`">
-                  {{ post.title || '' }}</nuxt-link
-                >
-              </h1>
-              <small class="fw-bold"
-                >By Solomon Eseme. Updated Oct. 12, 2021</small
-              >
-            </div>
+            <ArticleHead :post="post" />
           </div>
 
           <div
@@ -120,8 +111,10 @@ export default {
 
     paragraphs() {
       if (!this.post) return
-      const firstPara = this.post?.content.matchAll('<p>(.*?)</p>')
-      return [...firstPara]
+      const firstPara =
+        this.post?.content?.matchAll('<p>(.*?)</p>') ??
+        this.post?.excerpt?.matchAll('<p>(.*?)</p>')
+      return [...(firstPara ?? [])]
     },
 
     stripTags(text) {
@@ -134,29 +127,6 @@ export default {
 </script>
 
 <style scoped>
-.title_header {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: 0.3s ease all;
-}
-
-.title_header:hover {
-  color: #14107c;
-}
-
-h1 {
-  color: #0a083b;
-}
-
-p {
-  color: #57586e;
-  font-size: 0.8rem;
-}
-
-small {
-  color: #57586e;
-}
-
 .pattern {
   width: 70px;
 }

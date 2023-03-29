@@ -3,7 +3,11 @@
   <article class="Career py-5">
     <div class="container mt-5">
       <div class="row">
-        <div class="col-lg-10 bordder-primary mx-auto">
+        <a
+          href="#"
+          class="col-lg-10 bordder-primary mx-auto"
+          @click="openModel"
+        >
           <div class="row mt-5">
             <div class="col-md-1 pt-3 ms-3">
               <img
@@ -12,36 +16,33 @@
                 alt=""
               />
             </div>
-            <div class="col-lg-10">
-              <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
-                <nuxt-link class="title_header" to="/posts/asas">{{
-                  post.title || ''
-                }}</nuxt-link>
-              </h1>
-              <small class="fw-bold"
-                >By Solomon Eseme. Updated Oct. 12, 2021</small
-              >
-            </div>
+            <ArticleHead class="mb-3" :post="post" :show-date="false" />
 
-            <div
-              class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
-            >
-              <img class="img-fluid base-img" :src="image" :alt="post.title" />
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
-              <p
-                class="blur-text text lh-md fs-5 mt-4"
-                v-html="post.excerpt"
-              ></p>
+            <div class="blur-text">
+              <div
+                class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
+              >
+                <img
+                  class="img-fluid base-img"
+                  :src="image"
+                  :alt="post.title"
+                />
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
+                <p class="text lh-md fs-5 mt-4" v-html="post.excerpt"></p>
+              </div>
             </div>
             <div class="d-grid col-lg-10 col-md-10 col-sm-12 mx-auto my-4">
-              <a href="#" class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
+              <a
+                href="#"
+                class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
+                @click="openModel"
                 >Unlock Now<span
                   ><img class="lock" src="~/assets/img/Lock.png" alt="" /></span
               ></a>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </article>
@@ -71,6 +72,12 @@ export default {
         }
       }
       return '/img/Importance-of-UI-UX-3.png'
+    },
+  },
+
+  methods: {
+    openModel(e) {
+      e.preventDefault()
     },
   },
 }
@@ -121,9 +128,7 @@ small {
 }
 
 .blur-text {
-  font-size: 0.8rem;
-  color: transparent;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  opacity: 0.4;
 }
 
 .lock {

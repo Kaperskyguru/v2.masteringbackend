@@ -38,9 +38,10 @@
     <!-- -----------------------------------------Start Content Section------------------------------------------------------------------------ -->
     <section class="Content">
       <div class="container">
-        <div v-for="(hub, i) in hubs" :key="i" class="row bg-white">
+        <div v-for="(hub, i) in hubs" :key="i" class="row mt-5 bg-white">
           <div
-            class="col-xl-3 lh-lg col-lg-12 bg-warning text-center text-white"
+            class="col-xl-3 lh-lg col-lg-12 text-center text-white"
+            :style="{ backgroundColor: `${color(hub)}` }"
           >
             <nuxt-link to="#">
               <h3 class="py-5 font-weight-normal fs-4">{{ hub.title }}</h3>
@@ -99,11 +100,14 @@
 
               <div class="col-12 align-self-end">
                 <Button
-                  appearance="outline-secondary"
                   class="btn-block"
                   size="large"
                   type="link"
                   :link="`/hubs/${hub.slug}`"
+                  :custom-style="{
+                    backgroundColor: `${color(hub)}`,
+                    color: '#fff',
+                  }"
                 >
                   Start Now
                 </Button>

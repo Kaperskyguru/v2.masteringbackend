@@ -1,9 +1,9 @@
 <template>
-  <main>
+  <main style="background-color: #f7f5fa; width: 100% !important">
     <header>
       <Nav />
     </header>
-    <Nuxt />
+    <Nuxt class="mb-5" />
 
     <Footer />
   </main>
@@ -62,6 +62,7 @@ p > code {
 
 body {
   font-family: 'Avenir Next', 'inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: rgb(241, 241, 241);
   overflow-x: hidden;
 }
@@ -80,7 +81,7 @@ h1 {
 }
 
 p {
-  color: #57586e;
+  /* color: #57586e; */
   font-size: 1.3rem;
 }
 </style>

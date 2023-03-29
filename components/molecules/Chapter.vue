@@ -1,8 +1,8 @@
 <template>
   <div class="row bg-white mb-5">
     <div
-      class="col-xl-3 col-lg-12 bg-warning text-center text-white"
-      :style="{ background: `${chapter.color}` }"
+      class="col-xl-3 col-lg-12 text-center text-white"
+      :style="{ backgroundColor: `${color}` }"
     >
       <nuxt-link :to="{ path: `/hubs/${chapter.hub}/${chapter.slug}` }">
         <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
@@ -115,15 +115,5 @@ export default {
   background-position: 50% 80%;
   -webkit-background-size: 50%;
   background-size: 50%;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-  color: inherit;
 }
 </style>

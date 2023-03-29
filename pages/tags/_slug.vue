@@ -1,15 +1,15 @@
 <template>
-  <main><CategoriesOverview :name="name" :posts="posts" /></main>
+  <main><TagsOverview :name="name" :posts="posts" /></main>
 </template>
-
-<script>
+  
+  <script>
 // import { mapState } from 'vuex'
 export default {
   name: 'PostsIndex',
 
   async asyncData({ query, params, store }) {
     try {
-      const getPosts = store.getters['post/getCategoryPosts']
+      const getPosts = store.getters['post/getPosts']
       let posts = await getPosts()
       if (!posts?.length) {
         const data = {
@@ -33,6 +33,7 @@ export default {
   },
 }
 </script>
-
-<style>
+  
+  <style>
 </style>
+  

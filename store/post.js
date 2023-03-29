@@ -4,6 +4,7 @@
 // import ENUM from '@/enums'
 // import DevtoPost from '~/Services/DevtoPosts'
 // import LogRocketPosts from '~/Services/LogRocketPosts'
+import qs from 'qs'
 
 export const state = () => ({
   postState: 1, // ENUM.INIT,
@@ -12,7 +13,10 @@ export const state = () => ({
   post: [],
   total_post_pages: 0,
   recent_posts: [],
+  definitiveGuides: [],
   category_posts: [],
+  tag_posts: [],
+  author_posts: [],
   sticky_posts: [],
   related_posts: [],
 })
@@ -26,7 +30,9 @@ export const getters = {
       }
     })
   },
-
+  getDefinitiveGuides: (state) => () => {
+    return state.definitiveGuides
+  },
   getPosts: (state) => () => {
     return state.posts
   },
@@ -44,7 +50,7 @@ export const getters = {
   },
 
   getPostsByAuthor: (state) => (author) => {
-    return state.posts.filter((post) => post.author.slug === author)
+    return state.author_posts
   },
   getStickyPosts: (state) => () => {
     return state.sticky_posts
@@ -72,6 +78,24 @@ export const mutations = {
 
   setCategoryPosts(state, data) {
     state.category_posts = data.posts
+    state.total_post_pages = data.pages
+    state.postState = 'loaded'
+  },
+
+  setTagPosts(state, data) {
+    state.tag_posts = data.posts
+    state.total_post_pages = data.pages
+    state.postState = 'loaded'
+  },
+
+  setDefinitiveGuides(state, data) {
+    state.definitiveGuides = data.hubs
+    state.total_hub_pages = data.pages
+    state.hubState = 'loaded'
+  },
+
+  setAuthorPosts(state, data) {
+    state.author_posts = data.posts
     state.total_post_pages = data.pages
     state.postState = 'loaded'
   },
@@ -105,10 +129,10 @@ export const mutations = {
 }
 
 export const actions = {
-  async getPosts({ commit }, { page, count = 22 }) {
+  async getPosts({ commit }, { page, count = 22, populate = '*' }) {
     try {
       const res = await this.$axios.get(
-        `/posts?populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+        `/posts?filters[is_public][$eq]=true&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc&populate=${populate}`
       )
 
       const { data } = res
@@ -119,6 +143,26 @@ export const actions = {
       return mapPosts(data.data)
     } catch (error) {
       commit('setPostState', 'error')
+      throw error
+    }
+  },
+
+  async getDefinitiveGuides({ commit }, { page, count = 22 }) {
+    try {
+      // 0 for definitive guides
+      const res = await this.$axios.get(
+        `/posts?filters[type][$eq]=DEFINITIVE&populate[chapters][populate]=posts&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+      )
+
+      const { data } = res
+
+      if (data?.data) {
+        commit('setDefinitiveGuides', mapPosts(data.data))
+      }
+
+      return mapPosts(data.data)
+    } catch (error) {
+      commit('setHubState', 'error')
       throw error
     }
   },
@@ -169,10 +213,10 @@ export const actions = {
     }
   },
 
-  async getCategoryPosts({ commit }, { count, page = 1, slug }) {
+  async getCategoryPosts({ commit }, { count, page = 1, slug, populate = '' }) {
     try {
       const res = await this.$axios.get(
-        `/posts?filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}`
+        `/posts?filters[is_public][$eq]=true&filters[categories][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}&populate=${populate}`
       )
 
       const { data } = res
@@ -187,10 +231,57 @@ export const actions = {
     }
   },
 
-  async getPost({ commit }, { slug, populate = '' }) {
+  async getTagPosts({ commit }, { count, page = 1, slug, populate = '' }) {
     try {
       const res = await this.$axios.get(
-        `/posts/?filters[slug][$eq]=${slug}&populate=${populate}`
+        `/posts?filters[is_public][$eq]=true&filters[tags][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}&populate=${populate}`
+      )
+
+      const { data } = res
+
+      if (data?.data.length) {
+        const posts = mapPosts(data?.data)
+        commit('setTagPosts', posts)
+        return posts
+      }
+    } catch (error) {
+      commit('setPostState', 'error')
+    }
+  },
+
+  async getAuthorPosts({ commit }, { count, page = 1, slug, populate = '' }) {
+    try {
+      const res = await this.$axios.get(
+        `/posts?filters[is_public][$eq]=true&filters[author][slug][$eq]=${slug}&pagination[page]=${page}&pagination[pageSize]=${count}&populate=${populate}`
+      )
+
+      const { data } = res
+
+      if (data?.data.length) {
+        const posts = mapPosts(data?.data)
+        commit('setAuthorPosts', posts)
+        return posts
+      }
+    } catch (error) {
+      commit('setPostState', 'error')
+    }
+  },
+
+  async getPost({ commit }, { slug, populate = {} }) {
+    // populate[chapters][populate]=posts
+
+    const query = qs.stringify(
+      {
+        populate,
+      },
+      {
+        encodeValuesOnly: true, // prettify URL
+      }
+    )
+
+    try {
+      const res = await this.$axios.get(
+        `/posts/?filters[slug][$eq]=${slug}&${query}`
       )
 
       const { data } = res
@@ -203,18 +294,6 @@ export const actions = {
       commit('setPostState', 'error')
     }
   },
-
-  // async getLogRocketPosts({ commit }) {
-  //   const data = await new LogRocketPosts().getPosts()
-  //   const logRocketPosts = JSON.parse(data).items
-  //   commit('setWorldPost', logRocketPosts)
-  // },
-  // async getWorldPosts({ commit }) {
-  //   const posts = await new DevtoPost().getPosts()
-  //   if (posts) {
-  //     commit('setWorldPost', posts)
-  //   }
-  // },
 
   getLatestPosts({ commit }, page = 1, perPage = 3) {},
 }
@@ -236,6 +315,17 @@ function mapPosts(posts) {
         id: post.attributes?.user?.data?.id,
         ...post.attributes?.user?.data?.attributes,
       },
+      author: {
+        id: post.attributes?.author?.data?.id,
+        ...post.attributes?.author?.data?.attributes,
+      },
+
+      chapters: post.attributes?.chapters?.data?.map((chapter) => ({
+        id: chapter.id,
+        ...chapter.attributes,
+        posts: mapPosts(chapter?.attributes?.posts?.data ?? []),
+      })),
+
       chapter: {
         id: post.attributes?.chapter?.data?.id,
         ...post.attributes?.chapter?.data?.attributes,

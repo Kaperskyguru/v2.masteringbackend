@@ -12,16 +12,8 @@
                 alt=""
               />
             </div>
-            <div class="col-lg-10">
-              <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
-                <nuxt-link class="title_header" :to="`/posts/${post.slug}`">
-                  {{ post.title || '' }}</nuxt-link
-                >
-              </h1>
-              <small class="fw-bold"
-                >By Solomon Eseme. Updated Oct. 12, 2021</small
-              >
-            </div>
+
+            <ArticleHead class="mb-3" :post="post" />
 
             <div
               class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
@@ -89,29 +81,6 @@ export default {
 </script>
 
 <style scoped>
-.title_header {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: 0.3s ease all;
-}
-
-.title_header:hover {
-  color: #14107c;
-}
-
-h1 {
-  color: #0a083b;
-}
-
-p {
-  color: #57586e;
-  font-size: 0.8rem;
-}
-
-small {
-  color: #57586e;
-}
-
 .pattern {
   width: 70px;
 }
@@ -125,11 +94,6 @@ small {
 .btn-primary:hover {
   background-color: #100c5cda;
   color: #fff;
-}
-
-.lock {
-  width: 30px;
-  margin-left: 3px;
 }
 
 footer small {

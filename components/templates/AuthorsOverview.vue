@@ -3,99 +3,20 @@
     <section class="d-flex align-items-center justify-content-center mb-5">
       <div class="container">
         <div class="row mt-5 text-justify">
-          <div class="col-lg-6 mx-auto mt-5 text-cener">
-            <h1 class="hero-text mb-4">Get Full-Time Backend Tips</h1>
-            <div class="d-flex flex-column justify-content-center mt-5">
+          <div class="col-lg-6 mx-auto mt-5 text-center">
+            <h1 class="hero-text fs-3 text-uppercase">
+              LATEST ARTICLES BY {{ name }}
+            </h1>
+            <div class="d-flex flex-column justify-content-center">
               <div class="d-flex justify-content-center">
-                <div class="mx-3">
-                  <img class="hero-img" src="~/assets/img/Oval.png" alt="" />
-                </div>
                 <div>
                   <p class="lead text-start fs-5">
-                    Receive the same tips I used to land <br />
-                    my my dream job in
-                    <span class="fw-bold text-dark">backend engineering!</span>
+                    Latest articles curated daily by {{ name }}.
                   </p>
                 </div>
               </div>
-              <div class="input-group mt-3 p-2 bg-white no-border">
-                <input
-                  type="email"
-                  class="form-control p-2 shadow-none"
-                  style="border: 0"
-                  placeholder="Enter your Email"
-                />
-                <Button
-                  class="btn btn-outline-secondary start-btn btn-primaryy"
-                  type="button"
-                >
-                  Start Now
-                </Button>
-              </div>
             </div>
           </div>
-        </div>
-
-        <div class="d-flex align-items-baseline">
-          <ul class="col-10 d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">All</a>
-              </li>
-            </span>
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Backend Content Hubs</a
-                >
-              </li>
-            </span>
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Ultimate Guides</a
-                >
-              </li>
-            </span>
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Definitive Guides</a
-                >
-              </li>
-            </span>
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Tips & Tricks</a
-                >
-              </li>
-            </span>
-
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Sponsored</a>
-              </li>
-            </span>
-          </ul>
-          <ul class="d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <svg
-                  width="24"
-                  height="22"
-                  viewBox="0 0 24 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M23.7871 20.7106L17.9547 15.4071C19.5193 13.7716 20.4665 11.6376 20.4665 9.30524C20.4665 4.17115 15.874 0 10.2332 0C4.58713 0 0 4.17599 0 9.30524C0 14.4345 4.59245 18.6105 10.2332 18.6105C12.7982 18.6105 15.145 17.7491 16.9436 16.3265L22.776 21.63C22.9144 21.7558 23.1006 21.8235 23.2815 21.8235C23.4625 21.8235 23.6487 21.7606 23.7871 21.63C24.0638 21.3783 24.0638 20.9622 23.7871 20.7106ZM1.43148 9.30524C1.43148 4.89215 5.38003 1.30651 10.2279 1.30651C15.0811 1.30651 19.0244 4.89698 19.0244 9.30524C19.0244 13.7135 15.0811 17.3088 10.2279 17.3088C5.38003 17.3088 1.43148 13.7183 1.43148 9.30524Z"
-                    fill="#434343"
-                  />
-                </svg>
-              </li>
-            </span>
-          </ul>
         </div>
       </div>
     </section>
@@ -123,16 +44,20 @@
     </section>
   </section>
 </template>
-  
-  <script>
+      
+      <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'PostOverview',
+  name: 'AuthorsOverview',
 
   props: {
     posts: {
       type: Array,
       default: () => [],
+    },
+    name: {
+      type: String,
+      default: '',
     },
   },
 
@@ -159,8 +84,8 @@ export default {
   },
 }
 </script>
-  
-  <style scoped>
+      
+      <style scoped>
 .no-border {
   border: 0;
   box-shadow: none; /* You may want to include this as bootstrap applies these styles too */

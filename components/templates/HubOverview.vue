@@ -12,7 +12,10 @@
 
             <div class="input-group my-3">
               <Button
-                appearance="outline-secondary"
+                :custom-style="{
+                  backgroundColor: `${color}`,
+                  color: '#fff',
+                }"
                 size="large"
                 type="link"
                 :link="`/hubs/${slug}/${firstLink}`"
@@ -38,7 +41,7 @@
           v-for="(chapter, i) in chapters"
           :key="i"
           :chapter="{
-            hub: hub.slug,
+            hub: slug,
             ...chapter,
           }"
         />
@@ -59,6 +62,16 @@ export default {
   computed: {
     title() {
       return this.hub?.title ?? ''
+    },
+
+    color() {
+      const mixedColor = this.hub?.color ?? ''
+      if (mixedColor.includes('gradient')) {
+        const first = mixedColor.split('#')[1]
+        const color = first.split(' ')[0]
+        return `#${color.replace(/[^a-zA-Z0-9 ]/g, '')}`
+      }
+      return mixedColor
     },
 
     slug() {

@@ -1,52 +1,45 @@
 <template>
-  <section class="hero">
+  <section class="hero px-3">
     <div class="container">
       <div class="row hero__grid">
-        <div class="col-lg-6">
+        <div id="hero_text" class="col-lg-8 w-75">
           <div class="row">
             <div
-              class="
-                bg-white
-                col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-6 col
-                text-center
-                rounded
-                mb-3
-                mt-5
-              "
+              class="bg-white col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-6 col text-center rounded mt-5"
             >
-              <h6 class="mt-2 text-danger py-">Never stop learning</h6>
+              <h6 class="mt-2 text-danger">Never stop learning</h6>
             </div>
           </div>
 
-          <h1 class="title__text mb-md-2">
-            A great resource for backend engineers.
-          </h1>
-          <!-- <p class="title__subtext">
-            “I thought the blog was good. But the newsletter? Even better!”
-          </p>
-          <p class="fw-bold user-name">Katy Grey</p>
-          <p class="job-title fs-6 fw-bold">Product Engineer, SPDC</p> -->
-
+          <div class="position-relative w-100">
+            <h1 class="title__text mb-md-2 display-4 mt-4 text-capitalize">
+              A great resource for backend engineers.
+            </h1>
+            <p class="title__subtext">
+              “I thought the blog was good. But the courses? Even better!”
+            </p>
+            <div class="gradient"></div>
+            <p class="fw-bold user-name">Solomon Eseme</p>
+            <p class="job-title fs-6 fw-bold">Founder, Masteringbackend</p>
+          </div>
           <!-- ---------------input--------------------------------------------- -->
           <div class="col-md-8">
-            <div class="row input-box mt-4 mb-5">
-              <input
-                class="col-md-8 py-md-2 email-input"
+            <div class="input-group mt-4 py-4 mb-5 no-border">
+              <!-- <input
+                class="col-8 py-md-2 form-control shadow-none"
                 type="email"
-                placeholder="Enter your Email"
-              />
+                style="border: 2"
+                placeholder="Enter your email"
+              /> -->
 
-              <Button
-                type="button"
-                class="col-md-4 start-btn my-md-1 py-2 mt-3 mt-lg-0"
-              >
+              <Button type="button" class="col-4 start-btn py-3">
                 Start Now
               </Button>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6 hero__image">
+        <!-- <div class="col-lg-6 hero__image">
           <div class="row">
             <div class="col-12">
               <img
@@ -65,11 +58,9 @@
               <img class="img4" src="~/assets/img/imggg.png" alt="" srcset="" />
               <img class="img5" src="~/assets/img/1.png" alt="" srcset="" />
             </div>
-            <!-- <div class="col-12">
-                                <img class="img-fliud bg" src="~/assets/img/BG.png" alt="" srcset="">
-                            </div> -->
+    
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -87,13 +78,19 @@ export default {
   margin-top: 10%;
 }
 
+@media (max-width: 991.98px) {
+  #hero_text {
+    width: 100% !important;
+  }
+}
+
 .text-danger {
   color: var(--danger);
 }
 
 .title__text {
   font-weight: 800;
-  font-size: 40px;
+  /* font-size: 50px; */
 }
 
 .user-name {
@@ -168,6 +165,17 @@ export default {
 
 .hero__image .display-img img {
   display: none;
+}
+
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* left: 0; */
+  transform: translate(0, -50%);
+  top: 50%;
+  background: rgba(255, 102, 82, 0.2);
+  filter: blur(325px);
 }
 
 .bg {

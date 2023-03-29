@@ -4,6 +4,7 @@
       v-if="!link.includes('http')"
       :to="link"
       :class="classNames"
+      :style="customStyle"
       class="btn"
       ><div v-if="waiting" class="custom-icon" role="presentation">
         <!-- <SvgLoader class="-my-px" /> -->
@@ -16,7 +17,14 @@
         </div> </template
     ></NuxtLink>
 
-    <a v-else v-bind="$attrs" target="_blank" :class="classNames" class="btn">
+    <a
+      v-else
+      :style="customStyle"
+      v-bind="$attrs"
+      target="_blank"
+      :class="classNames"
+      class="btn"
+    >
       <div v-if="waiting" class="custom-icon" role="presentation">
         <!-- <SvgLoader class="-my-px" /> -->
       </div>
@@ -29,7 +37,14 @@
       </template>
     </a>
   </div>
-  <button v-else class="btn" :class="classNames">
+  <button
+    v-else
+    class="btn"
+    type="button"
+    :class="classNames"
+    :style="customStyle"
+    style="outline: none !important"
+  >
     <div v-if="waiting" class="custom-icon" role="presentation">
       <!-- <SvgLoader class="-my-px" /> -->
     </div>
@@ -60,6 +75,7 @@ export default {
           'primary-3',
           'outline-secondary',
           'purple',
+          'none',
         ].includes(value),
       default: 'primary',
     },
@@ -85,6 +101,11 @@ export default {
       default: '#',
     },
 
+    customStyle: {
+      type: [String, Object],
+      default: '',
+    },
+
     disabled: {
       type: Boolean,
       default: false,
@@ -98,7 +119,7 @@ export default {
 
   computed: {
     classNames() {
-      const classNames = [`btn-${this.appearance}`]
+      const classNames = [`m-btn-${this.appearance}`]
 
       if (this.active) {
         classNames.push('active')
@@ -108,8 +129,10 @@ export default {
         }
       }
 
+      if (this.appearance === 'none') classNames.push('disabled')
+
       if (!this.hasHiddenClass && !this.hasDisplayClass) {
-        classNames.push('d-inline-flex')
+        // classNames.push('d-inline-flex')
       }
 
       if (!this.hasTextPositioningClass) {
@@ -192,7 +215,12 @@ export default {
     },
 
     staticClasses() {
-      return this.$attrs.class || this.$vnode?.data?.staticClass || ''
+      return (
+        this.$attrs.class ||
+        this.customStyle ||
+        this.$vnode?.data?.staticClass ||
+        ''
+      )
     },
 
     hasDisplayClass() {
@@ -236,21 +264,21 @@ export default {
 </script>
 
 <style scoped>
-.btn-primary-3 {
+.m-btn-primary-3 {
   background: #0a083b;
   color: #fff;
   border-radius: 5px;
   border: none;
 }
 
-.btn-primary-1 {
+.m-btn-primary-1 {
   background: #2178ff;
   color: #fff;
   border-radius: 5px;
   border: none;
 }
 
-.btn-primary-2 {
+.m-btn-primary-2 {
   background: #f29c1f;
   color: #000;
   font-weight: 600;
@@ -258,42 +286,46 @@ export default {
   border: none;
 }
 
-.btn-outline-primary {
+.m-btn-outline-primary {
   border: 1px solid #9c4df4;
   color: #9c4df4;
   font-size: 0.7rem;
   transition: 0.5s ease;
 }
 
-.btn-outline-primary:hover {
+.m-btn-outline-primary:hover {
   border: 1px dashed #9c4df4;
   background-color: transparent;
 }
 
-.btn-outline-secondary {
+.m-btn-outline-secondary {
   background-color: #9c4df4;
   color: #fff;
   border: none;
   font-size: 0.9rem;
 }
 
-.btn-warning {
+.m-btn-warning {
   background-color: #1c168c;
   color: #fff;
   border-radius: 15px;
   border: none;
 }
 
-.btn-warning:hover {
+.m-btn-warning:hover {
   background-color: #1c168cbd;
   color: #fff;
   border: none;
 }
 
-.btn-purple {
+.m-btn-purple {
   background-color: var(--purple);
   font-size: 0.8rem;
   border: none;
   color: white;
+}
+
+button:active {
+  outline: none;
 }
 </style>
