@@ -6,9 +6,7 @@
           <div>
             <Logo />
             <p class="fs-6 mt-2">+234 678-690-1542</p>
-            <a href="" class="text-white text-decoration-none email fs-6"
-              >support@masteringbackend.com</a
-            >
+            <a href="" class="text-white text-decoration-none email fs-6">support@masteringbackend.com</a>
           </div>
         </div>
         <div class="col-md-4 text-col">
@@ -16,18 +14,18 @@
           <div class="d-md-flex text-white">
             <ul class="footer-nav">
               <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
-              <li class="mb-3"><a href="/blog/">Newsletter</a></li>
-              <li class="mb-3"><a href="">Join the Academy </a></li>
-              <li><a href="">Join our Community</a></li>
+              <li class="mb-3"><a href="https://kaperskyguru.substack.com">Newsletter</a></li>
+              <li class="mb-3"><a href="https://academy.masteringbackend.com">Join the Academy </a></li>
+              <li><a href="/slack">Join our Community</a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-4 text-col">
           <p class="mb-4">Company</p>
           <ul class="footer-nav">
-            <li class="mb-3"><a href="">Home</a></li>
-            <li class="mb-3"><a href="">About</a></li>
-            <li class="mb-3"><a href="">Contact</a></li>
+            <li class="mb-3"><a href="/">Home</a></li>
+            <li class="mb-3"><a href="/about">About</a></li>
+            <li class="mb-3"><a href="/contact">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -37,11 +35,7 @@
         <div class="d-flex socia-links mb-3 align-items-center">
           <a href="https://facebook.com/masteringbackend">
             <div class="socia-link p-2">
-              <img
-                class="img-fluid face"
-                src="~/assets/img/facebook.png"
-                alt=""
-              />
+              <img class="img-fluid face" src="~/assets/img/facebook.png" alt="" />
             </div>
           </a>
           <a href="https://twitter.com/master_backend">
@@ -56,10 +50,8 @@
           </a>
         </div>
         <div>
-          <small class="text-light fs-7"
-            >© {{ new Date().getFullYear() }} Masteringbackend. All right
-            reserved.</small
-          >
+          <small class="text-light fs-7">© {{ new Date().getFullYear() }} Masteringbackend. All right
+            reserved.</small>
         </div>
       </div>
     </div>
@@ -132,6 +124,7 @@ footer small {
   color: #fff;
   opacity: 70%;
 }
+
 footer .footer-nav:nth-of-type(2) {
   margin-left: 0;
 }

@@ -2,33 +2,20 @@
   <nav class="navbar navbar-expand-xl pt-3">
     <div class="container">
       <Logo />
-      <i
-        class="bx bx-menu navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#nav-menu"
-      ></i>
+      <i class="bx bx-menu navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-menu"></i>
       <div id="nav-menu" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item active">
-            <a href="/" class="active links nav-link">Home</a>
+          <li class="nav-item" :class="{ 'active': isActive() }">
+            <a href="/" class=" links nav-link">Home</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item" :class="{ 'active': isActive('/posts') }">
             <a href="/posts" class="links nav-link">Blog</a>
           </li>
-          <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li>
-          <li class="nav-item">
+          <!-- <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li> -->
+          <li class="nav-item" :class="{ 'active': isActive('/slack') }">
             <a href="/slack" class="nav-link">Community</a>
           </li>
         </ul>
-
-        <!-- <ul class="d-flex navbar-ul navbar-nav ms-auto">
-          <li class="nav-item">
-            <a href="/login" class="nav-link">Login</a>
-          </li>
-          <div class="d-grid gap-2 d-sm-block">
-            <Button href="/dashboard" class="btn-warning">Join Academy</Button>
-          </div>
-        </ul> -->
       </div>
     </div>
   </nav>
@@ -38,6 +25,13 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Nav',
+
+  methods: {
+    isActive(slug = '/') {
+      return this.$route.path === slug
+    }
+  }
+
 }
 </script>
 
