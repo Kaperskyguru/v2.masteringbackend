@@ -31,35 +31,30 @@
 
         <div class="d-flex align-items-baseline">
           <ul class="col-10 d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
-            <span>
+            <span :class="{ active: tab === '' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">All</a>
+                <a class="text-decoration-none text-dark " href="/posts">All</a>
               </li>
             </span>
-            <span>
+            <span :class="{ active: tab === 'hub' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Backend Content Hubs</a>
+                <a class="text-decoration-none text-dark" href="#hub" @click.prevent="getPosts('#hub')">Backend Content
+                  Hubs</a>
               </li>
             </span>
-            <span>
+            <span :class="{ active: tab == 'ultimate' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Ultimate Guides</a>
+                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#ultimate')">Ultimate Guides</a>
               </li>
             </span>
-            <span>
+            <span :class="{ active: tab == 'definitive' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Definitive Guides</a>
+                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#definitive')">Definitive Guides</a>
               </li>
             </span>
-            <span>
+            <span :class="{ active: tab == 'sponsored' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Tips & Tricks</a>
-              </li>
-            </span>
-
-            <span>
-              <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="">Sponsored</a>
+                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#sponsored')">Sponsored</a>
               </li>
             </span>
           </ul>
@@ -80,35 +75,35 @@
 
     <section class="mx-2">
       <!-----------------------Featured Article----------------------->
-      <FeaturedArticle v-if="featuredPost" :post="featuredPost" />
+      <FeaturedArticle v-if="featuredPost && !removeFeatured" :post="featuredPost" />
 
       <!-----------------------Advert----------------------->
-      <ArticleAdvert />
+      <ArticleAdvert v-if="!removeFeatured || !allPosts.length" />
 
-      <span v-for="(post, index) in getAllArticles" :key="index" :post="post">
+      <span v-for="(post, index) in allPosts" :key="index" :post="post">
         <!-----------------------Locked Article----------------------->
         <LockArticle v-if="post.is_sticky" :post="post" />
 
         <!-----------------------Article----------------------->
         <Article v-else :post="post" />
+
+        <ArticleAdvert v-if="removeFeatured && index === 0" />
       </span>
 
-      <!-- <div class="d-grid col-lg-10 col-md-10 mx-auto">
-        <button class="btn btn-primary-old btn-lg mt-3 fs-3 mb-5 p-3">
-          Older post
-        </button>
-      </div> -->
+      <!-- <ArticleAdvert v-if="!allPosts" /> -->
     </section>
   </section>
 </template>
   
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: 'PostOverview',
   data() {
     return {
-      page: 1
+      page: 1,
+      allPosts: [],
+      tab: '',
+      removeFeatured: false
     }
   },
   props: {
@@ -116,6 +111,10 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+
+  created() {
+    this.allPosts = this.getAllArticles
   },
 
   computed: {
@@ -133,6 +132,32 @@ export default {
       })
     },
 
+    getUltimate() {
+      return [...this.posts].filter(
+        (post) => post?.type?.includes('ultimate')
+      )
+    },
+
+    getSponsored() {
+      return [...this.posts].filter(
+        (post) => {
+          return post?.categories?.find((cat) => cat.slug === 'sponsored')
+        }
+      )
+    },
+
+    getDefinitive() {
+      return [...this.posts].filter(
+        (post) => post?.type?.includes('definitive')
+      )
+    },
+
+    getHub() {
+      return [...this.posts].filter(
+        (post) => post?.type?.includes('hub')
+      )
+    },
+
     removeSponsored() {
       return [...this.posts].filter(
         (post) => !post?.categories?.find((cat) => cat.slug === 'sponsored')
@@ -140,11 +165,45 @@ export default {
     },
   },
 
+
+
   methods: {
-    // infiniteScroll($state) {
-    //   this.$emit('scroll', $state)
-    // }
-  }
+
+    getTab(tab) {
+      return this.tab === tab
+    },
+
+    getPosts(slug = '') {
+
+      if (slug) this.removeFeatured = true
+
+      if (slug.includes('ultimate')) {
+        this.allPosts = this.getUltimate
+        this.tab = 'ultimate'
+        return
+      }
+
+      if (slug.includes('hub')) {
+        this.allPosts = this.getHub
+        this.tab = 'hub'
+        return
+      }
+
+      if (slug.includes('definitive')) {
+        this.allPosts = this.getDefinitive
+        this.tab = 'definitive'
+        return
+      }
+
+      if (slug.includes('sponsored')) {
+        this.tab = 'sponsored'
+        this.allPosts = this.getSponsored
+        return
+      }
+
+      this.allPosts = this.getAllArticles
+    }
+  },
 
 }
 </script>
@@ -248,6 +307,15 @@ ul.bor-btm span::after {
   height: 4px;
   background-color: #1c168c;
   transition: 0.5s ease;
+}
+
+.active {
+
+  /* width: 0; */
+  /* height: 4px; */
+  border-bottom: 3px solid #1c168c;
+  /* background-color: #1c168c; */
+  /* width: 100%; */
 }
 
 ul.bor-btm span:hover::after {

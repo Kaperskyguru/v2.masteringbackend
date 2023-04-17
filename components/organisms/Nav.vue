@@ -12,8 +12,8 @@
             <a href="/posts" class="links nav-link">Blog</a>
           </li>
           <!-- <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li> -->
-          <li class="nav-item" :class="{ 'active': isActive('/slack') }">
-            <a href="/slack" class="nav-link">Community</a>
+          <li class="nav-item" :class="{ 'active': isActive('/community') }">
+            <a href="/community" class="nav-link">Community</a>
           </li>
         </ul>
       </div>
@@ -54,6 +54,10 @@ export default {
   width: 100%;
 }
 
+.navbar .nav-item {
+  padding-right: 30px;
+}
+
 .navbar .navbar-nav .active a {
   background-color: #0a083b;
   -webkit-background-clip: text;
@@ -69,18 +73,5 @@ export default {
 .nav-link {
   color: #57586e;
   font-size: 0.8rem;
-}
-
-.btn-warning {
-  background-color: #1c168c;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-}
-
-.btn-warning:hover {
-  background-color: #1c168cbd;
-  color: #fff;
-  border: none;
 }
 </style>

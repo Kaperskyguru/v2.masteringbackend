@@ -1,6 +1,6 @@
 <template>
   <span v-if="post">
-    <DefinitiveArticleOverview v-if="post.type === 'DEFINITIVE'" :post="post" />
+    <DefinitiveArticleOverview v-if="post.type === 'definitive'" :post="post" />
     <ArticleOverview v-else :post="post" />
   </span>
 
@@ -28,6 +28,7 @@ export default {
             categories: true,
             author: true,
             tags: true,
+            chapter: true,
             chapters: {
               populate: ['posts'],
             },
@@ -146,8 +147,8 @@ export default {
       })
     },
   },
+
 }
 </script>
 
-<style>
-</style>
+<style></style>

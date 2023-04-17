@@ -1,8 +1,9 @@
 <template>
   <main>
-    <PostOverview :posts="posts" @scroll="infiniteScroll"></PostOverview>
+    <PostOverview :posts="posts"></PostOverview>
 
-    <infinite-loading spinner="spiral" @infinite="infiniteScroll"><span slot="no-more"></span></infinite-loading>
+    <infinite-loading v-if="posts" spinner="spiral" @infinite="infiniteScroll"><span
+        slot="no-more"></span></infinite-loading>
   </main>
 </template>
 
@@ -10,6 +11,10 @@
 // import { mapState } from 'vuex'
 export default {
   name: 'PostsIndex',
+
+  components: {
+    PostOverview: () => import('@/components/templates/PostOverview.vue')
+  },
 
   data() {
     return {
@@ -23,7 +28,7 @@ export default {
       let posts = await getPosts()
       if (!posts?.length) {
         const data = {
-          populate: 'author',
+          populate: 'author,categories',
           page: query.page ? query.page : 1,
           count: 22,
         }
@@ -41,7 +46,7 @@ export default {
       setTimeout(async () => {
 
         const data = {
-          populate: 'author',
+          ppopulate: 'author,categories',
           page: this.page,
           count: 22,
         }

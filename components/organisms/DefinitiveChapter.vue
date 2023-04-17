@@ -1,19 +1,13 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <span>
-    <section
-      :id="chapter.slug"
-      class="mb-5 text-white"
-      :style="{ backgroundColor: color }"
-    >
+    <section :id="chapter.slug" class="mb-5 text-white" :style="{ backgroundColor: color }">
       <div id="chapter" class="container mx-auto w-md-100 w-75">
         <div id="chapter" class="row my-5 container mx-auto w-md-100 w-75">
           <div class="mx-auto text-center pt-5">
             <h2 class="fs-1 text-white">
-              <span class="d-block fw-bolder mb-3 fs-3"
-                >{{ chapter.description }}:</span
-              >
-              {{ chapter.title }}
+              <span class="d-block fw-bolder mb-3 fs-3">{{ splitTitle.title }}:</span>
+              {{ splitTitle.subtitle }}
             </h2>
           </div>
 
@@ -24,12 +18,7 @@
               <article v-highlight class="w-100" v-html="content"></article>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <img
-                :src="chapter.design_url"
-                class="img-fluid cover"
-                alt=""
-                srcset=""
-              />
+              <img :src="chapter.design_url" class="img-fluid cover" alt="" srcset="" />
             </div>
           </div>
         </div>
@@ -39,21 +28,17 @@
     <!--  -->
 
     <div id="article" class="container mx-auto w-md-100 w-75">
-      <DefinitiveArticle
-        v-for="(post, index) in getPosts"
-        :key="index"
-        :post="post"
-      />
+      <DefinitiveArticle v-for="(post, index) in getPosts" :key="index" :post="post" />
     </div>
   </span>
 </template>
     
-    <script>
+<script>
 export default {
   props: {
     chapter: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 
@@ -71,6 +56,15 @@ export default {
       return this.chapter?.excerpt ?? this.chapter?.content ?? ''
     },
 
+    splitTitle() {
+      if (!this.chapter?.title) return { title: '', subtitle: '' }
+      const titles = this.chapter?.title?.split(':')
+      return {
+        title: titles[0],
+        subtitle: titles[1],
+      }
+    },
+
     getPosts() {
       return this.chapter?.posts ?? []
     },
@@ -78,7 +72,7 @@ export default {
 }
 </script>
     
-    <style>
+<style>
 figure iframe {
   width: 100%;
   height: 400px !important;
@@ -102,7 +96,7 @@ article img {
   background-size: cover;
 }
 
-article > * {
+article>* {
   font-family: 'Georgia', serif !important;
 }
 

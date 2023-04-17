@@ -151,7 +151,7 @@ export const actions = {
     try {
       // 0 for definitive guides
       const res = await this.$axios.get(
-        `/posts?filters[type][$eq]=DEFINITIVE&populate[chapters][populate]=posts&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+        `/posts?filters[type][$eq]=definitive&populate[chapters][populate]=posts&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
       )
 
       const { data } = res
@@ -300,6 +300,9 @@ export const actions = {
 
 function mapPosts(posts) {
   return posts?.map((post) => {
+
+    console.log(post)
+
     return {
       id: post.id,
       ...post.attributes,

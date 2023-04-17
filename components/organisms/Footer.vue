@@ -16,7 +16,7 @@
               <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
               <li class="mb-3"><a href="https://kaperskyguru.substack.com">Newsletter</a></li>
               <li class="mb-3"><a href="https://academy.masteringbackend.com">Join the Academy </a></li>
-              <li><a href="/slack">Join our Community</a></li>
+              <li><a href="/community">Join our Community</a></li>
             </ul>
           </div>
         </div>
