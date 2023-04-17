@@ -233,7 +233,7 @@ export const actions = {
     }
   },
 
-  getChapters({ commit }, page = 1, perPage = 3) {},
+  getChapters({ commit }, page = 1, perPage = 3) { },
   //   async getChapter({ commit }, slug) {
   //     try {
   //       const res = await this.$axios.get(`/hubs/?filters[slug][$eq]=${slug}`)
@@ -300,12 +300,6 @@ function mapPosts(posts) {
         id: post.attributes?.user?.data?.id,
         ...post.attributes?.user?.data?.attributes,
       },
-      image: post?.attributes?.image?.data
-        ? {
-            id: post.attributes?.image?.data?.id,
-            ...post.attributes?.image?.data?.attributes,
-          }
-        : null,
     }
   })
 }

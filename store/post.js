@@ -295,7 +295,7 @@ export const actions = {
     }
   },
 
-  getLatestPosts({ commit }, page = 1, perPage = 3) {},
+  getLatestPosts({ commit }, page = 1, perPage = 3) { },
 }
 
 function mapPosts(posts) {
@@ -330,12 +330,7 @@ function mapPosts(posts) {
         id: post.attributes?.chapter?.data?.id,
         ...post.attributes?.chapter?.data?.attributes,
       },
-      image: post?.attributes?.image?.data
-        ? {
-            id: post.attributes?.image?.data?.id,
-            ...post.attributes?.image?.data?.attributes,
-          }
-        : null,
+
     }
   })
 }

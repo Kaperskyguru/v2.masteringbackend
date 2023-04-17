@@ -1,7 +1,7 @@
 <template>
   <span v-if="post">
     <ArticleHeader :post="post" />
-    <section class="pt-2" style="background-color: white">
+    <section class="pt-5" style="background-color: white">
       <div class="container mx-auto">
         <div class="row m-0">
           <div class="col-md-12">
@@ -42,11 +42,10 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 }
 </script>
 
-<style>
-</style>
+<style></style>

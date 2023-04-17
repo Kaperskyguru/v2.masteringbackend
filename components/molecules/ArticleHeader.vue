@@ -7,16 +7,12 @@
         </h1>
         <div class="d-flex flex-row justify-content-center gap-3">
           <a :href="'/authors/' + authorSlug" class="subtitle">
-            <p class="text-white fs-6">by {{ authorName }}</p> </a
-          >.
+            <p class="text-white fs-6">by {{ authorName }}</p>
+          </a>.
           <p class="text-white fs-6">Updated {{ dateFormat }}</p>
         </div>
         <div class="pb-5 text-white">
-          <a
-            v-for="category in getCategories"
-            :key="category.id"
-            :href="`/categories/${category.slug}`"
-          >
+          <a v-for="category in getCategories" :key="category.id" :href="`/categories/${category.slug}`">
             {{ category.name }},
           </a>
         </div>
@@ -33,7 +29,7 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
   computed: {
@@ -64,18 +60,13 @@ export default {
     },
 
     image() {
+      console.log(this.post)
       if (this.post) {
-        if (this.post.thumbnail_images) {
-          if (this.post.thumbnail_images['post-thumbnail']) {
-            return this.post.thumbnail_images['post-thumbnail'].url
-          } else {
-            if (this.post.thumbnail_images.full) {
-              return this.post.thumbnail_images.full.url
-            }
-            return '/img/baseb.png'
-          }
+        if (this.post?.image) {
+          return this.post?.image
         }
       }
+
       return '/img/Base.png'
     },
   },
