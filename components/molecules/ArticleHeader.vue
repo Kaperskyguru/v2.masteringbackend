@@ -60,7 +60,6 @@ export default {
     },
 
     image() {
-      console.log(this.post)
       if (this.post) {
         if (this.post?.image) {
           return this.post?.image
