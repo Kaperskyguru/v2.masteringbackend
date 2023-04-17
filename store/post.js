@@ -137,7 +137,7 @@ export const actions = {
 
       const { data } = res
 
-      if (data?.data) {
+      if (data?.data && page < 2) {
         commit('setPosts', mapPosts(data.data))
       }
       return mapPosts(data.data)

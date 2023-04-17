@@ -21,7 +21,7 @@ export default {
   css: ['~/assets/css/hub/style.css'],
 
   // Plugins to run before rendering page: https://go.nu xtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/infiniteloading', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {

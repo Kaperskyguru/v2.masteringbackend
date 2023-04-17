@@ -19,16 +19,9 @@
                 </div>
               </div>
               <div class="input-group mt-3 p-2 bg-white no-border">
-                <input
-                  type="email"
-                  class="form-control p-2 shadow-none"
-                  style="border: 0"
-                  placeholder="Enter your Email"
-                />
-                <Button
-                  class="btn btn-outline-secondary start-btn btn-primaryy"
-                  type="button"
-                >
+                <input type="email" class="form-control p-2 shadow-none" style="border: 0"
+                  placeholder="Enter your Email" />
+                <Button class="btn btn-outline-secondary start-btn btn-primaryy" type="button">
                   Start Now
                 </Button>
               </div>
@@ -45,30 +38,22 @@
             </span>
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Backend Content Hubs</a
-                >
+                <a class="text-decoration-none text-dark" href="">Backend Content Hubs</a>
               </li>
             </span>
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Ultimate Guides</a
-                >
+                <a class="text-decoration-none text-dark" href="">Ultimate Guides</a>
               </li>
             </span>
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Definitive Guides</a
-                >
+                <a class="text-decoration-none text-dark" href="">Definitive Guides</a>
               </li>
             </span>
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href=""
-                  >Tips & Tricks</a
-                >
+                <a class="text-decoration-none text-dark" href="">Tips & Tricks</a>
               </li>
             </span>
 
@@ -81,17 +66,10 @@
           <ul class="d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <svg
-                  width="24"
-                  height="22"
-                  viewBox="0 0 24 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M23.7871 20.7106L17.9547 15.4071C19.5193 13.7716 20.4665 11.6376 20.4665 9.30524C20.4665 4.17115 15.874 0 10.2332 0C4.58713 0 0 4.17599 0 9.30524C0 14.4345 4.59245 18.6105 10.2332 18.6105C12.7982 18.6105 15.145 17.7491 16.9436 16.3265L22.776 21.63C22.9144 21.7558 23.1006 21.8235 23.2815 21.8235C23.4625 21.8235 23.6487 21.7606 23.7871 21.63C24.0638 21.3783 24.0638 20.9622 23.7871 20.7106ZM1.43148 9.30524C1.43148 4.89215 5.38003 1.30651 10.2279 1.30651C15.0811 1.30651 19.0244 4.89698 19.0244 9.30524C19.0244 13.7135 15.0811 17.3088 10.2279 17.3088C5.38003 17.3088 1.43148 13.7183 1.43148 9.30524Z"
-                    fill="#434343"
-                  />
+                    fill="#434343" />
                 </svg>
               </li>
             </span>
@@ -115,20 +93,24 @@
         <Article v-else :post="post" />
       </span>
 
-      <div class="d-grid col-lg-10 col-md-10 mx-auto">
+      <!-- <div class="d-grid col-lg-10 col-md-10 mx-auto">
         <button class="btn btn-primary-old btn-lg mt-3 fs-3 mb-5 p-3">
           Older post
         </button>
-      </div>
+      </div> -->
     </section>
   </section>
 </template>
   
-  <script>
+<script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'PostOverview',
-
+  data() {
+    return {
+      page: 1
+    }
+  },
   props: {
     posts: {
       type: Array,
@@ -157,13 +139,21 @@ export default {
       )
     },
   },
+
+  methods: {
+    // infiniteScroll($state) {
+    //   this.$emit('scroll', $state)
+    // }
+  }
+
 }
 </script>
   
-  <style scoped>
+<style scoped>
 .no-border {
   border: 0;
-  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+  box-shadow: none;
+  /* You may want to include this as bootstrap applies these styles too */
 }
 
 .hero-text {
@@ -216,7 +206,8 @@ p {
 /*----------------------Hero Section------------------*/
 .no-border {
   border: 0;
-  box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+  box-shadow: none;
+  /* You may want to include this as bootstrap applies these styles too */
 }
 
 .hero-text {
