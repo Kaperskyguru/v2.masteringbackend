@@ -7,7 +7,7 @@
           <div class="mx-auto text-center">
             <h1 class="fs-1 text-white">
               <span class="d-block mb-3 fw-bolder fs-3">{{ splitTitle.title }}:</span>
-              {{ splitTitle.splitChapterTitle }}
+              {{ splitTitle.subtitle }}
             </h1>
           </div>
 
