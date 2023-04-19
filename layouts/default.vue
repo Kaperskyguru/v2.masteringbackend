@@ -1,9 +1,9 @@
 <template>
-  <main>
+  <main style="background-color: #f7f5fa; width: 100% !important">
     <header>
       <Nav />
     </header>
-    <Nuxt />
+    <Nuxt class="mb-5" />
 
     <Footer />
   </main>
@@ -18,6 +18,24 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+pre > code {
+  display: block !important;
+  margin-bottom: 1rem !important;
+  margin-top: 1rem;
+}
+
+p > code {
+  font-style: italic;
+  font-size: 90%;
+  color: #bd4147 !important;
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  padding: 0.2rem 0.4rem !important;
+  background-color: #bababb !important;
+  border-radius: 0.25rem;
+  display: inline !important;
+}
 
 :root {
   --primary-color: #0a083b;
@@ -44,6 +62,7 @@ export default {
 
 body {
   font-family: 'Avenir Next', 'inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: rgb(241, 241, 241);
   overflow-x: hidden;
 }
@@ -62,7 +81,7 @@ h1 {
 }
 
 p {
-  color: #57586e;
+  /* color: #57586e; */
   font-size: 1.3rem;
 }
 </style>

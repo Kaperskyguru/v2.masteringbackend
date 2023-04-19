@@ -1,38 +1,20 @@
 <template>
-  <nav class="navbar navbar-expand-xl mt-3">
+  <nav class="navbar navbar-expand-xl pt-3">
     <div class="container">
       <Logo />
-      <i
-        class="bx bx-menu navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#nav-menu"
-      ></i>
+      <i class="bx bx-menu navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-menu"></i>
       <div id="nav-menu" class="collapse navbar-collapse">
-        <!-- <ul class="navbar-nav ms-auto">
-          <li class="nav-item active">
-            <a href="/posts" class="active links nav-link">Articles</a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item" :class="{ 'active': isActive() }">
+            <a href="/" class=" links nav-link">Home</a>
           </li>
-          <li class="nav-item"><a href="#Jobs" class="nav-link">Jobs</a></li>
-          <li class="nav-item">
-            <a href="#events" class="nav-link">Events</a>
+          <li class="nav-item" :class="{ 'active': isActive('/posts') }">
+            <a href="/posts" class="links nav-link">Blog</a>
           </li>
-          <li class="nav-item">
-            <a href="/projects" class="nav-link">Projects</a>
+          <!-- <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li> -->
+          <li class="nav-item" :class="{ 'active': isActive('/community') }">
+            <a href="/community" class="nav-link">Community</a>
           </li>
-        </ul> -->
-
-        <ul class="d-flex navbar-ul navbar-nav ms-auto">
-          <!-- <li class="nav-item">
-            <a href="/hub" class="nav-link">Content Hub</a>
-          </li> -->
-          <li class="nav-item">
-            <a href="" class="nav-link nav-link-bg">Join Our Community</a>
-          </li>
-          <div class="d-grid gap-2 d-sm-block">
-            <Button href="/dashboard" class="btn-warning"
-              >Join Our Academy</Button
-            >
-          </div>
         </ul>
       </div>
     </div>
@@ -43,6 +25,13 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Nav',
+
+  methods: {
+    isActive(slug = '/') {
+      return this.$route.path === slug
+    }
+  }
+
 }
 </script>
 
@@ -65,6 +54,10 @@ export default {
   width: 100%;
 }
 
+.navbar .nav-item {
+  padding-right: 30px;
+}
+
 .navbar .navbar-nav .active a {
   background-color: #0a083b;
   -webkit-background-clip: text;
@@ -80,18 +73,5 @@ export default {
 .nav-link {
   color: #57586e;
   font-size: 0.8rem;
-}
-
-.btn-warning {
-  background-color: #1c168c;
-  color: #fff;
-  border-radius: 15px;
-  border: none;
-}
-
-.btn-warning:hover {
-  background-color: #1c168cbd;
-  color: #fff;
-  border: none;
 }
 </style>

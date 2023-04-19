@@ -1,9 +1,13 @@
 <template>
-  <div class="row g-4">
-    <ArticleBoard title="Content Hubs" slug="hubs" />
-    <ArticleBoard title="Ultimate Guides" slug="ultimate_guides" />
-    <ArticleBoard title="Definitive Guides" slug="definitive_guides" />
-    <ArticleBoard title="Tips and Tricks" slug="tips_and_tricks" />
+  <div class="row g-5">
+    <ArticleBoard title="Content Hubs" color="#191489" slug="freelancing" />
+    <ArticleBoard title="Ultimate Guides" color="#191489" slug="backend" />
+    <ArticleBoard title="Definitive Guides" color="#191489" slug="frontend" />
+    <ArticleBoard
+      title="Tips and Tricks"
+      color="#191489"
+      slug="laravel-tips-tricks"
+    />
   </div>
 </template>
 

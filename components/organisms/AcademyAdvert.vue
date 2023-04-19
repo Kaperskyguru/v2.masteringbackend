@@ -2,16 +2,7 @@
   <div class="container position-relative">
     <img class="ellipse" src="~/assets/img/Ellipse_170.png" alt="" />
     <div
-      class="
-        row
-        mt-5
-        pt-5
-        ps-2
-        align-items-center
-        art-bg
-        justify-content-between
-        article-row
-      "
+      class="row mt-5 pt-5 ps-2 align-items-center art-bg justify-content-between article-row"
     >
       <div class="col-md-6 text-start">
         <div class="ps-md-5">
@@ -20,9 +11,10 @@
             Don't waste time in roaming around, start learning Backed dev now
           </h2>
           <p class="art-card-text lh-sm fs-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
-            quisque magna facilisis dictumst. Dictumst nulla augue posuere sed
-            egestas nunc diam aliquam. Dolor porttitor donec sed diam eleifend.
+            Starting Backend Development is a journey into a career that can
+            open many great opportunities from working on complex projects to
+            landing your dream job and the best way to get the most out of it is
+            to start now.
           </p>
           <Button href="" class="mb-4 px-4 button">Register Now</Button>
         </div>

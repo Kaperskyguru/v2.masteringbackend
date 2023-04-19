@@ -3,10 +3,12 @@
   <main class="main">
     <Banner />
 
-    <section class="p-3 my-5 sponsors text-center">
+    <section class="p-3 sponsors text-center">
       <PageTitle>
         <template #title>
-          <h3 class="sponsor-header-text mb-5">Our sponsors</h3>
+          <h3 class="sponsor-header-text mb-5">
+            Some of our students works in
+          </h3>
         </template>
       </PageTitle>
       <Sponsors />
@@ -19,15 +21,17 @@
         <PageTitle>
           <template #title>
             <h2 class="Dev-art__header-text mt-5">
-              Latest Backend Dev.<br />
+              Latest Backend<br />
               Articles for you
             </h2>
           </template>
 
-          <p class="Dev-art__para-text mb-5">
-            Latest Backend Development Articles curated daily by the engineers
-            for engineers.
-          </p>
+          <div class="col-lg-6">
+            <p class="Dev-art__para-text mb-5 mr-2">
+              Latest backend engineering resources curated daily by the
+              engineers for engineers.
+            </p>
+          </div>
         </PageTitle>
         <ArticleBoards />
       </div>
@@ -83,7 +87,7 @@ export default {
 
 .Dev-art__header-text {
   color: #0a083b;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .Dev-art__para-text {
