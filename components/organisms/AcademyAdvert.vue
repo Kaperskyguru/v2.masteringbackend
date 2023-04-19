@@ -1,9 +1,7 @@
 <template>
   <div class="container position-relative">
     <img class="ellipse" src="~/assets/img/Ellipse_170.png" alt="" />
-    <div
-      class="row mt-5 pt-5 ps-2 align-items-center art-bg justify-content-between article-row"
-    >
+    <div class="row mt-5 pt-5 ps-2 align-items-center art-bg justify-content-between article-row">
       <div class="col-md-6 text-start">
         <div class="ps-md-5">
           <Button appearance="purple" class="mb-3">Learn here</Button>
@@ -22,7 +20,7 @@
       <div class="col-md-6 right-col">
         <div class="d-sm-flex patt-box">
           <img class="pattern" src="~/assets/img/Pattern.png" alt="" />
-          <img src="~/assets/img/image.png" class="img-fluid img-flu" alt="" />
+          <img src="~/assets/img/Image.png" class="img-fluid img-flu" alt="" />
         </div>
       </div>
     </div>
