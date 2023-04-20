@@ -1,7 +1,20 @@
 <template>
-  <span v-if="post">
+  <span v-if="post" class="position-relative">
     <DefinitiveArticleOverview v-if="post.type === 'definitive'" :post="post" />
     <ArticleOverview v-else :post="post" />
+
+    <div class="position-absolute" style="top: 10rem; left: 8rem">
+      <div
+        class="position-fixed p-4"
+        style="background-color: white; border-radius: 10px"
+      >
+        <div class="justify-content-start d-flex flex-column">
+          <vue-goodshare-facebook has_icon />
+          <vue-goodshare-twitter has_icon />
+          <vue-goodshare-linkedin has_icon />
+        </div>
+      </div>
+    </div>
   </span>
 
   <p v-else class="text-center">
@@ -147,7 +160,6 @@ export default {
       })
     },
   },
-
 }
 </script>
 
