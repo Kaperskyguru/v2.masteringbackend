@@ -33,7 +33,29 @@
     "vue-template-compiler": "^2.6.14",
     "webpack": "^4.46.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/storybook": "^4.3.1",
+    "@storybook/addon-a11y": "^6.3.7",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-backgrounds": "^6.3.7",
+    "@storybook/addon-controls": "^6.3.7",
+    "@storybook/addon-docs": "^6.3.7",
+    "@storybook/addon-viewport": "^6.3.7",
+    "@storybook/addons": "^6.3.7",
+    "@storybook/api": "^6.3.7",
+    "@storybook/components": "^6.3.7",
+    "@storybook/core-events": "^6.3.7",
+    "@storybook/theming": "^6.3.7",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "prettier": "^2.5.1",
+    "storybook-dark-mode": "^1.0.8"
+  },
   "engines": {
     "node": ">=14.19.1 <=16.x.x"
   }
