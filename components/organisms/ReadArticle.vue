@@ -9,6 +9,7 @@
         {{ tag.name }},
       </a>
     </div>
+    <Comments v-if="post" />
   </div>
   <!-- </span> -->
 </template>

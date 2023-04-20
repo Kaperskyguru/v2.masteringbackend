@@ -15,7 +15,10 @@
   "dependencies": {
     "@nuxt/postcss8": "^1.1.3",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/redirect-module": "^0.3.1",
+    "@nuxtjs/sitemap": "^2.4.0",
     "bootstrap": "^5.1.3",
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.19.3",
@@ -23,12 +26,17 @@
     "highlight.js": "^11.7.0",
     "markdown-it-highlightjs": "^4.0.1",
     "nuxt": "^2.15.8",
+    "nuxt-compress": "^5.0.0",
+    "nuxt-goodshare": "^2.0.0",
     "nuxt-highlightjs": "^1.0.1",
+    "nuxt-jsonld": "v1",
     "nuxt-lazy-load": "^1.3.0",
     "postcss": "^8.4.13",
     "qs": "^6.11.1",
     "superagent": "^8.0.9",
+    "vue-disqus": "^4.0.1",
     "vue-infinite-loading": "^2.4.5",
+    "vue-social-sharing": "^3.0.9",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
@@ -51,7 +59,9 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
+    "node-sass": "^8.0.0",
     "prettier": "^2.5.1",
+    "sass-loader": "10",
     "storybook-dark-mode": "^1.0.8"
   },
   "engines": {
