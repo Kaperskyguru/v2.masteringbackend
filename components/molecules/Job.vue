@@ -4,10 +4,10 @@
       <div class="card-img align-self-center mb-3 mt-3">
         <img class="img-fluid" src="~/assets/img/num5.png" alt="" />
       </div>
-      <h6 class="card-header-text">Standard Five</h6>
+      <h6 class="card-header-text">Senior Backend Engineer</h6>
       <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci auctor et,
-        ac
+        We are looking a Senior Backend Engineer with over 5+ years of
+        experience in JavaScript and TypeScript.
       </p>
       <div>
         <Button appearance="outline-primary" class="mb-3">Read more</Button>

@@ -2,8 +2,9 @@
   <main>
     <PostOverview :posts="posts"></PostOverview>
 
-    <infinite-loading v-if="posts" spinner="spiral" @infinite="infiniteScroll"><span
-        slot="no-more"></span></infinite-loading>
+    <infinite-loading spinner="spiral" @infinite="infiniteScroll"
+      ><span slot="no-more"></span
+    ></infinite-loading>
   </main>
 </template>
 
@@ -13,12 +14,12 @@ export default {
   name: 'PostsIndex',
 
   components: {
-    PostOverview: () => import('@/components/templates/PostOverview.vue')
+    PostOverview: () => import('@/components/templates/PostOverview.vue'),
   },
 
   data() {
     return {
-      page: 2
+      page: 2,
     }
   },
 
@@ -44,7 +45,6 @@ export default {
   methods: {
     infiniteScroll($state) {
       setTimeout(async () => {
-
         const data = {
           ppopulate: 'author,categories',
           page: this.page,
@@ -59,7 +59,7 @@ export default {
         this.page++
         this.posts.push(...posts)
       }, 500)
-    }
+    },
   },
 }
 </script>

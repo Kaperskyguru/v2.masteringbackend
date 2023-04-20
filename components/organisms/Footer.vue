@@ -5,8 +5,10 @@
         <div class="col-md-4 mb-3">
           <div>
             <Logo />
-            <p class="fs-6 mt-2">+234 678-690-1542</p>
-            <a href="" class="text-white text-decoration-none email fs-6">support@masteringbackend.com</a>
+            <p class="fs-6 mt-2">A great resource for backend engineers.</p>
+            <p class="text-white text-decoration-none email fs-6">
+              support@masteringbackend.com
+            </p>
           </div>
         </div>
         <div class="col-md-4 text-col">
@@ -14,8 +16,14 @@
           <div class="d-md-flex text-white">
             <ul class="footer-nav">
               <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
-              <li class="mb-3"><a href="https://kaperskyguru.substack.com">Newsletter</a></li>
-              <li class="mb-3"><a href="https://academy.masteringbackend.com">Join the Academy </a></li>
+              <li class="mb-3">
+                <a href="https://kaperskyguru.substack.com">Newsletter</a>
+              </li>
+              <li class="mb-3">
+                <a href="https://academy.masteringbackend.com"
+                  >Join the Academy
+                </a>
+              </li>
               <li><a href="/community">Join our Community</a></li>
             </ul>
           </div>
@@ -35,7 +43,11 @@
         <div class="d-flex socia-links mb-3 align-items-center">
           <a href="https://facebook.com/masteringbackend">
             <div class="socia-link p-2">
-              <img class="img-fluid face" src="~/assets/img/facebook.png" alt="" />
+              <img
+                class="img-fluid face"
+                src="~/assets/img/facebook.png"
+                alt=""
+              />
             </div>
           </a>
           <a href="https://twitter.com/master_backend">
@@ -50,8 +62,10 @@
           </a>
         </div>
         <div>
-          <small class="text-light fs-7">© {{ new Date().getFullYear() }} Masteringbackend. All right
-            reserved.</small>
+          <small class="text-light fs-7"
+            >© {{ new Date().getFullYear() }} Masteringbackend. All right
+            reserved.</small
+          >
         </div>
       </div>
     </div>
@@ -67,7 +81,7 @@ export default {
 
 <style scoped>
 footer {
-  background: #17154b;
+  background: #05041b;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.6rem;
   font-weight: normal;

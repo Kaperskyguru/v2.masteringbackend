@@ -3,9 +3,12 @@
     <div class="ellipse"></div>
     <div class="card shadow z-1" style="border: none; height: 650px">
       <div class="card-header p-0 m-0" :style="{ backgroundColor: color }">
-        <Button appearance="none" class="text-white" style="outline: none">{{
-          title
-        }}</Button>
+        <Button
+          appearance="none"
+          class="text-white"
+          style="outline: none; border: none"
+          >{{ title }}</Button
+        >
       </div>
       <div class="card-body py-4 px-3">
         <div v-for="(post, i) in posts" :key="i" class="pb-5">
@@ -49,7 +52,7 @@ export default {
       type: String,
       default: '',
     },
-    color: { type: String, default: '' },
+    color: { type: String, default: '#02020d' },
     slug: {
       type: String,
       default: '',
