@@ -301,8 +301,6 @@ export const actions = {
 function mapPosts(posts) {
   return posts?.map((post) => {
 
-    console.log(post)
-
     return {
       id: post.id,
       ...post.attributes,

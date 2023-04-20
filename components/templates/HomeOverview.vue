@@ -3,7 +3,7 @@
   <main class="main">
     <Banner />
 
-    <section class="p-3 sponsors text-center">
+    <section class="p-3 sponsors text-center" v-if="false">
       <PageTitle>
         <template #title>
           <h3 class="sponsor-header-text mb-5">

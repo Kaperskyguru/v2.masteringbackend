@@ -7,12 +7,16 @@
         </h1>
         <div class="d-flex flex-row justify-content-center gap-3">
           <a :href="'/authors/' + authorSlug" class="subtitle">
-            <p class="text-white fs-6">by {{ authorName }}</p>
-          </a>.
+            <p class="text-white fs-6">by {{ authorName }}</p> </a
+          >.
           <p class="text-white fs-6">Updated {{ dateFormat }}</p>
         </div>
         <div class="pb-5 text-white">
-          <a v-for="category in getCategories" :key="category.id" :href="`/categories/${category.slug}`">
+          <a
+            v-for="category in getCategories"
+            :key="category.id"
+            :href="`/categories/${category.slug}`"
+          >
             {{ category.name }},
           </a>
         </div>
@@ -29,7 +33,7 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
   },
   computed: {
@@ -46,7 +50,7 @@ export default {
     },
 
     color() {
-      const mixedColor = this.post?.color ?? '#191489'
+      const mixedColor = this.post?.color ?? '#2f2b94'
       if (mixedColor.includes('gradient')) {
         const first = mixedColor.split('#')[1]
         const color = first.split(' ')[0]

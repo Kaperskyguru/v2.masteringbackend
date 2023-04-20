@@ -19,9 +19,16 @@
                 </div>
               </div>
               <div class="input-group mt-3 p-2 bg-white no-border">
-                <input type="email" class="form-control p-2 shadow-none" style="border: 0"
-                  placeholder="Enter your Email" />
-                <Button class="btn btn-outline-secondary start-btn btn-primaryy" type="button">
+                <input
+                  type="email"
+                  class="form-control p-2 shadow-none"
+                  style="border: 0"
+                  placeholder="Enter your Email"
+                />
+                <Button
+                  class="btn btn-outline-secondary start-btn btn-primaryy"
+                  type="button"
+                >
                   Start Now
                 </Button>
               </div>
@@ -33,38 +40,61 @@
           <ul class="col-10 d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
             <span :class="{ active: tab === '' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark " href="/posts">All</a>
+                <a class="text-decoration-none text-dark" href="/posts">All</a>
               </li>
             </span>
             <span :class="{ active: tab === 'hub' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="#hub" @click.prevent="getPosts('#hub')">Backend Content
-                  Hubs</a>
+                <a
+                  class="text-decoration-none text-dark"
+                  href="#hub"
+                  @click.prevent="getPosts('#hub')"
+                  >Backend Content Hubs</a
+                >
               </li>
             </span>
             <span :class="{ active: tab == 'ultimate' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#ultimate')">Ultimate Guides</a>
+                <a
+                  class="text-decoration-none text-dark"
+                  @click.prevent="getPosts('#ultimate')"
+                  >Ultimate Guides</a
+                >
               </li>
             </span>
             <span :class="{ active: tab == 'definitive' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#definitive')">Definitive Guides</a>
+                <a
+                  class="text-decoration-none text-dark"
+                  @click.prevent="getPosts('#definitive')"
+                  >Definitive Guides</a
+                >
               </li>
             </span>
             <span :class="{ active: tab == 'sponsored' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" @click.prevent="getPosts('#sponsored')">Sponsored</a>
+                <a
+                  class="text-decoration-none text-dark"
+                  @click.prevent="getPosts('#sponsored')"
+                  >Sponsored</a
+                >
               </li>
             </span>
           </ul>
           <ul class="d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
             <span>
               <li class="ps-4 my-4 fw-bold fs-8">
-                <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  width="24"
+                  height="22"
+                  viewBox="0 0 24 22"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
                     d="M23.7871 20.7106L17.9547 15.4071C19.5193 13.7716 20.4665 11.6376 20.4665 9.30524C20.4665 4.17115 15.874 0 10.2332 0C4.58713 0 0 4.17599 0 9.30524C0 14.4345 4.59245 18.6105 10.2332 18.6105C12.7982 18.6105 15.145 17.7491 16.9436 16.3265L22.776 21.63C22.9144 21.7558 23.1006 21.8235 23.2815 21.8235C23.4625 21.8235 23.6487 21.7606 23.7871 21.63C24.0638 21.3783 24.0638 20.9622 23.7871 20.7106ZM1.43148 9.30524C1.43148 4.89215 5.38003 1.30651 10.2279 1.30651C15.0811 1.30651 19.0244 4.89698 19.0244 9.30524C19.0244 13.7135 15.0811 17.3088 10.2279 17.3088C5.38003 17.3088 1.43148 13.7183 1.43148 9.30524Z"
-                    fill="#434343" />
+                    fill="#434343"
+                  />
                 </svg>
               </li>
             </span>
@@ -75,10 +105,13 @@
 
     <section class="mx-2">
       <!-----------------------Featured Article----------------------->
-      <FeaturedArticle v-if="featuredPost && !removeFeatured" :post="featuredPost" />
+      <FeaturedArticle
+        v-if="featuredPost && !removeFeatured"
+        :post="featuredPost"
+      />
 
       <!-----------------------Advert----------------------->
-      <ArticleAdvert v-if="!removeFeatured || !allPosts.length" />
+      <AcademyAdvert is-article v-if="!removeFeatured || !allPosts.length" />
 
       <span v-for="(post, index) in allPosts" :key="index" :post="post">
         <!-----------------------Locked Article----------------------->
@@ -103,7 +136,7 @@ export default {
       page: 1,
       allPosts: [],
       tab: '',
-      removeFeatured: false
+      removeFeatured: false,
     }
   },
   props: {
@@ -133,29 +166,23 @@ export default {
     },
 
     getUltimate() {
-      return [...this.posts].filter(
-        (post) => post?.type?.includes('ultimate')
-      )
+      return [...this.posts].filter((post) => post?.type?.includes('ultimate'))
     },
 
     getSponsored() {
-      return [...this.posts].filter(
-        (post) => {
-          return post?.categories?.find((cat) => cat.slug === 'sponsored')
-        }
-      )
+      return [...this.posts].filter((post) => {
+        return post?.categories?.find((cat) => cat.slug === 'sponsored')
+      })
     },
 
     getDefinitive() {
-      return [...this.posts].filter(
-        (post) => post?.type?.includes('definitive')
+      return [...this.posts].filter((post) =>
+        post?.type?.includes('definitive')
       )
     },
 
     getHub() {
-      return [...this.posts].filter(
-        (post) => post?.type?.includes('hub')
-      )
+      return [...this.posts].filter((post) => post?.type?.includes('hub'))
     },
 
     removeSponsored() {
@@ -165,16 +192,12 @@ export default {
     },
   },
 
-
-
   methods: {
-
     getTab(tab) {
       return this.tab === tab
     },
 
     getPosts(slug = '') {
-
       if (slug) this.removeFeatured = true
 
       if (slug.includes('ultimate')) {
@@ -202,9 +225,8 @@ export default {
       }
 
       this.allPosts = this.getAllArticles
-    }
+    },
   },
-
 }
 </script>
   
@@ -310,7 +332,6 @@ ul.bor-btm span::after {
 }
 
 .active {
-
   /* width: 0; */
   /* height: 4px; */
   border-bottom: 3px solid #1c168c;
