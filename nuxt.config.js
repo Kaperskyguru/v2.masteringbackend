@@ -53,7 +53,7 @@ export default {
       'nuxt-highlightjs',
       {
         // Module Options
-        style: 'dracula',
+        style: 'base16/dracula',
       },
     ],
   ],
