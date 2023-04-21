@@ -2,6 +2,8 @@ import Superagent from 'superagent'
 
 export const submit = async ({ email, name, tags }) => {
   try {
+    if (!email) return { message: 'Your email is required', type: 'danger' }
+
     const data = {
       email,
       name,

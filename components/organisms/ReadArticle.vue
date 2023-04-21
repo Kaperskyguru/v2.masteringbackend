@@ -5,10 +5,40 @@
     <div id="article" class="container mx-auto w-md-100 w-75">
       <article v-highlight class="w-100" v-html="post.content"></article>
 
-      <div class="p-2 d-flex my-5">
-        <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
-          {{ tag.name }},
-        </a>
+      <div
+        class="py-2 d-flex flex-column flex-md-row my-5"
+        style="justify-content: space-between"
+      >
+        <div class="d-flex gap-2 py-1">
+          <div>Topic:</div>
+          <div class="text-white">
+            <a
+              v-for="category in getCategories"
+              :key="category.id"
+              class="p-2 text-white"
+              :style="{ backgroundColor: color }"
+              :href="`/categories/${category.slug}`"
+            >
+              {{ category.name }}
+            </a>
+          </div>
+        </div>
+        <div class="d-flex gap-2 py-1">
+          <div style="width: 24px; height: 24px">
+            <TagIcon />
+          </div>
+          <div class="d-flex">
+            <a
+              v-for="tag in post.tags"
+              class="font-weight-bold px-1"
+              :key="tag.id"
+              :style="{ color: color }"
+              :href="`/tags/${tag.slug}`"
+            >
+              {{ tag.name }},
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div id="meta" class="container mx-auto w-md-100 w-75">
@@ -26,11 +56,26 @@
 </template>
 
 <script>
+import utils from '../../helpers/utils'
 export default {
   props: {
     post: {
       type: Object,
       default: () => {},
+    },
+  },
+
+  components: {
+    TagIcon: () => import('~/assets/icons/tag.svg?inline'),
+  },
+
+  computed: {
+    getCategories() {
+      return this.post?.categories ?? []
+    },
+
+    color() {
+      return utils.color(this.post.color)
     },
   },
 }

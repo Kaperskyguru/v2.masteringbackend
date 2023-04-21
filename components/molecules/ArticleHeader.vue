@@ -5,21 +5,13 @@
         <h1 class="content-text text-white text-center fs-1 my-4">
           {{ post.title || '' }}
         </h1>
-        <div class="d-flex flex-row justify-content-center gap-3">
+        <div class="d-flex flex-row justify-content-center gap-3 pb-5">
           <a :href="'/authors/' + authorSlug" class="subtitle">
             <p class="text-white fs-6">by {{ authorName }}</p> </a
           >.
           <p class="text-white fs-6">Updated {{ dateFormat }}</p>
         </div>
-        <div class="pb-5 text-white">
-          <a
-            v-for="category in getCategories"
-            :key="category.id"
-            :href="`/categories/${category.slug}`"
-          >
-            {{ category.name }},
-          </a>
-        </div>
+
         <figure class="cover-img figure">
           <img id="cover" class="img-fluid" :src="image" :alt="post.title" />
         </figure>
@@ -29,6 +21,7 @@
 </template>
 
 <script>
+import Utils from '../../helpers/utils'
 export default {
   props: {
     post: {
@@ -45,18 +38,8 @@ export default {
       return new Date(this.post.updatedAt).toDateString()
     },
 
-    getCategories() {
-      return this.post?.categories ?? []
-    },
-
     color() {
-      const mixedColor = this.post?.color ?? '#2f2b94'
-      if (mixedColor.includes('gradient')) {
-        const first = mixedColor.split('#')[1]
-        const color = first.split(' ')[0]
-        return `#${color.replace(/[^a-zA-Z0-9 ]/g, '')}`
-      }
-      return mixedColor
+      return Utils.color(this.post.color)
     },
 
     authorName() {
