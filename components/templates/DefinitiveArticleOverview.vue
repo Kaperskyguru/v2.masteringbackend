@@ -78,7 +78,10 @@
     />
 
     <div id="chapter" class="container mx-auto w-75">
-      <div id="chapter" class="py-3 container mx-auto w-md-100 w-75">
+      <div id="chapter" class="py-3 d-flex container mx-auto w-md-100 w-75">
+        <div style="width: 24px; height: 24px; margin-right: 5px">
+          <TagIcon />
+        </div>
         <div id="article" class="chapter">
           <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
             {{ tag.name }},
@@ -88,10 +91,17 @@
       <!-- </div> -->
 
       <div id="meta" class="container mx-auto w-75">
+        <div class="newletter-box mb-1">
+          <div class="content1">
+            <SideNewsletter :color="color" />
+          </div>
+        </div>
         <div class="share-box">
           <vue-goodshare-facebook has_icon />
           <vue-goodshare-twitter has_icon />
           <vue-goodshare-linkedin has_icon />
+          <vue-goodshare-reddit has_icon />
+          <vue-goodshare-pinterest has_icon />
         </div>
         <div class="py-3">
           <Comments v-if="post" />
@@ -108,6 +118,10 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+
+  components: {
+    TagIcon: () => import('~/assets/icons/tag.svg?inline'),
   },
 
   computed: {
@@ -157,12 +171,6 @@ export default {
 </script>
   
 <style scoped>
-/* @media (max-width: 991.98px) {
-  #meta {
-    width: 100% !important;
-  }
-} */
-
 .chapter img {
   max-width: 100%;
 }
@@ -196,12 +204,15 @@ export default {
   }
 }
 
-/* 
-@media (max-width: 991.98px) {
-  #chapter {
-    width: 100% !important;
+@media screen and (min-width: 769px) {
+  .share-box {
+    display: none;
   }
-} */
+
+  .newletter-box {
+    display: none;
+  }
+}
 
 .chapter-subtitle {
   font-size: 17px;

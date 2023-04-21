@@ -3,13 +3,19 @@
     <DefinitiveArticleOverview v-if="post.type === 'definitive'" :post="post" />
     <ArticleOverview v-else :post="post" />
 
-    <div class="sharebox">
-      <div class="content p-4">
+    <div class="sharebox shadow rounded border">
+      <div class="content p-3">
         <div class="justify-content-start d-flex flex-column">
           <vue-goodshare-facebook has_icon />
           <vue-goodshare-twitter has_icon />
           <vue-goodshare-linkedin has_icon />
         </div>
+      </div>
+    </div>
+
+    <div class="newletter-box">
+      <div class="content1 p-4">
+        <SideNewsletter :color="color" />
       </div>
     </div>
   </span>
@@ -22,6 +28,7 @@
 
 <script>
 import Vue from 'vue'
+import utils from '~/helpers/utils'
 import InlineNewsletter from '~/components/molecules/InlineNewsletter.vue'
 export default {
   name: 'PostDetail',
@@ -52,59 +59,22 @@ export default {
     }
   },
 
+  computed: {
+    color() {
+      return utils.color(this.post.color)
+    },
+  },
+
   data: () => ({
     data: {},
   }),
 
   mounted() {
-    // this.displayAds()
     this.displayNewsletterBackend()
     this.displayNewsletterLaravel()
   },
 
   methods: {
-    //   displayAds() {
-    //     const h4AdSpaces = document.querySelectorAll('article h4:nth-child(2n+1)')
-    //     if (h4AdSpaces) {
-    //       h4AdSpaces.forEach((adSpace) => {
-    //         const firstPara = adSpace.nextElementSibling
-    //         const data = {
-    //           mystyle: 'display:block; text-align:center;',
-    //           adLayoutKey: 'in-article',
-    //           adslot: '2329133294',
-    //           adformat: 'fluid',
-    //         }
-    //         this.createAdvert(firstPara, data)
-    //       })
-    //     }
-
-    //     const h3AdSpaces = document.querySelectorAll('article h3:nth-child(2n+1)')
-    //     if (h3AdSpaces) {
-    //       h3AdSpaces.forEach((adSpace) => {
-    //         const firstPara = adSpace.nextElementSibling
-    //         const data = {
-    //           // adLayoutKey,
-    //           mystyle: 'display:block; text-align:center;',
-    //           adLayoutKey: '-fb+5w+4e-db+86',
-    //           adslot: '1795351646',
-    //           adformat: 'auto',
-    //         }
-    //         this.createAdvert(firstPara, data)
-    //       })
-    //     }
-    //   },
-
-    //   createAdvert(el, data = {}) {
-    //     const newNode = document.createElement('div')
-    //     newNode.id = 'advert_id'
-    //     const AdvertComp = Vue.extend(InlineAdvert)
-    //     if (el) {
-    //       el.insertAdjacentElement('afterend', newNode)
-    //       new AdvertComp({
-    //         propsData: data,
-    //       }).$mount('#advert_id')
-    //     }
-    //   },
     displayNewsletterLaravel() {
       const newsletterLaravel = document.querySelectorAll('.newsletter-laravel')
       const newsletterNode = document.querySelectorAll('.newsletter-node')
@@ -174,14 +144,23 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .sharebox {
+  .sharebox,
+  .newletter-box {
     display: none;
   }
 
-  .sharebox .content {
+  .sharebox .content,
+  .newletter-box .content1 {
     position: relative;
-    background-color: white;
-    border-radius: 10px;
   }
+}
+.newletter-box .content1 {
+  position: fixed;
+}
+
+.newletter-box {
+  position: absolute;
+  top: 10rem;
+  right: 12rem;
 }
 </style>
