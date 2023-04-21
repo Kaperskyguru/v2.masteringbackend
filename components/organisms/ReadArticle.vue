@@ -1,15 +1,26 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <!-- <span class="px-5 container mx-auto"> -->
-  <div id="article" class="container mx-auto w-md-100 w-75">
-    <article v-highlight class="w-100" v-html="post.content"></article>
+  <div>
+    <div id="article" class="container mx-auto w-md-100 w-75">
+      <article v-highlight class="w-100" v-html="post.content"></article>
 
-    <div class="p-2 d-flex my-5">
-      <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
-        {{ tag.name }},
-      </a>
+      <div class="p-2 d-flex my-5">
+        <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
+          {{ tag.name }},
+        </a>
+      </div>
     </div>
-    <Comments v-if="post" />
+    <div id="meta" class="container mx-auto w-md-100 w-75">
+      <div class="w-100 share-box">
+        <vue-goodshare-facebook has_icon />
+        <vue-goodshare-twitter has_icon />
+        <vue-goodshare-linkedin has_icon />
+      </div>
+      <div class="w-100">
+        <Comments v-if="post" />
+      </div>
+    </div>
   </div>
   <!-- </span> -->
 </template>
@@ -32,7 +43,8 @@ figure iframe {
 }
 
 @media (max-width: 991.98px) {
-  #article {
+  #article,
+  #meta {
     width: 100% !important;
   }
 }
@@ -113,5 +125,11 @@ article figure img {
   color: rgb(187, 74, 3);
   transition: all 0.2s ease-in-out 0s;
   background-color: transparent;
+}
+
+@media screen and (min-width: 769px) {
+  .share-box {
+    display: none;
+  }
 }
 </style>

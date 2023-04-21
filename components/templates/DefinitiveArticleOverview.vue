@@ -32,14 +32,14 @@
       </div>
     </section>
 
-    <section class="Content mb-5">
-      <div class="container">
+    <section class="Content mb-5 container mx-auto w-75">
+      <div id="chapters" class="container mx-auto w-75">
         <div class="my-5">
           <h2 class="text-center content-title my-5">Contents</h2>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-between">
           <div
-            class="col-md-4 chapter col-md mb-3"
+            class="col-md-4 chapter pl-1 col-md mb-3"
             v-for="(chapter, i) in mapChapters"
             :key="i"
           >
@@ -85,11 +85,17 @@
           </a>
         </div>
       </div>
-    </div>
+      <!-- </div> -->
 
-    <div class="container mx-auto w-75">
-      <div class="py-3 container mx-auto w-md-100 w-75">
-        <Comments v-if="post" />
+      <div id="meta" class="container mx-auto w-75">
+        <div class="share-box">
+          <vue-goodshare-facebook has_icon />
+          <vue-goodshare-twitter has_icon />
+          <vue-goodshare-linkedin has_icon />
+        </div>
+        <div class="py-3">
+          <Comments v-if="post" />
+        </div>
       </div>
     </div>
   </section>
@@ -151,6 +157,12 @@ export default {
 </script>
   
 <style scoped>
+/* @media (max-width: 991.98px) {
+  #meta {
+    width: 100% !important;
+  }
+} */
+
 .chapter img {
   max-width: 100%;
 }
@@ -175,6 +187,13 @@ export default {
   max-width: 425.5px;
   height: auto;
   width: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .Content #chapters,
+  .Content {
+    width: 100% !important;
+  }
 }
 
 /* 

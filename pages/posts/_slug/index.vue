@@ -3,11 +3,8 @@
     <DefinitiveArticleOverview v-if="post.type === 'definitive'" :post="post" />
     <ArticleOverview v-else :post="post" />
 
-    <div class="position-absolute" style="top: 10rem; left: 8rem">
-      <div
-        class="position-fixed p-4"
-        style="background-color: white; border-radius: 10px"
-      >
+    <div class="sharebox">
+      <div class="content p-4">
         <div class="justify-content-start d-flex flex-column">
           <vue-goodshare-facebook has_icon />
           <vue-goodshare-twitter has_icon />
@@ -163,4 +160,28 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.sharebox {
+  position: absolute;
+  top: 10rem;
+  left: 2rem;
+}
+
+.sharebox .content {
+  position: fixed;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .sharebox {
+    display: none;
+  }
+
+  .sharebox .content {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+  }
+}
+</style>

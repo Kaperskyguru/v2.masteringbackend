@@ -20,11 +20,38 @@
             <input
               type="email"
               class="form-control text-white"
+              v-model="email"
               placeholder="Enter your Email"
             />
-            <Button appearance="outline-secondary" type="button">
+            <Button
+              appearance="outline-secondary"
+              type="button"
+              @click.prevent="subscribe"
+            >
               Start Now
             </Button>
+          </div>
+
+          <div
+            v-if="res.message || show"
+            class="alert mt-1 fade d-flex font-weight-normal"
+            style="justify-items;: space-between"
+            :class="[`alert-${res.type}`, { show: show }]"
+            role="alert"
+          >
+            <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+            <button
+              v-if="res.message"
+              type="button"
+              data-dismiss="alert"
+              aria-label="Close"
+              @click="
+                show = false
+                res = {}
+              "
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         </div>
       </div>
@@ -33,9 +60,22 @@
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Newsletter',
+  data: () => ({ email: '', res: {}, show: false }),
+
+  methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+      this.res = res
+    },
+  },
 }
 </script>
 
