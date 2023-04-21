@@ -21,6 +21,7 @@
               <div class="input-group mt-3 p-2 bg-white no-border">
                 <input
                   type="email"
+                  v-model="email"
                   class="form-control p-2 shadow-none"
                   style="border: 0"
                   placeholder="Enter your Email"
@@ -28,10 +29,32 @@
                 <Button
                   class="btn btn-outline-secondary start-btn btn-primaryy"
                   type="button"
+                  @click.prevent="subscribe"
                 >
                   Start Now
                 </Button>
               </div>
+            </div>
+            <div
+              v-if="res.message || show"
+              class="alert mt-1 fade d-flex font-weight-normal"
+              style="justify-items;: space-between"
+              :class="[`alert-${res.type}`, { show: show }]"
+              role="alert"
+            >
+              <p class="w-100">{{ res.message }}</p>
+              <button
+                v-if="res.message"
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                @click="
+                  show = false
+                  res = {}
+                "
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
           </div>
         </div>
@@ -129,6 +152,7 @@
 </template>
   
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'PostOverview',
   data() {
@@ -136,6 +160,9 @@ export default {
       page: 1,
       allPosts: [],
       tab: '',
+      res: {},
+      show: false,
+      email: '',
       removeFeatured: false,
     }
   },
@@ -193,6 +220,15 @@ export default {
   },
 
   methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+      this.res = res
+    },
+
     getTab(tab) {
       return this.tab === tab
     },

@@ -197,6 +197,8 @@ export default {
   env: {
     BASE_ENDPOINT_URL: process.env.BASE_ENDPOINT_URL,
     STRAPI_TOKEN: process.env.STRAPI_TOKEN,
+    MAILCHIMP_KEY: process.env.MAILCHIMP_KEY,
+    MAILCHIMP_SERVER: process.env.MAILCHIMP_SERVER,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -223,6 +225,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/svg',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -327,6 +330,10 @@ export default {
       type: 'rss2', // Can be: rss2, atom1, json1
     },
   ],
+
+  serverMiddleware: {
+    '/api': '~/api',
+  },
 
   redirect: [
     // Redirect opt`ions here

@@ -41,8 +41,10 @@
     v-else
     class="btn"
     type="button"
+    v-bind="$attrs"
     :class="classNames"
     :style="customStyle"
+    v-on="$listeners"
     style="outline: none !important"
   >
     <div v-if="waiting" class="custom-icon" role="presentation">
