@@ -32,6 +32,19 @@
             </Button>
           </div>
 
+          <div class="form-group form-check mt-2">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="codepreneur"
+              id="codepreneur"
+            />
+            <p class="text-white text-left" style="font-size: 0.9rem">
+              Become a Codepreneur.
+              <a href="#" style="color: rgb(187, 74, 3)">Learn more</a>
+            </p>
+          </div>
+
           <div
             v-if="res.message || show"
             class="alert mt-1 fade d-flex font-weight-normal"
@@ -66,6 +79,8 @@ export default {
   name: 'Newsletter',
   data: () => ({ email: '', res: {}, show: false }),
 
+  mounted() {},
+
   methods: {
     async subscribe() {
       const res = await submit({
@@ -74,6 +89,15 @@ export default {
       })
       this.show = true
       this.res = res
+    },
+
+    substack() {
+      window.CustomSubstackWidget = {
+        substackUrl: 'kaperskyguru.substack.com',
+        placeholder: this.email,
+        buttonText: 'Subscribe',
+        theme: 'orange',
+      }
     },
   },
 }

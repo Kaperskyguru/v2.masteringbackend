@@ -1,5 +1,7 @@
 import Mailchimp from '../services/Mailchimp'
 const { Router } = require('express')
+import Superagent from 'superagent'
+import request from 'request'
 
 const router = Router()
 
@@ -9,6 +11,29 @@ router.get('/mailchimp/lists', async function (req, res, next) {
   res.json(data)
 })
 
+router.post('/substack/subscribe', async (req, res, next) => {
+  const baseURL = process.env.SUBSTACK ?? 'https://kaperskyguru.substack.com'
+  const headers = {
+    'User-Agent': Math.random(),
+    Accept: '*/*',
+    'Accept-Language': 'en-US,en;q=0.5',
+    Referer: `${baseURL}/embed`,
+    'Content-Type': 'application/json',
+    Origin: `${baseURL}`,
+    Connection: 'keep-alive',
+  }
+
+  const data = JSON.stringify({
+    first_url: `${baseURL}/embed`,
+    first_referrer: '',
+    current_url: `${baseURL}/embed`,
+    current_referrer: '',
+    referral_code: '',
+    source: 'embed',
+    email: req.body.email,
+  })
+  return await Superagent.post(`${baseURL}/api/v1/free`).set(headers).send(data)
+})
 /* POST Add subscriber to list. */
 router.post('/mailchimp/subscribe', async function (req, res, next) {
   // Validate data first

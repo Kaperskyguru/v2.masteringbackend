@@ -3,6 +3,8 @@
   <main class="main">
     <Banner />
 
+    <div id="custom-substack-embed"></div>
+
     <section class="p-3 sponsors text-center" v-if="false">
       <PageTitle>
         <template #title>
