@@ -1,45 +1,40 @@
 <template>
   <section class="hero px-3">
-    <div class="container">
+    <div class="container mx-auto">
       <div class="row hero__grid">
-        <div id="hero_text" class="col-lg-8 w-75">
-          <div class="row">
-            <div
-              class="bg-white col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-6 col text-center rounded mt-5"
-            >
-              <h6 class="mt-2 text-danger">Never stop learning</h6>
-            </div>
-          </div>
-
+        <div id="hero_text" class="col-lg-6 col-md w-75">
           <div class="position-relative w-100">
-            <h1 class="title__text mb-md-2 display-4 mt-4 text-capitalize">
-              A great resource for backend engineers.
+            <h1 class="title__text mb-md-2 display-4 mt-2 text-capitalize">
+              Get Exclusive Backend Engineering Resources <br />We Only Share
+              With Email Subscribers
             </h1>
-            <p class="title__subtext">
-              “I thought the blog was good. But the courses? Even better!”
-            </p>
-            <div class="gradient"></div>
-            <p class="fw-bold user-name">Solomon Eseme</p>
-            <p class="job-title fs-6 fw-bold">Founder, Masteringbackend</p>
+            <div class="my-4">
+              <p class="title__subtext">
+                “I thought the blog was good. But the courses? Even better!”
+              </p>
+              <div class="gradient"></div>
+              <p class="fw-bold user-name">Solomon Eseme</p>
+              <p class="job-title fs-6 fw-bold">Founder, Masteringbackend</p>
+            </div>
           </div>
           <!-- ---------------input--------------------------------------------- -->
           <div class="col-md-8">
-            <div class="input-group mt-4 py-4 mb-5 no-border">
-              <!-- <input
-                class="col-8 py-md-2 form-control shadow-none"
+            <div class="input-group mt-4 py-4">
+              <input
+                class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
                 style="border: 2"
-                placeholder="Enter your email"
-              /> -->
+                placeholder="Enter your email address..."
+              />
 
-              <Button type="button" class="col-4 start-btn py-3">
-                Start Now
+              <Button type="button" class="col-lg-4 col-12 start-btn py-3 my-2">
+                Try it
               </Button>
             </div>
           </div>
         </div>
 
-        <!-- <div class="col-lg-6 hero__image">
+        <!-- <div class="col-lg-4 hero__image">
           <div class="row">
             <div class="col-12">
               <img
@@ -58,7 +53,6 @@
               <img class="img4" src="~/assets/img/imggg.png" alt="" srcset="" />
               <img class="img5" src="~/assets/img/1.png" alt="" srcset="" />
             </div>
-    
           </div>
         </div> -->
       </div>
@@ -84,10 +78,6 @@ export default {
   }
 }
 
-.text-danger {
-  color: var(--danger);
-}
-
 .title__text {
   font-weight: 800;
   /* font-size: 50px; */
@@ -102,11 +92,6 @@ export default {
   color: #001ed3;
 }
 
-.input-box {
-  border-radius: 8px;
-  background-color: #fff;
-}
-
 .start-btn {
   background: #191489;
   color: #fff;
@@ -119,54 +104,6 @@ export default {
   background-color: #2119ad;
 }
 
-.email-input {
-  color: #5d5a6f;
-  opacity: 60%;
-  font-size: 0.8rem;
-  border: none;
-  background-color: transparent;
-}
-
-.email-input:focus {
-  border: none;
-  outline: none;
-}
-
-.hero__image {
-  position: relative;
-}
-
-.hero__image .position-img img {
-  width: 150px;
-  height: 150px;
-}
-
-.hero__image .position-img .img1 {
-  position: absolute;
-  top: -70px;
-  left: 101px;
-  z-index: -1;
-  display: none;
-}
-
-.hero__image .position-img .img2 {
-  position: absolute;
-  top: -40px;
-  right: 101px;
-  display: none;
-}
-
-.position-img .img3 {
-  position: absolute;
-  bottom: 75px;
-  right: -8px;
-  display: none;
-}
-
-.hero__image .display-img img {
-  display: none;
-}
-
 .gradient {
   position: absolute;
   width: 100%;
@@ -176,14 +113,5 @@ export default {
   top: 50%;
   background: rgba(255, 102, 82, 0.2);
   filter: blur(325px);
-}
-
-.bg {
-  width: 400px;
-  position: absolute;
-
-  top: 0;
-  left: 35%;
-  z-index: -1;
 }
 </style>

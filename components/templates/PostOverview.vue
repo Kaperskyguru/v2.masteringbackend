@@ -1,13 +1,5 @@
 <template>
   <section>
-    <iframe
-      src="https://kaperskyguru.substack.com/embed"
-      width="480"
-      height="320"
-      style="border: 1px solid #eee; background: white"
-      frameborder="0"
-      scrolling="no"
-    ></iframe>
     <section class="d-flex align-items-center justify-content-center mb-5">
       <div class="container">
         <div class="row mt-5 text-justify">
@@ -46,7 +38,7 @@
                   Start Now
                 </Button>
               </div>
-              <div class="form-group form-check mt-2">
+              <div class="form-group form-check mt-2" v-if="false">
                 <input
                   class="form-check-input"
                   type="checkbox"

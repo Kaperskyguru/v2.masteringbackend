@@ -6,21 +6,41 @@
         <div class="col-lg-10 mx-auto">
           <div class="row mt-5">
             <div class="col-md-1 pt-3 ms-3">
-              <img class="d-lg-block pattern" src="~/assets/img/combined-shape.png" alt="" />
+              <img
+                class="d-lg-block pattern"
+                src="~/assets/img/combined-shape.png"
+                alt=""
+              />
             </div>
 
-            <ArticleHead class="mb-3" :post="post" />
+            <div class="col-lg-10">
+              <ArticleHead class="mb-3" :post="post" />
+            </div>
 
-            <div class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test">
-              <img v-lazy-load class="img-fluid base-img" :data-src="image" :alt="post.title" />
+            <div
+              class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
+            >
+              <img
+                v-lazy-load
+                class="img-fluid base-img"
+                :data-src="image"
+                :alt="post.title"
+              />
             </div>
             <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
-              <article class="text lh-md fs-5 mt-4" v-html="post.excerpt"></article>
+              <article
+                class="text lh-md fs-5 mt-4"
+                v-html="post.excerpt"
+              ></article>
             </div>
             <div class="d-grid col-lg-10 col-md-10 col-sm-12 mx-auto my-4">
-              <a :href="`/posts/${post.slug}`" class="btn btn-primary btn-lg mt-4 fs-3 mb-4">Continue Reading<span>
+              <a
+                :href="`/posts/${post.slug}`"
+                class="btn btn-primary btn-lg mt-4 fs-3 mb-4"
+                >Continue Reading<span>
                   <!-- <img class="lock" src="~/assets/img/Lock.png" alt="" /> -->
-                </span></a>
+                </span></a
+              >
               <hr />
             </div>
           </div>
@@ -38,7 +58,7 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
   },
 

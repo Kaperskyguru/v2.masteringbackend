@@ -3,58 +3,45 @@
   <main class="main">
     <Banner />
 
-    <div id="custom-substack-embed"></div>
-
-    <section class="p-3 sponsors text-center" v-if="false">
+    <section class="p-3 sponsors text-center">
       <PageTitle>
         <template #title>
-          <h3 class="sponsor-header-text mb-5">
-            Some of our students works in
+          <h3 class="sponsor-header-text mb-5 text-uppercase fw-bold">
+            Join 3,000+ senior (and aspiring) backend software engineers at:
           </h3>
         </template>
       </PageTitle>
       <Sponsors />
     </section>
 
+    <section class="Article mb-5 text-center p-3">
+      <AcademyAdvert />
+    </section>
+
     <!-- DEV Articles -->
 
     <section id="Articles" class="Dev-art my-5">
-      <div class="container pt-5">
-        <PageTitle>
-          <template #title>
-            <h2 class="Dev-art__header-text mt-5">
-              Latest Backend<br />
-              Articles for you
-            </h2>
-          </template>
-
-          <div class="col-lg-6">
-            <p class="Dev-art__para-text mb-5 mr-2">
-              Latest backend engineering resources curated daily by the
-              engineers for engineers.
-            </p>
-          </div>
-        </PageTitle>
+      <div class="container pt-">
         <ArticleBoards />
       </div>
     </section>
 
-    <section class="Article mb-5 text-center p-3">
+    <!-- <section class="Article mb-5 text-center p-3">
       <AcademyAdvert />
     </section>
 
     <section class="update p-3">
       <Newsletter />
-    </section>
+    </section> -->
 
     <section id="jobs" class="dev-job text-center mt-5">
       <PageTitle class="col-lg-6 mx-auto p-5 text-center">
         <template #title>
-          <h3 class="dev-header-text">Latest Backend Jobs</h3>
+          <h3 class="dev-header-text">Join our community</h3>
         </template>
         <p class="dev-text">
-          Highly vetted backend software engineering jobs for highly vetted and
-          qualified backend engineers.
+          For highly vetted backend software engineering jobs for highly vetted
+          and qualified backend engineers like you.
         </p>
       </PageTitle>
       <div class="container">
