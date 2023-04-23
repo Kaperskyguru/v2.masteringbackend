@@ -77,7 +77,7 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-baseline">
+        <div class="d-flex align-items-center justify-content-center">
           <ul class="col-10 d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
             <span :class="{ active: tab === '' }">
               <li class="ps-4 my-4 fw-bold fs-8">
@@ -144,7 +144,7 @@
       </div>
     </section>
 
-    <section class="mx-2">
+    <section class="mx-auto container">
       <!-----------------------Featured Article----------------------->
       <FeaturedArticle
         v-if="featuredPost && !removeFeatured"
