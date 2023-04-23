@@ -1,11 +1,14 @@
 <template>
-  <div class="col-lg-10">
+  <div class="">
     <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
       <nuxt-link class="title_header" :to="`/posts/${link}`">
-        {{ post.title || '' }}</nuxt-link>
+        {{ title }}</nuxt-link
+      >
     </h1>
-    <small class="fw-bold">By {{ authorName
-    }}<span v-if="showDate">. Updated {{ dateFormat }}</span></small>
+    <small v-if="showAuthor || showDate" class="fw-bold"
+      ><span v-if="showAuthor">By {{ authorName }}</span
+      ><span v-if="showDate">. Updated {{ dateFormat }}</span></small
+    >
   </div>
 </template>
 
@@ -15,9 +18,12 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
-
+    showAuthor: {
+      type: Boolean,
+      default: true,
+    },
     showDate: {
       type: Boolean,
       default: true,
@@ -32,6 +38,10 @@ export default {
     link() {
       if (!this.showDate) return ''
       return this.post?.slug
+    },
+
+    title() {
+      return this.post?.title ?? ''
     },
 
     authorSlug() {

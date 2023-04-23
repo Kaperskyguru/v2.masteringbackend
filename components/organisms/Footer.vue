@@ -5,7 +5,10 @@
         <div class="col-md-4 mb-3">
           <div>
             <Logo />
-            <p class="fs-6 mt-2">A great resource for backend engineers.</p>
+            <p class="fs-6 mt-2 text-white">
+              A great resource for backend engineers. Next-level Backend
+              Engineering training and link building strategies
+            </p>
             <p class="text-white text-decoration-none email fs-6">
               support@masteringbackend.com
             </p>

@@ -161,6 +161,6 @@ export default {
 .newletter-box {
   position: absolute;
   top: 10rem;
-  right: 12rem;
+  right: 15rem;
 }
 </style>
