@@ -3,7 +3,7 @@
   <article class="Updated">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 mx-auto">
+        <div class="col-lg-10 mx-auto">
           <div class="row">
             <div class="col-md-1 pt-3 ms-3">
               <img
@@ -20,16 +20,13 @@
           <div
             class="col-lg-10 col-md-12 mx-lg-auto col-sm-12 text-sm-start mt-5"
           >
-            <article class="lh-md fs-5" v-html="getFirstParagraph()"></article>
+            <p class="lh-md fs-5" v-html="getFirstParagraph()"></p>
           </div>
           <div class="row">
             <div class="col-lg-10 col-md-12 mx-lg-auto">
               <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                  <article
-                    class="lh-md fs-5"
-                    v-html="get2Paragraphs()"
-                  ></article>
+                  <p class="lh-md fs-5" v-html="get2Paragraphs()"></p>
                 </div>
                 <div class="col-lg-4 col-md-10 col-sm-10">
                   <img
@@ -43,7 +40,7 @@
           </div>
 
           <div class="col-lg-10 mx-lg-auto col-sm-12 text-sm-start">
-            <article class="lh-md fs-5" v-html="getLastParagraph()"></article>
+            <p class="lh-md fs-5" v-html="getLastParagraph()"></p>
           </div>
 
           <div class="d-grid col-md-10 col-sm-12 mx-md-auto">

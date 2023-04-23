@@ -7,14 +7,15 @@
     <img src="~/assets/img/img5.png" alt="" />
     <img src="~/assets/img/img6.png" alt="" />
     <div class="row">
-      <div class="col-lg-6 mx-auto p-5 text-center">
+      <div class="col-lg-10 mx-auto p-5 text-center">
         <div class="cent">
-          <h4 class="update-head-text text-white">
-            Subscribe To Get Update From Us
+          <h4 class="update-head-text text-white fs-2">
+            Want to Level-up Your Backend Engineering career?
           </h4>
-          <p class="update-text">
-            20k+ students daily learn with Masteringbackend. Subscribe for new
-            courses.
+          <p class="update-text fs-6 text-white">
+            Then join 3,000+ others (including top backend engineers from
+            Salesforce, Razorpay, Directi, and SentinelOne) that get our weekly
+            Backend Engineering tips via email.
           </p>
           <div class="input-group mt-3">
             <input
@@ -30,19 +31,6 @@
             >
               Start Now
             </Button>
-          </div>
-
-          <div class="form-group form-check mt-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              name="codepreneur"
-              id="codepreneur"
-            />
-            <p class="text-white text-left" style="font-size: 0.9rem">
-              Become a Codepreneur.
-              <a href="#" style="color: rgb(187, 74, 3)">Learn more</a>
-            </p>
           </div>
 
           <div
@@ -125,6 +113,7 @@ export default {
   position: absolute;
   top: 40%;
   left: 15%;
+  opacity: 0.3;
 }
 
 .bg-update img:nth-of-type(3) {
@@ -143,6 +132,7 @@ export default {
   position: absolute;
   top: 40%;
   right: 15%;
+  opacity: 0.3;
 }
 
 .bg-update img:nth-of-type(6) {

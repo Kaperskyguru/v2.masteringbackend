@@ -358,6 +358,12 @@ export default {
       to: '/categories/$1',
       statusCode: 301,
     },
+
+    {
+      from: '^/slack(.*)$',
+      to: '/community/$1',
+      statusCode: 301,
+    },
   ],
 
   sitemap: {

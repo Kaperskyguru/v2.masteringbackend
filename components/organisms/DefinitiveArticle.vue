@@ -5,7 +5,7 @@
   </div>
 </template>
   
-  <script>
+  <script >
 export default {
   props: {
     post: {
@@ -16,7 +16,7 @@ export default {
 }
 </script>
   
-  <style>
+  <style scoped>
 figure iframe {
   width: 100%;
   height: 400px !important;

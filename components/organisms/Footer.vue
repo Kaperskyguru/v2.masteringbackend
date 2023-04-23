@@ -4,13 +4,10 @@
       <div class="row">
         <div class="col-md-4 mb-3">
           <div>
-            <Logo />
+            <Logo is-white />
             <p class="fs-6 mt-2 text-white">
               A great resource for backend engineers. Next-level Backend
-              Engineering training and link building strategies
-            </p>
-            <p class="text-white text-decoration-none email fs-6">
-              support@masteringbackend.com
+              Engineering training and Exclusive resources.
             </p>
           </div>
         </div>
@@ -20,14 +17,14 @@
             <ul class="footer-nav">
               <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
               <li class="mb-3">
-                <a href="https://kaperskyguru.substack.com">Newsletter</a>
+                <nuxt-link to="/newsletter">Newsletter</nuxt-link>
               </li>
               <li class="mb-3">
                 <a href="https://academy.masteringbackend.com"
-                  >Join the Academy
+                  >Join The Academy
                 </a>
               </li>
-              <li><a href="/community">Join our Community</a></li>
+              <li><a href="/community">Join Our Community</a></li>
             </ul>
           </div>
         </div>
