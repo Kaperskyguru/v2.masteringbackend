@@ -38,20 +38,6 @@
                   Start Now
                 </Button>
               </div>
-              <div class="form-group form-check mt-2" v-if="false">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  v-model="substack"
-                  name="codepreneur"
-                  id="codepreneur"
-                />
-                <p>
-                  Also Join "The Codepreneurs" a newsletter focused on turning
-                  regular engineers to techpreneur.
-                  <a href="#" style="color: rgb(187, 74, 3)">Learn more</a>
-                </p>
-              </div>
             </div>
             <div
               v-if="res.message || show"
@@ -163,14 +149,11 @@
 
         <ArticleAdvert v-if="removeFeatured && index === 0" />
       </span>
-
-      <!-- <ArticleAdvert v-if="!allPosts" /> -->
     </section>
   </section>
 </template>
   
 <script>
-import utils from '../../helpers/utils'
 import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'PostOverview',
@@ -242,13 +225,9 @@ export default {
   methods: {
     async subscribe() {
       const res = await submit({
-        // email: this.email,
+        email: this.email,
         tags: [],
       })
-
-      if (this.substack) {
-        utils.substack(this.email)
-      }
 
       this.show = true
       this.res = res
