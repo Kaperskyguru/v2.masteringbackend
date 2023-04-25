@@ -20,9 +20,7 @@
                 <nuxt-link to="/newsletter">Newsletter</nuxt-link>
               </li>
               <li class="mb-3">
-                <a href="https://academy.masteringbackend.com"
-                  >Join The Academy
-                </a>
+                <a href="/academy">Join The Academy </a>
               </li>
               <li><a href="/community">Join Our Community</a></li>
             </ul>
@@ -61,12 +59,22 @@
             </div>
           </a>
         </div>
+
         <div>
           <small class="text-light fs-7"
             >© {{ new Date().getFullYear() }} Masteringbackend. All right
             reserved.</small
           >
         </div>
+      </div>
+      <div class="col-md-8">
+        <ul>
+          <a href="/terms-and-conditions">Terms and Conditions</a>
+          |&nbsp;
+          <a href="/privacy-policy">Privacy</a>
+          |&nbsp;
+          <a href="/disclaimer">Disclaimer</a>
+        </ul>
       </div>
     </div>
   </footer>

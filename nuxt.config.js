@@ -7,7 +7,6 @@ export default {
       lang: 'en',
     },
     script: [
-      { src: 'https://substackapi.com/widget.js', hid: 'Substack' },
       {
         type: 'application/ld+json',
         json: {

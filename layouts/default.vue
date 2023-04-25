@@ -3,7 +3,7 @@
     <header>
       <Nav />
     </header>
-    <Nuxt class="mb-5" />
+    <Nuxt class="pb-5" />
 
     <Footer />
   </main>

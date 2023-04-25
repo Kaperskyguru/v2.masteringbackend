@@ -11,18 +11,6 @@
             placeholder="Email address"
           />
         </div>
-        <div class="form-group form-check mt-1">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            name="codepreneur"
-            id="codepreneur"
-          />
-          <p class="text-left" style="font-size: 0.7rem">
-            Become a Codepreneur.
-            <a href="#" style="color: rgb(187, 74, 3)">Learn more</a>
-          </p>
-        </div>
         <button
           :style="{ backgroundColor: color }"
           class="btn text-white w-100 fs-6"

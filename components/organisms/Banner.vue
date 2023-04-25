@@ -23,47 +23,42 @@
               <input
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
+                v-model="email"
                 style="border: 2"
                 placeholder="Enter your email address..."
               />
 
-              <Button type="button" class="col-lg-4 col-12 start-btn py-3 my-2">
+              <Button
+                @click.prevent="subscribe"
+                type="button"
+                class="col-lg-4 col-12 start-btn py-3 my-2"
+              >
                 Try it
               </Button>
             </div>
           </div>
         </div>
-
-        <!-- <div class="col-lg-4 hero__image">
-          <div class="row">
-            <div class="col-12">
-              <img
-                class="img-fluid"
-                src="~/assets/img/hero-img.png"
-                alt=""
-                srcset=""
-              />
-            </div>
-            <div class="col-12 position-img">
-              <img class="img1" src="~/assets/img/2.png" alt="" srcset="" />
-              <img class="img2" src="~/assets/img/3.png" alt="" srcset="" />
-              <img class="img3" src="~/assets/img/1.png" alt="" srcset="" />
-            </div>
-            <div class="display-img">
-              <img class="img4" src="~/assets/img/imggg.png" alt="" srcset="" />
-              <img class="img5" src="~/assets/img/1.png" alt="" srcset="" />
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Banner',
+  data: () => ({ email: '', res: {}, show: false }),
+  methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+      this.res = res
+    },
+  },
 }
 </script>
 

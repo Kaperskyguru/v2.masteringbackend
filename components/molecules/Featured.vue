@@ -43,17 +43,42 @@
                 <input
                   class="col-8 py-md-2 form-control shadow-none fs-5"
                   type="email"
+                  v-model="email"
                   style="border: 2"
                   placeholder="Enter your email address..."
                 />
 
                 <Button
                   type="button"
+                  @click.prevent="subscribe"
                   class="col-4 start-btn py-3"
-                  @click="openModel"
                 >
                   Get The Free Guide
                 </Button>
+              </div>
+
+              <!-- <Mailchimp :data="res" @close="res = {}" />-->
+
+              <div
+                v-if="res.message || show"
+                class="alert mt-1 fade d-flex font-weight-normal"
+                style="justify-items;: space-between"
+                :class="[`alert-${res.type}`, { show: show }]"
+                role="alert"
+              >
+                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+                <button
+                  v-if="res.message"
+                  type="button"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  @click="
+                    show = false
+                    res = {}
+                  "
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             </div>
           </div>
@@ -64,13 +89,17 @@
 </template>
   
   <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'FeaturedComponent',
+
+  data: () => ({ email: '', res: {}, show: false }),
+
   props: {
     post: {
       type: Object,
       default: () => ({
-        title: 'Backend Engineering: The Ultimate Guide',
+        title: 'Backend Engineering Hub: The Ultimate Guide (2023)',
       }),
     },
   },
@@ -87,8 +116,17 @@ export default {
   },
 
   methods: {
-    openModel(e) {
-      e.preventDefault()
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+
+      if (!res.type.includes('danger')) {
+        return this.$router.push('/posts/laravel-cron-the-definitive-guide')
+      }
+      this.res = res
     },
   },
 }

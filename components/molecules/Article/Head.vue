@@ -1,9 +1,11 @@
 <template>
   <div class="">
     <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
-      <nuxt-link class="title_header" :to="`/posts/${link}`">
+      <nuxt-link v-if="link" class="title_header" :to="`/posts/${link}`">
         {{ title }}</nuxt-link
       >
+
+      <a v-else class="title_header">{{ title }}</a>
     </h1>
     <small v-if="showAuthor || showDate" class="fw-bold"
       ><span v-if="showAuthor">By {{ authorName }}</span
