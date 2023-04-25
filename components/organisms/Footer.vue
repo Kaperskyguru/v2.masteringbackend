@@ -20,9 +20,7 @@
                 <nuxt-link to="/newsletter">Newsletter</nuxt-link>
               </li>
               <li class="mb-3">
-                <a href="https://academy.masteringbackend.com"
-                  >Join The Academy
-                </a>
+                <a href="/academy">Join The Academy </a>
               </li>
               <li><a href="/community">Join Our Community</a></li>
             </ul>
