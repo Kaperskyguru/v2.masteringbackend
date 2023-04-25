@@ -12,7 +12,7 @@
               </h1>
               <div class="my-4">
                 <p class="title__subtext">
-                  Advanced Backend 1.0: a proven way to learn Backend
+                  Advanced Backend 2.0: a proven way to learn Backend
                   Engineering. Learn from experts.
                 </p>
                 <div class="gradient"></div>
@@ -151,26 +151,21 @@
         <div class="row py-1">
           <div class="col-lg-6">
             <h2 class="fw-bold" style="color: #05041b">
-              Introducing Advanced Backend 1.0
+              Introducing Advanced Backend 2.0
             </h2>
           </div>
 
           <div class="col-lg-6">
             <div>
               <p>
-                Since that initial launch of Advanced Backend, I've made dozens
+                Since that initial launch of Advanced Backend, we've made dozens
                 of updates to the program.
               </p>
 
               <p>
-                And I recently overhauled the entire course from
-                start-to-finish.
-              </p>
-
-              <p>
-                For the first time ever I'm releasing Advanced Backend 1.0, my
-                new Backend Engineering course that shows you exactly how to get
-                higher rankings and more traffic, step-by-step.
+                For the first time ever we're releasing Advanced Backend 2.0, my
+                new Backend Engineering course that shows you exactly how to
+                become a backend engineer, step-by-step.
               </p>
 
               <p>
@@ -179,7 +174,7 @@
               </p>
 
               <p>
-                Here's exactly what's inside of the new Advanced Backend 1.0
+                Here's exactly what's inside of the new Advanced Backend 2.0
                 training program.
               </p>
             </div>
@@ -191,8 +186,19 @@
             <div class="p-5 box" style="background-color: white">
               <h3 class="fs-4 py-4">In-Depth Backend Engineering Training</h3>
               <p class="fs-5">
-                No fluff. No theory. Just 100% actionable material to help you
-                get first page Google rankings in record time.
+                No fluff. No theory. Just 100% actionable and practical approach
+                to help you learn backend engineering in record time.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12 mt-4">
+            <div class="p-5 box" style="background-color: white">
+              <h3 class="fs-4 py-4">All About Results</h3>
+              <p class="fs-5">
+                If you want a theoretical approach, this isn't for you. Advanced
+                Backend is engineered uses practical based, one-on-one approach
+                to deliver RESULTS.
               </p>
             </div>
           </div>
@@ -201,16 +207,8 @@
               <h3 class="fs-4 py-4">Always Up-To-Date</h3>
               <p class="fs-5">
                 You never have to worry about outdated stuff. Our material is
-                always current and up-to-date.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6 col-12 mt-4">
-            <div class="p-5 box" style="background-color: white">
-              <h3 class="fs-4 py-4">All About Results</h3>
-              <p class="fs-5">
-                If you want a high-level approach and theory, this isn’t for
-                you. SEO That Works is engineered to deliver RESULTS.
+                always current and up-to-date. It follows industry standards and
+                best practices specifically for next level backend engineers.
               </p>
             </div>
           </div>
@@ -218,9 +216,10 @@
             <div class="p-5 box" style="background-color: white">
               <h3 class="fs-4 py-2">Works In Any Industry</h3>
               <p class="fs-5">
-                Our material has been tested by 4,000+ students in 51 countries,
-                spanning 43+ different industries (including ecommerce and
-                websites in “boring” industries). And it works.
+                Our material has been tested by hundreds students that works in
+                different industries such as FinTech, HealthTech, EduTech, etc
+                and companies including top backend engineers from Salesforce,
+                Razorpay, Directi, and SentinelOne.
               </p>
             </div>
           </div>
@@ -238,7 +237,7 @@
         <div class="my-5">
           <h2 class="fw-bold">A Peek Inside of the Course</h2>
           <p>
-            Here's a sneak preview of what you'll learn in Advanced Backend 1.0.
+            Here's a sneak preview of what you'll learn in Advanced Backend 2.0.
           </p>
         </div>
       </div>
@@ -249,20 +248,10 @@
               <h3 class="text-center pt-3 fw-bold">Node.js Backend Track</h3>
 
               <ul class="py-5">
-                <li>
-                  Why long tail keywords don’t work anymore… and what type of
-                  keyword works 10x better.
-                </li>
-
-                <li>
-                  The #1 mistake 99% of people make with keyword research (and
-                  how to avoid it).
-                </li>
-
-                <li>
-                  How to find “underground” keywords that your competition
-                  doesn’t know about.
-                </li>
+                <li class="py-2">Overview of Frontend Development</li>
+                <li class="py-2">Design and Deploy Standard REST APIs</li>
+                <li class="py-2">Design MongoDB & PostgreSQL Database(s)</li>
+                <li class="py-2">Career Coaching for Backend Engineers</li>
               </ul>
             </div>
           </div>
@@ -271,20 +260,10 @@
             <div class="p-4 mt-4" style="background-color: white">
               <h3 class="text-center fw-bold pt-3">PHP Backend Track</h3>
               <ul class="py-5">
-                <li>
-                  Why long tail keywords don’t work anymore… and what type of
-                  keyword works 10x better.
-                </li>
-
-                <li>
-                  The #1 mistake 99% of people make with keyword research (and
-                  how to avoid it).
-                </li>
-
-                <li>
-                  How to find “underground” keywords that your competition
-                  doesn’t know about.
-                </li>
+                <li class="py-2">Overview of Frontend Development</li>
+                <li class="py-2">Design and Deploy Standard REST APIs</li>
+                <li class="py-2">Design MongoDB & PostgreSQL Database(s)</li>
+                <li class="py-2">Career Coaching for Backend Engineers</li>
               </ul>
             </div>
           </div>
@@ -306,8 +285,8 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Lifetime Updates</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  Get access to updated and upgraded versions of the program no
+                  extra charge.
                 </p>
               </div>
             </div>
@@ -316,8 +295,8 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Community</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  Learn from a thriving community of helpful students and
+                  graduates from top companies.
                 </p>
               </div>
             </div>
@@ -326,8 +305,8 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Lifetime Access</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  You get access to the classes and webinars replays for life at
+                  no extra cost.
                 </p>
               </div>
             </div>
@@ -336,8 +315,7 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Proven System</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  A learning method that works in ANY industry.
                 </p>
               </div>
             </div>
@@ -346,8 +324,7 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">At your pace/Join class</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  No need to rush. You can take the course on your own schedule.
                 </p>
               </div>
             </div>
@@ -356,8 +333,8 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Practice Projects</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  Real-life practice projects to help you build momentum and
+                  insight.
                 </p>
               </div>
             </div>
@@ -366,18 +343,20 @@
               <div class="p-5 mt-4 box" style="background-color: white">
                 <h3 class="fs-4 py-4">Career Services</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  Access to career services such as Resume, Cover letter
+                  reviews, mock interviews and job placements.
                 </p>
               </div>
             </div>
 
             <div class="col-lg-8" id="hero_text">
               <div class="p-5 mt-4 box" style="background-color: white">
-                <h3 class="fs-4 py-4">Bonus Materials</h3>
+                <h3 class="fs-4 py-4">Bonus For You</h3>
                 <p class="fs-5">
-                  No fluff. No theory. Just 100% actionable material to help you
-                  get first page Google rankings in record time.
+                  Introduction to Frontend Engineering. Access to class and
+                  webinars replays. Close guidance to land internship, job, or
+                  freelance opportunities. Mentorship from software engineers at
+                  tech companies. Access to Alumni private group (channel)
                 </p>
               </div>
             </div>
