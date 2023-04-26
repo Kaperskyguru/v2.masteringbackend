@@ -1,5 +1,5 @@
 <template>
-  <main class="m-0">
+  <main class="m-0 position-relative">
     <section class="pb-5">
       <div class="container mx-auto">
         <div class="row hero__grid">
@@ -22,6 +22,7 @@
             <div class="col-md-8">
               <Button
                 type="button"
+                @click.prevent="openDialog"
                 class="col-lg-4 col-12 start-btn py-3 my-2 fw-bold"
               >
                 Join the Waiting List
@@ -169,8 +170,8 @@
               </p>
 
               <p>
-                The best part? The strategies in the course are all working
-                right now.
+                The best part? The strategies in the course are what I use to
+                land my dream job at Friday Finance (Airbank).
               </p>
 
               <p>
@@ -404,12 +405,96 @@
         </div>
       </div>
     </section>
+
+    <Dialog v-model="isEmailDialogOpen">
+      <template #left>
+        <h3>Join Advanced Backend 2.0</h3>
+
+        <div class="w-100">
+          <LearnerIcon class="mw-100" />
+        </div>
+      </template>
+
+      <template #right>
+        <div class="mt-4 d-flex justify-content-center align-items-center">
+          <div class="w-100 px-2" style="max-width: fit-content">
+            <h4>
+              Enter your email below to hop on the Advanced Backend waiting list
+            </h4>
+
+            <p class="fs-6 my-4">
+              Almost there! Just enter your email address and choose your track
+              below to join the waiting list!
+            </p>
+          </div>
+        </div>
+
+        <form ref="form" method="post" action="#" class="form-slak">
+          <div class="form-group">
+            <label class="text-dark" for="text">
+              <b>E-mail</b>
+            </label>
+            <input
+              class="col-lg-8 col-12 form-control shadow-none fs-5"
+              type="email"
+              required
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div class="py-3">
+            <div class="form-check py-2">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="track"
+                id="nodejs"
+              />
+              <label class="form-check-label" for="nodejs"
+                >Node.js Backend Track</label
+              >
+            </div>
+            <div class="form-check py-2">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="track"
+                id="php"
+              />
+              <label class="form-check-label" for="php"
+                >PHP Backend Track</label
+              >
+            </div>
+          </div>
+          <div class="text-center mt-2">
+            <Button
+              appearance="purple"
+              class="col-12 py-3 my-2 fw-bold"
+              type="submit"
+              >Join the waiting list</Button
+            >
+          </div>
+        </form>
+      </template>
+    </Dialog>
   </main>
 </template>
 
 <script>
 export default {
   name: 'AcademyPage',
+
+  components: {
+    LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
+  },
+
+  data: () => ({ isEmailDialogOpen: false }),
+
+  methods: {
+    openDialog() {
+      this.isEmailDialogOpen = true
+    },
+  },
 }
 </script>
 

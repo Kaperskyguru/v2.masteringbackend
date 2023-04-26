@@ -6,7 +6,7 @@
         <a
           href="#"
           class="col-lg-10 bordder-primary mx-auto"
-          @click="openModel"
+          @click.prevent="openModel"
         >
           <div class="row mt-5">
             <div class="col-md-1 pt-3 ms-3">
@@ -37,7 +37,7 @@
               <a
                 href="#"
                 class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
-                @click="openModel"
+                @click.prevent="openModel"
                 >Unlock Now<span
                   ><img class="lock" src="~/assets/img/Lock.png" alt="" /></span
               ></a>
@@ -46,6 +46,52 @@
         </a>
       </div>
     </div>
+
+    <Dialog v-model="isEmailDialogOpen">
+      <template #left>
+        <h3>Join Advanced Backend 2.0</h3>
+
+        <div class="w-100">
+          <LearnerIcon class="mw-100" />
+        </div>
+      </template>
+
+      <template #right>
+        <div class="mt-4 d-flex justify-content-center align-items-center">
+          <div class="w-100 px-2" style="max-width: fit-content">
+            <h4>Confirm Your Email to Access The Exclusive Content</h4>
+
+            <p class="fs-6 my-4">
+              AAlmost there! Please complete this form and click the button
+              below to gain instant access.
+            </p>
+          </div>
+        </div>
+
+        <form ref="form" method="post" action="#" class="form-slak">
+          <div class="form-group">
+            <label class="text-dark" for="text">
+              <b>E-mail</b>
+            </label>
+            <input
+              class="col-lg-8 col-12 form-control shadow-none fs-5"
+              type="email"
+              required
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div class="text-center mt-2">
+            <Button
+              appearance="purple"
+              class="col-12 py-3 my-2 fw-bold"
+              type="submit"
+              >Unlock the content</Button
+            >
+          </div>
+        </form>
+      </template>
+    </Dialog>
   </article>
 </template>
 
@@ -57,6 +103,8 @@ export default {
       default: () => {},
     },
   },
+
+  data: () => ({ isEmailDialogOpen: false }),
 
   computed: {
     image() {
@@ -70,8 +118,8 @@ export default {
   },
 
   methods: {
-    openModel(e) {
-      e.preventDefault()
+    openModel() {
+      this.isEmailDialogOpen = true
     },
   },
 }

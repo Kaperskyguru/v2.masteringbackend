@@ -140,7 +140,7 @@
       <!-----------------------Advert----------------------->
       <AcademyAdvert is-article v-if="!removeFeatured || !allPosts.length" />
 
-      <span v-for="(post, index) in allPosts" :key="index" :post="post">
+      <span v-for="(post, index) in getAllArticles" :key="index" :post="post">
         <!-----------------------Locked Article----------------------->
         <LockArticle v-if="post.is_sticky" :post="post" />
 
