@@ -9,7 +9,7 @@
               <h1
                 class="title__text fw-bold mb-md-2 display-4 mt-2 text-capitalize"
               >
-                Join 8,500+ Backend Engineers Across our communities TODAY!
+                Join 9,500+ Backend Engineers Across our communities TODAY!
               </h1>
               <div class="my-4">
                 <p class="title__subtext">
@@ -27,16 +27,39 @@
                 <input
                   class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                   type="email"
+                  v-model="email"
                   style="border: 2"
                   placeholder="Enter your email address..."
                 />
 
                 <Button
                   type="button"
+                  @click.prevent="subscribe"
                   class="col-lg-4 col-12 start-btn py-3 my-2"
                 >
                   Try it
                 </Button>
+              </div>
+              <div
+                v-if="res.message || show"
+                class="alert mt-1 fade d-flex font-weight-normal"
+                style="justify-items;: space-between"
+                :class="[`alert-${res.type}`, { show: show }]"
+                role="alert"
+              >
+                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+                <button
+                  v-if="res.message"
+                  type="button"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  @click="
+                    show = false
+                    res = {}
+                  "
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             </div>
           </div>
@@ -68,7 +91,7 @@
         <div id="hero_text" class="w-75 container mx-auto text-center">
           <div class="my-5">
             <h2 class="fw-bold">
-              Also, join 5,500+ Senior (and aspiring) backend engineers from:
+              Also, join 6,500+ Senior (and aspiring) backend engineers from:
             </h2>
           </div>
         </div>
@@ -85,18 +108,12 @@
           </div>
           <div class="row py-1 gap-5">
             <div class="container mx-auto w-50" id="hero_text">
-              <h4>Join Our <strong>1,000+</strong> Community</h4>
+              <h4>Join Our <strong>1,000+</strong> Community on Slack</h4>
               <div
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
               >
-                <form
-                  ref="form"
-                  method="post"
-                  action="https://masteringbackend.us17.list-manage.com/subscribe/post?u=39ffc375608455a6fe549290a&amp;id=e42cd7d4b3"
-                  class="form-slak"
-                  @submit.prevent="submit"
-                >
+                <form ref="form" class="form-slak">
                   <div class="form-group py-3">
                     <label class="text-dark" for="text">
                       <b>First Name</b>
@@ -136,7 +153,7 @@
                       required
                       placeholder="Enter your email address"
                     />
-                    <span class="text-danger">Enter a valid email</span>
+                    <!-- <span class="text-danger">Enter a valid email</span> -->
                   </div>
 
                   <div class="form-group py-3">
@@ -144,7 +161,7 @@
                       <input
                         id="gridCheck"
                         class="form-check-input"
-                        checked
+                        v-model="newsletter"
                         type="checkbox"
                       />
                       <label class="form-check-label text-muted" for="gridCheck"
@@ -163,16 +180,43 @@
                       <Button
                         class="col-lg-4 col-12 start-btn py-3 my-2"
                         type="submit"
+                        @click.prevent="submit"
                         >Join now</Button
                       >
                     </div>
+                  </div>
+
+                  <!-- <div class="text-danger">asjhajshajs</div> -->
+
+                  <div
+                    class="alert mt-1 fade d-flex font-weight-normal"
+                    style="justify-items;: space-between"
+                    :class="[`alert-${slackMessage.type}`, { show: show1 }]"
+                    role="alert"
+                  >
+                    <p
+                      class="w-100 font-weight-normal small"
+                      v-html="slackMessage.message"
+                    ></p>
+                    <button
+                      v-if="slackMessage.message"
+                      type="button"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      @click="
+                        show1 = false
+                        slackMessage = {}
+                      "
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
 
             <div class="col-lg-4">
-              <h4>...and Join <strong>4,500+</strong> People On Socials</h4>
+              <h4>...and Join <strong>5,500+</strong> People On Socials</h4>
               <div class="d-flex flex-column">
                 <a
                   href="http://twitter.com/master_backend"
@@ -225,6 +269,23 @@
                     <h6>Linkedin</h6>
                   </div>
                 </a>
+                <a
+                  href="https://medium.com/backenders-club"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div class="py-3 d-flex gap-1 align-items-center">
+                    <div style="max-width: 50px">
+                      <img
+                        src="~/assets/img/medium.png"
+                        class="img-fluid"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                    <h6>Medium Publication</h6>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -253,13 +314,39 @@
               <input
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
+                v-model="email"
                 style="border: 2"
                 placeholder="Enter your email address..."
               />
 
-              <Button type="button" class="col-lg-4 col-12 start-btn py-3 my-2">
+              <Button
+                type="button"
+                @click.prevent="subscribe"
+                class="col-lg-4 col-12 start-btn py-3 my-2"
+              >
                 Try it
               </Button>
+            </div>
+            <div
+              v-if="res.message || show"
+              class="alert mt-1 fade d-flex font-weight-normal"
+              style="justify-items;: space-between"
+              :class="[`alert-${res.type}`, { show: show }]"
+              role="alert"
+            >
+              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+              <button
+                v-if="res.message"
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                @click="
+                  show = false
+                  res = {}
+                "
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
           </div>
         </div>
@@ -269,9 +356,69 @@
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
+import { join } from '~/helpers/slack'
 export default {
   name: 'CommunityPage',
-  data: () => ({ user: {} }),
+  data: () => ({
+    user: { firstname: '', lastname: '' },
+    email: '',
+    res: {},
+    show: false,
+    show1: false,
+    slackMessage: {},
+    newsletter: true,
+  }),
+
+  computed: {
+    fullName() {
+      return this.user.firstname + ' ' + this.user.lastname
+    },
+  },
+
+  methods: {
+    async subscribe(data = {}) {
+      const res = await submit({
+        email: this.email,
+        lastname: this.user.lastname,
+        firstname: this.user.firstname,
+        tags: ['community'].push(...(data?.tags ?? [])),
+      })
+      this.show = true
+
+      this.res = res
+    },
+
+    async submit() {
+      if (this.validateEmail(this.user.email)) {
+        if (this.newsletter) {
+          await this.joinSlack()
+          await this.subscribe({ tags: ['slack'] })
+        } else await this.joinSlack()
+      } else this.error = true
+    },
+
+    async joinSlack() {
+      const data = {}
+      data.fullName = this.fullName
+      data.email = this.user.email
+
+      this.show1 = true
+      this.slackMessage = await join(data)
+    },
+
+    suscribeNewsletter() {
+      this.$refs.form.submit()
+    },
+
+    validateEmail(email) {
+      if (email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return re.test(email)
+      }
+      return false
+    },
+  },
 }
 </script>
 

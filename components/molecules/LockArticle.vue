@@ -23,14 +23,10 @@
               <div
                 class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
               >
-                <img
-                  class="img-fluid base-img"
-                  :src="image"
-                  :alt="post.title"
-                />
+                <img class="img-fluid base-img" :src="image" :alt="title" />
               </div>
               <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
-                <p class="text lh-md fs-5 mt-4" v-html="post.excerpt"></p>
+                <p class="text lh-md fs-5 mt-4" v-html="excerpt"></p>
               </div>
             </div>
             <div class="d-grid col-lg-10 col-md-10 col-sm-12 mx-auto my-4">
@@ -49,7 +45,7 @@
 
     <Dialog v-model="isEmailDialogOpen">
       <template #left>
-        <h3>Join Advanced Backend 2.0</h3>
+        <h3>Read {{ title }}</h3>
 
         <div class="w-100">
           <LearnerIcon class="mw-100" />
@@ -77,6 +73,7 @@
               class="col-lg-8 col-12 form-control shadow-none fs-5"
               type="email"
               required
+              v-model="email"
               placeholder="Enter your email address"
             />
           </div>
@@ -85,9 +82,31 @@
             <Button
               appearance="purple"
               class="col-12 py-3 my-2 fw-bold"
-              type="submit"
+              @click.prevent="subscribe"
               >Unlock the content</Button
             >
+          </div>
+
+          <div
+            v-if="res.message || show"
+            class="alert mt-1 fade d-flex font-weight-normal"
+            style="justify-items;: space-between"
+            :class="[`alert-${res.type}`, { show: show }]"
+            role="alert"
+          >
+            <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+            <button
+              v-if="res.message"
+              type="button"
+              data-dismiss="alert"
+              aria-label="Close"
+              @click="
+                show = false
+                res = {}
+              "
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         </form>
       </template>
@@ -96,6 +115,7 @@
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   props: {
     post: {
@@ -104,9 +124,25 @@ export default {
     },
   },
 
-  data: () => ({ isEmailDialogOpen: false }),
+  components: {
+    LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
+  },
+
+  data: () => ({ isEmailDialogOpen: false, email: '', res: {}, show: false }),
 
   computed: {
+    title() {
+      return this.post?.title ?? ''
+    },
+
+    slug() {
+      return this.post?.slug ?? ''
+    },
+
+    excerpt() {
+      return this.post?.excerpt ?? ''
+    },
+
     image() {
       if (this.post) {
         if (this.post?.image) {
@@ -118,6 +154,19 @@ export default {
   },
 
   methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+
+      if (res.type === 'info' || res.type === 'success')
+        return this.$router.push(`/posts/${this.slug}`)
+
+      this.res = res
+    },
+
     openModel() {
       this.isEmailDialogOpen = true
     },
