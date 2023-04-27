@@ -122,8 +122,7 @@
                 class="form-control shadow-none fs-5"
                 style="width: auto"
                 type="text"
-                v-model.lazy="searchText"
-                @change="search"
+                v-model="searchText"
                 placeholder="Enter text and press enter"
               />
             </div>
@@ -196,6 +195,14 @@ export default {
     },
   },
 
+  watch: {
+    searchText: {
+      handler(value) {
+        this.search(value)
+      },
+    },
+  },
+
   created() {
     this.allPosts = this.getAllArticles
   },
@@ -243,8 +250,8 @@ export default {
   },
 
   methods: {
-    search(e) {
-      this.$emit('search', this.searchText)
+    search(value) {
+      this.$emit('search', value)
     },
 
     async subscribe() {
