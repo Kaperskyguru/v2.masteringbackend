@@ -63,8 +63,10 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-center justify-content-center">
-          <ul class="col-10 d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
+        <div class="d-lg-flex align-items-center justify-content-center">
+          <ul
+            class="col-10 d-lg-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm"
+          >
             <span :class="{ active: tab === '' }">
               <li class="ps-4 my-4 fw-bold fs-8">
                 <a class="text-decoration-none text-dark" href="/posts">All</a>
@@ -108,8 +110,24 @@
               </li>
             </span>
           </ul>
-          <ul class="d-flex d-sm-flex mt-5 list-unstyled pt-5 bor-btm">
-            <span>
+          <ul
+            class="d-flex d-sm-flex mt-lg-5 list-unstyled pt-lg-5 bor-btm position-relative"
+          >
+            <div
+              v-if="showSearch"
+              class="position-absolute"
+              style="right: 30px; bottom: 20px"
+            >
+              <input
+                class="form-control shadow-none fs-5"
+                style="width: auto"
+                type="text"
+                v-model.lazy="searchText"
+                @change="search"
+                placeholder="Enter text and press enter"
+              />
+            </div>
+            <span @click.prevent="showSearch = !showSearch">
               <li class="ps-4 my-4 fw-bold fs-8">
                 <svg
                   width="24"
@@ -164,6 +182,8 @@ export default {
       tab: '',
       res: {},
       show: false,
+      searchText: '',
+      showSearch: false,
       substack: false,
       email: '',
       removeFeatured: false,
@@ -223,6 +243,10 @@ export default {
   },
 
   methods: {
+    search(e) {
+      this.$emit('search', this.searchText)
+    },
+
     async subscribe() {
       const res = await submit({
         email: this.email,
@@ -230,6 +254,12 @@ export default {
       })
 
       this.show = true
+
+      if (res.type === 'info')
+        return this.$router.push('/emails/already-subscribed')
+
+      if (res.type === 'success')
+        return this.$router.push('/emails/free-updates')
       this.res = res
     },
 
@@ -295,15 +325,6 @@ export default {
 .btn-outline-secondary {
   background: #191489;
   color: #fff;
-}
-
-.btn-primary-old {
-  background-color: #9c4df4;
-  color: #fff;
-}
-
-.btn-primary-old:hover {
-  color: rgba(255, 255, 255, 0.8);
 }
 
 .form-control {

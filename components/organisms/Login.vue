@@ -80,7 +80,7 @@ export default {
   name: 'RegisterComponent',
   components: {
     LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
-    GoogleIcon: () => import('~/assets/icons/googleicon.svg?inline'),
+    GoogleIcon: () => import('~/assets/icons/googleIcon.svg?inline'),
   },
 }
 </script>
