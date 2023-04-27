@@ -24,16 +24,39 @@
                 <input
                   class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                   type="email"
+                  v-model="email"
                   style="border: 2"
                   placeholder="Enter your email address..."
                 />
 
                 <Button
                   type="button"
+                  @click.prevent="subscribe"
                   class="col-lg-4 col-12 start-btn py-3 my-2"
                 >
                   Try it
                 </Button>
+              </div>
+              <div
+                v-if="res.message || show"
+                class="alert mt-1 fade d-flex font-weight-normal"
+                style="justify-items;: space-between"
+                :class="[`alert-${res.type}`, { show: show }]"
+                role="alert"
+              >
+                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+                <button
+                  v-if="res.message"
+                  type="button"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  @click="
+                    show = false
+                    res = {}
+                  "
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             </div>
           </div>
@@ -63,12 +86,38 @@
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
                 style="border: 2"
+                v-model="email"
                 placeholder="Enter your email address..."
               />
 
-              <Button type="button" class="col-lg-4 col-12 start-btn py-3 my-2">
+              <Button
+                @click.prevent="subscribe"
+                type="button"
+                class="col-lg-4 col-12 start-btn py-3 my-2"
+              >
                 Try it
               </Button>
+            </div>
+            <div
+              v-if="res.message || show"
+              class="alert mt-1 fade d-flex font-weight-normal"
+              style="justify-items;: space-between"
+              :class="[`alert-${res.type}`, { show: show }]"
+              role="alert"
+            >
+              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+              <button
+                v-if="res.message"
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                @click="
+                  show = false
+                  res = {}
+                "
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
           </div>
         </div>
@@ -78,8 +127,28 @@
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'NewsletterPage',
+  data: () => ({ email: '', res: {}, show: false }),
+
+  methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: [],
+      })
+      this.show = true
+
+      if (res.type === 'info')
+        return this.$router.push('/emails/already-subscribed')
+
+      if (res.type === 'success')
+        return this.$router.push('/emails/free-updates')
+
+      this.res = res
+    },
+  },
 }
 </script>
 

@@ -21,13 +21,7 @@
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
               >
-                <form
-                  ref="form"
-                  method="post"
-                  action="https://masteringbackend.us17.list-manage.com/subscribe/post?u=39ffc375608455a6fe549290a&amp;id=e42cd7d4b3"
-                  class="form-slak"
-                  @submit.prevent="submit"
-                >
+                <form ref="form" method="post" @submit.prevent="submit">
                   <div class="form-group py-3">
                     <label class="text-dark" for="text">
                       <b>Full Name</b>
@@ -78,9 +72,9 @@
 
                   <div class="field">
                     <div class="control text-center mt-4">
-                      <Button class="col-12 start-btn py-3 my-2" type="submit"
-                        >Send Message</Button
-                      >
+                      <button class="col-12 start-btn py-3 my-2" type="submit">
+                        Send Message
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -141,8 +135,34 @@
                     <h6>Linkedin</h6>
                   </div>
                 </a>
+                <a
+                  href="https://medium.com/backenders-club"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div class="py-3 d-flex gap-1 align-items-center">
+                    <div style="max-width: 50px">
+                      <img
+                        src="~/assets/img/medium.png"
+                        class="img-fluid"
+                        alt=""
+                        srcset=""
+                      />
+                    </div>
+                    <h6>Medium Publication</h6>
+                  </div>
+                </a>
               </div>
             </div>
+          </div>
+
+          <div class="mt-5 container mx-auto" id="hero_text">
+            <p>
+              If you have any query or suggestion then fill the form above I
+              will be in touch with you shortly. Or mail us at –
+              <strong> masteringbackend[at]gmail.com</strong>, we will get back
+              to you within 24 hours.
+            </p>
           </div>
         </div>
       </div>

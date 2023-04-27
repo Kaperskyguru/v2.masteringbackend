@@ -1,12 +1,13 @@
 import Superagent from 'superagent'
 
-export const submit = async ({ email, name, tags }) => {
+export const submit = async ({ email, firstname, lastname, tags }) => {
   try {
     if (!email) return { message: 'Your email is required', type: 'danger' }
 
     const data = {
       email,
-      name,
+      firstname,
+      lastname,
       tags,
     }
     const res = await Superagent.post('/api/mailchimp/subscribe').send(data)
