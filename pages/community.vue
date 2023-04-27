@@ -419,6 +419,38 @@ export default {
       return false
     },
   },
+
+  head() {
+    return {
+      title: 'Join 10,000+ Backend Engineers Across our Communities TODAY!',
+      titleTemplate: null,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Join 10,000+ Senior (and aspiring) backend engineers from Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Join 10,000+ Senior (and aspiring) backend engineers from Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Join 10,000+ Senior (and aspiring) backend engineers from Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
 }
 </script>
 

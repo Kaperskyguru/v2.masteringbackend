@@ -63,10 +63,21 @@ export default {
     color() {
       return utils.color(this.post.color)
     },
+
+    image() {
+      if (this.post) {
+        if (this.post?.image) {
+          return this.post?.image
+        }
+      }
+
+      return '/img/Base.png'
+    },
   },
 
   data: () => ({
     data: {},
+    BASE_URL: process.env.BASE_URL || 'https://masteringbackend.com',
   }),
 
   mounted() {
@@ -75,6 +86,16 @@ export default {
   },
 
   methods: {
+    stripTags(text) {
+      if (text) {
+        return text.replace(/(<([^>]+)>)/gi, '')
+      }
+    },
+    splitTags(tags) {
+      if (Array.isArray(tags)) {
+        return tags.map((tag) => tag.title).join(', ')
+      }
+    },
     displayNewsletterLaravel() {
       const newsletterLaravel = document.querySelectorAll('.newsletter-laravel')
       const newsletterNode = document.querySelectorAll('.newsletter-node')
@@ -126,6 +147,69 @@ export default {
         this.createNewsletter(newsletter)
       })
     },
+  },
+
+  head() {
+    if (this.post !== undefined) {
+      return {
+        title: `${this.post.title}`,
+        meta: [
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: `${this.splitTags(this.post.tags)}`,
+          },
+          {
+            hid: 'description',
+            name: 'description',
+            content: `${this.stripTags(this.post.excerpt)}`,
+          },
+
+          { hid: 'og:title', property: 'og:title', content: this.post.title },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content: this.stripTags(this.post.excerpt),
+          },
+          { hid: 'og:image', property: 'og:image', content: this.image },
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: `${this.BASE_URL}/posts/${this.post.slug}`,
+          },
+          {
+            hid: 'og:image:width',
+            property: 'og:image:width',
+            content: '800',
+          },
+          {
+            hid: 'og:image:height',
+            property: 'og:image:height',
+            content: '800',
+          },
+          {
+            hid: 'og:type',
+            property: 'og:type',
+            content: 'article',
+          },
+          {
+            hid: 'article:published_time',
+            property: 'article:published_time',
+            content: this.post?.createdAt,
+          },
+          {
+            hid: 'article:modified_time',
+            property: 'article:modified_time',
+            content: this.post?.updatedAt,
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image',
+          },
+        ],
+      }
+    }
   },
 }
 </script>

@@ -149,6 +149,38 @@ export default {
       this.res = res
     },
   },
+
+  head() {
+    return {
+      title: 'Sign up for Masteringbackend Newsletter',
+      titleTemplate: null,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Sign up for the Masteringbackend newsletter. Trusted by senior backend engineers at Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Sign up for the Masteringbackend newsletter. Trusted by senior backend engineers at Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Sign up for the Masteringbackend newsletter. Trusted by senior backend engineers at Salesforce, Razorpay, SentinelOne and more.',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
 }
 </script>
 

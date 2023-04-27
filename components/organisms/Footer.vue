@@ -14,7 +14,7 @@
         <div class="col-md-4 text-col">
           <p class="mb-4">Learn</p>
           <div class="d-md-flex text-white">
-            <ul class="footer-nav">
+            <ul class="footer-nav fs-6">
               <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
               <li class="mb-3">
                 <nuxt-link to="/newsletter">Newsletter</nuxt-link>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-4 text-col">
           <p class="mb-4">Company</p>
-          <ul class="footer-nav">
+          <ul class="footer-nav fs-6">
             <li class="mb-3"><a href="/">Home</a></li>
             <li class="mb-3"><a href="/about">About</a></li>
             <li class="mb-3"><a href="/contact">Contact</a></li>

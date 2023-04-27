@@ -54,7 +54,7 @@
               <div class="col-12 col-lg-4">
                 <p class="pt-5">
                   Finally, a Backend Engineering course that shows you exactly
-                  how to [Insert Result], step-by-step.
+                  how to level up your backend engineeing skills, step-by-step.
                 </p>
               </div>
 
