@@ -198,6 +198,12 @@
     <script>
 export default {
   name: 'DisclaimerPage',
+
+  head() {
+    return {
+      title: 'Disclaimer',
+    }
+  },
 }
 </script>
     

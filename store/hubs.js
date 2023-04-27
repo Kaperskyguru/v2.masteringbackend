@@ -120,7 +120,7 @@ export const actions = {
   async getHubs({ commit }, { page, count = 22 }) {
     try {
       const res = await this.$axios.get(
-        `/hubs?filters[type][$eq]=0&populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+        `/hubs?filters[type][$eq]=hub&populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
       )
 
       const { data } = res
@@ -233,7 +233,7 @@ export const actions = {
     }
   },
 
-  getChapters({ commit }, page = 1, perPage = 3) { },
+  getChapters({ commit }, page = 1, perPage = 3) {},
   //   async getChapter({ commit }, slug) {
   //     try {
   //       const res = await this.$axios.get(`/hubs/?filters[slug][$eq]=${slug}`)

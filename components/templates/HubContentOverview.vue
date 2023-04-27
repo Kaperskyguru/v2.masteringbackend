@@ -3,13 +3,16 @@
   <main>
     <HubBanner :chapter="chapter" :color="color" />
 
-    <section class="main">
+    <section class="" style="background-color: #fff">
       <Breadcrumb :hub="hub" :color="color" :chapter="chapter" :post="post" />
-      <div class="container">
-        <div class="row Resources mt-4">
-          <Outline :color="color" :outlines="outlines" />
 
-          <HubContent :post="post" />
+      <div class="container">
+        <div class="row Resources pt-4 p-0 m-0">
+          <div class="pt-4 col-md-3">
+            <Outline :color="color" :outlines="outlines" />
+          </div>
+
+          <HubContent style="background-color: white" :post="post" />
         </div>
       </div>
     </section>
@@ -23,7 +26,7 @@
     </section>
 
     <section>
-      <RelatedHubs :color="color" />
+      <!-- <RelatedHubs :color="color" /> -->
     </section>
   </main>
 </template>

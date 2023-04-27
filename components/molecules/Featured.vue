@@ -99,7 +99,7 @@ export default {
     post: {
       type: Object,
       default: () => ({
-        title: 'Backend Engineering Hub: The Ultimate Guide (2023)',
+        title: 'Backend Engineering: The Ultimate Guide (2023)',
       }),
     },
   },
@@ -124,7 +124,7 @@ export default {
       this.show = true
 
       if (!res.type.includes('danger')) {
-        return this.$router.push('/posts/laravel-cron-the-definitive-guide')
+        return this.$router.push('/posts/backend-development')
       }
       this.res = res
     },

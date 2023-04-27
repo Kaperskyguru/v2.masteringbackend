@@ -204,6 +204,38 @@
 export default {
   name: 'AboutPage',
   data: () => ({ user: {} }),
+
+  head() {
+    return {
+      title: 'About Solomon Eseme and Masteringbackend',
+      titleTemplate: null,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            "I'm Solomon Eseme. If you're not advancing in your backend engineering career… If you're confused by all the conflicting Backend Engineering information out there… Then we'll help you get where you want to be.",
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            "I'm Solomon Eseme. If you're not advancing in your backend engineering career… If you're confused by all the conflicting Backend Engineering information out there… Then we'll help you get where you want to be.",
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            "I'm Solomon Eseme. If you're not advancing in your backend engineering career… If you're confused by all the conflicting Backend Engineering information out there… Then we'll help you get where you want to be.",
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
 }
 </script>
 
@@ -221,27 +253,6 @@ export default {
 .title__text {
   font-weight: 800;
   /* font-size: 50px; */
-}
-
-.user-name {
-  color: #16213e;
-  line-height: 0;
-}
-
-.job-title {
-  color: #001ed3;
-}
-
-.start-btn {
-  background: #191489;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.start-btn:hover {
-  background-color: #2119ad;
 }
 
 .gradient {

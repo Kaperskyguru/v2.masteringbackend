@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <section>
+  <section style="background-color: white !important">
     <section class="text-white mb-5" :style="{ backgroundColor: color }">
       <div id="chapter" class="container mx-auto w-75">
         <div id="chapter" class="row py-5 container mx-auto w-md-100 w-75">

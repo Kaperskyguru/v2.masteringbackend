@@ -1,7 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div id="article" class="container mx-auto w-md-100 w-75">
-    <article v-highlight class="w-100" v-html="post.content"></article>
+  <div
+    id="article"
+    class="container mx-auto w-md-100 w-75"
+    style="background-color: white"
+  >
+    <ReadArticle class="w-100" :post="post"></ReadArticle>
   </div>
 </template>
   
