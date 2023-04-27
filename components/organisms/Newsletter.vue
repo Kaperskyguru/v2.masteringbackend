@@ -76,16 +76,14 @@ export default {
         tags: [],
       })
       this.show = true
-      this.res = res
-    },
 
-    substack() {
-      window.CustomSubstackWidget = {
-        substackUrl: 'kaperskyguru.substack.com',
-        placeholder: this.email,
-        buttonText: 'Subscribe',
-        theme: 'orange',
-      }
+      if (res.type === 'info')
+        return this.$router.push('/emails/already-subscribed')
+
+      if (res.type === 'success')
+        return this.$router.push('/emails/free-updates')
+
+      this.res = res
     },
   },
 }

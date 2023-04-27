@@ -196,18 +196,19 @@ export const actions = {
     }
   },
 
-  async getRelatedPosts({ commit }, postId) {
+  async filterPosts({ commit }, { search, populate = '' }) {
     try {
       const res = await this.$axios.get(
-        `/get_related_posts?post_id=${postId}&count=3`
+        `/posts?filters[title][$containsi]=${search}&filters[excerpt][$containsi]=${search}&filters[content][$containsi]=${search}&populate=${populate}`
       )
 
       const { data } = res
 
-      if (data.posts) {
-        commit('setRelatedPosts', data)
+      if (data?.data.length) {
+        const posts = mapPosts(data?.data)
+        commit('setAuthorPosts', posts)
+        return posts
       }
-      return data.posts
     } catch (error) {
       commit('setPostState', 'error')
     }
@@ -295,12 +296,11 @@ export const actions = {
     }
   },
 
-  getLatestPosts({ commit }, page = 1, perPage = 3) { },
+  getLatestPosts({ commit }, page = 1, perPage = 3) {},
 }
 
 function mapPosts(posts) {
   return posts?.map((post) => {
-
     return {
       id: post.id,
       ...post.attributes,
@@ -331,7 +331,6 @@ function mapPosts(posts) {
         id: post.attributes?.chapter?.data?.id,
         ...post.attributes?.chapter?.data?.attributes,
       },
-
     }
   })
 }

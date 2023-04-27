@@ -56,6 +56,13 @@ export default {
         tags: [],
       })
       this.show = true
+
+      if (res.type === 'info')
+        return this.$router.push('/emails/already-subscribed')
+
+      if (res.type === 'success')
+        return this.$router.push('/emails/free-updates')
+
       this.res = res
     },
   },

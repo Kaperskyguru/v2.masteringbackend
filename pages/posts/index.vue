@@ -1,6 +1,6 @@
 <template>
   <main>
-    <PostOverview :posts="posts"></PostOverview>
+    <PostOverview :posts="posts" @search="searchPosts"></PostOverview>
 
     <infinite-loading spinner="spiral" @infinite="infiniteScroll"
       ><span slot="no-more"></span
@@ -43,6 +43,14 @@ export default {
   },
 
   methods: {
+    async searchPosts(search) {
+      const data = {
+        ppopulate: 'author,categories',
+        search,
+      }
+      const posts = await this.$store.dispatch('post/filterPosts', data)
+      this.posts = posts
+    },
     infiniteScroll($state) {
       setTimeout(async () => {
         const data = {
