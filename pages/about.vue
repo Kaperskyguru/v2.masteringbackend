@@ -123,7 +123,7 @@
                   Solomon Eseme is the founder of Mastering Backend and the
                   author of
                   <a
-                    href="http://architectingvue.com"
+                    href="http://enterprisevue.dev"
                     style="color: rgb(187, 74, 3) !important"
                     target="_blank"
                     >Architecting Enterprise Vue</a

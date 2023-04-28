@@ -2,17 +2,33 @@
   <nav class="navbar navbar-expand-xl pt-3">
     <div class="container">
       <Logo />
-      <i class="bx bx-menu navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-menu"></i>
-      <div id="nav-menu" class="collapse navbar-collapse">
+
+      <button
+        @click="show = !show"
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        id="nav-menu"
+        class="collapse navbar-collapse"
+        :class="{ show: show }"
+      >
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item" :class="{ 'active': isActive() }">
-            <a href="/" class=" links nav-link">Home</a>
+          <li class="nav-item" :class="{ active: isActive() }">
+            <a href="/" class="links nav-link">Home</a>
           </li>
-          <li class="nav-item" :class="{ 'active': isActive('/posts') }">
+          <li class="nav-item" :class="{ active: isActive('/posts') }">
             <a href="/posts" class="links nav-link">Blog</a>
           </li>
           <!-- <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li> -->
-          <li class="nav-item" :class="{ 'active': isActive('/community') }">
+          <li class="nav-item" :class="{ active: isActive('/community') }">
             <a href="/community" class="nav-link">Community</a>
           </li>
         </ul>
@@ -26,12 +42,13 @@ export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Nav',
 
+  data: () => ({ show: false }),
+
   methods: {
     isActive(slug = '/') {
       return this.$route.path === slug
-    }
-  }
-
+    },
+  },
 }
 </script>
 
