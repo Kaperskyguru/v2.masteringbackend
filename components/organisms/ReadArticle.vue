@@ -20,13 +20,6 @@ figure iframe {
   height: 400px !important;
 }
 
-@media (max-width: 991.98px) {
-  #article,
-  #meta {
-    width: 100% !important;
-  }
-}
-
 article img {
   height: auto;
   width: 100%;
@@ -74,7 +67,8 @@ article h2 {
   font-weight: bold;
 }
 
-article ul {
+article ul,
+article ol {
   list-style: disc;
   margin-bottom: 1.3rem;
 }
