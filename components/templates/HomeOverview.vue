@@ -14,13 +14,15 @@
       <Sponsors />
     </section>
 
+    <Testimonials />
+
     <section class="Article mb-5 text-center p-3">
       <AcademyAdvert />
     </section>
 
     <section id="Articles" class="Dev-art my-5">
       <div class="container pt-">
-        <ArticleBoards />
+        <Featured />
       </div>
     </section>
   </main>

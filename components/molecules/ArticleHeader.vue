@@ -52,8 +52,7 @@ export default {
           return this.post?.image
         }
       }
-
-      return '/img/Base.png'
+      return '/img/backend-2023.jpg'
     },
   },
 }
