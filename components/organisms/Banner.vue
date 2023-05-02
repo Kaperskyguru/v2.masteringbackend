@@ -13,8 +13,8 @@
                 “I thought the blog was good. But the courses? Even better!”
               </p>
               <div class="gradient"></div>
-              <p class="fw-bold user-name">Solomon Eseme</p>
-              <p class="job-title fs-6 fw-bold">Founder, Masteringbackend</p>
+              <p class="fw-bold user-name">Agoro, Adegbenga. B</p>
+              <p class="job-title fs-6 fw-bold">Co-Founder/CTO, Crenet</p>
             </div>
           </div>
           <!-- ---------------input--------------------------------------------- -->

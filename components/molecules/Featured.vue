@@ -24,7 +24,7 @@
                 <p
                   class="text lh-md fs-5"
                   v-html="
-                    'Pursuing a Full-Time Career as a Backend Developer Pursuing a Full-Time Career as a Backend Developer Pursuing a Full-Time Career as a Backend Developer'
+                    'Kickstart or advance your software engineering career with the latest backend engineering strategies, tips, and tactics working today.'
                   "
                 ></p>
               </div>
@@ -41,7 +41,7 @@
             <div class="d-grid col-lg mx-auto">
               <div class="input-group p-3 mb-5 no-border">
                 <input
-                  class="col-8 py-md-2 form-control shadow-none fs-5"
+                  class="py-md-2 col-12 col-lg-8 form-control shadow-none fs-5 my-2"
                   type="email"
                   v-model="email"
                   style="border: 2"
@@ -51,13 +51,11 @@
                 <Button
                   type="button"
                   @click.prevent="subscribe"
-                  class="col-4 start-btn py-3"
+                  class="col-lg-4 col-12 start-btn py-3 my-2"
                 >
                   Get The Free Guide
                 </Button>
               </div>
-
-              <!-- <Mailchimp :data="res" @close="res = {}" />-->
 
               <div
                 v-if="res.message || show"
@@ -111,7 +109,7 @@ export default {
           return this.post?.image
         }
       }
-      return '/img/Base.png'
+      return '/img/backend-2023.jpg'
     },
   },
 
