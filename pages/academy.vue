@@ -249,10 +249,26 @@
               <h3 class="text-center pt-3 fw-bold">Node.js Backend Track</h3>
 
               <ul class="py-5">
-                <li class="py-2">Overview of Frontend Development</li>
-                <li class="py-2">Design and Deploy Standard REST APIs</li>
-                <li class="py-2">Design MongoDB & PostgreSQL Database(s)</li>
-                <li class="py-2">Career Coaching for Backend Engineers</li>
+                <li class="py-2">Basics of Back-End Development</li>
+                <li class="py-2">Server-side Programming Language (Node.js)</li>
+                <li class="py-2">Build a Back-End with Express.js</li>
+                <li class="py-2">API and API Design</li>
+
+                <li class="py-2">Git and GitHub</li>
+                <li class="py-2">Mastering Database</li>
+                <li class="py-2">Deployment</li>
+                <li class="py-2">Software Testing</li>
+                <li class="py-2">Software Design Principles</li>
+                <li class="py-2">Web Security</li>
+
+                <li class="py-2">Caching and CDNs</li>
+                <li class="py-2">Message Brokers and Search Engines</li>
+                <li class="py-2">Scalability</li>
+                <li class="py-2">Containerization and CI/CD</li>
+                <li class="py-2">Data Structures and Algorithms</li>
+                <li class="py-2">
+                  What to Expect in a Technical Interview (Landing Job)
+                </li>
               </ul>
             </div>
           </div>
@@ -261,10 +277,26 @@
             <div class="p-4 mt-4" style="background-color: white">
               <h3 class="text-center fw-bold pt-3">PHP Backend Track</h3>
               <ul class="py-5">
-                <li class="py-2">Overview of Frontend Development</li>
-                <li class="py-2">Design and Deploy Standard REST APIs</li>
-                <li class="py-2">Design MongoDB & PostgreSQL Database(s)</li>
-                <li class="py-2">Career Coaching for Backend Engineers</li>
+                <li class="py-2">Basics of Back-End Development</li>
+                <li class="py-2">Server-side Programming Language (PHP)</li>
+                <li class="py-2">Build a Back-End with Laravel</li>
+                <li class="py-2">API and API Design</li>
+
+                <li class="py-2">Git and GitHub</li>
+                <li class="py-2">Mastering Database</li>
+                <li class="py-2">Deployment</li>
+                <li class="py-2">Software Testing</li>
+                <li class="py-2">Software Design Principles</li>
+                <li class="py-2">Web Security</li>
+
+                <li class="py-2">Caching and CDNs</li>
+                <li class="py-2">Message Brokers and Search Engines</li>
+                <li class="py-2">Scalability</li>
+                <li class="py-2">Containerization and CI/CD</li>
+                <li class="py-2">Data Structures and Algorithms</li>
+                <li class="py-2">
+                  What to Expect in a Technical Interview (Landing Job)
+                </li>
               </ul>
             </div>
           </div>
@@ -387,6 +419,7 @@
                     <input
                       class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                       type="email"
+                      v-model="email"
                       style="border: 2"
                       placeholder="Enter your email address..."
                     />
@@ -394,9 +427,33 @@
                     <Button
                       type="button"
                       class="col-lg-4 col-12 start-btn py-3 my-2 fw-bold"
+                      @click="subscribe"
                     >
                       Join the Waiting List
                     </Button>
+                  </div>
+                  <div
+                    v-if="res.message || show"
+                    class="alert mt-1 fade d-flex font-weight-normal"
+                    style="justify-items;: space-between"
+                    :class="[`alert-${res.type}`, { show: show }]"
+                    role="alert"
+                  >
+                    <p class="w-100 font-weight-normal small">
+                      {{ res.message }}
+                    </p>
+                    <button
+                      v-if="res.message"
+                      type="button"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      @click="
+                        show = false
+                        res = {}
+                      "
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -438,11 +495,12 @@
               class="col-lg-8 col-12 form-control shadow-none fs-5"
               type="email"
               required
+              v-model="email"
               placeholder="Enter your email address"
             />
           </div>
 
-          <div class="py-3">
+          <!-- <div class="py-3">
             <div class="form-check py-2">
               <input
                 type="radio"
@@ -465,14 +523,37 @@
                 >PHP Backend Track</label
               >
             </div>
-          </div>
+          </div> -->
           <div class="text-center mt-2">
             <Button
               appearance="purple"
               class="col-12 py-3 my-2 fw-bold"
               type="submit"
+              @click.prevent="subscribe"
               >Join the waiting list</Button
             >
+
+            <div
+              v-if="res.message || show"
+              class="alert mt-1 fade d-flex font-weight-normal"
+              style="justify-items;: space-between"
+              :class="[`alert-${res.type}`, { show: show }]"
+              role="alert"
+            >
+              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+              <button
+                v-if="res.message"
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                @click="
+                  show = false
+                  res = {}
+                "
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           </div>
         </form>
       </template>
@@ -481,6 +562,7 @@
 </template>
 
 <script>
+import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'AcademyPage',
 
@@ -488,9 +570,23 @@ export default {
     LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
   },
 
-  data: () => ({ isEmailDialogOpen: false }),
+  data: () => ({
+    isEmailDialogOpen: false,
+    email: '',
+    res: {},
+    show: false,
+  }),
 
   methods: {
+    async subscribe() {
+      const res = await submit({
+        email: this.email,
+        tags: ['advanced-backend-2-0'],
+      })
+      this.show = true
+      this.res = res
+    },
+
     openDialog() {
       this.isEmailDialogOpen = true
     },

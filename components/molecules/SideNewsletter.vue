@@ -62,7 +62,7 @@ export default {
     async subscribe() {
       const res = await submit({
         email: this.email,
-        tags: [],
+        tags: ['backend'],
       })
       this.show = true
       this.res = res

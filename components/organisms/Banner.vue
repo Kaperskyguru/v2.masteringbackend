@@ -8,13 +8,24 @@
               Get Exclusive Backend Engineering Resources <br />We Only Share
               With Email Subscribers
             </h1>
+            <!--   -->
             <div class="my-4">
-              <p class="title__subtext">
-                “I thought the blog was good. But the courses? Even better!”
+              <p class="title__subtext fw-bold">
+                Get immediate value: Laravel Breeze Tutorial: The Definitive
+                Guide (2023)
               </p>
               <div class="gradient"></div>
-              <p class="fw-bold user-name">Agoro, Adegbenga. B</p>
-              <p class="job-title fs-6 fw-bold">Co-Founder/CTO, Crenet</p>
+              <ol style="list-style: none; padding-left: 1rem">
+                <li class="job-title fs-6">
+                  <CheckIcon style="width: 20px; height: 20px" />
+                  Explore everything you need to master Laravel Breeze
+                </li>
+                <li class="job-title fs-6">
+                  <CheckIcon style="width: 20px; height: 20px" />
+                  Explore different authentication processes generated with
+                  Laravel Breeze
+                </li>
+              </ol>
             </div>
           </div>
           <!-- ---------------input--------------------------------------------- -->
@@ -33,7 +44,7 @@
                 type="button"
                 class="col-lg-4 col-12 start-btn py-3 my-2"
               >
-                Try it
+                Get the Guide
               </Button>
             </div>
           </div>
@@ -49,11 +60,14 @@ export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Banner',
   data: () => ({ email: '', res: {}, show: false }),
+  components: {
+    CheckIcon: () => import('~/assets/icons/check.svg?inline'),
+  },
   methods: {
     async subscribe() {
       const res = await submit({
         email: this.email,
-        tags: [],
+        tags: ['Laravel Tips'],
       })
       this.show = true
 
@@ -71,7 +85,7 @@ export default {
 
 <style scoped>
 .hero__grid {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 @media (max-width: 991.98px) {

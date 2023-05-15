@@ -1,6 +1,7 @@
 <template>
   <a href="/">
     <img
+      data-not-lazy
       v-if="isWhite"
       src="~/assets/img/logo-white.png"
       alt="logo"
@@ -10,6 +11,7 @@
     />
 
     <img
+      data-not-lazy
       v-else
       src="~/assets/img/logo.png"
       alt="logo"

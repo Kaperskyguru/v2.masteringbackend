@@ -6,7 +6,6 @@
     >
       <div class="col-md-6 text-start">
         <div class="ps-md-5">
-          <Button appearance="purple" class="mb-3">{{ subtitle }}</Button>
           <h2 class="card-head-text fw-bold">
             {{ title }}
           </h2>
@@ -29,14 +28,13 @@
         <div class="col-11 mx-auto">
           <div class="row article-row">
             <div class="col-lg-6 col-md-12 col-sm-12 mt-5">
-              <a href="" class="btn btn-primary mb-3 mt-5">{{ subtitle }}</a>
               <h2 class="card-head-text fs-1 fw-bold">
                 {{ title }}
               </h2>
               <p class="art-card-text">
                 {{ desc }}
               </p>
-              <a href="" class="btn btn-lg-primary mb-4 px-4 button">{{
+              <a href="" class="btn btn-lg-primary mb-4 p-3 button">{{
                 btnText
               }}</a>
             </div>
@@ -61,22 +59,17 @@ export default {
 
     btnText: {
       type: String,
-      default: 'Register Now',
+      default: 'Join The Academy',
     },
     title: {
       type: String,
       default: "Don't waste time roaming around, start learning Backend now",
     },
 
-    subtitle: {
-      type: String,
-      default: 'Learn here',
-    },
-
     desc: {
       type: String,
       default:
-        'Starting Backend Development is a journey into a career that can open many great opportunities from working on complex projects to landing your dream job and the best way to get the most out of it is to start now.',
+        'Starting Backend Engineering is a journey into a career that can open many great opportunities from working on complex projects to landing your dream job and the best way to get the most out of it is to start now.',
     },
   },
 }

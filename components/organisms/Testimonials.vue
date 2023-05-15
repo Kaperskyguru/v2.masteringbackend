@@ -21,11 +21,18 @@ export default {
   data: () => ({
     testimonials: [
       {
+        // Mastering Backend has evolved from a blog into an all-encompassing learning hub, providing valuable resources, courses, and tools to help individuals advance their knowledge and skills.
         feedback:
-          'Mastering Backend has evolved from a blog into an all-encompassing learning hub, providing valuable resources, courses, and tools to help individuals advance their knowledge and skills. I strongly recommend exploring Mastering Backend as a resource for your personal and/or professional growth.',
+          'I strongly recommend exploring Mastering Backend as a resource for your personal and/or professional growth.',
         name: 'Agoro, Adegbenga. B',
-        position: 'Co-Founder/CTO, Crenet',
+        position: 'CTO, Crenet',
         image: '/img/people/agoro.jpeg',
+      },
+      {
+        feedback: `Solomon Eseme (and his team) put in a ton of work into each article on backend engineering. It's impressive how much content they've put out single-handledly across the Mastering Backend site.`,
+        name: 'Karl Hughes',
+        position: 'Head of Engineering, Packback',
+        image: '/img/people/karl.jpeg',
       },
     ],
   }),

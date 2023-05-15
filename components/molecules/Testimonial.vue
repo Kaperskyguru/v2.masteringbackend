@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div style="margin-top: 100px">
-    <div class="container mx-auto mt-5">
+  <div style="margin-top: 150px" class="">
+    <div class="container position-relative mx-auto mt-5">
       <div class="bordder-primary mx-auto text-center" style="max-width: 950px">
         <div style="width: 200px; margin: -100px auto 30px">
           <img
