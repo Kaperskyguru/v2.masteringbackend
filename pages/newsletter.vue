@@ -136,7 +136,7 @@ export default {
     async subscribe() {
       const res = await submit({
         email: this.email,
-        tags: [],
+        tags: ['community', 'newsletter'],
       })
       this.show = true
 

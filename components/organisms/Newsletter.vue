@@ -70,6 +70,25 @@ export default {
   mounted() {},
 
   methods: {
+    async subscribeTo() {
+      const res = await this.$axios.$post(
+        'https://vec.emlsend.com/api/1/addSubscriber/',
+        {
+          auth_token: '87e93c2f36b947b5bb42db688c3d9f91',
+          list_id: 738756,
+          merge_fields: {
+            email: this.email,
+          },
+          update_subscriber: 1,
+          welcome_email: 1,
+          complete_json: 1,
+          double_optin: 1,
+        }
+      )
+
+      console.log(res)
+    },
+
     async subscribe() {
       const res = await submit({
         email: this.email,

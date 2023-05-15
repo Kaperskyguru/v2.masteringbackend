@@ -1,6 +1,6 @@
 
 <template>
-  <main class="main">
+  <main>
     <Banner />
 
     <section class="p-3 sponsors text-center">
@@ -16,8 +16,16 @@
 
     <Testimonials />
 
-    <section class="Article mb-5 text-center p-3">
-      <AcademyAdvert />
+    <section class="mb-2 d-flex justify-content-center">
+      <div style="color: #191489; width: 100px">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M2 11H4V13H2V11ZM6 11H18V13H6V11ZM20 11H22V13H20V11Z"></path>
+        </svg>
+      </div>
     </section>
 
     <section id="Articles" class="Dev-art my-5">
