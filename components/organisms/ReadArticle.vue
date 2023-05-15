@@ -1,6 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article v-highlight class="w-100" v-html="post.content"></article>
+  <article
+    data-clarity-region="article"
+    v-highlight
+    class="w-100"
+    v-html="post.content"
+  ></article>
 </template>
 
 <script>
