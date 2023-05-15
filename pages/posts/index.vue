@@ -38,7 +38,9 @@ export default {
       }
       return { posts }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
+      const posts = []
+      return { posts }
     }
   },
 
@@ -67,6 +69,7 @@ export default {
         this.page++
         this.posts.push(...posts)
       }, 500)
+      if (!this.posts.length) $state.complete()
     },
   },
 

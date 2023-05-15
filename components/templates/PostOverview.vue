@@ -72,7 +72,7 @@
                 <a class="text-decoration-none text-dark" href="/posts">All</a>
               </li>
             </span>
-            <span :class="{ active: tab === 'hub' }">
+            <!-- <span :class="{ active: tab === 'hub' }">
               <li class="ps-4 my-4 fw-bold fs-8">
                 <a
                   class="text-decoration-none text-dark"
@@ -81,7 +81,7 @@
                   >Backend Content Hubs</a
                 >
               </li>
-            </span>
+            </span> -->
             <span :class="{ active: tab == 'ultimate' }">
               <li class="ps-4 my-4 fw-bold fs-8">
                 <a
