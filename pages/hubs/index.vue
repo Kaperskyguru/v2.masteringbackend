@@ -19,7 +19,9 @@ export default {
       }
       return { hubs }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
+      const hubs = []
+      return { hubs }
     }
   },
 

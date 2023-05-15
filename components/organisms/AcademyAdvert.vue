@@ -10,7 +10,9 @@
             {{ title }}
           </h2>
           <p class="art-card-text lh-sm fs-6">{{ desc }}</p>
-          <Button href="" class="mb-4 px-4 button">{{ btnText }}</Button>
+          <Button type="link" to="/academy" class="mb-4 px-4 button">{{
+            btnText
+          }}</Button>
         </div>
       </div>
       <div class="col-md-6 right-col p-0">
@@ -34,9 +36,11 @@
               <p class="art-card-text">
                 {{ desc }}
               </p>
-              <a href="" class="btn btn-lg-primary mb-4 p-3 button">{{
-                btnText
-              }}</a>
+              <nuxt-link
+                to="/academy"
+                class="btn btn-lg-primary mb-4 p-3 button"
+                >{{ btnText }}</nuxt-link
+              >
             </div>
 
             <div class="col-lg-6 col-md-12 col-sm-12 right-col p-0">

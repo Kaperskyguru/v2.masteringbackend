@@ -28,7 +28,7 @@ export default {
 
       return { posts, name }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   },
 

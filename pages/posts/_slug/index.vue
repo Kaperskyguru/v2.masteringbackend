@@ -55,7 +55,7 @@ export default {
 
       return { post }
     } catch (error) {
-      console.log(error, 'error')
+      return null
     }
   },
 

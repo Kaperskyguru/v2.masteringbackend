@@ -22,7 +22,7 @@ export default {
 
       return { posts }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   },
 

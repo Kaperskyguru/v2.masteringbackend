@@ -17,7 +17,7 @@ export default {
 
       return { hub }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   },
 
