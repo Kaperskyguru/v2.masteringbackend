@@ -591,6 +591,38 @@ export default {
       this.isEmailDialogOpen = true
     },
   },
+
+  head() {
+    return {
+      title: 'Advanced Backend Engineering Training',
+      titleTemplate: null,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
 }
 </script>
 
