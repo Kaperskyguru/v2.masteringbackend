@@ -2,7 +2,7 @@
 <!--[if IE 9]><html lang="en-US" class="lt-ie9 ie9" {{ HTML_ATTRS }}><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html {{ HTML_ATTRS }}><!--<![endif]-->
   <head {{ HEAD_ATTRS }}>
-    <script>
+    <!-- <script>
       !(function () {
         var analytics = (window.analytics = window.analytics || [])
         if (!analytics.initialize)
@@ -64,10 +64,10 @@
             analytics.page()
           }
       })()
-    </script>
+    </script> -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
+    <!-- <script
       defer
       src="https://www.googletagmanager.com/gtag/js?id=G-875DESWN4S"
     ></script>
@@ -82,8 +82,7 @@
     </script>
     {{ HEAD }}
 
-    <meta name="p:domain_verify" content="99a9e851fd033b906519f47c61ef67fa" />
-    <script async src="https://widget.formaloo.net/script.js"></script>
+    <meta name="p:domain_verify" content="99a9e851fd033b906519f47c61ef67fa" /> -->
     <!-- Clarity tracking code for https://masteringbackend.com/ -->
     <!-- <script type="text/javascript">
       ;(function (c, l, a, r, i, t, y) {
@@ -101,6 +100,7 @@
     </script> -->
   </head>
   <body {{ BODY_ATTRS }}>
+    {{ APP }}
     <!-- Formaloo Widget -->
     <div
       data-widget-form="formaloo-widget"
@@ -113,9 +113,7 @@
         { "position": "right", "once_per_user": false }
       </script>
     </div>
-
+    <script async src="https://widget.formaloo.net/script.js"></script>
     <!-- End Formaloo Widget -->
-
-    {{ APP }}
   </body>
 </html>
