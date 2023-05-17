@@ -6,6 +6,21 @@
     <Nuxt class="pb-5" />
 
     <Footer />
+
+    <div
+      data-widget-form="formaloo-widget"
+      data-prop-slug="QpjGPEYj"
+      data-prop-type="side-widget"
+      dir="ltr"
+      style="font-size: 14px; line-height: normal"
+    >
+      <script type="text/props">
+        {
+          "position": "right",
+          "once_per_user": false
+        }
+      </script>
+    </div>
   </main>
 </template>
 
