@@ -100,20 +100,23 @@
     </script>
   </head>
   <body {{ BODY_ATTRS }}>
-    <!-- Formaloo Chatbot Widget -->
-    <script
-      id="formaloo-chatbot-script"
-      type="text/props"
+    <!-- Formaloo Widget -->
+    <div
       data-widget-form="formaloo-widget"
       data-prop-slug="QpjGPEYj"
-      data-prop-type="chatbot"
-      data-prop-position="right"
-      data-prop-once_per_user="false"
+      data-prop-type="side-widget"
       dir="ltr"
-      style="font-size: 13px; line-height: normal"
-    ></script>
-    <script async src="https://chatbot.formaloo.net/script.js"></script>
-    <!-- End Formaloo Chatbot Widget -->
+      style="font-size: 14px; line-height: normal"
+    >
+      <script type="text/props">
+        {
+          "position": "right",
+          "once_per_user": false
+        }
+      </script>
+    </div>
+    <script async src="https://widget.formaloo.net/script.js"></script>
+    <!-- End Formaloo Widget -->
 
     {{ APP }}
   </body>
