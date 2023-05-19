@@ -1,4 +1,6 @@
 require('dotenv').config()
+
+import Utils from './helpers/utils'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -275,6 +277,7 @@ export default {
         }
 
         const posts = await Utils.getPosts()
+
         posts.forEach((post) => {
           feed.addItem({
             title: post.title,
@@ -282,55 +285,57 @@ export default {
             link: `https://masteringbackend.com/posts/${post.slug}`,
             description: post.excerpt,
             content: post.content,
-            date: new Date(post.date),
-            updated: new Date(post.modified),
+            date: new Date(post.publishedAt),
+            updated: new Date(post.updatedAt),
             author: {
-              name: post.author.name,
-              link: 'https://masteringbackend.com/authors/' + post.author.slug,
+              name: post?.author?.name,
+              link:
+                'https://masteringbackend.com/authors/' + post?.author?.slug,
             },
           })
 
-          post.categories.forEach((category) => {
-            feed.addCategory(category.title)
-          })
+          Array.isArray(post?.categories) &&
+            post.categories.forEach((category) => {
+              feed.addCategory(category.title)
+            })
 
           feed.addContributor({
-            name: post.author.name,
+            name: post?.author?.name,
           })
         })
       },
       cacheTime: 1000 * 60 * 15, // How long should the feed be cached
       type: 'rss2', // Can be: rss2, atom1, json1
     },
-    {
-      path: '/jobs.xml', // The route to your feed.
-      async create(feed) {
-        feed.options = {
-          title: 'Mastering Backend',
-          link: 'https://masteringbackend.com/jobs.xml',
-          description: 'This is Mastering Backend Job feeds!',
-        }
+    // {
+    //   path: '/jobs.xml', // The route to your feed.
+    //   async create(feed) {
+    //     feed.options = {
+    //       title: 'Mastering Backend',
+    //       link: 'https://masteringbackend.com/jobs.xml',
+    //       description: 'This is Mastering Backend Job feeds!',
+    //     }
 
-        const jobs = await Utils.getJobs()
-        jobs.forEach((job) => {
-          feed.addItem({
-            title: job.title,
-            id: `https://masteringbackend.com/jobs/${job.slug}`,
-            link: `https://masteringbackend.com/jobs/${job.slug}`,
-            description: job.location,
-            content: job.description,
-            date: new Date(job.created_at),
-            updated: new Date(job.created_at),
-            // author: {
-            //   name: post.author.name,
-            //   link: 'https://masteringbackend.com/authors/' + post.author.slug,
-            // },
-          })
-        })
-      },
-      cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-      type: 'rss2', // Can be: rss2, atom1, json1
-    },
+    //     const jobs = await Utils.getJobs()
+    //     jobs.forEach((job) => {
+    //       feed.addItem({
+    //         title: job.title,
+    //         id: `https://masteringbackend.com/jobs/${job.slug}`,
+    //         link: `https://masteringbackend.com/jobs/${job.slug}`,
+    //         description: job.location,
+    //         content: job.description,
+    //         date: new Date(job.created_at),
+    //         updated: new Date(job.created_at),
+    //         // author: {
+    //         //   name: post.author.name,
+    //         //   link: 'https://masteringbackend.com/authors/' + post.author.slug,
+    //         // },
+    //       })
+    //     })
+    //   },
+    //   cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+    //   type: 'rss2', // Can be: rss2, atom1, json1
+    // },
   ],
 
   serverMiddleware: {
