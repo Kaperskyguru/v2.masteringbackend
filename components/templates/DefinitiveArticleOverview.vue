@@ -21,7 +21,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 mt-2">
               <img
-                src="~/assets/img/image7.png"
+                :src="image"
                 class="img-fluid cover"
                 :alt="post.title"
                 srcset=""
@@ -134,6 +134,11 @@ export default {
       }
       return mixedColor
     },
+
+    image() {
+      return this.post?.image ?? '~/assets/img/image7.png'
+    },
+
     content() {
       return this.post?.excerpt ?? this.post?.content ?? ''
     },
