@@ -22,7 +22,7 @@
             >
               <img
                 v-lazy-load
-                class="img-fluid base-img"
+                class="img-fluid cover"
                 :data-src="image"
                 :alt="post.title"
               />
@@ -90,6 +90,17 @@ export default {
 .btn-primary:hover {
   background-color: #100c5cda;
   color: #fff;
+}
+
+.cover {
+  max-width: 871.5px;
+  background-size: cover;
+  background-position: center;
+  background-clip: content-box;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 footer small {

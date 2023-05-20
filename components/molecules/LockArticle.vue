@@ -23,7 +23,11 @@
               <div
                 class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
               >
-                <img class="img-fluid base-img" :src="image" :alt="title" />
+                <img
+                  class="img-fluid base-img cover"
+                  :src="image"
+                  :alt="title"
+                />
               </div>
               <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
                 <p class="text lh-md fs-5 mt-4" v-html="excerpt"></p>
@@ -175,18 +179,19 @@ export default {
 </script>
 
 <style scoped>
-.title_header {
-  text-decoration: none;
-  color: var(--primary-color);
-  transition: 0.3s ease all;
-}
-
-.title_header:hover {
-  color: #14107c;
-}
-
 h1 {
   color: #0a083b;
+}
+
+.cover {
+  max-width: 871.5px;
+  background-size: cover;
+  background-position: center;
+  background-clip: content-box;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
 p {
