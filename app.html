@@ -4,6 +4,7 @@
     {{ HEAD }}
   </head>
   <body {{ BODY_ATTRS }}>
+    {{ APP }}
     <!-- Formaloo Widget -->
     <div
       data-widget-form="formaloo-widget"
@@ -19,8 +20,7 @@
         }
       </script>
     </div>
-    <script async defer src="https://widget.formaloo.net/script.js"></script>
+    <script async src="https://widget.formaloo.net/script.js"></script>
     <!-- End Formaloo Widget -->
-    {{ APP }}
   </body>
 </html>
