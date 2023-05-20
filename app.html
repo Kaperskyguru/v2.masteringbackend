@@ -1,103 +1,7 @@
 <!DOCTYPE html>
-<!--[if IE 9]><html lang="en-US" class="lt-ie9 ie9" {{ HTML_ATTRS }}><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html {{ HTML_ATTRS }}><!--<![endif]-->
+<html {{ HTML_ATTRS }}>
   <head {{ HEAD_ATTRS }}>
-    <script>
-      !(function () {
-        var analytics = (window.analytics = window.analytics || [])
-        if (!analytics.initialize)
-          if (analytics.invoked)
-            window.console &&
-              console.error &&
-              console.error('Segment snippet included twice.')
-          else {
-            analytics.invoked = !0
-            analytics.methods = [
-              'trackSubmit',
-              'trackClick',
-              'trackLink',
-              'trackForm',
-              'pageview',
-              'identify',
-              'reset',
-              'group',
-              'track',
-              'ready',
-              'alias',
-              'debug',
-              'page',
-              'once',
-              'off',
-              'on',
-              'addSourceMiddleware',
-              'addIntegrationMiddleware',
-              'setAnonymousId',
-              'addDestinationMiddleware',
-            ]
-            analytics.factory = function (e) {
-              return function () {
-                var t = Array.prototype.slice.call(arguments)
-                t.unshift(e)
-                analytics.push(t)
-                return analytics
-              }
-            }
-            for (var e = 0; e < analytics.methods.length; e++) {
-              var key = analytics.methods[e]
-              analytics[key] = analytics.factory(key)
-            }
-            analytics.load = function (key, e) {
-              var t = document.createElement('script')
-              t.type = 'text/javascript'
-              t.async = !0
-              t.src =
-                'https://cdn.segment.com/analytics.js/v1/' +
-                key +
-                '/analytics.min.js'
-              var n = document.getElementsByTagName('script')[0]
-              n.parentNode.insertBefore(t, n)
-              analytics._loadOptions = e
-            }
-            analytics._writeKey = 'OsOuGUIkOCdEzDO4w7yNLrNShC3x1HRr'
-            analytics.SNIPPET_VERSION = '4.15.3'
-            analytics.load('OsOuGUIkOCdEzDO4w7yNLrNShC3x1HRr')
-            analytics.page()
-          }
-      })()
-    </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=G-875DESWN4S"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-
-      gtag('config', 'G-875DESWN4S')
-    </script>
     {{ HEAD }}
-
-    <meta name="p:domain_verify" content="99a9e851fd033b906519f47c61ef67fa" />
-    <!-- Clarity tracking code for https://masteringbackend.com/ -->
-    <script type="text/javascript">
-      ;(function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            ;(c[a].q = c[a].q || []).push(arguments)
-          }
-        t = l.createElement(r)
-        t.async = 1
-        t.src = 'https://www.clarity.ms/tag/' + i
-        y = l.getElementsByTagName(r)[0]
-        y.parentNode.insertBefore(t, y)
-      })(window, document, 'clarity', 'script', '6577xvqgl1')
-    </script>
   </head>
   <body {{ BODY_ATTRS }}>
     <!-- Formaloo Widget -->
@@ -115,9 +19,8 @@
         }
       </script>
     </div>
-    <script async src="https://widget.formaloo.net/script.js"></script>
+    <script async defer src="https://widget.formaloo.net/script.js"></script>
     <!-- End Formaloo Widget -->
-
     {{ APP }}
   </body>
 </html>
