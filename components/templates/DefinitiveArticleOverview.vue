@@ -203,6 +203,7 @@ export default {
 }
 
 @media (max-width: 991.98px) {
+  #chapter,
   .Content #chapters,
   .Content {
     width: 100% !important;
