@@ -2,100 +2,100 @@
 
 @import url('http://localhost:3000/font/Inter-kern-latin.woff2');
 
-
-
-
 :root {
-    --primary-color: #0A083B;
-    --para-color: #57586E;
-    --gradient-warning: linear-gradient(180deg, #EDAC3D 8.09%, #F0C419 69.16%);
-    --gradient-skyblue: linear-gradient(180deg, #3B43F2 8.09%, #2178FF 69.16%);
-    --gradient-sea-blue: linear-gradient(180deg, #18AACD 8.09%, #19E3F0 69.16%);
-    --gradient-pink: linear-gradient(180deg, #F22452 37.71%, #FF5364 60.98%);
-    --gradient-purple: linear-gradient(180deg, #8214FC 8.09%, #9E6CFF 69.16%);
-    --gradient-dark-blue: linear-gradient(181.08deg, #001ED3 47.89%, #247BDE 106.65%);
-    --skyblue: #3B43F2;
-    --sea-blue: #18AACD;
-    --pink: #F22452;
-    --warning: #EDAC3D;
-    --dark-blue: #011ED3;
-    --purple: #8214FC;
-    --card-radius: 15px;
+  --primary-color: #0a083b;
+  --para-color: #57586e;
+  --gradient-warning: linear-gradient(180deg, #edac3d 8.09%, #f0c419 69.16%);
+  --gradient-skyblue: linear-gradient(180deg, #3b43f2 8.09%, #2178ff 69.16%);
+  --gradient-sea-blue: linear-gradient(180deg, #18aacd 8.09%, #19e3f0 69.16%);
+  --gradient-pink: linear-gradient(180deg, #f22452 37.71%, #ff5364 60.98%);
+  --gradient-purple: linear-gradient(180deg, #8214fc 8.09%, #9e6cff 69.16%);
+  --gradient-dark-blue: linear-gradient(
+    181.08deg,
+    #001ed3 47.89%,
+    #247bde 106.65%
+  );
+  --skyblue: #3b43f2;
+  --sea-blue: #18aacd;
+  --pink: #f22452;
+  --warning: #edac3d;
+  --dark-blue: #011ed3;
+  --purple: #8214fc;
+  --card-radius: 15px;
 }
 
 body {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
-    background: rgb(241, 241, 241);
-    overflow-x: hidden;
-    color: #000;
-
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif !important;
+  background: rgb(241, 241, 241);
+  overflow-x: hidden;
+  color: #000;
 }
 article table {
-    margin-top: 1.5em 0px;
+  margin-top: 1.5em 0px;
 }
-
 
 article table thead {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-article table, article td, article tr {
-    border: 1px solid #eee;
-    
-  }
+article table,
+article td,
+article tr {
+  border: 1px solid #eee;
+}
 
-  article ul li,
+article ul li,
 article ol li {
-    font-size: 1.125rem;
-    margin-bottom: .5rem;
-    margin-top: .5rem;
-    font-weight: 400;
-    line-height: 2;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 400;
+  line-height: 2;
 }
 
 @media (max-width: 991.98px) {
-    #article,
-    #meta {
-      width: 100% !important;
-    }
+  #article,
+  #meta {
+    width: 100% !important;
   }
-
-  article td {
-    padding: .6em;
-  }
-
-.form-control {
-    color: #5d5a6f;
-    opacity: 60%;
-    font-size: 0.8rem;
 }
 
+article td {
+  padding: 0.6em;
+}
+
+.form-control {
+  color: #5d5a6f;
+  opacity: 60%;
+  font-size: 0.8rem;
+}
 
 .btn-outline-secondary {
-    background: #191489;
-    color: #fff;
+  background: #191489;
+  color: #fff;
 }
 
 .hero {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 article img {
-    height: auto;
-    width: 100%;
-    background-size: cover;
-  }
-  
-  article figure {
-    margin: 1.5em 0px;
-  }
+  height: auto;
+  width: 100%;
+  background-size: cover;
+}
+
+article figure {
+  margin: 1.5em 0px;
+}
 
 article figure figcaption {
-    line-height: 32px;
-    text-align: center;
-    font-style: italic;
-    font-weight: 400;
-  }
+  line-height: 32px;
+  text-align: center;
+  font-style: italic;
+  font-weight: 400;
+}
 
 article figure img {
   outline: none !important;
@@ -108,102 +108,100 @@ article figure img {
 }
 
 .hero__grid {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 button {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .hub {
-    position: relative;
-    width: 100%;
-    min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-    color: #ffffff;
-    cursor: pointer;
-    margin-right: 1rem;
-    padding: 1.25rem 1.5rem;
-    background-repeat: no-repeat;
-    -webkit-background-position: 50% 80%;
-    background-position: 50% 80%;
-    -webkit-background-size: 50%;
-    background-size: 50%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  margin-right: 1rem;
+  padding: 1.25rem 1.5rem;
+  background-repeat: no-repeat;
+  -webkit-background-position: 50% 80%;
+  background-position: 50% 80%;
+  -webkit-background-size: 50%;
+  background-size: 50%;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-
 a.btn {
-    border: 0 !important;
+  border: 0 !important;
 }
 
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
-    outline: none !important;
-    box-shadow: none;
+  outline: none !important;
+  box-shadow: none;
 }
 
 #article a,
-#article a:hover {
-    color: rgb(187, 74, 3);
-    transition: all 0.2s ease-in-out 0s;
-    background-color: transparent;
+#article a:hover,
+article a,
+article a:hover {
+  color: rgb(187, 74, 3);
+  transition: all 0.2s ease-in-out 0s;
+  background-color: transparent;
 }
 
-
 figure iframe {
-    width: 100%;
-    height: 400px !important;
-  }
-  
-  
-  article table {
-    border: 1px solid #eee;
-  }
+  width: 100%;
+  height: 400px !important;
+}
 
-  
-  article h1,
-  article h2,
-  article h3,
-  article h4,
-  article h5,
-  article h6 {
-    padding-bottom: 0.8rem;
-    padding-top: 0.8rem;
-  }
-  
-  article h3,
-  article h4 {
-    font-weight: normal;
-  }
-  
-  article h5,
-  article h6 {
-    font-weight: lighter;
-  }
-  
-  article h1,
-  article h2 {
-    font-weight: bold;
-  }
-  
-  article ul,
-  article ol {
-    list-style: disc;
-    margin-bottom: 1.3rem;
-  }
+article table {
+  border: 1px solid #eee;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
+}
+
+article h3,
+article h4 {
+  font-weight: normal;
+}
+
+article h5,
+article h6 {
+  font-weight: lighter;
+}
+
+article h1,
+article h2 {
+  font-weight: bold;
+}
+
+article ul,
+article ol {
+  list-style: disc;
+  margin-bottom: 1.3rem;
+}
