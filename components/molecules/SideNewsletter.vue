@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100">
+  <div class="w-100 d-none">
     <div class="card rounded mb-3 shadow">
       <div class="card-body w-100">
         <p class="card-text h6">Backend Tips, Every week</p>
