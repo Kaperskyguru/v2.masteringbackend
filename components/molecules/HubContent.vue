@@ -17,7 +17,12 @@
     ></ReadArticle>
 
     <div v-if="isChapter" class="w-100 pt-5">
-      <Chapter :chapter="{ ...post, hub: hubSlug }" />
+      <ChapterOutline
+        :key="i"
+        :color="color"
+        v-for="(post, i) in post?.posts"
+        :post="{ ...post, hub: hubSlug }"
+      />
     </div>
   </div>
 </template>

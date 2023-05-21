@@ -23,9 +23,10 @@
           >
             What you will learn
           </h5>
-          <p class="lh-lg font-weight-light fs-5">
-            {{ chapter.description }}
-          </p>
+          <p
+            class="lh-lg font-weight-light fs-5"
+            v-html="chapter.description"
+          ></p>
         </div>
         <div class="col-lg-6">
           <h5
@@ -34,6 +35,11 @@
           >
             {{ postCount }} Resources
           </h5>
+
+          <!-- 
+            For PDFs take only outlines as resources from chapter.content
+           -->
+
           <p v-for="(post, i) in chapter.posts" :key="i">
             <span class=""
               ><nuxt-link
