@@ -11,7 +11,7 @@
               this is your home for backend engineering knowledge.
             </p>
 
-            <div class="input-group my-3">
+            <div class="input-group py-3">
               <input
                 type="email"
                 class="form-control p-3"
