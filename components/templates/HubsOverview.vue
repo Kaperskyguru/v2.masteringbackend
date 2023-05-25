@@ -3,7 +3,7 @@
     <!-- ------------------------------------------Hero Section----------------------------------------------------------- -->
     <section class="hero">
       <div class="container">
-        <div class="row hero__grid">
+        <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
             <h1 class="title__text">Welcome to our Resources Hub</h1>
             <p class="title__subtext fs-6">
@@ -25,8 +25,9 @@
           <div class="col-md-6 hero__image">
             <img
               class="img-fluid"
-              src="~/assets/img/image19.png"
-              alt=""
+              v-lazy-load
+              :data-src="image"
+              :alt="title"
               srcset=""
             />
           </div>
@@ -67,9 +68,17 @@
                 <div class="col-lg-6">
                   <div class="row">
                     <h5 class="pb-4" :style="{ color: `${color(hub)}` }">
-                      {{ getChapterCount(hub) }} Chapter{{
-                        getChapterCount(hub) > 1 ? 's' : ''
-                      }}
+                      <span v-if="isPDF(hub)">
+                        {{ getChapterCount(hub) }} Resource{{
+                          getChapterCount(hub) > 1 ? 's' : ''
+                        }}
+                      </span>
+
+                      <span v-else>
+                        {{ getChapterCount(hub) }} Chapter{{
+                          getChapterCount(hub) > 1 ? 's' : ''
+                        }}
+                      </span>
                     </h5>
                     <div class="d-flex flex-column justify-content-between">
                       <div
@@ -129,7 +138,11 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    image() {
+      return 'https://res.cloudinary.com/kaperskydisk/image/upload/v1684533784/masteringbackend/posts/vectors/2842680.png'
+    },
+  },
 
   methods: {
     getURL(hub) {
