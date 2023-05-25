@@ -17,7 +17,7 @@
       </div>
     </section>
 
-    <section>
+    <section v-if="postSize">
       <div class="slides" :style="{ background: `${color}` }">
         <div class="container">
           <HubPagination :chapter="chapter" :outlines="outlines" />
@@ -46,6 +46,10 @@ export default {
   },
   data: () => ({ hubs: [] }),
   computed: {
+    postSize() {
+      return this.chapter?.posts?.length > 1
+    },
+
     color() {
       const mixedColor = this.chapter?.color ?? ''
       if (mixedColor.includes('gradient')) {

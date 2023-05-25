@@ -1,13 +1,19 @@
 <template>
   <div class="row p-4">
     <div class="col-md-6">
-      <nuxt-link v-if="prev" :to="`/hubs/${$route.params.hub}/${prev.slug}`">
+      <nuxt-link
+        v-if="prev"
+        :to="`${getBaseURL}/${$route.params.hub}/${prev.slug}`"
+      >
         <p class="fw-normal" style="color: #f7f5fa">Prev</p>
         <h4 class="text-white">{{ prev ? prev.title : '' }}</h4>
       </nuxt-link>
     </div>
     <div class="col-md-6 text-md-end">
-      <nuxt-link v-if="next" :to="`/hubs/${$route.params.hub}/${next.slug}`">
+      <nuxt-link
+        v-if="next"
+        :to="`${getBaseURL}/${$route.params.hub}/${next.slug}`"
+      >
         <p class="text-white" style="color: #f7f5fa">Next</p>
         <h4 class="text-white">{{ next ? next.title : '' }}</h4>
       </nuxt-link>
@@ -25,7 +31,13 @@ export default {
   data: () => ({ hubs: [] }),
 
   computed: {
+    getBaseURL() {
+      if (this.$route?.name?.includes('pdfs-hub-slug')) return `/pdfs`
+      return `/hubs`
+    },
+
     chapterSlug() {
+      console.log(this.$route)
       return this.chapter?.slug ?? ''
     },
     next() {

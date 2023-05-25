@@ -9,17 +9,16 @@ export default {
 
   async asyncData({ query, store }) {
     try {
-      const getHubs = store.getters['hubs/getHubs']
-      let hubs = await getHubs()
+      const getPDFs = store.getters['hubs/getPDFs']
+      let hubs = await getPDFs()
       if (!hubs?.length) {
         const data = {}
         data.page = query.page ? query.page : 1
         data.count = 22
-        hubs = await store.dispatch('hubs/getHubs', data)
+        hubs = await store.dispatch('hubs/getPDFs', data)
       }
       return { hubs }
     } catch (error) {
-      // console.log(error)
       const hubs = []
       return { hubs }
     }
@@ -27,7 +26,7 @@ export default {
 
   head() {
     return {
-      title: 'Hubs',
+      title: 'Resources',
       meta: [
         {
           hid: 'description',

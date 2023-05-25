@@ -64,7 +64,7 @@ export default {
           {
             hid: 'og:url',
             property: 'og:url',
-            content: `${this.BASE_URL}/hubs/${this.hub?.slug}`,
+            content: `${this.BASE_URL}/pdfs/${this.hub?.slug}`,
           },
           {
             hid: 'og:image:width',

@@ -96,7 +96,7 @@ export default {
           {
             hid: 'og:url',
             property: 'og:url',
-            content: `${this.BASE_URL}/hubs/${this.$route.params.hub}/${this.$route.params.slug}`,
+            content: `${this.BASE_URL}/pdfs/${this.$route.params.hub}/${this.$route.params.slug}`,
           },
           {
             hid: 'og:image:width',

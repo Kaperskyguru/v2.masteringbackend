@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row hero__grid">
           <div class="col-md-6 hero__title">
-            <h1 class="title__text">Welcome to MB Content Hub</h1>
+            <h1 class="title__text">Welcome to our Resources Hub</h1>
             <p class="title__subtext fs-6">
               Whether you're new to backend engineering, or want to scale up,
               this is your home for backend engineering knowledge.
@@ -43,7 +43,7 @@
             class="col-xl-3 lh-lg col-lg-12 text-center text-white"
             :style="{ backgroundColor: `${color(hub)}` }"
           >
-            <nuxt-link to="#">
+            <span>
               <h3 class="py-5 font-weight-normal fs-4">{{ hub.title }}</h3>
 
               <img
@@ -51,7 +51,7 @@
                 :src="getDesign(hub)"
                 :alt="hub.title"
               />
-            </nuxt-link>
+            </span>
           </div>
           <div class="col-xl-9 col-lg-12">
             <div class="row justify-content-between py-5 px-4">
@@ -103,7 +103,7 @@
                   class="btn-block"
                   size="large"
                   type="link"
-                  :link="`/hubs/${hub.slug}`"
+                  :link="getURL(hub)"
                   :custom-style="{
                     backgroundColor: `${color(hub)}`,
                     color: '#fff',
@@ -132,6 +132,12 @@ export default {
   computed: {},
 
   methods: {
+    getURL(hub) {
+      return this.isPDF(hub) ? `/pdfs/${hub.slug}` : `/hubs/${hub.slug}`
+    },
+    isPDF(hub) {
+      return hub.type === 'pdf'
+    },
     color(hub) {
       const mixedColor = hub?.color ?? ''
       if (mixedColor.includes('gradient')) {

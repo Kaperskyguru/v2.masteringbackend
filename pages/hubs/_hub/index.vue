@@ -25,6 +25,12 @@ export default {
     BASE_URL: process.env.BASE_URL || 'https://masteringbackend.com',
   }),
 
+  computed: {
+    getBaseURL() {
+      return `${this.BASE_URL}/hubs`
+    },
+  },
+
   methods: {
     stripTags(text) {
       if (text) {
@@ -64,7 +70,7 @@ export default {
           {
             hid: 'og:url',
             property: 'og:url',
-            content: `${this.BASE_URL}/hubs/${this.hub?.slug}`,
+            content: `${this.getBaseURL}/${this.hub?.slug}`,
           },
           {
             hid: 'og:image:width',

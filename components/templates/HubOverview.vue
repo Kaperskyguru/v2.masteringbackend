@@ -1,16 +1,16 @@
 <template>
   <main class="main">
     <!-- ------------------------------------------Hero Section----------------------------------------------------------- -->
-    <section class="hero">
+    <section>
       <div class="container">
-        <div class="row hero__grid">
+        <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
             <h1 class="title__text">{{ title }}</h1>
             <p class="title__subtext fs-6">
               {{ description }}
             </p>
 
-            <div class="input-group my-3">
+            <div class="input-group py-3">
               <Button
                 :custom-style="{
                   backgroundColor: `${color}`,
@@ -18,7 +18,7 @@
                 }"
                 size="large"
                 type="link"
-                :link="`/hubs/${slug}/${firstLink}`"
+                :link="getURL"
               >
                 Start Now
               </Button>
@@ -26,22 +26,23 @@
           </div>
           <div class="col-md-6 hero__image">
             <img
-              class="img-fluid"
-              src="~/assets/img/image19.png"
-              alt=""
+              class="img-fluid w-"
+              v-lazy-load
+              :data-src="image"
+              :alt="title"
               srcset=""
             />
           </div>
         </div>
       </div>
     </section>
-    <section class="Content">
+    <section class="Conent">
       <div class="container">
         <Chapter
           v-for="(chapter, i) in chapters"
           :key="i"
           :chapter="{
-            hub: slug,
+            hub: hub,
             ...chapter,
           }"
         />
@@ -60,6 +61,23 @@ export default {
   },
 
   computed: {
+    getURL() {
+      return this.isPDF
+        ? `/pdfs/${this.slug}/${this.firstLink}`
+        : `/hubs/${this.slug}/${this.firstLink}`
+    },
+
+    isPDF() {
+      return this.hub.type === 'pdf'
+    },
+
+    image() {
+      return (
+        this.chapter?.design_url ??
+        'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png'
+      )
+    },
+
     title() {
       return this.hub?.title ?? ''
     },

@@ -16,7 +16,7 @@
     >
       <nuxt-link
         class="d-flex flex-row justify-content-start"
-        :to="`/hubs/${$route.params.hub}/${outline.slug}`"
+        :to="`${getBaseURL}/${$route.params.hub}/${outline.slug}`"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +47,13 @@ export default {
     outlines: {
       type: Array,
       default: () => [],
+    },
+  },
+
+  computed: {
+    getBaseURL() {
+      if (this.$route?.name?.includes('pdfs-hub-slug')) return `/pdfs`
+      return `/hubs`
     },
   },
 

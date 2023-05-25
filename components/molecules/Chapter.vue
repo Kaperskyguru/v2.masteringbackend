@@ -4,7 +4,25 @@
       class="col-xl-3 col-lg-12 text-center text-white"
       :style="{ backgroundColor: `${color}` }"
     >
-      <nuxt-link :to="{ path: `/hubs/${chapter.hub}/${chapter.slug}` }">
+      <nuxt-link
+        :to="{
+          path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
+        }"
+        v-if="isPDF"
+      >
+        <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
+        <img
+          v-lazy-load
+          class="img-fluid hub mt-3"
+          :data-src="getDesign"
+          :alt="chapter.title"
+        />
+      </nuxt-link>
+
+      <nuxt-link
+        v-else
+        :to="{ path: `${getBaseURL}/${chapterSlug}/${chapter.slug}` }"
+      >
         <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
         <img
           v-lazy-load
@@ -33,34 +51,60 @@
             class="font-weight-normal fs-4 pb-4"
             :style="{ color: `${color}` }"
           >
-            {{ postCount }} Resources
+            <span v-if="isPDF">Outline</span>
+
+            <span v-else> {{ postCount }} Resources </span>
           </h5>
 
-          <!-- 
-            For PDFs take only outlines as resources from chapter.content
-           -->
-
-          <p v-for="(post, i) in chapter.posts" :key="i">
-            <span class=""
-              ><nuxt-link
-                class="font-weight-light d-flex flex-row justify-content-start fs-5"
-                :to="{ path: `/hubs/${chapter.hub}/${post.slug}` }"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  :fill="color"
-                  width="24"
-                  height="24"
+          <span v-if="isPDF">
+            <p v-for="(outline, i) in outlines" :key="i">
+              <span class=""
+                ><nuxt-link
+                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                  :to="{
+                    path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
+                  }"
                 >
-                  <path fill="none" d="M0 0h24v24H0z" />
-                  <path d="M16 12l-6 6V6z" />
-                </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    :fill="color"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M16 12l-6 6V6z" />
+                  </svg>
 
-                <span class="flex-fill">{{ post.title }}</span></nuxt-link
-              ></span
-            >
-          </p>
+                  <span class="flex-fill">{{ outline }}</span></nuxt-link
+                ></span
+              >
+            </p>
+          </span>
+
+          <span v-else>
+            <p v-for="(post, i) in chapter.posts" :key="i">
+              <span class=""
+                ><nuxt-link
+                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                  :to="{ path: `${getBaseURL}/${chapterSlug}/${post.slug}` }"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    :fill="color"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M16 12l-6 6V6z" />
+                  </svg>
+
+                  <span class="flex-fill">{{ post.title }}</span></nuxt-link
+                ></span
+              >
+            </p>
+          </span>
         </div>
       </div>
     </div>
@@ -78,11 +122,36 @@ export default {
   },
 
   computed: {
+    isPDF() {
+      return this.chapter.hub.type === 'pdf'
+    },
+
+    getBaseURL() {
+      return this.isPDF ? `/pdfs` : `/hubs`
+    },
+
+    outlines() {
+      const outline = this.chapter.content
+      const out = outline?.split('\n')
+      return Array.isArray(out) ? out : []
+    },
+
+    firstPostSlug() {
+      const post = this.chapter?.posts[0] ?? undefined
+
+      if (!post) return '#'
+      return post?.slug ?? '#'
+    },
+
     getDesign() {
       return (
         this.chapter?.design_url ??
         'https://api.backlinko.com/app/uploads/2020/05/seo-fundamentals.svg'
       )
+    },
+
+    chapterSlug() {
+      return this.chapter?.hub?.slug
     },
 
     color() {
