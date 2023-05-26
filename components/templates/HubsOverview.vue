@@ -45,7 +45,9 @@
             :style="{ backgroundColor: `${color(hub)}` }"
           >
             <span>
-              <h3 class="py-5 font-weight-normal fs-4">{{ hub.title }}</h3>
+              <h3 class="py-5 font-weight-normal fs-4">
+                {{ hub.title }} {{ isPDF(hub) ? 'Resources' : '' }}
+              </h3>
 
               <img
                 class="img-fluid hub mt-3"

@@ -5,7 +5,9 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
-            <h1 class="title__text">{{ title }}</h1>
+            <h1 class="title__text">
+              {{ title }} {{ isPDF ? 'Resources' : '' }}
+            </h1>
             <p class="title__subtext fs-6">
               {{ description }}
             </p>
