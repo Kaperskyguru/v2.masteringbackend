@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
-            <h1 class="title__text">Welcome to our Resources Hub</h1>
+            <h1 class="title__text">Welcome to the Masteringbackend library</h1>
             <p class="title__subtext fs-6">
               Whether you're new to backend engineering, or want to scale up,
               this is your home for backend engineering knowledge.
@@ -18,7 +18,7 @@
                 placeholder="Enter your Email"
               />
               <button class="btn btn-outline-secondary" type="button">
-                Start Now
+                Try it
               </button>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default {
 
   methods: {
     getURL(hub) {
-      return this.isPDF(hub) ? `/pdfs/${hub.slug}` : `/hubs/${hub.slug}`
+      return this.isPDF(hub) ? `/resources/${hub.slug}` : `/hubs/${hub.slug}`
     },
     isPDF(hub) {
       return hub.type === 'pdf'
@@ -163,7 +163,7 @@ export default {
     getDesign(hub) {
       return (
         hub?.design_url ??
-        'https://api.backlinko.com/app/uploads/2020/05/seo-fundamentals.svg'
+        'https://res.cloudinary.com/kaperskydisk/image/upload/v1684533784/masteringbackend/posts/vectors/2842680.pngg'
       )
     },
     getChapterCount(hub) {

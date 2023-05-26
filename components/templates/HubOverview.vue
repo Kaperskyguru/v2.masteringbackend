@@ -63,7 +63,7 @@ export default {
   computed: {
     getURL() {
       return this.isPDF
-        ? `/pdfs/${this.slug}/${this.firstLink}`
+        ? `/resources/${this.slug}/${this.firstLink}`
         : `/hubs/${this.slug}/${this.firstLink}`
     },
 

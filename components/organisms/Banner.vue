@@ -119,15 +119,4 @@ export default {
 .start-btn:hover {
   background-color: #2119ad;
 }
-
-.gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* left: 0; */
-  transform: translate(0, -50%);
-  top: 50%;
-  background: rgba(255, 102, 82, 0.2);
-  filter: blur(325px);
-}
 </style>

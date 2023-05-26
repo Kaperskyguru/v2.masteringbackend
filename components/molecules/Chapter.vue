@@ -127,7 +127,7 @@ export default {
     },
 
     getBaseURL() {
-      return this.isPDF ? `/pdfs` : `/hubs`
+      return this.isPDF ? `/resources` : `/hubs`
     },
 
     outlines() {

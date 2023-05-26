@@ -74,7 +74,7 @@ export default {
 
   computed: {
     getBaseURL() {
-      if (this.$route?.name?.includes('pdfs-hub-slug')) return `/pdfs`
+      if (this.$route?.name?.includes('resources-hub-slug')) return `/resources`
       return `/hubs`
     },
     title() {

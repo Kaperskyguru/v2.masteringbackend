@@ -1,9 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div>
-    <HubContentOverview v-if="post" :post="post" :chapter="chapter" />
-    <ChapterContentOverview v-else :post="post" :chapter="chapter" />
-  </div>
+  <main class="hero__grid">
+    <!-- <HubContentOverview v-if="post" :post="post" :chapter="chapter" />
+    <ChapterContentOverview v-else :post="post" :chapter="chapter" /> -->
+
+    <ResourceOverview :post="post" :chapter="chapter" />
+  </main>
 </template>
   
   <script>
@@ -96,7 +98,7 @@ export default {
           {
             hid: 'og:url',
             property: 'og:url',
-            content: `${this.BASE_URL}/pdfs/${this.$route.params.hub}/${this.$route.params.slug}`,
+            content: `${this.BASE_URL}/resources/${this.$route.params.hub}/${this.$route.params.slug}`,
           },
           {
             hid: 'og:image:width',
