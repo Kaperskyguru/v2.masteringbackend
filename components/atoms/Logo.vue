@@ -6,7 +6,7 @@
       src="~/assets/img/logo-white.png"
       alt="logo"
       width="200"
-      height=""
+      height="auto"
       class="d-inline-block align-text-top"
     />
 
@@ -16,7 +16,7 @@
       src="~/assets/img/logo.png"
       alt="logo"
       width="200"
-      height=""
+      height="auto"
       class="d-inline-block align-text-top"
     />
   </a>
