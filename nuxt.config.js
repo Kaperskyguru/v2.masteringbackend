@@ -366,6 +366,12 @@ export default {
     },
 
     {
+      from: '^/jobs(.*)$',
+      to: '/community/$1',
+      statusCode: 301,
+    },
+
+    {
       from: '^/slack(.*)$',
       to: '/community/$1',
       statusCode: 301,
