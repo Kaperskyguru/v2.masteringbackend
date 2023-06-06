@@ -38,24 +38,40 @@ router.post('/substack/subscribe', async (req, res, next) => {
 router.post('/mailchimp/subscribe', async function (req, res, next) {
   // Validate data first
   try {
-    if (validateEmail(req.body.email)) {
-      const data = await new Mailchimp().subscribe(req.body)
-      if (data.id && data.status === 'subscribed') {
-        res.json({
-          message: 'User subscribed successfully',
-          status: 200,
-          data,
-        })
-      } else if (!isNaN(data.status)) {
-        return res.json({
-          message: 'An error occurred',
-          error: data,
-        })
-      }
+    if (!validateEmail(req.body.email)) {
+      return res.json({
+        message: 'Please enter a valid email address',
+        status: 422,
+      })
     }
+
+    const data = await new Mailchimp().subscribe(req.body)
+
+    if (data.id && data.status === 'subscribed') {
+      return res.json({
+        message: 'User already subscribed successfully',
+        status: 202,
+        data,
+      })
+    }
+
+    if (data.id && data.status === 'cleaned')
+      return res.json({
+        message: 'User already exist and data cleaned',
+        status: 409,
+        data,
+      })
+
+    if (data.id && data.status === 'pending')
+      return res.json({
+        message: 'User subscribed successfully. User is pending verification',
+        status: 200,
+        data,
+      })
+
     return res.json({
-      message: 'Please enter a valid email address',
-      status: 422,
+      message: 'An error occurred',
+      status: 400,
     })
   } catch (error) {
     return res.json({

@@ -47,6 +47,27 @@
                 Get the Guide
               </Button>
             </div>
+            <div
+              v-if="res.message || show"
+              class="alert mt-1 fade d-flex font-weight-normal"
+              style="justify-items;: space-between"
+              :class="[`alert-${res.type}`, { show: show }]"
+              role="alert"
+            >
+              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+              <button
+                v-if="res.message"
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                @click="
+                  show = false
+                  res = {}
+                "
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

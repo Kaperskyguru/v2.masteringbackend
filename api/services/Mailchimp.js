@@ -1,8 +1,8 @@
 import request from 'request'
 const Client = require('@mailchimp/mailchimp_marketing')
 require('dotenv').config()
+const crypto = require('crypto')
 
-let mailchimp
 class Mailchimp {
   constructor() {
     Client.setConfig({
@@ -18,16 +18,85 @@ class Mailchimp {
     return response
   }
 
-  async subscribe(data) {
+  async getMember(email) {
+    const subscriber_hash = this.generateHash(email)
+    const response = await Client.lists.getListMember(
+      process.env.MAILCHIMP_LIST_ID,
+      subscriber_hash
+    )
+
+    return response
+  }
+
+  async updateMember(data) {
+    const subscriber_hash = this.generateHash(data?.email)
+    const response = await Client.lists.updateListMember(
+      process.env.MAILCHIMP_LIST_ID,
+      subscriber_hash,
+      {
+        email_address: data.email,
+        status: 'subscribed',
+        merge_fields: {
+          FNAME: data.firstname ? data.firstname : '',
+          LNAME: data.lastname ? data.lastname : '',
+        },
+        tags: data.tags ? data.tags : [],
+      }
+    )
+
+    return response
+  }
+
+  async upsertMember(data) {
+    const member = await this.getMember(data.email)
+
+    if (
+      member.status.includes('archived') ||
+      member.status.includes('unsubscribed')
+    ) {
+      return this.updateMember(data)
+    }
+
+    const subscriber_hash = this.generateHash(data?.email)
+    const response = await Client.lists.setListMember(
+      process.env.MAILCHIMP_LIST_ID,
+      subscriber_hash,
+      {
+        email_address: data.email,
+        status_if_new: 'pending',
+        merge_fields: {
+          FNAME: data.firstname ? data.firstname : '',
+          LNAME: data.lastname ? data.lastname : '',
+        },
+        tags: data.tags ? data.tags : [],
+      }
+    )
+
+    return response
+  }
+
+  async addMember(data) {
     return await Client.lists.addListMember(process.env.MAILCHIMP_LIST_ID, {
       email_address: data.email,
-      status: 'subscribed',
+      status: 'pending',
       merge_fields: {
         FNAME: data.firstname ? data.firstname : '',
         LNAME: data.lastname ? data.lastname : '',
       },
       tags: data.tags ? data.tags : [],
     })
+  }
+
+  async subscribe(data) {
+    try {
+      return this.upsertMember(data)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  generateHash(email) {
+    return crypto.createHash('md5').update(email.toLowerCase()).digest('hex')
   }
 
   static sub({ firstname, lastname, email }) {

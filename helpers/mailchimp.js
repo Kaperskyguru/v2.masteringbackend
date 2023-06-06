@@ -17,7 +17,16 @@ export const submit = async ({ email, firstname, lastname, tags }) => {
           'Success. Please check your email to confirm your subscription',
         type: 'success',
       }
-    } else if (res.body.status === 400) {
+    }
+
+    if (res.body.status === 202) {
+      return {
+        message: 'Success. Please check your email for pending confirmation',
+        type: 'info',
+      }
+    }
+
+    if (res.body.status === 409) {
       return {
         message:
           'Seems like you have already subscribed, You can input another email',
