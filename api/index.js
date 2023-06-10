@@ -14,10 +14,12 @@ app.use(
 app.use(express.json())
 // Require API routes
 const mailchimp = require('./routes/mailchimp')
+const mailbluster = require('./routes/mailbluster')
 const slack = require('./routes/slack')
 
 // Import API Routes
 app.use(mailchimp)
+app.use(mailbluster)
 app.use(slack)
 
 // Export express app

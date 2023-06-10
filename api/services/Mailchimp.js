@@ -19,13 +19,17 @@ class Mailchimp {
   }
 
   async getMember(email) {
-    const subscriber_hash = this.generateHash(email)
-    const response = await Client.lists.getListMember(
-      process.env.MAILCHIMP_LIST_ID,
-      subscriber_hash
-    )
+    try {
+      const subscriber_hash = this.generateHash(email)
+      const response = await Client.lists.getListMember(
+        process.env.MAILCHIMP_LIST_ID,
+        subscriber_hash
+      )
 
-    return response
+      return response
+    } catch (error) {
+      return false
+    }
   }
 
   async updateMember(data) {
@@ -48,31 +52,37 @@ class Mailchimp {
   }
 
   async upsertMember(data) {
-    const member = await this.getMember(data.email)
+    try {
+      const member = await this.getMember(data.email)
 
-    if (
-      member.status.includes('archived') ||
-      member.status.includes('unsubscribed')
-    ) {
-      return this.updateMember(data)
-    }
+      if (!member) return this.addMember(data)
 
-    const subscriber_hash = this.generateHash(data?.email)
-    const response = await Client.lists.setListMember(
-      process.env.MAILCHIMP_LIST_ID,
-      subscriber_hash,
-      {
-        email_address: data.email,
-        status_if_new: 'pending',
-        merge_fields: {
-          FNAME: data.firstname ? data.firstname : '',
-          LNAME: data.lastname ? data.lastname : '',
-        },
-        tags: data.tags ? data.tags : [],
+      if (
+        member.status.includes('archived') ||
+        member.status.includes('unsubscribed')
+      ) {
+        return this.updateMember(data)
       }
-    )
 
-    return response
+      const subscriber_hash = this.generateHash(data?.email)
+      const response = await Client.lists.setListMember(
+        process.env.MAILCHIMP_LIST_ID,
+        subscriber_hash,
+        {
+          email_address: data.email,
+          status_if_new: 'pending',
+          merge_fields: {
+            FNAME: data.firstname ? data.firstname : '',
+            LNAME: data.lastname ? data.lastname : '',
+          },
+          tags: data.tags ? data.tags : [],
+        }
+      )
+
+      return response
+    } catch (error) {
+      throw error
+    }
   }
 
   async addMember(data) {

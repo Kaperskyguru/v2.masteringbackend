@@ -10,7 +10,7 @@ export const submit = async ({ email, firstname, lastname, tags }) => {
       lastname,
       tags,
     }
-    const res = await Superagent.post('/api/mailchimp/subscribe').send(data)
+    const res = await Superagent.post('/api/mailbluster/subscribe').send(data)
     if (res.body.status === 200) {
       return {
         message:
@@ -21,8 +21,9 @@ export const submit = async ({ email, firstname, lastname, tags }) => {
 
     if (res.body.status === 202) {
       return {
-        message: 'Success. Please check your email for pending confirmation',
-        type: 'info',
+        message:
+          'Seems like you have already subscribed, Please check your email for pending confirmation',
+        type: 'danger',
       }
     }
 

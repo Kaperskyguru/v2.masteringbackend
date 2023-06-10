@@ -37,13 +37,7 @@
 
           <button
             id="ck_subscribe_button"
-            class="
-              subscribe_button
-              ck_subscribe_button
-              btn-sm-block
-              fields
-              col-md-2 col-sm-12
-            "
+            class="subscribe_button ck_subscribe_button btn-sm-block fields col-md-2 col-sm-12"
             type="submit"
           >
             Get the tips!
@@ -84,18 +78,17 @@ export default {
           email,
           tags: this.tags,
         }
-        const res = await Superagent.post('/api/mailchimp/subscribe').send(data)
+        const res = await Superagent.post('/api/mailbluster/subscribe').send(
+          data
+        )
         if (res.body.status === 200) {
           document.querySelector('#ck_success_msg').style.display = 'block'
           return
-        } else if (res.body.status === 400) {
+        } else {
           document.querySelector('#ck_error_msg').style.display = 'block'
-          document.getElementById('error_message').innerHTML =
-            'Seems like you have already subscribed, You can input another email'
+          document.getElementById('error_message').innerHTML = res.body.message
           return
         }
-        document.querySelector('#ck_error_msg').style.display = 'block'
-        return
       } catch (error) {
         document.querySelector('#ck_error_msg').style.display = 'block'
       }
