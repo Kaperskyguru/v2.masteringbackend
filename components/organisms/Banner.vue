@@ -88,7 +88,7 @@ export default {
     async subscribe() {
       const res = await submit({
         email: this.email,
-        tags: ['Laravel Tips'],
+        tags: ['Laravel Tips', 'Laravel Breeze'],
       })
       this.show = true
 
