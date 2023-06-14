@@ -136,7 +136,12 @@ export default {
     },
 
     image() {
-      return this.post?.image ?? '~/assets/img/image7.png'
+      return (
+        this.post &&
+        (this.post?.image ??
+          this.post?.featured_image?.url ??
+          '~/assets/img/image7.png')
+      )
     },
 
     content() {

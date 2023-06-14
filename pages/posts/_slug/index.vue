@@ -46,6 +46,7 @@ export default {
             author: true,
             tags: true,
             chapter: true,
+            featured_image: true,
             chapters: {
               populate: ['posts'],
             },
@@ -65,13 +66,10 @@ export default {
     },
 
     image() {
-      if (this.post) {
-        if (this.post?.image) {
-          return this.post?.image
-        }
-      }
-
-      return '/img/Base.png'
+      return (
+        this.post &&
+        (this.post?.image ?? this.post?.featured_image?.url ?? '/img/Base.png')
+      )
     },
   },
 

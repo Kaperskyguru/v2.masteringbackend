@@ -47,12 +47,12 @@ export default {
     },
 
     image() {
-      if (this.post) {
-        if (this.post?.image) {
-          return this.post?.image
-        }
-      }
-      return '/img/backend-2023.jpg'
+      return (
+        this.post &&
+        (this.post?.image ??
+          this.post?.featured_image?.url ??
+          '/img/backend-2023.jpg')
+      )
     },
   },
 }

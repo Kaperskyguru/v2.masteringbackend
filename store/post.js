@@ -268,7 +268,7 @@ export const actions = {
     }
   },
 
-  async getPost({ commit }, { slug, populate = {} }) {
+  async getPost({ commit }, { slug, populate = '*' }) {
     // populate[chapters][populate]=posts
 
     const query = qs.stringify(
@@ -312,6 +312,11 @@ function mapPosts(posts) {
         id: tag.id,
         ...tag.attributes,
       })),
+
+      featured_image: {
+        id: post.attributes?.featured_image?.data?.id,
+        ...post.attributes?.featured_image?.data?.attributes,
+      },
       user: {
         id: post.attributes?.user?.data?.id,
         ...post.attributes?.user?.data?.attributes,

@@ -319,6 +319,10 @@ function mapPosts(posts) {
         id: cat.id,
         ...cat.attributes,
       })),
+      featured_image: {
+        id: post.attributes?.featured_image?.data?.id,
+        ...post.attributes?.featured_image?.data?.attributes,
+      },
       tags: post.attributes?.tags?.data?.map((tag) => ({
         id: tag.id,
         ...tag.attributes,
