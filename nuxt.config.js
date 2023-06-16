@@ -354,6 +354,12 @@ export default {
       to: '/posts/getting-started-with-backend-development',
       statusCode: 301,
     },
+
+    {
+      from: '^/posts/laravel-breeze-tutorial-the-definitive-guide(.*)$',
+      to: '/resources/laravel-pdf-resources/laravel-breeze-tutorial-the-definitive-guide',
+      statusCode: 301,
+    },
     {
       from: '^/posts/laravel-framework-the-ultimate-guide-2021(.*)$',
       to: '/posts/laravel-framework-the-ultimate-guide',
