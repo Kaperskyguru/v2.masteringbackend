@@ -27,39 +27,18 @@
                 <input
                   class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                   type="email"
-                  v-model="email"
+                  v-model="user.email"
                   style="border: 2"
                   placeholder="Enter your email address..."
                 />
 
                 <Button
-                  type="button"
-                  @click.prevent="subscribe"
-                  class="col-lg-4 col-12 start-btn py-3 my-2"
+                  type="link"
+                  link="#community"
+                  class="col-lg-4 col-12 start-btn py-3 my-2 text-center"
                 >
                   Try it
                 </Button>
-              </div>
-              <div
-                v-if="res.message || show"
-                class="alert mt-1 fade d-flex font-weight-normal"
-                style="justify-items;: space-between"
-                :class="[`alert-${res.type}`, { show: show }]"
-                role="alert"
-              >
-                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-                <button
-                  v-if="res.message"
-                  type="button"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                  @click="
-                    show = false
-                    res = {}
-                  "
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
             </div>
           </div>
@@ -101,7 +80,7 @@
         <div class="w-75 container mx-auto" id="hero_text">
           <div class="w-75 container mx-auto text-center" id="hero_text">
             <div class="my-5">
-              <h2 class="fw-bold">
+              <h2 class="fw-bold" id="community">
                 ...sharing Backend Engineering Tips and building together
               </h2>
             </div>
@@ -113,16 +92,22 @@
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
               >
-                <form ref="form" class="form-slak">
+                <form
+                  ref="form"
+                  id="form-43ce4e74-ed43-4522-a242-2cb57dd9490f"
+                  action="https://api.encharge.io/v1/forms/43ce4e74-ed43-4522-a242-2cb57dd9490f/submission/plain"
+                  method="POST"
+                >
                   <div class="form-group py-3">
                     <label class="text-dark" for="text">
                       <b>First Name</b>
                     </label>
                     <input
                       v-model="user.firstname"
-                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
+                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 encharge-form-input sc-iwsKbI kzWwaZ"
                       type="text"
-                      name="FNAME"
+                      id="22eaaf53-be82-4357-baa2-5d380b13da83"
+                      name="firstName"
                       placeholder="Enter your firstname"
                       required
                     />
@@ -134,9 +119,10 @@
                     </label>
                     <input
                       v-model="user.lastname"
-                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
+                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 encharge-form-input sc-iwsKbI kzWwaZ"
                       type="text"
-                      name="LNAME"
+                      id="ab5ed185-8e8a-4d5d-a8e0-265940a04a00"
+                      name="lastName"
                       placeholder="Enter your lastname"
                       required
                     />
@@ -147,9 +133,10 @@
                     </label>
                     <input
                       v-model="user.email"
-                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
+                      class="col-lg-8 py-md- col-12 form-control shadow-none fs-5 encharge-form-input sc-iwsKbI kzWwaZ"
                       type="email"
-                      name="EMAIL"
+                      id="f8c0262c-4c73-4449-9f55-cdeaec581d5e"
+                      name="email"
                       required
                       placeholder="Enter your email address"
                     />
@@ -178,11 +165,12 @@
                   <div class="field">
                     <div class="control text-center mt-4">
                       <Button
+                        :waiting="waiting"
                         class="col-lg-4 col-12 start-btn py-3 my-2"
-                        type="submit"
                         @click.prevent="submit"
-                        >Join now</Button
                       >
+                        Join now
+                      </Button>
                     </div>
                   </div>
 
@@ -314,39 +302,18 @@
               <input
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
-                v-model="email"
+                v-model="user.email"
                 style="border: 2"
                 placeholder="Enter your email address..."
               />
 
               <Button
-                type="button"
-                @click.prevent="subscribe"
-                class="col-lg-4 col-12 start-btn py-3 my-2"
+                type="link"
+                link="#community"
+                class="col-lg-4 col-12 start-btn py-3 my-2 text-center"
               >
                 Try it
               </Button>
-            </div>
-            <div
-              v-if="res.message || show"
-              class="alert mt-1 fade d-flex font-weight-normal"
-              style="justify-items;: space-between"
-              :class="[`alert-${res.type}`, { show: show }]"
-              role="alert"
-            >
-              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-              <button
-                v-if="res.message"
-                type="button"
-                data-dismiss="alert"
-                aria-label="Close"
-                @click="
-                  show = false
-                  res = {}
-                "
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
           </div>
         </div>
@@ -361,13 +328,13 @@ import { join } from '~/helpers/slack'
 export default {
   name: 'CommunityPage',
   data: () => ({
-    user: { firstname: '', lastname: '' },
-    email: '',
+    user: { firstname: '', lastname: '', email: '' },
     res: {},
     show: false,
     show1: false,
     slackMessage: {},
     newsletter: true,
+    waiting: false,
   }),
 
   computed: {
@@ -385,17 +352,21 @@ export default {
         tags: ['community'].push(...(data?.tags ?? [])),
       })
       this.show = true
-
       this.res = res
     },
 
     async submit() {
+      this.waiting = true
       if (this.validateEmail(this.user.email)) {
-        if (this.newsletter) {
-          await this.joinSlack()
-          await this.subscribe({ tags: ['slack'] })
-        } else await this.joinSlack()
+        if (!this.newsletter) {
+          return await this.joinSlack()
+        }
+
+        await this.joinSlack()
+        this.suscribeNewsletter()
       } else this.error = true
+
+      this.waiting = false
     },
 
     async joinSlack() {

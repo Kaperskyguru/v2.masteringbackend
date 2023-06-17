@@ -528,7 +528,6 @@
             <Button
               appearance="purple"
               class="col-12 py-3 my-2 fw-bold"
-              type="submit"
               @click.prevent="subscribe"
               >Join the waiting list</Button
             >

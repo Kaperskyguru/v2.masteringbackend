@@ -4,10 +4,12 @@
       v-if="!link.includes('http')"
       :to="link"
       :class="classNames"
+      :disabled="disabled || waiting"
+      :aria-label="waiting ? 'Please wait…' : undefined"
       :style="customStyle"
-      class="btn"
+      class="btn text-white"
       ><div v-if="waiting" class="custom-icon" role="presentation">
-        <!-- <SvgLoader class="-my-px" /> -->
+        <SvgLoader class="-my-px" />
       </div>
 
       <template v-else>
@@ -21,12 +23,14 @@
       v-else
       :style="customStyle"
       v-bind="$attrs"
+      :disabled="disabled || waiting"
+      :aria-label="waiting ? 'Please wait…' : undefined"
       target="_blank"
       :class="classNames"
-      class="btn"
+      class="btn text-white"
     >
       <div v-if="waiting" class="custom-icon" role="presentation">
-        <!-- <SvgLoader class="-my-px" /> -->
+        <SvgLoader class="-my-px" />
       </div>
 
       <template v-else>
@@ -39,16 +43,17 @@
   </div>
   <button
     v-else
-    class="btn"
-    type="button"
+    class="btn text-white"
     v-bind="$attrs"
     :class="classNames"
     :style="customStyle"
+    :disabled="disabled || waiting"
+    :aria-label="waiting ? 'Please wait…' : undefined"
     v-on="$listeners"
     style="outline: none !important"
   >
     <div v-if="waiting" class="custom-icon" role="presentation">
-      <!-- <SvgLoader class="-my-px" /> -->
+      <SvgLoader class="-my-px" />
     </div>
 
     <template v-else>
@@ -61,9 +66,14 @@
 </template>
 
 <script>
+import SvgLoader from '~/assets/img/loader.svg?inline'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Button',
+
+  components: {
+    SvgLoader,
+  },
 
   props: {
     appearance: {
@@ -329,5 +339,17 @@ export default {
 
 button:active {
   outline: none;
+}
+
+.custom-icon:not(:only-child) {
+  margin-left: 0.9375em;
+  margin-top: -1px;
+  margin-bottom: -2px;
+}
+
+.custom-icon > svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: currentColor;
 }
 </style>
