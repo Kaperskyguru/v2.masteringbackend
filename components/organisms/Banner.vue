@@ -29,45 +29,31 @@
             </div>
           </div>
           <!-- ---------------input--------------------------------------------- -->
-          <div class="col-md-8">
-            <div class="input-group mt-4 py-4">
-              <input
-                class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                type="email"
-                v-model="email"
-                style="border: 2"
-                placeholder="Enter your email address..."
-              />
 
-              <Button
-                @click.prevent="subscribe"
-                type="button"
-                class="col-lg-4 col-12 start-btn py-3 my-2"
-              >
-                Get the Guide
-              </Button>
-            </div>
-            <div
-              v-if="res.message || show"
-              class="alert mt-1 fade d-flex font-weight-normal"
-              style="justify-items;: space-between"
-              :class="[`alert-${res.type}`, { show: show }]"
-              role="alert"
+          <div class="col-md-8">
+            <form
+              id="form-607bce50-9e43-4d2d-87d5-7bfb30cc5b00"
+              action="https://api.encharge.io/v1/forms/607bce50-9e43-4d2d-87d5-7bfb30cc5b00/submission/plain"
+              method="POST"
             >
-              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-              <button
-                v-if="res.message"
-                type="button"
-                data-dismiss="alert"
-                aria-label="Close"
-                @click="
-                  show = false
-                  res = {}
-                "
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+              <div class="input-group mt-4 py-4">
+                <input
+                  class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
+                  type="email"
+                  id="2bddc629-7e6f-4d94-9a84-49dd84483fb5"
+                  name="email"
+                  style="border: 2"
+                  placeholder="Enter your email address..."
+                />
+
+                <Button
+                  type="submit"
+                  class="col-lg-4 col-12 start-btn py-3 my-2"
+                >
+                  Get the Guide
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
