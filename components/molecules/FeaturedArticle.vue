@@ -67,6 +67,7 @@ export default {
 
   computed: {
     image() {
+      console.log(this.post)
       return (
         this.post &&
         (this.post?.image ??
@@ -91,13 +92,13 @@ export default {
 
     get2Paragraphs() {
       const arr = this.paragraphs()
-      if (!arr.length) return
+      if (!arr.length < 3) return
       return arr[1][0] + arr[2][0]
     },
 
     getLastParagraph() {
       const arr = this.paragraphs()
-      if (!arr.length) return
+      if (!arr.length < 4) return
       return arr[3][0]
     },
 

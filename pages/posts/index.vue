@@ -29,7 +29,7 @@ export default {
       let posts = await getPosts()
       if (!posts?.length) {
         const data = {
-          populate: 'author,categories',
+          populate: 'author,categories,featured_image',
           page: query.page ? query.page : 1,
           count: 22,
         }
@@ -47,7 +47,7 @@ export default {
   methods: {
     async searchPosts(search) {
       const data = {
-        ppopulate: 'author,categories',
+        ppopulate: 'author,categories,featured_image',
         search,
       }
       const posts = await this.$store.dispatch('post/filterPosts', data)
@@ -56,7 +56,7 @@ export default {
     infiniteScroll($state) {
       setTimeout(async () => {
         const data = {
-          ppopulate: 'author,categories',
+          ppopulate: 'author,categories,featured_image',
           page: this.page,
           count: 22,
         }
