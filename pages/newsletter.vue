@@ -26,6 +26,7 @@
                   type="email"
                   v-model="email"
                   style="border: 2"
+                  required
                   placeholder="Enter your email address..."
                 />
 
@@ -86,6 +87,7 @@
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
                 style="border: 2"
+                required
                 v-model="email"
                 placeholder="Enter your email address..."
               />

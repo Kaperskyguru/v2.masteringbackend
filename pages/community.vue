@@ -28,6 +28,7 @@
                   class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                   type="email"
                   v-model="user.email"
+                  required
                   style="border: 2"
                   placeholder="Enter your email address..."
                 />
@@ -303,6 +304,7 @@
                 class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                 type="email"
                 v-model="user.email"
+                required
                 style="border: 2"
                 placeholder="Enter your email address..."
               />

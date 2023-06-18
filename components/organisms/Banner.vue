@@ -43,6 +43,7 @@
                   id="2bddc629-7e6f-4d94-9a84-49dd84483fb5"
                   name="email"
                   style="border: 2"
+                  required
                   placeholder="Enter your email address..."
                 />
 
