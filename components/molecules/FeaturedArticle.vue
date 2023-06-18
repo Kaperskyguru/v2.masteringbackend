@@ -22,19 +22,14 @@
           >
             <p class="lh-md fs-5" v-html="getFirstParagraph()"></p>
           </div>
-          <div class="row">
-            <div class="col-lg-10 col-md-12 mx-lg-auto">
-              <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                  <p class="lh-md fs-5" v-html="get2Paragraphs()"></p>
-                </div>
-                <div class="col-lg-4 col-md-10 col-sm-10">
-                  <img
-                    class="img-fluid car-img"
-                    :src="image"
-                    :alt="post.title"
-                  />
-                </div>
+
+          <div class="col-lg-10 col-md-12 mx-lg-auto">
+            <div class="row justify-content-between">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <p class="lh-md fs-5" v-html="get2Paragraphs()"></p>
+              </div>
+              <div class="col-lg-4 featured_image col-md-10 col-sm-10">
+                <img class="img-fluid car-img" :src="image" :alt="post.title" />
               </div>
             </div>
           </div>
@@ -92,12 +87,17 @@ export default {
     get2Paragraphs() {
       const arr = this.paragraphs()
       if (!arr.length) return
-      return arr[1][0] + arr[2][0]
+
+      if (arr[1] && !arr[2]) return arr[1][0]
+
+      if (arr[1] && arr[2]) return arr[1][0] + arr[2][0]
     },
 
     getLastParagraph() {
       const arr = this.paragraphs()
       if (!arr.length) return
+
+      if (!arr[3]) return
       return arr[3][0]
     },
 
@@ -134,19 +134,25 @@ export default {
   color: #fff;
 }
 
-.car-img {
-  width: 400px;
-}
-
 @media screen and (max-width: 576px) {
   .pattern {
     display: none;
   }
 }
 
+@media screen and ((min-width: 992px)) {
+  .featured_image {
+    width: 50% !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .pattern {
     display: none;
+  }
+
+  .featured_image {
+    width: 100% !important;
   }
 }
 </style>
