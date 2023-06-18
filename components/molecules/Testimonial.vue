@@ -45,7 +45,7 @@ export default {
           return this.testimonial?.image
         }
       }
-      return '/img/Base.png'
+      return '/img/backend-2023.jpg'
     },
 
     feedback() {

@@ -68,7 +68,9 @@ export default {
     image() {
       return (
         this.post &&
-        (this.post?.image ?? this.post?.featured_image?.url ?? '/img/Base.png')
+        (this.post?.image ??
+          this.post?.featured_image?.url ??
+          '/img/backend-2023.jpg')
       )
     },
   },
