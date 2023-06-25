@@ -357,7 +357,7 @@ export default {
 
     {
       from: '^/posts/laravel-breeze-tutorial-the-definitive-guide(.*)$',
-      to: '/resources/laravel-pdf-resources/laravel-breeze-tutorial-the-definitive-guide',
+      to: '/resources/laravel/laravel-breeze-tutorial-the-definitive-guide',
       statusCode: 301,
     },
     {
