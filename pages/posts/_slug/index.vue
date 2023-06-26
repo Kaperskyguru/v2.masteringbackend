@@ -84,7 +84,7 @@ export default {
     BASE_URL: process.env.BASE_URL || 'https://masteringbackend.com',
   }),
 
-  async mounted() {
+  mounted() {
     this.displayNewsletterBackend()
     this.displayNewsletterLaravel()
     // await this.getChapter()
