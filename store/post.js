@@ -365,6 +365,9 @@ function mapPosts(posts) {
       chapter: {
         id: post.attributes?.chapter?.data?.id,
         ...post.attributes?.chapter?.data?.attributes,
+        post: {
+          ...post.attributes?.chapter?.data?.attributes.post?.data?.attributes,
+        },
       },
     }
   })

@@ -45,10 +45,16 @@ export default {
             categories: true,
             author: true,
             tags: true,
-            chapter: true,
+            chapter: {
+              populate: {
+                post: {
+                  fields: ['slug', 'title'],
+                },
+              },
+            },
             featured_image: true,
             chapters: {
-              populate: ['posts', '*'],
+              populate: ['posts'],
             },
           },
         })
@@ -66,7 +72,7 @@ export default {
     },
 
     isDefinitiveGuide() {
-      return this.post.type === 'definitive' && !this.post.is_public
+      return this.post.type === 'definitive' && this.post?.chapters?.length > 0
     },
 
     image() {
@@ -87,29 +93,9 @@ export default {
   mounted() {
     this.displayNewsletterBackend()
     this.displayNewsletterLaravel()
-    // await this.getChapter()
   },
 
   methods: {
-    async getChapter() {
-      const chapter = await this.$store.dispatch('post/getChapter', {
-        slug: this.post.chapter.slug,
-        populate: {
-          post: true,
-          // categories: true,
-          // author: true,
-          // tags: true,
-          chapter: true,
-          // featured_image: true,
-          // chapters: {
-          //   populate: ['posts', '*'],
-        },
-      })
-
-      console.log(chapter)
-
-      // let post = await getPost(params.slug)
-    },
     stripTags(text) {
       if (text) {
         return text.replace(/(<([^>]+)>)/gi, '')

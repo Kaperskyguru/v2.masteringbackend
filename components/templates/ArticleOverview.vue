@@ -1,11 +1,18 @@
 <template>
   <span v-if="post">
     <ArticleHeader :post="post" />
+
     <section class="pt-5" style="background-color: white">
       <div class="container mx-auto">
         <div class="row m-0">
           <div class="col-md-12">
             <div id="article" class="container mx-auto w-md-100 w-75">
+              <section v-if="isASeries" class="alert alert-primary">
+                this post belongs to
+                <nuxt-link :to="`/posts/${parentPostSlug}#${chapter.slug}`"
+                  >"{{ parentPostTitle }}" series</nuxt-link
+                >
+              </section>
               <ReadArticle :post="post" />
               <div
                 class="py-2 d-flex flex-column flex-md-row my-5"
@@ -87,6 +94,22 @@ export default {
 
     color() {
       return utils.color(this.post.color)
+    },
+
+    isASeries() {
+      return this.post.type === 'definitive' && this.post?.chapter
+    },
+
+    parentPostTitle() {
+      return this.post?.chapter?.post?.title ?? ''
+    },
+
+    parentPostSlug() {
+      return this.post?.chapter?.post?.slug ?? ''
+    },
+
+    chapter() {
+      return this.post?.chapter
     },
   },
 
