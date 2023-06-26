@@ -4,12 +4,13 @@
     <section style="background-color: #f7f5fa">
       <div class="container mx-auto">
         <div class="row d-flex align-items-center justify-content-between">
-          <div class="col-lg-6 position-relative w-50" style="">
+          <div id="chapter" class="col-lg-6 position-relative w-50" style="">
             <h1
-              class="title__text py-4"
+              class="title__text py-4 px-2"
               style="font-size: 52px; font-weight: 800; line-height: 62px"
             >
-              Build Real-world Projects while learning Backend Engineering.
+              Build Real-world Projects while learning Backend
+              <span class="hide"> Engineering.</span>
             </h1>
 
             <p class="title__subtext fs-4">
@@ -28,8 +29,8 @@
             </p>
             <div class="gradient"></div>
           </div>
-          <div class="col-lg-6 ml-auto p-2">
-            <div class="container mx-auto w-75">
+          <div class="col-lg-6 ml-auto p-2 col-sm-12">
+            <div id="chapter" class="container mx-auto w-75">
               <div
                 class="shadow border p-4 my-4"
                 style="background-color: white"
@@ -261,6 +262,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@media (max-width: 991.98px) {
+  #chapter {
+    width: 100% !important;
+  }
+  .hide {
+    display: none;
+  }
+}
+
+.hide {
+  display: inline;
+}
 </style>
 

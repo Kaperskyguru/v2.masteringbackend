@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3 left-col">
+  <div class="left-col">
     <p class="fs-6 py-1 text-uppercase" :style="{ color: `${color}` }">
       {{ outlines.length }} Resources
     </p>

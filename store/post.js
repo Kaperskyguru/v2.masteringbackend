@@ -296,6 +296,36 @@ export const actions = {
     }
   },
 
+  async getChapter({ commit }, { slug, populate = '*' }) {
+    // populate[chapters][populate]=posts
+
+    const query = qs.stringify(
+      {
+        populate,
+      },
+      {
+        encodeValuesOnly: true, // prettify URL
+      }
+    )
+
+    try {
+      const res = await this.$axios.get(
+        `/chapters/?filters[slug][$eq]=${slug}&${query}`
+      )
+
+      const { data } = res
+
+      if (data?.data?.length) {
+        // console.log(data)
+
+        // commit('setPost', mapPosts(data.data)[0])
+        return data.data
+      }
+    } catch (error) {
+      commit('setPostState', 'error')
+    }
+  },
+
   getLatestPosts({ commit }, page = 1, perPage = 3) {},
 }
 

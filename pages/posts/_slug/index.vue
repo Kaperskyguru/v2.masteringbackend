@@ -1,6 +1,6 @@
 <template>
   <span v-if="post" class="position-relative">
-    <DefinitiveArticleOverview v-if="post.type === 'definitive'" :post="post" />
+    <DefinitiveArticleOverview v-if="isDefinitiveGuide" :post="post" />
     <ArticleOverview v-else :post="post" />
 
     <div class="sharebox shadow rounded border">
@@ -48,7 +48,7 @@ export default {
             chapter: true,
             featured_image: true,
             chapters: {
-              populate: ['posts'],
+              populate: ['posts', '*'],
             },
           },
         })
@@ -63,6 +63,10 @@ export default {
   computed: {
     color() {
       return utils.color(this.post.color)
+    },
+
+    isDefinitiveGuide() {
+      return this.post.type === 'definitive' && !this.post.is_public
     },
 
     image() {
@@ -80,12 +84,32 @@ export default {
     BASE_URL: process.env.BASE_URL || 'https://masteringbackend.com',
   }),
 
-  mounted() {
+  async mounted() {
     this.displayNewsletterBackend()
     this.displayNewsletterLaravel()
+    // await this.getChapter()
   },
 
   methods: {
+    async getChapter() {
+      const chapter = await this.$store.dispatch('post/getChapter', {
+        slug: this.post.chapter.slug,
+        populate: {
+          post: true,
+          // categories: true,
+          // author: true,
+          // tags: true,
+          chapter: true,
+          // featured_image: true,
+          // chapters: {
+          //   populate: ['posts', '*'],
+        },
+      })
+
+      console.log(chapter)
+
+      // let post = await getPost(params.slug)
+    },
     stripTags(text) {
       if (text) {
         return text.replace(/(<([^>]+)>)/gi, '')

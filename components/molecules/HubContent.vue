@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-
+<style scoped>
 figure iframe {
   width: 100%;
   height: 400px !important;

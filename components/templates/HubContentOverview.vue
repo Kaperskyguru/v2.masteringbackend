@@ -8,7 +8,7 @@
 
       <div class="container">
         <div class="row Resources pt-4 p-0 m-0">
-          <div class="pt-4 col-md-3">
+          <div class="py-4 col-md-3 w100">
             <Outline :color="color" :outlines="outlines" />
           </div>
 
