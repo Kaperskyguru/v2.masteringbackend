@@ -75,7 +75,7 @@ export default {
 
     image() {
       return (
-        this.chapter?.design_url ??
+        this.hub?.design_url ??
         'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png'
       )
     },

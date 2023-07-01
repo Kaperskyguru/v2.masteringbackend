@@ -1,9 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <main class="hero__grid">
-    <!-- <HubContentOverview v-if="post" :post="post" :chapter="chapter" />
-    <ChapterContentOverview v-else :post="post" :chapter="chapter" /> -->
-
     <ResourceOverview :post="post" :chapter="chapter" />
   </main>
 </template>
