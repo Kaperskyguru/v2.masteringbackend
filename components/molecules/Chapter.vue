@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-white mb-5">
+  <div class="row bg-white mb-5 shadow">
     <div
       class="col-xl-3 col-lg-12 text-center text-white"
       :style="{ backgroundColor: `${color}` }"

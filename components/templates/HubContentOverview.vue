@@ -3,7 +3,7 @@
   <main>
     <HubBanner :chapter="chapter" :color="color" />
 
-    <section class="" style="background-color: #fff">
+    <section class="main" style="background-color: #fff">
       <Breadcrumb :hub="hub" :color="color" :chapter="chapter" :post="post" />
 
       <div class="container">

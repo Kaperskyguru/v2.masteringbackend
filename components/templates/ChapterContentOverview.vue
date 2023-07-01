@@ -10,8 +10,9 @@
       <Breadcrumb :hub="hub" :color="color" :chapter="chapter" :post="post" />
       <div class="container">
         <div class="row Resources mt-4">
-          <Outline :color="color" :outlines="outlines" />
-
+          <div class="py-4 col-md-3 w100">
+            <Outline :color="color" :outlines="outlines" />
+          </div>
           <HubContent :post="chapter" is-chapter :color="color" />
         </div>
       </div>
