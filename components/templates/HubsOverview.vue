@@ -82,7 +82,10 @@
                         }}
                       </span>
                     </h5>
-                    <div class="d-flex flex-column justify-content-between">
+                    <div
+                      class="d-flex flex-column justify-content-between overflow-auto"
+                      style="height: 300px"
+                    >
                       <div
                         v-for="(chapter, index) in hub.chapters"
                         :key="index"
