@@ -76,9 +76,8 @@
                     <path d="M16 12l-6 6V6z" />
                   </svg>
 
-                  <span class="flex-fill">{{ outline }}</span></nuxt-link
-                ></span
-              >
+                  <span class="flex-fill" v-html="outline"></span></nuxt-link
+              ></span>
             </p>
           </span>
 
@@ -132,7 +131,9 @@ export default {
 
     outlines() {
       const outline = this.chapter.content
-      const out = outline?.split('\n')
+      const out = outline
+        ?.split(/<[a-zA-Z0-9]*>([^<.*>;]*)<\/[a-zA-Z0-9]*>/gim)
+        .filter((x) => x.trim() !== '')
       return Array.isArray(out) ? out : []
     },
 
