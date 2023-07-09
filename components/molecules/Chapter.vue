@@ -56,7 +56,11 @@
             <span v-else> {{ postCount }} Resources </span>
           </h5>
 
-          <span v-if="isPDF">
+          <span
+            v-if="isPDF"
+            class="overflow-auto d-flex flex-column justify-content-between"
+            style="height: 300px"
+          >
             <p v-for="(outline, i) in outlines" :key="i">
               <span class=""
                 ><nuxt-link
