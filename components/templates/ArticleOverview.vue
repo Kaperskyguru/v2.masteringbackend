@@ -43,7 +43,7 @@
                       backgroundColor: `#633db5`,
                       color: '#fff',
                     }"
-                    >Click here to download</Button
+                    >Click here to read now</Button
                   >
                 </div>
               </div>
