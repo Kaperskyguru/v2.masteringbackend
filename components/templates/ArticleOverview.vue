@@ -7,20 +7,47 @@
         <div class="row m-0">
           <div class="col-md-12">
             <div id="article" class="container mx-auto w-md-100 w-75">
-              <section v-if="isASeries" class="alert alert-primary">
-                This post is part of the
-                <nuxt-link :to="`/posts/${parentPostSlug}#${chapter.slug}`"
-                  >"{{ parentPostTitle }}"</nuxt-link
-                >series
-              </section>
+              <div class="text-center text-white mt-4" v-if="isASeries">
+                <div
+                  class="text-black shadow-sm"
+                  :style="{
+                    backgroundColor: `rgb(244, 244, 246)`,
+                  }"
+                >
+                  <p class="py-3">
+                    This post is part of the
+                    <nuxt-link :to="generateURL"
+                      >"{{ parentPostTitle }}"</nuxt-link
+                    >
+                    series
+                  </p>
+                </div>
+              </div>
+
               <ReadArticle :post="post" />
 
-              <section v-if="isASeries" class="alert alert-primary">
-                This post is part of the
-                <nuxt-link :to="`/posts/${parentPostSlug}#${chapter.slug}`"
-                  >"{{ parentPostTitle }}"</nuxt-link
-                >series
-              </section>
+              <div class="text-center text-white my-5" v-if="isASeries">
+                <div
+                  class="position-relative"
+                  :style="{ backgroundColor: `#5227AD`, padding: '5rem' }"
+                  id="notify"
+                >
+                  <h3 class="fs-2 py-4">Read Full "{{ parentPostTitle }}"</h3>
+                  <p class="fs-5" v-html="getPostExcerpt"></p>
+                  <Button
+                    appearance="primary"
+                    size="large"
+                    type="link"
+                    :link="generateURL"
+                    :custom-style="{
+                      backgroundColor: `#633db5`,
+                      color: '#fff',
+                    }"
+                    >Click here to download</Button
+                  >
+                </div>
+              </div>
+
               <div
                 class="py-2 d-flex flex-column flex-md-row my-5"
                 style="justify-content: space-between"
@@ -104,15 +131,23 @@ export default {
     },
 
     isASeries() {
-      return this.post.type === 'definitive' && this.post?.chapter
+      return this.post.type === 'definitive' && this.chapter
+    },
+
+    getPostExcerpt() {
+      return this.chapter?.post?.excerpt ?? ''
+    },
+
+    generateURL() {
+      return `/posts/${this.parentPostSlug}#${this.chapter.slug}`
     },
 
     parentPostTitle() {
-      return this.post?.chapter?.post?.title ?? ''
+      return this.chapter?.post?.title ?? ''
     },
 
     parentPostSlug() {
-      return this.post?.chapter?.post?.slug ?? ''
+      return this.chapter?.post?.slug ?? '#'
     },
 
     chapter() {
@@ -135,5 +170,30 @@ export default {
   .newletter-box {
     display: none;
   }
+}
+
+#notify::after {
+  border-width: 0 0 100px 100px;
+  border-color: transparent transparent #fff transparent;
+
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+#notify::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100px 100px 0 0;
+  border-color: #000 transparent transparent transparent;
 }
 </style>

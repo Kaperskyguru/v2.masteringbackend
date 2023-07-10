@@ -51,7 +51,7 @@ export default {
                   fields: ['slug'],
                 },
                 post: {
-                  fields: ['slug', 'title'],
+                  fields: ['slug', 'title', 'excerpt'],
                 },
               },
             },
