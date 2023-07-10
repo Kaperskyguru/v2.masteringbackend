@@ -8,12 +8,19 @@
           <div class="col-md-12">
             <div id="article" class="container mx-auto w-md-100 w-75">
               <section v-if="isASeries" class="alert alert-primary">
-                this post belongs to
+                This post is part of the
                 <nuxt-link :to="`/posts/${parentPostSlug}#${chapter.slug}`"
-                  >"{{ parentPostTitle }}" series</nuxt-link
-                >
+                  >"{{ parentPostTitle }}"</nuxt-link
+                >series
               </section>
               <ReadArticle :post="post" />
+
+              <section v-if="isASeries" class="alert alert-primary">
+                This post is part of the
+                <nuxt-link :to="`/posts/${parentPostSlug}#${chapter.slug}`"
+                  >"{{ parentPostTitle }}"</nuxt-link
+                >series
+              </section>
               <div
                 class="py-2 d-flex flex-column flex-md-row my-5"
                 style="justify-content: space-between"

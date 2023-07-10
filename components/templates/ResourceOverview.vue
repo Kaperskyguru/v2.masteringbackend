@@ -249,7 +249,6 @@ export default {
     },
 
     enchargeTag() {
-      console.log(this.chapter)
       return this.chapter?.encharge_tag ?? ''
     },
     title() {

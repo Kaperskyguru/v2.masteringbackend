@@ -47,6 +47,9 @@ export default {
             tags: true,
             chapter: {
               populate: {
+                hub: {
+                  fields: ['slug'],
+                },
                 post: {
                   fields: ['slug', 'title'],
                 },

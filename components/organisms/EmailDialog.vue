@@ -90,7 +90,6 @@ export default {
     },
 
     set(value) {
-      console.log('asa')
       this.$emit('update:visible', value)
     },
   },

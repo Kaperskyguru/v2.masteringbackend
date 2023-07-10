@@ -11,45 +11,24 @@ export const color = (color) => {
   return mixedColor
 }
 
-export const substack = (email) => {
-  // return
-  // if (!email) return false
-  // const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  // if (!re.test(email)) return false
-  // const baseURL = process.env.SUBSTACK ?? 'https://kaperskyguru.substack.com'
-  // const form = document.createElement('form')
-  // form.setAttribute('method', 'post')
-  // form.setAttribute('action', `${baseURL}/api/v1/free?nojs=true`)
-  // form.style.visibility = 'hidden'
-  // // Create an input element for Full Name
-  // const emailField = document.createElement('input')
-  // emailField.setAttribute('type', 'email')
-  // emailField.setAttribute('name', 'email')
-  // emailField.setAttribute('value', email)
-  // emailField.setAttribute('placeholder', 'Type your email…')
-  // form.appendChild(emailField)
-  // document.body.appendChild(form)
-  // form.submit()
-  // const data = {
-  //   email,
-  // }
-  // fetch('https://us-central1-substackapi.cloudfunctions.net/subscribe', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({
-  //     email: 'testmaster@gmail.com',
-  //     domain: 'kaperskyguru.substack.com',
-  //   }),
-  // })
-  //   .then(function (e) {
-  //     return e.json()
-  //   })
-  //   .catch(function (e) {
-  //     console.log(e)
-  //   })
-  // const res = await Superagent.post('/api/substack/subscribe').send(data)
-  // console.log(res)
+export const resolveChapters = (chapters) => {
+  return chapters?.map((chapter) => {
+    return {
+      id: chapter.id,
+      ...chapter.attributes,
+      posts: resolvePosts(chapter?.attributes?.posts?.data ?? []),
+      post: {
+        ...chapter?.attributes.post?.data?.attributes,
+      },
+      hub: {
+        id: chapter.attributes?.hub?.data?.id,
+        ...chapter.attributes?.hub?.data?.attributes,
+      },
+    }
+  })
 }
+
+export const substack = (email) => {}
 
 export const getPosts = async () => {
   try {
@@ -88,7 +67,7 @@ export const getJobs = async () => {
   }
 }
 
-function mapPosts(posts) {
+export const resolvePosts = (posts) => {
   return posts?.map((post) => {
     return {
       id: post.id,
@@ -101,6 +80,10 @@ function mapPosts(posts) {
         id: tag.id,
         ...tag.attributes,
       })),
+      featured_image: {
+        id: post.attributes?.featured_image?.data?.id,
+        ...post.attributes?.featured_image?.data?.attributes,
+      },
       user: {
         id: post.attributes?.user?.data?.id,
         ...post.attributes?.user?.data?.attributes,
@@ -110,15 +93,20 @@ function mapPosts(posts) {
         ...post.attributes?.author?.data?.attributes,
       },
 
-      chapters: post.attributes?.chapters?.data?.map((chapter) => ({
-        id: chapter.id,
-        ...chapter.attributes,
-        posts: mapPosts(chapter?.attributes?.posts?.data ?? []),
-      })),
+      chapters: resolveChapters(post.attributes?.chapters?.data),
 
       chapter: {
         id: post.attributes?.chapter?.data?.id,
         ...post.attributes?.chapter?.data?.attributes,
+
+        hub: {
+          id: post?.attributes?.chapter?.data?.attributes?.hub?.data?.id,
+          ...post?.attributes?.chapter?.data?.attributes?.hub?.data?.attributes,
+        },
+
+        post: {
+          ...post.attributes?.chapter?.data?.attributes.post?.data?.attributes,
+        },
       },
     }
   })

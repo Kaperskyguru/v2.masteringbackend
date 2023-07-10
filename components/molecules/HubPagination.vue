@@ -37,7 +37,6 @@ export default {
     },
 
     chapterSlug() {
-      console.log(this.$route)
       return this.chapter?.slug ?? ''
     },
     next() {

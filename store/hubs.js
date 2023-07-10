@@ -1,3 +1,4 @@
+import { resolveChapters, resolvePosts } from '../helpers/utils'
 export const state = () => ({
   hubState: 1, // ENUM.INIT,
   hubs: [],
@@ -265,20 +266,6 @@ export const actions = {
   },
 
   getChapters({ commit }, page = 1, perPage = 3) {},
-  //   async getChapter({ commit }, slug) {
-  //     try {
-  //       const res = await this.$axios.get(`/hubs/?filters[slug][$eq]=${slug}`)
-
-  //       const { data } = res
-
-  //       if (data?.data?.length) {
-  //         commit('setChapters', mapHubs(data.data)[0])
-  //         return mapHubs(data.data)[0]
-  //       }
-  //     } catch (error) {
-  //       commit('setHubState', 'error')
-  //     }
-  //   },
 }
 
 function mapHubs(hubs) {
@@ -290,51 +277,12 @@ function mapHubs(hubs) {
       chapters: hub.attributes?.chapters?.data?.map((chapter) => ({
         id: chapter.id,
         ...chapter.attributes,
-        posts: mapPosts(chapter?.attributes?.posts?.data ?? []),
+        posts: resolvePosts(chapter?.attributes?.posts?.data ?? []),
       })),
     }
   })
 }
 
 function mapChapters(chapters) {
-  return chapters?.map((chapter) => {
-    return {
-      id: chapter.id,
-      ...chapter.attributes,
-      posts: mapPosts(chapter?.attributes?.posts?.data ?? []),
-      hub: {
-        id: chapter.attributes?.hub?.data?.id,
-        ...chapter.attributes?.hub?.data?.attributes,
-      },
-    }
-  })
-}
-
-function mapPosts(posts) {
-  return posts?.map((post) => {
-    return {
-      id: post.id,
-      ...post.attributes,
-      categories: post.attributes?.categories?.data?.map((cat) => ({
-        id: cat.id,
-        ...cat.attributes,
-      })),
-      featured_image: {
-        id: post.attributes?.featured_image?.data?.id,
-        ...post.attributes?.featured_image?.data?.attributes,
-      },
-      tags: post.attributes?.tags?.data?.map((tag) => ({
-        id: tag.id,
-        ...tag.attributes,
-      })),
-      chapter: {
-        id: post.attributes?.chapter?.data?.id,
-        ...post.attributes?.chapter?.data?.attributes,
-      },
-      user: {
-        id: post.attributes?.user?.data?.id,
-        ...post.attributes?.user?.data?.attributes,
-      },
-    }
-  })
+  return resolveChapters(chapters)
 }

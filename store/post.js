@@ -5,6 +5,7 @@
 // import DevtoPost from '~/Services/DevtoPosts'
 // import LogRocketPosts from '~/Services/LogRocketPosts'
 import qs from 'qs'
+import { resolvePosts } from '../helpers/utils'
 
 export const state = () => ({
   postState: 1, // ENUM.INIT,
@@ -316,8 +317,6 @@ export const actions = {
       const { data } = res
 
       if (data?.data?.length) {
-        // console.log(data)
-
         // commit('setPost', mapPosts(data.data)[0])
         return data.data
       }
@@ -330,45 +329,5 @@ export const actions = {
 }
 
 function mapPosts(posts) {
-  return posts?.map((post) => {
-    return {
-      id: post.id,
-      ...post.attributes,
-      categories: post.attributes?.categories?.data?.map((cat) => ({
-        id: cat.id,
-        ...cat.attributes,
-      })),
-      tags: post.attributes?.tags?.data?.map((tag) => ({
-        id: tag.id,
-        ...tag.attributes,
-      })),
-
-      featured_image: {
-        id: post.attributes?.featured_image?.data?.id,
-        ...post.attributes?.featured_image?.data?.attributes,
-      },
-      user: {
-        id: post.attributes?.user?.data?.id,
-        ...post.attributes?.user?.data?.attributes,
-      },
-      author: {
-        id: post.attributes?.author?.data?.id,
-        ...post.attributes?.author?.data?.attributes,
-      },
-
-      chapters: post.attributes?.chapters?.data?.map((chapter) => ({
-        id: chapter.id,
-        ...chapter.attributes,
-        posts: mapPosts(chapter?.attributes?.posts?.data ?? []),
-      })),
-
-      chapter: {
-        id: post.attributes?.chapter?.data?.id,
-        ...post.attributes?.chapter?.data?.attributes,
-        post: {
-          ...post.attributes?.chapter?.data?.attributes.post?.data?.attributes,
-        },
-      },
-    }
-  })
+  return resolvePosts(posts)
 }
