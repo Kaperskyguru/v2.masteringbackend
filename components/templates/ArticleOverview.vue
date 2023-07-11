@@ -131,7 +131,10 @@ export default {
     },
 
     isASeries() {
-      return this.post.type === 'definitive' && this.chapter
+      return (
+        (this.post.type === 'definitive' || this.post.type === 'hub') &&
+        this.chapter
+      )
     },
 
     getPostExcerpt() {
