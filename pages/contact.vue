@@ -4,7 +4,7 @@
     <section class="p-3 text-center">
       <PageTitle>
         <template #title>
-          <h3 class="sponsor-header-text text-uppercase fw-bold">Contact us</h3>
+          <h1 class="sponsor-header-text text-uppercase fw-bold">Contact us</h1>
         </template>
       </PageTitle>
     </section>

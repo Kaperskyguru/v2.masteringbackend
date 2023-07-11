@@ -33,9 +33,9 @@
     <section class="p-3 sponsors text-center">
       <PageTitle>
         <template #title>
-          <h3 class="sponsor-header-text mb-5 text-uppercase fw-bold">
+          <h2 class="sponsor-header-text mb-5 text-uppercase fw-bold">
             As seen on:
-          </h3>
+          </h2>
         </template>
       </PageTitle>
       <Sponsors />

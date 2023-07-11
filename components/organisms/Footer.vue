@@ -68,13 +68,13 @@
         </div>
       </div>
       <div class="col-md-8">
-        <ul>
+        <div>
           <a href="/terms-and-conditions">Terms and Conditions</a>
           |&nbsp;
           <a href="/privacy-policy">Privacy</a>
           |&nbsp;
           <a href="/disclaimer">Disclaimer</a>
-        </ul>
+        </div>
       </div>
     </div>
   </footer>

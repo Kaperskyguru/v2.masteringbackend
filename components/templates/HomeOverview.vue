@@ -6,9 +6,9 @@
     <section class="p-3 sponsors text-center">
       <PageTitle>
         <template #title>
-          <h3 class="sponsor-header-text mb-5 text-uppercase fw-bold">
+          <h2 class="sponsor-header-text mb-5 text-uppercase fw-bold">
             Join 3,000+ senior (and aspiring) backend software engineers at:
-          </h3>
+          </h2>
         </template>
       </PageTitle>
       <Sponsors />
