@@ -45,7 +45,7 @@ export const getPosts = async () => {
     const { data } = response
 
     if (data?.data) {
-      return mapPosts(data.data)
+      return resolvePosts(data.data)
     }
     return []
   } catch (error) {
