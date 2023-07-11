@@ -227,6 +227,7 @@
                 <a
                   href="http://facebook.com/masteringbackend"
                   target="_blank"
+                  aria-label="facebook"
                   rel="noopener noreferrer"
                 >
                   <div class="py-3 d-flex gap-1 align-items-center">
@@ -244,6 +245,7 @@
                 <a
                   href="http://linkedin.com/company/masteringbackend"
                   target="_blank"
+                  aria-label="linkedin"
                   rel="noopener noreferrer"
                 >
                   <div class="py-3 d-flex gap-1 align-items-center">
@@ -261,6 +263,7 @@
                 <a
                   href="https://medium.com/backenders-club"
                   target="_blank"
+                  aria-label="medium"
                   rel="noopener noreferrer"
                 >
                   <div class="py-3 d-flex gap-1 align-items-center">

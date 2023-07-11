@@ -39,7 +39,7 @@
 
       <div class="d-md-flex align-items-center justify-content-between">
         <div class="d-flex socia-links mb-3 align-items-center">
-          <a href="https://facebook.com/masteringbackend">
+          <a href="https://facebook.com/masteringbackend" aria-label="facebook">
             <div class="socia-link p-2">
               <img
                 class="img-fluid face"
@@ -48,12 +48,12 @@
               />
             </div>
           </a>
-          <a href="https://twitter.com/master_backend">
+          <a href="https://twitter.com/master_backend" aria-label="twitter">
             <div class="socia-link p-2">
               <img class="img-fluid" src="~/assets/img/twitter.png" alt="" />
             </div>
           </a>
-          <a href="https://instagram.com/kaperskyguru">
+          <a href="https://instagram.com/kaperskyguru" aria-label="instagram">
             <div class="socia-link p-2">
               <img class="img-fluid" src="~/assets/img/instagram.png" alt="" />
             </div>
