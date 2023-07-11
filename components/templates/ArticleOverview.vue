@@ -130,26 +130,36 @@ export default {
       return utils.color(this.post.color)
     },
 
+    isHub() {
+      return this.post.type === 'hub'
+    },
+
     isASeries() {
-      return (
-        (this.post.type === 'definitive' || this.post.type === 'hub') &&
-        this.chapter
-      )
+      return (this.post.type === 'definitive' || this.isHub) && this.chapter
     },
 
     getPostExcerpt() {
+      if (this.isHub) return this.chapter.hub.description
+
       return this.chapter?.post?.excerpt ?? ''
     },
 
     generateURL() {
+      if (this.isHub)
+        return `/hubs/${this.chapter?.hub?.slug ?? '#'}/${this.parentPostSlug}`
+
       return `/posts/${this.parentPostSlug}#${this.chapter.slug}`
     },
 
     parentPostTitle() {
+      if (this.isHub) return this.chapter.hub.title
+
       return this.chapter?.post?.title ?? ''
     },
 
     parentPostSlug() {
+      if (this.isHub) return this.post.slug
+
       return this.chapter?.post?.slug ?? '#'
     },
 

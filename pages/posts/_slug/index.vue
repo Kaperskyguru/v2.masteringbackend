@@ -48,7 +48,7 @@ export default {
             chapter: {
               populate: {
                 hub: {
-                  fields: ['slug'],
+                  fields: ['slug', 'title', 'description'],
                 },
                 post: {
                   fields: ['slug', 'title', 'excerpt'],
