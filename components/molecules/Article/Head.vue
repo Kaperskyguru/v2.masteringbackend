@@ -5,7 +5,7 @@
         {{ title }}</nuxt-link
       >
 
-      <a v-else class="title_header">{{ title }}</a>
+      <span v-else @click.prevent="" class="title_header">{{ title }}</span>
     </h1>
     <small v-if="showAuthor || showDate" class="fw-bold"
       ><span v-if="showAuthor">By {{ authorName }}</span
