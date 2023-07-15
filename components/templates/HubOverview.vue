@@ -109,7 +109,7 @@
         </div>
       </div>
     </section>
-    <section class="my-5 py-5 Conent">
+    <section :class="{ 'py-5 my-5': shouldActivateWaitingList }" class="Conent">
       <div class="container">
         <Chapter
           v-for="(chapter, i) in chapters"
