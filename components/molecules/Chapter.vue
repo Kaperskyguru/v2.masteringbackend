@@ -5,9 +5,13 @@
       :style="{ backgroundColor: `${color}` }"
     >
       <nuxt-link
-        :to="{
-          path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
-        }"
+        :to="
+          shouldActivateWaitingList
+            ? '#'
+            : {
+                path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
+              }
+        "
         v-if="isPDF"
       >
         <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
@@ -21,7 +25,11 @@
 
       <nuxt-link
         v-else
-        :to="{ path: `${getBaseURL}/${chapterSlug}/${chapter.slug}` }"
+        :to="
+          shouldActivateWaitingList
+            ? '#'
+            : { path: `${getBaseURL}/${chapterSlug}/${chapter.slug}` }
+        "
       >
         <h3 class="py-5 font-weight-normal fs-4">{{ chapter.title }}</h3>
         <img
@@ -65,9 +73,13 @@
               <span class=""
                 ><nuxt-link
                   class="font-weight-light d-flex flex-row justify-content-start fs-5"
-                  :to="{
-                    path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
-                  }"
+                  :to="
+                    shouldActivateWaitingList
+                      ? '#'
+                      : {
+                          path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
+                        }
+                  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +102,11 @@
               <span class=""
                 ><nuxt-link
                   class="font-weight-light d-flex flex-row justify-content-start fs-5"
-                  :to="{ path: `${getBaseURL}/${chapterSlug}/${post.slug}` }"
+                  :to="
+                    shouldActivateWaitingList
+                      ? '#'
+                      : { path: `${getBaseURL}/${chapterSlug}/${post.slug}` }
+                  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -127,6 +143,10 @@ export default {
   computed: {
     isPDF() {
       return this.chapter.hub.type === 'pdf'
+    },
+
+    shouldActivateWaitingList() {
+      return this.chapter?.hub?.activate_waiting ?? null
     },
 
     getBaseURL() {
