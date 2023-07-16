@@ -349,6 +349,18 @@ export default {
       to: 'https://blog.boot.dev/backend/become-backend-developer',
       statusCode: 301,
     },
+
+    {
+      from: '^/courses/text/advanced-docker(.*)$',
+      to: '/hubs/advanced-docker',
+      statusCode: 301,
+    },
+
+    {
+      from: '^/courses/video/advanced-docker(.*)$',
+      to: '/hubs/advanced-docker',
+      statusCode: 301,
+    },
     {
       from: '^/posts/introduction-to-backend-development(.*)$',
       to: '/posts/getting-started-with-backend-development',
