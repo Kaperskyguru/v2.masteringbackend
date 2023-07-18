@@ -7,8 +7,11 @@
       :disabled="disabled || waiting"
       :aria-label="waiting ? 'Please wait…' : undefined"
       :style="customStyle"
+      v-on="$listeners"
+      v-bind="$attrs"
       class="btn text-white"
-      ><div v-if="waiting" class="custom-icon" role="presentation">
+    >
+      <div v-if="waiting" class="custom-icon" role="presentation">
         <SvgLoader class="-my-px" />
       </div>
 
@@ -16,13 +19,15 @@
         <slot />
         <div v-if="$slots.icon" class="custom-icon" role="presentation">
           <slot name="icon" />
-        </div> </template
-    ></NuxtLink>
+        </div>
+      </template>
+    </NuxtLink>
 
     <a
       v-else
       :style="customStyle"
       v-bind="$attrs"
+      v-on="$listeners"
       :disabled="disabled || waiting"
       :aria-label="waiting ? 'Please wait…' : undefined"
       target="_blank"

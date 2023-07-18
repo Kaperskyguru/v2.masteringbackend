@@ -5,10 +5,9 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
-            <h1 class="title__text">Welcome to the Masteringbackend library</h1>
+            <h1 class="title__text">{{ title }}</h1>
             <p class="title__subtext fs-6">
-              Whether you're new to backend engineering, or want to scale up,
-              this is your home for backend engineering knowledge.
+              {{ desc }}
             </p>
 
             <div class="input-group py-3">
@@ -137,6 +136,15 @@
 <script>
 export default {
   props: {
+    desc: {
+      type: String,
+      default:
+        "Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering knowledge.",
+    },
+    title: {
+      default: 'Welcome to the Masteringbackend library',
+      type: String,
+    },
     hubs: {
       type: Array,
       default: () => [],
@@ -151,11 +159,18 @@ export default {
 
   methods: {
     getURL(hub) {
-      return this.isPDF(hub) ? `/resources/${hub.slug}` : `/hubs/${hub.slug}`
+      if (this.isBook(hub)) return `/books/${hub.slug}`
+      if (this.isPDF(hub)) return `/resources/${hub.slug}`
+      return `/hubs/${hub.slug}`
     },
     isPDF(hub) {
       return hub.type === 'pdf'
     },
+
+    isBook(hub) {
+      return hub.type === 'book'
+    },
+
     color(hub) {
       const mixedColor = hub?.color ?? ''
       if (mixedColor.includes('gradient')) {

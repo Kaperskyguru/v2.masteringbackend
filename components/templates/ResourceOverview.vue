@@ -241,7 +241,7 @@ export default {
     },
 
     outlines() {
-      const outline = this.chapter.content
+      const outline = this.chapter?.content
       const out = outline
         ?.split(/<[a-zA-Z0-9]*>([^<.*>;]*)<\/[a-zA-Z0-9]*>/gim)
         .filter((x) => x.trim() !== '')
