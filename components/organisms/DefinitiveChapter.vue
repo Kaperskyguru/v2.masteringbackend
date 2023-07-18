@@ -24,12 +24,7 @@
               <article v-highlight class="w-100" v-html="content"></article>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <img
-                :src="chapter.design_url"
-                class="img-fluid cover"
-                alt=""
-                srcset=""
-              />
+              <img :src="designURL" class="img-fluid cover" alt="" srcset="" />
             </div>
           </div>
         </div>
@@ -40,6 +35,7 @@
 
     <div id="article" class="container mx-auto w-md-100 w-75">
       <DefinitiveArticle
+        :isPremium="isPremium"
         v-for="(post, index) in getPosts"
         :key="index"
         :post="post"
@@ -71,6 +67,10 @@ export default {
       return this.chapter?.excerpt ?? this.chapter?.content ?? ''
     },
 
+    designURL() {
+      return this.chapter?.design_url
+    },
+
     splitTitle() {
       if (!this.chapter?.title) return { title: '', subtitle: '' }
       const titles = this.chapter?.title?.split(':')
@@ -80,7 +80,12 @@ export default {
       }
     },
 
+    isPremium() {
+      return this.chapter?.is_premium
+    },
+
     getPosts() {
+      if (this.isPremium) return [this.chapter?.posts[0] ?? []]
       return this.chapter?.posts ?? []
     },
   },

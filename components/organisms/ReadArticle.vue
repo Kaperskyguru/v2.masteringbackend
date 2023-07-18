@@ -1,19 +1,80 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article
-    data-clarity-region="article"
-    v-highlight
-    class="w-100"
-    v-html="post.content"
-  ></article>
+  <div>
+    <article
+      v-if="!ispremium"
+      data-clarity-region="article"
+      v-highlight
+      class="w-100"
+      v-html="content"
+    ></article>
+    <span style="display: inline-block; position: relative" v-else>
+      <div class="overlay p-3 d-flex align-items-center justify-content-center">
+        <div class="text-center text-white mt-4">
+          <div
+            class="position-relative"
+            :style="{ backgroundColor: `#5227AD`, padding: '5rem' }"
+            id="notify"
+          >
+            <h3 class="fs-2 py-4">This is a premium content</h3>
+            <h6 class="fs-5 text-white">
+              Get instant access to all current and upcoming courses and content
+              through subscription.
+            </h6>
+            <Button
+              appearance="primary"
+              size="large"
+              type="link"
+              :custom-style="{
+                backgroundColor: `#633db5`,
+                color: '#fff',
+              }"
+              >Click here to view</Button
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <article
+          data-clarity-region="article"
+          v-highlight
+          class="w-100"
+          v-html="content"
+        ></article>
+      </div>
+    </span>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
+    ispremium: { type: Boolean, default: false },
     post: {
       type: Object,
       default: () => {},
+    },
+  },
+
+  methods: {
+    // TODO:: Find all Headings and Paragraphs
+    paragraphs() {
+      if (!this.post) return
+      const firstPara =
+        this.post?.content?.matchAll('<p>(.*?)</p>') ??
+        this.post?.excerpt?.matchAll('<p>(.*?)</p>')
+      return [...(firstPara ?? [])]
+    },
+  },
+
+  computed: {
+    content() {
+      if (this.ispremium)
+        return this.paragraphs()
+          .map((p) => p[0])
+          .join(' ')
+
+      return this.post?.content
     },
   },
 }
@@ -107,5 +168,19 @@ img {
   color: rgb(187, 74, 3);
   transition: all 0.2s ease-in-out 0s;
   background-color: transparent;
+}
+
+.overlay {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 0.5s;
+}
+
+.overlay p {
+  color: #001ed3;
 }
 </style>

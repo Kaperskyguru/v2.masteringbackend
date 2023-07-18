@@ -5,13 +5,22 @@
     class="container mx-auto w-md-100 w-75"
     style="background-color: white"
   >
-    <ReadArticle class="w-100" :post="post"></ReadArticle>
+    <ReadArticle
+      :ispremium="isPremium"
+      class="w-100"
+      :class="{ 'pmpro-no-access': isPremium }"
+      :post="post"
+    ></ReadArticle>
   </div>
 </template>
   
   <script >
 export default {
   props: {
+    isPremium: {
+      type: Boolean,
+      default: false,
+    },
     post: {
       type: Object,
       default: () => {},
