@@ -218,6 +218,14 @@ article ol {
 }
 
 .pmpro-no-access article {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+  line-clamp: 10;
+  box-orient: vertical;
+  white-space: normal;
+
   -webkit-mask-image: linear-gradient(
     to top,
     rgba(0, 0, 0, 0),

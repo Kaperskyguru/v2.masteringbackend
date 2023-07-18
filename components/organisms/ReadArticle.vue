@@ -8,6 +8,7 @@
       class="w-100"
       v-html="content"
     ></article>
+
     <span style="display: inline-block; position: relative" v-else>
       <div class="overlay p-3 d-flex align-items-center justify-content-center">
         <div class="text-center text-white mt-4">
@@ -56,24 +57,8 @@ export default {
     },
   },
 
-  methods: {
-    // TODO:: Find all Headings and Paragraphs
-    paragraphs() {
-      if (!this.post) return
-      const firstPara =
-        this.post?.content?.matchAll('<p>(.*?)</p>') ??
-        this.post?.excerpt?.matchAll('<p>(.*?)</p>')
-      return [...(firstPara ?? [])]
-    },
-  },
-
   computed: {
     content() {
-      if (this.ispremium)
-        return this.paragraphs()
-          .map((p) => p[0])
-          .join(' ')
-
       return this.post?.content
     },
   },
@@ -177,6 +162,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
+  /* background: #eee; */
   transition: background-color 0.5s;
 }
 
