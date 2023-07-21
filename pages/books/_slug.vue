@@ -24,6 +24,15 @@ export default {
     BASE_URL: process.env.BASE_URL || 'https://masteringbackend.com',
   }),
 
+  computed: {
+    image() {
+      return (
+        this.hub &&
+        (this.hub?.design_url ?? this.hub?.image ?? '/img/backend-2023.jpg')
+      )
+    },
+  },
+
   methods: {
     stripTags(text) {
       if (text) {
@@ -54,7 +63,7 @@ export default {
             name: 'description',
             content: `${this.stripTags(this.hub?.description)}`,
           },
-
+          { hid: 'og:image', property: 'og:image', content: this.image },
           { hid: 'og:title', property: 'og:title', content: this.hub.title },
           {
             hid: 'og:description',
