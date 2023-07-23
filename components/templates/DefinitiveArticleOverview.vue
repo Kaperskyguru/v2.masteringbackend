@@ -67,29 +67,9 @@
               </div>
             </nuxt-link>
           </div>
-          <div class="text-center text-white mt-4" v-if="hasPDF">
-            <div
-              class="position-relative"
-              :style="{ backgroundColor: `#5227AD`, padding: '5rem' }"
-              id="notify"
-            >
-              <h3 class="fs-2 py-4">In a hurry? Save this article as a PDF.</h3>
-              <p class="fs-5">
-                Tired of scrolling? Download a PDF version for easier offline
-                reading and sharing with coworkers.
-              </p>
-              <Button
-                appearance="primary"
-                size="large"
-                type="link"
-                :link="generatePdfURL"
-                :custom-style="{
-                  backgroundColor: `#633db5`,
-                  color: '#fff',
-                }"
-                >Click here to download</Button
-              >
-            </div>
+          <div v-if="hasPDF">
+            <CustomAlert :showDownload="hasPDF" :link="generatePdfURL">
+            </CustomAlert>
           </div>
         </div>
       </div>
@@ -152,7 +132,7 @@ export default {
     hasPDF() {
       const chapter = this.post.chapter
       const chapters = this.post.chapters
-      return Array.isArray(chapters) && chapters.length > 0 && chapter?.id
+      return Array.isArray(chapters) && chapters.length > 0 && !!chapter?.id
     },
 
     generatePdfURL() {
@@ -233,31 +213,6 @@ export default {
   margin-bottom: 6px;
   margin-top: 15px;
   font-weight: 800;
-}
-
-#notify::after {
-  border-width: 0 0 100px 100px;
-  border-color: transparent transparent #fff transparent;
-
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-#notify::before {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 100px 100px 0 0;
-  border-color: #000 transparent transparent transparent;
 }
 
 .cover {

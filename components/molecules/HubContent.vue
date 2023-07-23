@@ -16,6 +16,26 @@
       }"
     ></ReadArticle>
 
+    <div v-if="showReadMore" :class="{ 'pb-5': !isChapter }">
+      <CustomAlert
+        :bgColor="color"
+        :showRead="true"
+        :showDownload="hasPDF"
+        :Readlink="generateReadLink"
+        :link="generatePdfURL"
+      >
+        <template #title>
+          {{ title }}
+        </template>
+
+        <template #description>
+          Click on the buttons below to download for offline or read the "{{
+            title
+          }}" online
+        </template>
+      </CustomAlert>
+    </div>
+
     <div v-if="isChapter" class="w-100 pt-5">
       <ChapterOutline
         :key="i"
@@ -46,12 +66,34 @@ export default {
     },
   },
 
+  methods: {},
+
   computed: {
+    hasPDF() {
+      const chapter = this.post.chapter
+      const chapters = this.post.chapters
+      return Array.isArray(chapters) && chapters.length > 0 && !!chapter?.id
+    },
+    showReadMore() {
+      return (
+        this.post?.chapters?.length > 0 && this.$route.path.startsWith('/hubs/')
+      )
+    },
+    generateReadLink() {
+      return `/posts/${this.post?.slug}`
+    },
+    generatePdfURL() {
+      return `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
+    },
     hubSlug() {
       return this.post?.hub?.slug ?? ''
     },
     content() {
       return this.post?.content ?? this.post?.description ?? ''
+    },
+
+    description() {
+      return this.post?.description ?? ''
     },
 
     title() {

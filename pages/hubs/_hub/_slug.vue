@@ -16,7 +16,19 @@ export default {
       if (post === undefined || !post || post === null) {
         post = await store.dispatch('post/getPost', {
           slug: params.slug,
-          populate: 'chapter',
+          populate: {
+            chapters: true,
+            chapter: {
+              populate: {
+                hub: {
+                  fields: ['slug', 'title', 'description'],
+                },
+                post: {
+                  fields: ['slug', 'title', 'excerpt'],
+                },
+              },
+            },
+          },
         })
       }
 

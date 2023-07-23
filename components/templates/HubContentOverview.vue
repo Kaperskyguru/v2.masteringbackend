@@ -12,7 +12,11 @@
             <Outline :color="color" :outlines="outlines" />
           </div>
 
-          <HubContent style="background-color: white" :post="post" />
+          <HubContent
+            :color="color"
+            style="background-color: white"
+            :post="post"
+          />
         </div>
       </div>
     </section>
