@@ -31,7 +31,7 @@
                 Read Online
               </Button>
 
-              <!-- <Button
+              <Button
                 v-if="!activateDownload"
                 :custom-style="{
                   border: `1px solid ${color}`,
@@ -44,7 +44,7 @@
                 link="#"
               >
                 Download Now
-              </Button> -->
+              </Button>
             </div>
           </div>
           <div class="col-md-5 hero__image">
