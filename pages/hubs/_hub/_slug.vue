@@ -17,11 +17,17 @@ export default {
         post = await store.dispatch('post/getPost', {
           slug: params.slug,
           populate: {
-            chapters: true,
+            chapters: {
+              populate: {
+                hub: {
+                  fields: ['slug', 'type', 'title', 'description'],
+                },
+              },
+            },
             chapter: {
               populate: {
                 hub: {
-                  fields: ['slug', 'title', 'description'],
+                  fields: ['slug', 'type', 'title', 'description'],
                 },
                 post: {
                   fields: ['slug', 'title', 'excerpt'],

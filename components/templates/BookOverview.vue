@@ -25,7 +25,7 @@
                 size="large"
                 class="py-2 my-2 fs-4 fw-bold"
                 type="link"
-                :link="`/hubs/${hub.slug}`"
+                :link="`/hubs/${slug}`"
               >
                 Read Online
               </Button>
@@ -227,6 +227,10 @@ export default {
         return `#${color.replace(/[^a-zA-Z0-9 ]/g, '')}`
       }
       return mixedColor
+    },
+
+    slug() {
+      return this.hub?.slug ?? '#'
     },
 
     enchargeTag() {

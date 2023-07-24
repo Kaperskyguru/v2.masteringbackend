@@ -27,9 +27,7 @@
         <template #title> Access the {{ title }} </template>
 
         <template #description>
-          Click on the buttons below to download for offline or read the "{{
-            title
-          }}" online
+          {{ description }}
         </template>
       </CustomAlert>
     </div>
@@ -70,7 +68,12 @@ export default {
     hasPDF() {
       const chapter = this.post.chapter
       const chapters = this.post.chapters
-      return Array.isArray(chapters) && chapters.length > 0 && !!chapter?.id
+      return (
+        Array.isArray(chapters) &&
+        chapters.length > 0 &&
+        !!chapter?.id &&
+        chapter?.hub?.type === 'pdf'
+      )
     },
     showReadMore() {
       return (
@@ -78,10 +81,16 @@ export default {
       )
     },
     generateReadLink() {
-      return `/posts/${this.post?.slug}`
+      if (this.isBook) {
+        const chapter = this.post.chapters[0]
+        return '/books/' + chapter?.hub?.slug
+      }
+      return `/posts/${this.post.slug}`
     },
     generatePdfURL() {
-      return `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
+      return this.isBook
+        ? '#'
+        : `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
     },
     hubSlug() {
       return this.post?.hub?.slug ?? ''
@@ -90,8 +99,15 @@ export default {
       return this.post?.content ?? this.post?.description ?? ''
     },
 
+    isBook() {
+      return this.post?.type === 'book'
+    },
+
     description() {
-      return this.post?.description ?? ''
+      return `
+      Click on the button${this.hasPDF ? 's' : ''} below to ${
+        this.hasPDF ? 'download for offline or' : ''
+      } read the ${this.title} online`
     },
 
     title() {
