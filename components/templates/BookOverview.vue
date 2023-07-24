@@ -18,6 +18,7 @@
             <div class="gradient"></div>
             <div class="py-3 input-group">
               <Button
+                v-if="!activateDownload"
                 :custom-style="{
                   backgroundColor: `${color}`,
                   color: '#fff',
@@ -30,7 +31,8 @@
                 Read Online
               </Button>
 
-              <Button
+              <!-- <Button
+                v-if="!activateDownload"
                 :custom-style="{
                   border: `1px solid ${color}`,
                   color: `${color} !important`,
@@ -42,12 +44,12 @@
                 link="#"
               >
                 Download Now
-              </Button>
+              </Button> -->
             </div>
           </div>
           <div class="col-md-5 hero__image">
             <img
-              v-if="!showDownload"
+              v-if="!showDownload && !activateDownload"
               class="img-fluid"
               v-lazy-load
               :data-src="bookCover"
@@ -118,7 +120,7 @@
                         color: '#fff',
                       }"
                     >
-                      Get The Book
+                      {{ activateDownload ? 'Get Notified' : 'Get The Book' }}
                     </button>
                   </div>
                 </div>
@@ -231,6 +233,10 @@ export default {
 
     slug() {
       return this.hub?.slug ?? '#'
+    },
+
+    activateDownload() {
+      return this.hub?.activate_waiting ?? false
     },
 
     enchargeTag() {
