@@ -6,7 +6,12 @@
       </h5>
     </div>
     <div class="row g-4">
-      <div class="col-lg-4" v-for="hub in hubs" :key="hub.id">
+      <nuxt-link
+        :to="`/hubs/${hub.slug}`"
+        class="col-lg-4"
+        v-for="hub in hubs"
+        :key="hub.id"
+      >
         <div
           class="card bg-pink pt-4"
           :style="{ backgroundColor: getColor(hub.color) }"
@@ -40,7 +45,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
