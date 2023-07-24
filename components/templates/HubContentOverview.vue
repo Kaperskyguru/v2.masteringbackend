@@ -30,7 +30,7 @@
     </section>
 
     <section>
-      <!-- <RelatedHubs :color="color" /> -->
+      <RelatedHubs :color="color" />
     </section>
   </main>
 </template>

@@ -24,9 +24,7 @@
         :Readlink="generateReadLink"
         :link="generatePdfURL"
       >
-        <template #title>
-          {{ title }}
-        </template>
+        <template #title> Access the {{ title }} </template>
 
         <template #description>
           Click on the buttons below to download for offline or read the "{{

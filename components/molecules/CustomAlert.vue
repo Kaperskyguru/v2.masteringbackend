@@ -22,6 +22,7 @@
             appearance="primary"
             size="large"
             type="link"
+            target="_blank"
             :link="Readlink"
             :custom-style="{
               backgroundColor: adjust(bgColor, -50),
@@ -34,6 +35,7 @@
           <Button
             v-if="showDownload"
             appearance="primary"
+            target="_blank"
             size="large"
             type="link"
             :link="link"
