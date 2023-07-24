@@ -132,7 +132,12 @@ export default {
     hasPDF() {
       const chapter = this.post.chapter
       const chapters = this.post.chapters
-      return Array.isArray(chapters) && chapters.length > 0 && !!chapter?.id
+      return (
+        Array.isArray(chapters) &&
+        chapters.length > 0 &&
+        !!chapter?.id &&
+        chapter?.hub?.type === 'pdf'
+      )
     },
 
     generatePdfURL() {
