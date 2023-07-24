@@ -31,7 +31,7 @@
                 Read Online
               </Button>
 
-              <Button
+              <!-- <Button
                 v-if="!activateDownload"
                 :custom-style="{
                   border: `1px solid ${color}`,
@@ -44,7 +44,7 @@
                 link="#"
               >
                 Download Now
-              </Button>
+              </Button> -->
             </div>
           </div>
           <div class="col-md-5 hero__image">
@@ -139,7 +139,7 @@
               class="fw-bolder"
               style="font-size: 50px; font-weight: 800; line-height: 65px"
             >
-              Take a peak inside
+              Take a peek inside
             </h2>
           </div>
         </div>
@@ -250,7 +250,10 @@ export default {
       return this.hub?.description
     },
     chapters() {
-      return this.hub?.chapters ?? []
+      const chapters = this.hub?.chapters
+      if (chapters && chapters.length > 1) return chapters ?? []
+
+      return chapters[0].posts ?? []
     },
 
     animatedBookCover() {
