@@ -17,10 +17,11 @@
             :style="{ backgroundColor: `#5227AD`, padding: '5rem' }"
             id="notify"
           >
-            <h3 class="fs-2 py-4">This is a premium content</h3>
+            <h3 class="fs-2 py-4">Don't Stop Learning</h3>
             <h6 class="fs-5 text-white">
-              Get instant access to all current and upcoming courses and content
-              through subscription.
+              Continue reading the {{ title }} for $14.99 only or Get instant
+              access to all current and upcoming courses and content through
+              subscription.
             </h6>
             <Button
               appearance="primary"
@@ -30,7 +31,7 @@
                 backgroundColor: `#633db5`,
                 color: '#fff',
               }"
-              >Click here to view</Button
+              >Coming Soon</Button
             >
           </div>
         </div>
@@ -60,6 +61,9 @@ export default {
   computed: {
     content() {
       return this.post?.content
+    },
+    title() {
+      return this.post?.title
     },
   },
 }
