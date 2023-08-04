@@ -6,6 +6,7 @@
     style="background-color: white"
   >
     <ReadArticle
+      :chapter="chapter"
       :ispremium="isPremium"
       class="w-100"
       :class="{ 'pmpro-no-access': isPremium }"
@@ -22,6 +23,11 @@ export default {
       default: false,
     },
     post: {
+      type: Object,
+      default: () => {},
+    },
+    // originalPost: { type: Object, default: () => {} },
+    chapter: {
       type: Object,
       default: () => {},
     },
