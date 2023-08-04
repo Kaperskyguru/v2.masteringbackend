@@ -218,7 +218,6 @@ export default {
     { src: '~/plugins/infiniteloading', ssr: false, mode: 'client' },
     '~/plugins/jsonld',
     { src: '~/plugins/disqus', ssr: false },
-    { src: '~/plugins/segment', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -242,7 +241,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@dansmaculotte/nuxt-segment',
     'nuxt-lazy-load',
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
