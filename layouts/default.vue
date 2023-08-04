@@ -32,7 +32,6 @@ p > code {
   font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
   padding: 0.2rem 0.4rem !important;
-  background-color: #bababb !important;
   border-radius: 0.25rem;
   display: inline !important;
 }
