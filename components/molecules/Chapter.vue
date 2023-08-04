@@ -42,88 +42,104 @@
     </div>
     <div class="col-xl-9 col-lg-12">
       <div class="row py-5 px-4">
-        <div class="col-lg-6">
-          <h5
-            class="font-weight-normal fs-4 pb-4"
-            :style="{ color: `${color}` }"
-          >
-            What you will learn
-          </h5>
-          <p
-            class="lh-lg font-weight-light fs-5"
-            v-html="chapter.description"
-          ></p>
+        <div class="col-12 row">
+          <div class="col-lg-6">
+            <h5
+              class="font-weight-normal fs-4 pb-4"
+              :style="{ color: `${color}` }"
+            >
+              What you will learn
+            </h5>
+            <p
+              class="lh-lg font-weight-light fs-5"
+              v-html="chapter.description"
+            ></p>
+          </div>
+          <div class="col-lg-6">
+            <h5
+              class="font-weight-normal fs-4 pb-4"
+              :style="{ color: `${color}` }"
+            >
+              <span v-if="isPDF">Outline</span>
+
+              <span v-else> {{ postCount }} Resources </span>
+            </h5>
+
+            <span
+              v-if="isPDF"
+              class="overflow-auto d-flex flex-column justify-content-between"
+              style="height: 300px"
+            >
+              <p v-for="(outline, i) in outlines" :key="i">
+                <span class=""
+                  ><nuxt-link
+                    class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                    :to="
+                      shouldActivateWaitingList || isPDF
+                        ? '#'
+                        : {
+                            path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
+                          }
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      :fill="color"
+                      width="24"
+                      height="24"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M16 12l-6 6V6z" />
+                    </svg>
+
+                    <span class="flex-fill" v-html="outline"></span></nuxt-link
+                ></span>
+              </p>
+            </span>
+
+            <span v-else>
+              <p v-for="(post, i) in chapter.posts" :key="i">
+                <span>
+                  <nuxt-link
+                    class="font-weight-light d-flex flex-row justify-content-start fs-5"
+                    :to="
+                      shouldActivateWaitingList
+                        ? '#'
+                        : { path: `${getBaseURL}/${chapterSlug}/${post.slug}` }
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      :fill="color"
+                      width="24"
+                      height="24"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M16 12l-6 6V6z" />
+                    </svg>
+
+                    <span class="flex-fill">{{ post.title }}</span>
+                  </nuxt-link>
+                </span>
+              </p>
+            </span>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <h5
-            class="font-weight-normal fs-4 pb-4"
-            :style="{ color: `${color}` }"
+        <div class="col-12 align-self-end">
+          <Button
+            class="btn-block"
+            size="large"
+            type="link"
+            :link="`${getBaseURL}/${chapterSlug}/${firstPostSlug}`"
+            :custom-style="{
+              backgroundColor: `${color}`,
+              color: '#fff',
+            }"
           >
-            <span v-if="isPDF">Outline</span>
-
-            <span v-else> {{ postCount }} Resources </span>
-          </h5>
-
-          <span
-            v-if="isPDF"
-            class="overflow-auto d-flex flex-column justify-content-between"
-            style="height: 300px"
-          >
-            <p v-for="(outline, i) in outlines" :key="i">
-              <span class=""
-                ><nuxt-link
-                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
-                  :to="
-                    shouldActivateWaitingList
-                      ? '#'
-                      : {
-                          path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
-                        }
-                  "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    :fill="color"
-                    width="24"
-                    height="24"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M16 12l-6 6V6z" />
-                  </svg>
-
-                  <span class="flex-fill" v-html="outline"></span></nuxt-link
-              ></span>
-            </p>
-          </span>
-
-          <span v-else>
-            <p v-for="(post, i) in chapter.posts" :key="i">
-              <span class=""
-                ><nuxt-link
-                  class="font-weight-light d-flex flex-row justify-content-start fs-5"
-                  :to="
-                    shouldActivateWaitingList
-                      ? '#'
-                      : { path: `${getBaseURL}/${chapterSlug}/${post.slug}` }
-                  "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    :fill="color"
-                    width="24"
-                    height="24"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M16 12l-6 6V6z" />
-                  </svg>
-
-                  <span class="flex-fill">{{ post.title }}</span></nuxt-link
-                ></span
-              >
-            </p>
-          </span>
+            Get PDF Now
+          </Button>
         </div>
       </div>
     </div>

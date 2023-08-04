@@ -39,45 +39,29 @@
               </div>
             </div>
             <div class="d-grid col-lg mx-auto">
-              <div class="input-group py-3 mb-5 no-border">
-                <input
-                  class="py-md-2 col-12 col-lg-8 form-control shadow-none fs-5 my-2"
-                  type="email"
-                  v-model="email"
-                  style="border: 2"
-                  placeholder="Enter your email address..."
-                />
-
-                <Button
-                  type="button"
-                  @click.prevent="subscribe"
-                  class="col-lg-4 col-12 start-btn py-3 my-2"
-                >
-                  Get The Free Guide
-                </Button>
-              </div>
-
-              <div
-                v-if="res.message || show"
-                class="alert mt-1 fade d-flex font-weight-normal"
-                style="justify-items;: space-between"
-                :class="[`alert-${res.type}`, { show: show }]"
-                role="alert"
+              <form
+                id="form-d2fcdd82-c699-490c-8895-be934ad75feb"
+                action="https://api.encharge.io/v1/forms/d2fcdd82-c699-490c-8895-be934ad75feb/submission/plain"
+                method="POST"
               >
-                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-                <button
-                  v-if="res.message"
-                  type="button"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                  @click="
-                    show = false
-                    res = {}
-                  "
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+                <div class="input-group py-3 mb-5 no-border">
+                  <input
+                    type="email"
+                    id="0d9879cb-e9dc-4d00-9bd9-faf84f9a1a2c"
+                    name="email"
+                    style="border: 2"
+                    placeholder="Enter your email address..."
+                    class="encharge-form-input sc-jTzLTM JGOZS form-control py-md-2 col-12 col-lg-8 form-control shadow-none fs-5 my-2"
+                  />
+
+                  <Button
+                    type="submit"
+                    class="encharge-form-submit-button sc-gzVnrw HOnGD btn btn-primary col-lg-4 col-12 start-btn py-3 my-2"
+                  >
+                    Get The Free Guide
+                  </Button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -122,7 +106,7 @@ export default {
       this.show = true
 
       if (!res.type.includes('danger')) {
-        return this.$router.push('/posts/backend-development')
+        return this.$router.push('/hubs/backend-engineering')
       }
       this.res = res
     },
