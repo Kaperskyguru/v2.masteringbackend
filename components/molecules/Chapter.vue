@@ -127,7 +127,7 @@
             </span>
           </div>
         </div>
-        <div class="col-12 align-self-end">
+        <div class="col-12 align-self-end" v-if="isPDF">
           <Button
             class="btn-block"
             size="large"
