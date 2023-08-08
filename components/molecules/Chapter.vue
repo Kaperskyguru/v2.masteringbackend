@@ -162,7 +162,7 @@ export default {
     },
 
     shouldActivateWaitingList() {
-      return this.chapter?.hub?.activate_waiting ?? null
+      return this.chapter?.hub?.activate_waiting ?? false
     },
 
     getBaseURL() {
