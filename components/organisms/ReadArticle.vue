@@ -277,7 +277,7 @@ export default {
     },
 
     async unlock() {
-      let plan = this.chapter?.plan
+      let plan = this.chapter?.plan_id
       if (this.isDev()) plan = '63184'
 
       // eslint-disable-next-line no-undef
