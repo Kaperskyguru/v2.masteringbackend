@@ -1,3 +1,7 @@
-const dev = process.env.NODE_ENV !== 'production'
-
-export const OPEN_PREMIUM = dev ? 'Premium Clicked Test' : 'open premium'
+export const OPEN_PREMIUM = 'open premium'
+export const OPEN_PREMIUM_UNLOCK = 'open premium unlock'
+export const OPEN_PREMIUM_SUBSCRIPTION = 'open premium subscription'
+export const PREMIUM_UNLOCK = 'premium unlock'
+export const PREMIUM_UNLOCK_PAID = 'premium unlock paid'
+export const PREMIUM_UNLOCK_FAILED = 'open premium failed'
+export const PREMIUM_SUBSCRIPTION = 'premium subscription'

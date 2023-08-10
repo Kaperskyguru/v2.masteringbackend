@@ -19,9 +19,9 @@
           >
             <h3 class="fs-2 py-4">Don't Stop Learning</h3>
             <h6 class="fs-5 text-white">
-              Continue reading the {{ title }} for $14.99 only or Get instant
-              access to all current and upcoming courses and content through
-              subscription.
+              Continue reading the {{ title }} for ${{ price }} only or Get
+              instant access to all current and upcoming courses and content
+              through subscription.
             </h6>
             <Button
               appearance="primary"
@@ -61,7 +61,7 @@
             <div class="ps-2">
               <h4>Continue reading</h4>
               <p class="fs-6">
-                Continue reading the "{{ title }}" for $14.99 only
+                Continue reading the "{{ title }}" for ${{ price }} only
               </p>
             </div>
           </div>
@@ -97,43 +97,13 @@
             </div>
           </div>
 
-          <!-- <form ref="form">
-            <div class="form-group py-3">
-              <label class="text-dark" for="name">
-                <b>Full name</b>
-              </label>
-              <input
-                class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                type="text"
-                id="name"
-                name="name"
-                required
-                style="border: 2"
-                placeholder="Enter your full name..."
-              />
-            </div>
-            <div class="form-group py-3">
-              <label class="text-dark" for="email">
-                <b>E-mail</b>
-              </label>
-              <input
-                class="col-lg-8 col-12 form-control shadow-none fs-5"
-                type="email"
-                name="email"
-                id="email"
-                required
-                placeholder="Enter your email address"
-              />
-            </div>
-          </form> -->
-
           <div class="text-center mt-2">
             <Button
               appearance="purple"
               type="button"
               class="col-12 py-3 my-2 fw-bold"
               @click.prevent="unlock"
-              >Unlock now for $14.99</Button
+              >Unlock now for ${{ price }}</Button
             >
           </div>
         </span>
@@ -229,7 +199,15 @@
 
 <script>
 import Segment from '~/helpers/segment'
-// import { OPEN_PREMIUM } from '~/helpers/enum'
+import {
+  OPEN_PREMIUM,
+  OPEN_PREMIUM_UNLOCK,
+  OPEN_PREMIUM_SUBSCRIPTION,
+  PREMIUM_UNLOCK,
+  PREMIUM_UNLOCK_PAID,
+  PREMIUM_UNLOCK_FAILED,
+  PREMIUM_SUBSCRIPTION,
+} from '~/helpers/enum'
 export default {
   data: () => ({
     isPremiumialogOpen: false,
@@ -255,7 +233,7 @@ export default {
   },
 
   mounted() {
-    if (['dev', 'staging'].includes(process.env.NODE_ENV)) {
+    if (this.isDev()) {
       // eslint-disable-next-line no-undef
       Paddle.Environment.set('sandbox')
     }
@@ -268,14 +246,16 @@ export default {
   methods: {
     openPremium() {
       this.isPremiumialogOpen = !this.isPremiumialogOpen
-      // this.sendSegment(OPEN_PREMIUM, {})
+      this.sendSegment(OPEN_PREMIUM, {})
     },
 
     async sendSegment(name, data) {
+      if (this.isDev()) return
       const slug = this.$route?.params?.slug
 
       await Segment.identify(slug, {
         slug,
+        ...(data?.user ?? {}),
       })
       await Segment.track(name, data)
     },
@@ -283,20 +263,59 @@ export default {
     openPremiumContent() {
       this.showPremiumContent = true
       this.showSubscription = false
-      // this.sendSegment(OPEN_PREMIUM_UNLOCK, {})
+      this.sendSegment(OPEN_PREMIUM_UNLOCK, {})
+    },
+
+    isDev() {
+      return ['dev', 'development', 'staging'].includes(process.env.NODE_ENV)
     },
 
     openSubscription() {
       this.showSubscription = true
       this.showPremiumContent = false
-      // this.sendSegment(OPEN_PREMIUM_SUBSCRIPTION, {})
+      this.sendSegment(OPEN_PREMIUM_SUBSCRIPTION, {})
     },
 
-    unlock() {
-      // this.sendSegment(PREMIUM_UNLOCK, {})
+    async unlock() {
+      let plan = this.chapter?.plan
+      if (this.isDev()) plan = '63184'
+
+      // eslint-disable-next-line no-undef
+      await Paddle.Checkout.open({
+        product: plan,
+        allowQuantity: false,
+        disableLogout: true,
+        frameInitialHeight: 416,
+        successCallback: (data) => this.checkoutComplete(data),
+        closeCallback: (data) => this.checkoutClosed(data),
+      })
+
+      this.sendSegment(PREMIUM_UNLOCK, {})
     },
+
+    checkoutComplete(data) {
+      if (!data?.checkout?.completed) return
+
+      this.sendSegment(PREMIUM_UNLOCK_PAID, {
+        product: data?.product ?? {},
+        user: data?.user ?? {},
+      })
+
+      if (!data?.checkout?.redirect_url) return
+
+      this.$router.push(data?.checkout?.redirect_url)
+    },
+    checkoutClosed(data) {
+      this.sendSegment(PREMIUM_UNLOCK_FAILED, {
+        product: data?.product ?? {},
+        user: data?.user ?? {},
+      })
+
+      // Todo:: Show failed Alert here
+    },
+
     subscribe() {
-      // this.sendSegment(PREMIUM_SUBSCRIPTION, {})
+      this.sendSegment(PREMIUM_SUBSCRIPTION, {})
     },
   },
 
@@ -306,6 +325,9 @@ export default {
     },
     content() {
       return this.post?.content
+    },
+    price() {
+      return this.chapter?.price ?? '14.99'
     },
     title() {
       return this.post?.title
