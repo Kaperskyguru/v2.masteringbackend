@@ -18,12 +18,14 @@
 
         <div class="modal-content">
           <div class="col-12 w-100">
-            <div class="row gap-5 p-5">
-              <div class="col-lg-4 col-12 p-lg-2" v-if="$slots.left">
+            <div class="row p-5" :class="contentClass">
+              <div class="col-lg-5 col-12" v-if="$slots.left">
                 <slot name="left" />
               </div>
-              <div id="border" class="border-end col-lg-1 col-12"></div>
-              <div class="col-lg-5 col-12" v-if="$slots.right">
+              <div
+                class="col-lg-6 col-12 border-start ps-4 pe-4"
+                v-if="$slots.right"
+              >
                 <slot name="right" />
               </div>
             </div>
@@ -50,6 +52,10 @@ export default {
   emits: ['answer', 'update:visible'],
 
   props: {
+    contentClass: {
+      type: String,
+      default: '',
+    },
     visible: {
       type: Boolean,
       default: false,

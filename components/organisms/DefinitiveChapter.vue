@@ -39,6 +39,7 @@
         v-for="(post, index) in getPosts"
         :key="index"
         :post="post"
+        :chapter="chapter"
       />
     </div>
   </span>

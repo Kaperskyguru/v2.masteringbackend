@@ -52,6 +52,11 @@ export default {
           ],
         },
       },
+
+      {
+        src: 'https://cdn.paddle.com/paddle/paddle.js',
+        hid: 'Paddle',
+      },
     ],
     meta: [
       { charset: 'utf-8' },
@@ -201,6 +206,8 @@ export default {
     STRAPI_TOKEN: process.env.STRAPI_TOKEN,
     MAILCHIMP_KEY: process.env.MAILCHIMP_KEY,
     MAILCHIMP_SERVER: process.env.MAILCHIMP_SERVER,
+    SEGMENT_WRITE_KEY: process.env.VUE_APP_SEGMENT_WRITE_KEY,
+    PADDLE_VENDOR: process.env.PADDLE_VENDOR,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -423,6 +430,11 @@ export default {
       Authorization: `bearer ${process.env.STRAPI_TOKEN}`,
       'Content-Type': 'application/json',
     },
+  },
+
+  publicRuntimeConfig: {
+    SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
+    SEGMENT_USE_ROUTER: process.env.SEGMENT_USE_ROUTER || true,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
