@@ -206,7 +206,7 @@ export default {
     STRAPI_TOKEN: process.env.STRAPI_TOKEN,
     MAILCHIMP_KEY: process.env.MAILCHIMP_KEY,
     MAILCHIMP_SERVER: process.env.MAILCHIMP_SERVER,
-    SEGMENT_WRITE_KEY: process.env.VUE_APP_SEGMENT_WRITE_KEY,
+    SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     PADDLE_VENDOR: process.env.PADDLE_VENDOR,
   },
 
