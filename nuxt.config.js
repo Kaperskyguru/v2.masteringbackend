@@ -357,11 +357,11 @@ export default {
       statusCode: 301,
     },
 
-    {
-      from: '^/posts/rust-programming-the-ultimate-guide(.*)$',
-      to: '/books/rust-essentials',
-      statusCode: 301,
-    },
+    // {
+    //   from: '^/posts/rust-programming-the-ultimate-guide(.*)$',
+    //   to: '/books/rust-essentials',
+    //   statusCode: 301,
+    // },
     {
       from: '^/courses/text/advanced-docker(.*)$',
       to: '/hubs/advanced-docker',
