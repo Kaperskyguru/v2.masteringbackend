@@ -75,6 +75,12 @@
                         }}
                       </span>
 
+                      <span v-else-if="isBook(hub)">
+                        {{ getPostCount(hub) }} Chapter{{
+                          getPostCount(hub) > 1 ? 's' : ''
+                        }}
+                      </span>
+
                       <span v-else>
                         {{ getChapterCount(hub) }} Chapter{{
                           getChapterCount(hub) > 1 ? 's' : ''
@@ -238,6 +244,12 @@ export default {
         'https://res.cloudinary.com/kaperskydisk/image/upload/v1684533784/masteringbackend/posts/vectors/2842680.pngg'
       )
     },
+
+    getPostCount() {
+      const posts = this.getBookPostsFromHubChapter(hub)
+      return posts?.length ?? 0
+    },
+
     getChapterCount(hub) {
       return hub?.chapters?.length ?? 0
     },
