@@ -245,7 +245,7 @@ export default {
       )
     },
 
-    getPostCount() {
+    getPostCount(hub) {
       const posts = this.getBookPostsFromHubChapter(hub)
       return posts?.length ?? 0
     },
