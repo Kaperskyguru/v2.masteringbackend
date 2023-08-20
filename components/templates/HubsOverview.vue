@@ -85,8 +85,31 @@
                       class="d-flex flex-column justify-content-between overflow-auto"
                       style="height: 300px"
                     >
+                      <div v-if="isBook(hub)">
+                        <p
+                          v-for="(chapter, index) in getBookPostsFromHubChapter(
+                            hub
+                          )"
+                          :key="index"
+                          class="pe-2 font-weight-light d-flex flex-row justify-content-start fs-5"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            :fill="color(hub)"
+                            width="24"
+                            height="24"
+                          >
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M16 12l-6 6V6z" />
+                          </svg>
+
+                          <span class="flex-fill">{{ chapter.title }}</span>
+                        </p>
+                      </div>
+
                       <div
-                        v-for="(chapter, index) in hub.chapters"
+                        v-for="(chapter, index) in !isBook(hub) && hub.chapters"
                         :key="index"
                       >
                         <nuxt-link
@@ -189,6 +212,15 @@ export default {
 
     isBook(hub) {
       return hub.type === 'book'
+    },
+
+    getBookPostsFromHubChapter(hub) {
+      if (!this.isBook(hub)) return
+
+      const chapters = hub?.chapters
+      if (chapters && chapters.length > 1) return chapters ?? []
+
+      return chapters[0].posts ?? []
     },
 
     color(hub) {
