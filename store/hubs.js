@@ -1,3 +1,4 @@
+import qs from 'qs'
 import { resolveChapters, resolvePosts } from '../helpers/utils'
 export const state = () => ({
   hubState: 1, // ENUM.INIT,
@@ -262,10 +263,19 @@ export const actions = {
     }
   },
 
-  async getHub({ commit }, slug) {
+  async getHub({ commit }, { slug, populate = '*' }) {
     try {
+      const query = qs.stringify(
+        {
+          populate,
+        },
+        {
+          encodeValuesOnly: true, // prettify URL
+        }
+      )
+      // populate[chapters][populate]=posts
       const res = await this.$axios.get(
-        `/hubs/?populate[chapters][populate]=posts&filters[slug][$eq]=${slug}`
+        `/hubs/?${query}&filters[slug][$eq]=${slug}`
       )
 
       const { data } = res
@@ -303,6 +313,11 @@ function mapHubs(hubs) {
     return {
       id: hub.id,
       ...hub.attributes,
+
+      image: {
+        id: hub.attributes?.image?.data?.id,
+        ...hub.attributes?.image?.data?.attributes,
+      },
 
       chapters: hub.attributes?.chapters?.data?.map((chapter) => ({
         id: chapter.id,

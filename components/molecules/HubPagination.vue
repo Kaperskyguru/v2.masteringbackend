@@ -100,7 +100,17 @@ export default {
       const getHub = this.$store.getters['hubs/getHub']
       let hub = await getHub(slug)
       if (!hub?.length) {
-        hub = await this.$store.dispatch('hubs/getHub', slug)
+        hub = await this.$store.dispatch('hubs/getHub', {
+          slug,
+          populate: {
+            image: true,
+            chapters: {
+              populate: {
+                posts: true,
+              },
+            },
+          },
+        })
       }
 
       this.hubs = hub

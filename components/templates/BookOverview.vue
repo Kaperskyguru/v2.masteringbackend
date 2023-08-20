@@ -257,9 +257,10 @@ export default {
     },
 
     animatedBookCover() {
+      console.log(this.hub?.image)
       return (
         this.hub &&
-        (this.hub?.image ??
+        (this.hub?.image?.url ??
           'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png')
       )
     },

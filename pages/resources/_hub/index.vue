@@ -12,7 +12,17 @@ export default {
       const getHub = store.getters['hubs/getHub']
       let hub = await getHub(params.hub)
       if (!hub?.length) {
-        hub = await store.dispatch('hubs/getHub', params.hub)
+        hub = await store.dispatch('hubs/getHub', {
+          slug: params.hub,
+          populate: {
+            image: true,
+            chapters: {
+              populate: {
+                posts: true,
+              },
+            },
+          },
+        })
       }
 
       return { hub }
