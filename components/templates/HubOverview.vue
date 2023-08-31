@@ -109,6 +109,17 @@
         </div>
       </div>
     </section>
+    <section class="m-5" v-if="isBackend">
+      <div class="container w-50 d-flex flex-1">
+        <div class="d-flex justify-content-center text-center flex-column">
+          <h2 class="hero__title title__text">Backend as a Journey (BaaJ)</h2>
+          <p>
+            Backend engineering is a Journey of no return. If you're ready to
+            jump on this rewarding journey. Start below:
+          </p>
+        </div>
+      </div>
+    </section>
     <section :class="{ 'py-5 my-5': shouldActivateWaitingList }" class="Conent">
       <div class="container">
         <Chapter
@@ -142,6 +153,10 @@ export default {
 
     isPDF() {
       return this.hub.type === 'pdf'
+    },
+
+    isBackend() {
+      return this.$route.params?.hub === 'backend-engineering'
     },
 
     image() {
@@ -195,4 +210,7 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  color: #0a083b;
+}
 </style>
