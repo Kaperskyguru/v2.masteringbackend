@@ -27,6 +27,7 @@
       v-else
       :style="customStyle"
       v-bind="$attrs"
+      :href="link"
       v-on="$listeners"
       :disabled="disabled || waiting"
       :aria-label="waiting ? 'Please wait…' : undefined"

@@ -20,9 +20,9 @@
                 }"
                 size="large"
                 type="link"
-                :link="shouldActivateWaitingList ? '#' : getURL"
+                :link="link"
               >
-                Start Now
+                {{ isPremium ? 'Grab Your Copy Now' : 'Start Now' }}
               </Button>
             </div>
           </div>
@@ -153,6 +153,19 @@ export default {
 
     isPDF() {
       return this.hub.type === 'pdf'
+    },
+
+    link() {
+      if (this.isPremium) return this.linkToPay
+      return this.shouldActivateWaitingList ? '#' : this.getURL
+    },
+
+    linkToPay() {
+      return this.hub?.link ?? '#'
+    },
+
+    isPremium() {
+      return this.hub.is_premium
     },
 
     isBackend() {
