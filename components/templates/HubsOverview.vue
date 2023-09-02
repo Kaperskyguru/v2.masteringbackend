@@ -121,20 +121,23 @@
                         <nuxt-link
                           v-if="isPDF(hub)"
                           :to="`${getURL(hub)}/${chapter.slug}`"
-                          class="pe-2 font-weight-light d-flex flex-row justify-content-start fs-5"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            :fill="color(hub)"
-                            width="24"
-                            height="24"
+                          <p
+                            class="pe-2 font-weight-light d-flex flex-row justify-content-start fs-5"
                           >
-                            <path fill="none" d="M0 0h24v24H0z" />
-                            <path d="M16 12l-6 6V6z" />
-                          </svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              :fill="color(hub)"
+                              width="24"
+                              height="24"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z" />
+                              <path d="M16 12l-6 6V6z" />
+                            </svg>
 
-                          <span class="flex-fill">{{ chapter.title }}</span>
+                            <span class="flex-fill">{{ chapter.title }}</span>
+                          </p>
                         </nuxt-link>
 
                         <p
