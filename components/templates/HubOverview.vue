@@ -120,7 +120,10 @@
         </div>
       </div>
     </section>
-    <section :class="{ 'py-5 my-5': shouldActivateWaitingList }" class="Conent">
+    <section
+      :class="{ 'py-5 my-5': shouldActivateWaitingList || isPremium }"
+      class="Conent"
+    >
       <div class="container">
         <Chapter
           v-for="(chapter, i) in chapters"
@@ -198,7 +201,7 @@ export default {
     },
 
     shouldActivateWaitingList() {
-      return this.hub?.activate_waiting ?? this.is_premium ?? null
+      return this.hub?.activate_waiting ?? null
     },
 
     enchargeTag() {

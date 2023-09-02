@@ -6,7 +6,7 @@
     >
       <nuxt-link
         :to="
-          shouldActivateWaitingList
+          shouldActivateWaitingList || isPremium
             ? '#'
             : {
                 path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
@@ -26,7 +26,7 @@
       <nuxt-link
         v-else
         :to="
-          shouldActivateWaitingList
+          shouldActivateWaitingList || isPremium
             ? '#'
             : { path: `${getBaseURL}/${chapterSlug}/${chapter.slug}` }
         "
@@ -75,7 +75,7 @@
                   ><nuxt-link
                     class="font-weight-light d-flex flex-row justify-content-start fs-5"
                     :to="
-                      shouldActivateWaitingList || isPDF
+                      shouldActivateWaitingList || isPDF || isPremium
                         ? '#'
                         : {
                             path: `${getBaseURL}/${chapterSlug}/${firstPostSlug}`,
@@ -104,7 +104,7 @@
                   <nuxt-link
                     class="font-weight-light d-flex flex-row justify-content-start fs-5"
                     :to="
-                      shouldActivateWaitingList
+                      shouldActivateWaitingList || isPremium
                         ? '#'
                         : { path: `${getBaseURL}/${chapterSlug}/${post.slug}` }
                     "
@@ -163,6 +163,10 @@ export default {
 
     shouldActivateWaitingList() {
       return this.chapter?.hub?.activate_waiting ?? false
+    },
+
+    isPremium() {
+      return this.chapter?.hub?.is_premium ?? false
     },
 
     getBaseURL() {
