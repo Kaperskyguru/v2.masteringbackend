@@ -119,7 +119,7 @@
                         :key="index"
                       >
                         <nuxt-link
-                          v-if="isPDF"
+                          v-if="isPDF(hub)"
                           :to="`${getURL(hub)}/${chapter.slug}`"
                           class="pe-2 font-weight-light d-flex flex-row justify-content-start fs-5"
                         >
