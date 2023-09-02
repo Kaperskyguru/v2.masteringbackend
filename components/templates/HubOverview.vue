@@ -198,7 +198,7 @@ export default {
     },
 
     shouldActivateWaitingList() {
-      return this.hub?.activate_waiting ?? null
+      return this.hub?.activate_waiting ?? this.is_premium ?? null
     },
 
     enchargeTag() {
