@@ -163,7 +163,7 @@
                 </div>
               </div>
 
-              <div class="col-12 align-self-end">
+              <div class="col-12 d-flex gap-2 align-self-end">
                 <Button
                   class="btn-block"
                   size="large"
@@ -176,6 +176,11 @@
                 >
                   Start Now
                 </Button>
+                <div v-if="isPremium(hub)">
+                  <span class="badge text-light" style="background: #191489"
+                    >Premium</span
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -221,6 +226,10 @@ export default {
 
     isBook(hub) {
       return hub.type === 'book'
+    },
+
+    isPremium(hub) {
+      return hub.is_premium
     },
 
     getBookPostsFromHubChapter(hub) {
