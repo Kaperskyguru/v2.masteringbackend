@@ -26,10 +26,16 @@
                 size="large"
                 class="py-2 my-2 fs-4 fw-bold"
                 type="link"
-                :link="`/hubs/${slug}`"
+                :link="link"
               >
-                Read Online
+                {{ isPremium ? 'Grab Your Copy Now' : 'Read Online' }}
               </Button>
+
+              <!-- 
+
+                Trigger Payment Model if linkToPay is (# or null) and Price > 0
+
+               -->
 
               <!-- <Button
                 v-if="!activateDownload"
@@ -229,6 +235,19 @@ export default {
         return `#${color.replace(/[^a-zA-Z0-9 ]/g, '')}`
       }
       return mixedColor
+    },
+
+    isPremium() {
+      return this.hub.is_premium
+    },
+
+    link() {
+      if (this.isPremium) return this.linkToPay
+      return `/hubs/${this.slug}` // TODO:: change URL to `books` instead of `hubs`
+    },
+
+    linkToPay() {
+      return this.hub?.link ?? '#'
     },
 
     slug() {
