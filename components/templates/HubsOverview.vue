@@ -88,7 +88,7 @@
                       </span>
                     </h5>
                     <div
-                      class="d-flex flex-column justify-content-between overflow-auto"
+                      class="d-flex flex-column overflow-auto"
                       style="height: 300px"
                     >
                       <div v-if="isBook(hub)">
