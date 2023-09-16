@@ -14,6 +14,7 @@
 
             <div class="input-group py-3">
               <Button
+                v-if="!isPDF"
                 :custom-style="{
                   backgroundColor: `${color}`,
                   color: '#fff',
