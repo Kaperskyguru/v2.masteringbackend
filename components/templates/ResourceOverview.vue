@@ -16,7 +16,23 @@
               {{ description }}
             </p>
             <div class="gradient"></div>
+
+            <div class="input-group py-3" v-if="isLaravelBreeze">
+              <Button
+                v-if="!isPDF"
+                :custom-style="{
+                  backgroundColor: `${color}`,
+                  color: '#fff',
+                }"
+                size="large"
+                type="link"
+                link="https://store.masteringbackend.com/l/laravel-breeze"
+              >
+                {{ 'Grab Your Copy Now' }}
+              </Button>
+            </div>
           </div>
+
           <div class="col-lg-6 ml-auto p-2">
             <div id="chapter" class="container mx-auto w-75">
               <div
@@ -24,6 +40,7 @@
                 style="background-color: white"
               >
                 <form
+                  v-if="!isLaravelBreeze"
                   id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
                   action="https://api.encharge.io/v1/forms/bacf371b-b382-4024-9adb-99ea3c829eae/submission/plain"
                   method="POST"
@@ -109,6 +126,15 @@
                     </button>
                   </div>
                 </form>
+
+                <img
+                  v-else
+                  class="img-fluid"
+                  v-lazy-load
+                  data-src="https://strapi-images-aws-s3.s3.us-west-2.amazonaws.com/1694963417_e55e6533b9.png?updated_at=2023-09-17T16:31:10.286Z"
+                  alt="Laravel breeze PDF"
+                  srcset=""
+                />
               </div>
             </div>
           </div>
@@ -257,6 +283,10 @@ export default {
 
     description() {
       return this.chapter?.description
+    },
+
+    isLaravelBreeze() {
+      return this.chapter?.slug === 'laravel-breeze'
     },
 
     image() {
