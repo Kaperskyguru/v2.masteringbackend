@@ -24,7 +24,7 @@
                   Try it
                 </button>
               </div>
-              <recaptcha />
+              <!-- <recaptcha /> -->
             </div>
           </div>
           <div class="col-md-6 hero__image">
