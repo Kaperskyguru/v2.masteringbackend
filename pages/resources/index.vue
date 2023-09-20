@@ -1,5 +1,9 @@
 <template>
-  <HubsOverview :hubs="hubs" />
+  <HubsOverview
+    title="Welcome To Our Resources Page"
+    desc="Whether you're new to backend engineering, or want to scale up, this is your home for Exclusive backend engineering resources."
+    :hubs="hubs"
+  />
 </template>
   
   <script>

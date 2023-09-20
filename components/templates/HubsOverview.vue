@@ -196,10 +196,10 @@ export default {
     desc: {
       type: String,
       default:
-        "Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering knowledge.",
+        "Whether you're new to backend engineering, or want to scale up, this is your home for in-depth backend engineering knowledge.",
     },
     title: {
-      default: 'Welcome to the Masteringbackend library',
+      default: 'Welcome To Our Content Hub',
       type: String,
     },
     hubs: {

@@ -2,37 +2,64 @@
   <footer class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 mb-3">
-          <div>
-            <Logo is-white />
-            <p class="fs-6 mt-2 text-white">
-              A great resource for backend engineers. Next-level Backend
-              Engineering training and Exclusive resources.
-            </p>
+        <div class="col-md-4">
+          <div class="col mb-3">
+            <div>
+              <Logo is-white />
+              <p class="fs-6 mt-2 text-white">
+                A great resource for backend engineers. Next-level Backend
+                Engineering training and Exclusive resources.
+              </p>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 text-col">
-          <p class="mb-4">Learn</p>
-          <div class="d-md-flex text-white">
-            <ul class="footer-nav fs-6">
-              <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
-              <li class="mb-3">
-                <nuxt-link to="/newsletter">Newsletter</nuxt-link>
-              </li>
-              <li class="mb-3">
-                <a href="/academy">Join The Academy </a>
-              </li>
-              <li><a href="/community">Join Our Community</a></li>
-            </ul>
+        <div class="col">
+          <div class="row justify-between">
+            <div class="col-md-4 text-col">
+              <p class="mb-4">Learn</p>
+              <div class="d-md-flex text-white">
+                <ul class="footer-nav fs-6">
+                  <li class="mb-3"><nuxt-link to="/posts">Blog</nuxt-link></li>
+                  <li class="mb-3">
+                    <nuxt-link to="/books">Books</nuxt-link>
+                  </li>
+                  <li class="mb-3">
+                    <nuxt-link to="/hubs">Hubs</nuxt-link>
+                  </li>
+                  <li>
+                    <a href="https://store.masteringbackend.com">Our Store</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4 text-col">
+              <p class="mb-4">Join</p>
+              <div class="d-md-flex text-white">
+                <ul class="footer-nav fs-6">
+                  <li class="mb-3">
+                    <nuxt-link to="/newsletter">Join Our Newsletter</nuxt-link>
+                  </li>
+                  <li class="mb-3">
+                    <a href="/community">Join Our Community</a>
+                  </li>
+
+                  <li class="mb-3">
+                    <a href="/academy">Join The Academy </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4 text-col">
+              <p class="mb-4">Company</p>
+              <ul class="footer-nav fs-6">
+                <li class="mb-3"><a href="/">Home</a></li>
+                <li class="mb-3"><a href="/about">About</a></li>
+                <li class="mb-3"><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 text-col">
-          <p class="mb-4">Company</p>
-          <ul class="footer-nav fs-6">
-            <li class="mb-3"><a href="/">Home</a></li>
-            <li class="mb-3"><a href="/about">About</a></li>
-            <li class="mb-3"><a href="/contact">Contact</a></li>
-          </ul>
         </div>
       </div>
       <hr />

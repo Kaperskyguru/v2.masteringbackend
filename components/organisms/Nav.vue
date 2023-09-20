@@ -21,13 +21,23 @@
         :class="{ show: show }"
       >
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item" :class="{ active: isActive() }">
-            <a href="/" class="links nav-link">Home</a>
-          </li>
           <li class="nav-item" :class="{ active: isActive('/posts') }">
             <a href="/posts" class="links nav-link">Blog</a>
           </li>
-          <!-- <li class="nav-item"><a href="/jobs" class="nav-link">Jobs</a></li> -->
+          <li class="nav-item" :class="{ active: isActive('/books') }">
+            <a href="/books" class="links nav-link">Books</a>
+          </li>
+          <li class="nav-item" :class="{ active: isActive('/hubs') }">
+            <a href="/hubs" class="links nav-link">Hubs</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="links nav-link"
+              target="_blank"
+              href="https://store.masteringbackend.com"
+              >Our Store</a
+            >
+          </li>
           <li class="nav-item" :class="{ active: isActive('/community') }">
             <a href="/community" class="nav-link">Community</a>
           </li>

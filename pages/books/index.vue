@@ -1,7 +1,7 @@
 <template>
   <HubsOverview
-    title="Welcome to the Masteringbackend library"
-    desc="Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering knowledge."
+    title="Welcome To Our library"
+    desc="Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering books."
     :hubs="books"
   />
 </template>
@@ -45,17 +45,17 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
+          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
+          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.`,
+          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'twitter:card',
