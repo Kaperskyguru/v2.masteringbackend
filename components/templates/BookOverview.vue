@@ -38,7 +38,7 @@
                -->
 
               <Button
-                v-if="linkToPay"
+                v-if="linkToPay && !isWaiting"
                 :custom-style="{
                   border: `1px solid ${color}`,
                   color: `${color} !important`,
@@ -54,7 +54,7 @@
           </div>
           <div class="col-md-5 hero__image">
             <img
-              v-if="!showDownload && !activateDownload"
+              v-if="!isWaiting"
               class="img-fluid"
               v-lazy-load
               :data-src="bookCover"
@@ -215,7 +215,6 @@ export default {
   data: () => ({
     message: {},
     res: {},
-    showDownload: false,
   }),
 
   props: {
@@ -253,7 +252,7 @@ export default {
       return this.hub?.slug ?? '#'
     },
 
-    activateDownload() {
+    isWaiting() {
       return this.hub?.activate_waiting ?? false
     },
 
@@ -275,7 +274,6 @@ export default {
     },
 
     animatedBookCover() {
-      console.log(this.hub?.image)
       return (
         this.hub &&
         (this.hub?.image?.url ??
