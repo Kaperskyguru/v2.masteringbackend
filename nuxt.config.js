@@ -208,6 +208,7 @@ export default {
     MAILCHIMP_SERVER: process.env.MAILCHIMP_SERVER,
     SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     PADDLE_VENDOR: process.env.PADDLE_VENDOR,
+    RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -241,6 +242,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/recaptcha',
     'nuxt-lazy-load',
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
@@ -344,6 +346,13 @@ export default {
     //   type: 'rss2', // Can be: rss2, atom1, json1
     // },
   ],
+
+  recaptcha: {
+    siteKey: process.env.RECAPTCHA_SITE_KEY,
+    version: 3,
+    hideBadge: true,
+    mode: 'basic',
+  },
 
   serverMiddleware: {
     '/api': '~/api',

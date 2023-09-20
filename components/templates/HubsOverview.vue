@@ -10,15 +10,21 @@
               {{ desc }}
             </p>
 
-            <div class="input-group py-3">
-              <input
-                type="email"
-                class="form-control p-3"
-                placeholder="Enter your Email"
-              />
-              <button class="btn btn-outline-secondary" type="button">
-                Try it
-              </button>
+            <div class="mt-5">
+              <div style="color: #0a083b">
+                Be notified when we publish new {{ $route.name }}.
+              </div>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control p-3"
+                  placeholder="Enter your Email"
+                />
+                <button class="btn btn-outline-secondary" type="button">
+                  Try it
+                </button>
+              </div>
+              <recaptcha />
             </div>
           </div>
           <div class="col-md-6 hero__image">

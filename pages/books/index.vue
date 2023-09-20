@@ -1,6 +1,6 @@
 <template>
   <HubsOverview
-    title="Welcome To Our library"
+    title="Welcome To Our Library"
     desc="Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering books."
     :hubs="books"
   />
