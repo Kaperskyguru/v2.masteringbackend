@@ -37,20 +37,19 @@
 
                -->
 
-              <!-- <Button
-                v-if="!activateDownload"
+              <Button
+                v-if="!linkToPay"
                 :custom-style="{
                   border: `1px solid ${color}`,
                   color: `${color} !important`,
                 }"
-                @click.native="showDownload = !showDownload"
                 size="large"
                 type="link"
                 class="py-2 my-2 fs-4 fw-bold"
-                link="#"
+                :link="linkToPay"
               >
                 Download Now
-              </Button> -->
+              </Button>
             </div>
           </div>
           <div class="col-md-5 hero__image">
@@ -247,7 +246,7 @@ export default {
     },
 
     linkToPay() {
-      return this.hub?.link ?? '#'
+      return this.hub?.link ?? ''
     },
 
     slug() {
