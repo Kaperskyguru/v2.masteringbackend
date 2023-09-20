@@ -38,7 +38,7 @@
                -->
 
               <Button
-                v-if="!linkToPay"
+                v-if="linkToPay"
                 :custom-style="{
                   border: `1px solid ${color}`,
                   color: `${color} !important`,
