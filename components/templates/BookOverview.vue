@@ -38,7 +38,7 @@
                -->
 
               <Button
-                v-if="linkToPay && !isWaiting"
+                v-if="linkToPay && !isWaiting && !isPremium"
                 :custom-style="{
                   border: `1px solid ${color}`,
                   color: `${color} !important`,
