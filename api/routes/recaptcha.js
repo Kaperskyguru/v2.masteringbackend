@@ -1,4 +1,4 @@
-import recaptcha from '../services/recaptcha'
+import recaptcha from '../services/Recaptcha'
 const { Router } = require('express')
 
 const router = Router()
