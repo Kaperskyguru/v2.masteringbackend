@@ -347,12 +347,12 @@ export default {
     // },
   ],
 
-  recaptcha: {
-    siteKey: process.env.RECAPTCHA_SITE_KEY,
-    version: 3,
-    hideBadge: true,
-    mode: 'basic',
-  },
+  // recaptcha: {
+  //   siteKey: process.env.RECAPTCHA_SITE_KEY,
+  //   version: 3,
+  //   hideBadge: true,
+  //   mode: 'basic',
+  // },
 
   serverMiddleware: {
     '/api': '~/api',
@@ -442,6 +442,13 @@ export default {
   },
 
   publicRuntimeConfig: {
+    recaptcha: {
+      /* reCAPTCHA options */
+      version: 3,
+      hideBadge: true,
+      mode: 'basic',
+      siteKey: process.env.RECAPTCHA_SITE_KEY, // for example
+    },
     SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     SEGMENT_USE_ROUTER: process.env.SEGMENT_USE_ROUTER || true,
   },

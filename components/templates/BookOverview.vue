@@ -68,68 +68,11 @@
               class="shadow border p-4 my-4"
               style="background-color: white"
             >
-              <form
-                id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
-                action="https://api.encharge.io/v1/forms/bacf371b-b382-4024-9adb-99ea3c829eae/submission/plain"
-                method="POST"
-              >
-                <div class="form-group py-3">
-                  <label
-                    class="text-dark"
-                    for="1bf52140-11b8-46e9-8115-8fa21b589cfb"
-                  >
-                    <b>Full Name</b>
-                  </label>
-                  <input
-                    id="1bf52140-11b8-46e9-8115-8fa21b589cfb"
-                    name="name"
-                    class="encharge-form-input sc-gqjmRU liSvtx col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
-                    type="text"
-                    placeholder="Enter your full name"
-                    required
-                  />
-                </div>
-
-                <div class="form-group py-3">
-                  <label
-                    class="text-dark"
-                    for="7dbc4ccf-238b-4128-9250-634cccb01176"
-                  >
-                    <b>E-mail</b>
-                  </label>
-                  <input
-                    id="7dbc4ccf-238b-4128-9250-634cccb01176"
-                    name="email"
-                    class="encharge-form-input sc-gqjmRU liSvtx col-lg-8 py-md- col-12 form-control shadow-none fs-5 my-"
-                    type="email"
-                    required
-                    placeholder="Enter your email address"
-                  />
-                </div>
-
-                <input
-                  type="hidden"
-                  id="31b47661-eae6-42bd-bc02-df3c004a01f9"
-                  name="HiddenTag"
-                  :value="enchargeTag"
-                  class="encharge-form-input sc-htoDjs jmyTNa form-control"
-                />
-
-                <div class="field">
-                  <div class="control text-center mt-4">
-                    <button
-                      class="col-12 start-btn py-2 my-2 fs-4 fw-bold"
-                      type="submit"
-                      :style="{
-                        backgroundColor: `${color}`,
-                        color: '#fff',
-                      }"
-                    >
-                      {{ activateDownload ? 'Get Notified' : 'Get The Book' }}
-                    </button>
-                  </div>
-                </div>
-              </form>
+              <ResourceForm
+                :tag="enchargeTag"
+                :color="color"
+                :isWaiting="activateDownload"
+              />
             </div>
           </div>
         </div>

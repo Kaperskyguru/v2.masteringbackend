@@ -38,28 +38,61 @@
                 />
               </div>
             </div>
+
             <div class="d-grid col-lg mx-auto">
               <form
+                ref="form"
+                @submit.prevent="onSubmit"
                 id="form-d2fcdd82-c699-490c-8895-be934ad75feb"
                 action="https://api.encharge.io/v1/forms/d2fcdd82-c699-490c-8895-be934ad75feb/submission/plain"
                 method="POST"
               >
-                <div class="input-group py-3 mb-5 no-border">
-                  <input
-                    type="email"
-                    id="0d9879cb-e9dc-4d00-9bd9-faf84f9a1a2c"
-                    name="email"
-                    style="border: 2"
-                    placeholder="Enter your email address..."
-                    class="encharge-form-input sc-jTzLTM JGOZS form-control py-md-2 col-12 col-lg-8 form-control shadow-none fs-5 my-2"
-                  />
-
-                  <Button
-                    type="submit"
-                    class="encharge-form-submit-button sc-gzVnrw HOnGD btn btn-primary col-lg-4 col-12 start-btn py-3 my-2"
+                <div class="py-3 my-5">
+                  <small class="text-center fst-italic fw-bold"
+                    >If you only want the resource, please peacefully
+                    unsubscribe when you recieve it</small
                   >
-                    Get The Free Guide
-                  </Button>
+                  <div class="input-group no-border">
+                    <input
+                      type="email"
+                      id="0d9879cb-e9dc-4d00-9bd9-faf84f9a1a2c"
+                      name="email"
+                      style="border: 2"
+                      placeholder="Enter your email address..."
+                      class="encharge-form-input sc-jTzLTM JGOZS form-control py-md-2 col-12 col-lg-8 form-control shadow-none fs-5 my-2"
+                    />
+
+                    <Button
+                      type="submit"
+                      class="encharge-form-submit-button sc-gzVnrw HOnGD btn btn-primary col-lg-4 col-12 start-btn py-3 my-2"
+                    >
+                      Get The Free Guide
+                    </Button>
+                  </div>
+
+                  <div class="sc-jzJRlG hjFAqE">
+                    <div
+                      name="nativeFormMarketingConsent"
+                      class="encharge-form-group sc-jTzLTM bPowmp form-group"
+                    >
+                      <input
+                        type="checkbox"
+                        id="2fe10423-9080-45d1-ad68-eac0064430c0"
+                        name="nativeFormMarketingConsent"
+                        required
+                        class="encharge-form-checkbox sc-gqjmRU gCOwty form-check-input"
+                      />
+                      <label
+                        for="2fe10423-9080-45d1-ad68-eac0064430c0"
+                        class="encharge-form-label sc-VigVT bSCkYy"
+                      >
+                        <small
+                          >I agree to receive emails from you (unsubscribe
+                          anytime).</small
+                        >
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
@@ -72,6 +105,7 @@
   
   <script>
 import { submit } from '~/helpers/mailchimp'
+import { recaptcha } from '~/helpers/recaptcha'
 export default {
   name: 'FeaturedComponent',
 
@@ -97,7 +131,33 @@ export default {
     },
   },
 
+  async mounted() {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
+  beforeDestroy() {
+    this.$recaptcha.destroy()
+  },
+
   methods: {
+    async onSubmit() {
+      try {
+        const token = await this.$recaptcha.execute('login')
+
+        const data = await recaptcha({ token })
+
+        if (!data?.success) return
+
+        this.$refs.form?.submit()
+      } catch (error) {
+        console.log('Login error:', error)
+      }
+    },
+
     async subscribe() {
       const res = await submit({
         email: this.email,

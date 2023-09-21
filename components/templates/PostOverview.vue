@@ -22,7 +22,7 @@
                   </p>
                 </div>
               </div>
-              <div class="input-group mt-3 p-2 bg-white no-border">
+              <!-- <div class="input-group mt-3 p-2 bg-white no-border">
                 <input
                   type="email"
                   v-model="email"
@@ -37,7 +37,7 @@
                 >
                   Start Now
                 </Button>
-              </div>
+              </div> -->
             </div>
             <div
               v-if="res.message || show"

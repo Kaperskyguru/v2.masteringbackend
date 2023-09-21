@@ -16,11 +16,13 @@ app.use(express.json())
 const mailchimp = require('./routes/mailchimp')
 const mailbluster = require('./routes/mailbluster')
 const slack = require('./routes/slack')
+const recaptcha = require('./routes/recaptcha')
 
 // Import API Routes
 app.use(mailchimp)
 app.use(mailbluster)
 app.use(slack)
+app.use(recaptcha)
 
 // Export express app
 module.exports = app
