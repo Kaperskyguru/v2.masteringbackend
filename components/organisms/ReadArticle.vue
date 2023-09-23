@@ -198,6 +198,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import CustomAlert from '../molecules/CustomAlert.vue'
 import Segment from '~/helpers/segment'
 import {
   OPEN_PREMIUM,
@@ -233,6 +235,7 @@ export default {
   },
 
   mounted() {
+    this.displayCustomReadMoreAlert()
     if (this.isDev()) {
       // eslint-disable-next-line no-undef
       Paddle.Environment.set('sandbox')
@@ -274,6 +277,65 @@ export default {
       this.showSubscription = true
       this.showPremiumContent = false
       this.sendSegment(OPEN_PREMIUM_SUBSCRIPTION, {})
+    },
+
+    createComponent(element, props = {}) {
+      if (element != null) {
+        const mountNode = document.createElement('div')
+        mountNode.id = 'mount-node'
+        mountNode.style.color = 'red' // .add('m-5')
+        element?.replaceWith(mountNode)
+        const ToastComp = Vue.extend(CustomAlert)
+        if (Object.keys(props).length !== 0) {
+          new ToastComp({
+            propsData: props,
+          }).$mount('#mount-node')
+        } else {
+          new ToastComp().$mount('#mount-node')
+        }
+      }
+    },
+
+    createCustomAlert(element, data = {}) {
+      const props = {
+        title: data?.title,
+        description: data?.description,
+        tags: data?.tags,
+        Readlink: data?.url,
+        showRead: true,
+      }
+
+      this.createComponent(element, props)
+    },
+
+    displayCustomReadMoreAlert() {
+      const tables = document.querySelectorAll('table')
+
+      const customTables = []
+
+      tables.forEach((item) => {
+        const table = item.querySelector('tbody tr td:nth-child(2) p')
+
+        if (table.textContent.includes('custom')) {
+          customTables.push(item)
+        }
+      })
+
+      customTables.forEach((table) => {
+        const data = {}
+        const item = table.querySelectorAll('tbody tr')
+
+        item.forEach((i) => {
+          const key = i.querySelectorAll('td').item(0).textContent.toLowerCase()
+          const value = i.querySelectorAll('td').item(1).textContent
+
+          if (value === 'custom') return
+
+          data[key] = value
+        })
+
+        this.createCustomAlert(table, data)
+      })
     },
 
     async unlock() {

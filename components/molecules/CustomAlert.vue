@@ -1,17 +1,16 @@
 <template>
-  <div class="text-center text-white mt-4">
+  <div class="text-center text-white my-4">
     <div
       class="position-relative"
       :style="{ backgroundColor: bgColor, padding: '5rem' }"
       :id="showClip ? 'notify' : ''"
     >
       <h3 class="fs-2 py-4">
-        <slot name="title"> In a hurry? Save this article as a PDF. </slot>
+        <slot name="title"> {{ title }} </slot>
       </h3>
       <p class="fs-5">
         <slot name="description">
-          Tired of scrolling? Download a PDF version for easier offline reading
-          and sharing with coworkers.
+          {{ description }}
         </slot>
       </p>
 
@@ -25,7 +24,7 @@
             target="_blank"
             :link="Readlink"
             :custom-style="{
-              backgroundColor: adjust(bgColor, -50),
+              backgroundColor: adjust(bgColor, 20),
               color: '#fff',
             }"
           >
@@ -40,7 +39,7 @@
             type="link"
             :link="link"
             :custom-style="{
-              backgroundColor: adjust(bgColor, 20),
+              backgroundColor: adjust(bgColor, 40),
               color: '#fff',
             }"
             >Click here to download</Button
@@ -73,6 +72,15 @@ export default {
     bgColor: {
       type: String,
       default: '#5227AD',
+    },
+    title: {
+      type: String,
+      default: 'In a hurry? Save this article as a PDF.',
+    },
+    description: {
+      type: String,
+      default:
+        'Tired of scrolling? Download a PDF version for easier offline reading and sharing with coworkers.',
     },
     showClip: {
       type: Boolean,
