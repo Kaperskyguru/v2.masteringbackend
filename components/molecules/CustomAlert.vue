@@ -1,7 +1,7 @@
 <template>
   <div class="text-center text-white my-4">
     <div
-      class="position-relative"
+      class="position-relative pad"
       :style="{ backgroundColor: bgColor, padding: '5rem' }"
       :id="showClip ? 'notify' : ''"
     >
@@ -137,5 +137,11 @@ export default {
   border-style: solid;
   border-width: 100px 100px 0 0;
   border-color: #000 transparent transparent transparent;
+}
+
+@media (max-width: 991.98px) {
+  .pad {
+    padding: 2rem !important;
+  }
 }
 </style>
