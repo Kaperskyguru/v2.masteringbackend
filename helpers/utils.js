@@ -93,6 +93,17 @@ export const resolvePosts = (posts) => {
         ...post.attributes?.author?.data?.attributes,
       },
 
+      resource: {
+        id: post.attributes?.resource?.data?.id,
+        ...post.attributes?.resource?.data?.attributes,
+
+        hub: {
+          id: post?.attributes?.resource?.data?.attributes?.hub?.data?.id,
+          ...post?.attributes?.resource?.data?.attributes?.hub?.data
+            ?.attributes,
+        },
+      },
+
       chapters: resolveChapters(post.attributes?.chapters?.data),
 
       chapter: {

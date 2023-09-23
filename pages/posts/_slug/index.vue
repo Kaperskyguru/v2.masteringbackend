@@ -45,6 +45,13 @@ export default {
             categories: true,
             author: true,
             tags: true,
+            resource: {
+              populate: {
+                hub: {
+                  fields: ['slug', 'type', 'title', 'description'],
+                },
+              },
+            },
             chapter: {
               populate: {
                 hub: {

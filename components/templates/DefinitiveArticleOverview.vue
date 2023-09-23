@@ -130,18 +130,20 @@ export default {
 
   computed: {
     hasPDF() {
-      const chapter = this.post.chapter
+      const resource = this.post.resource
+
       const chapters = this.post.chapters
       return (
         Array.isArray(chapters) &&
         chapters.length > 0 &&
-        !!chapter?.id &&
-        chapter?.hub?.type === 'pdf'
+        !!resource?.id &&
+        resource?.hub?.type === 'pdf'
       )
     },
 
     generatePdfURL() {
-      return `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
+      if (!this.post?.resource) return '#'
+      return `/resources/${this.post?.resource?.hub?.slug}/${this.post?.resource?.slug}`
     },
 
     color() {
