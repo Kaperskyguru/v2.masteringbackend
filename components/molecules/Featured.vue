@@ -48,9 +48,12 @@
                 method="POST"
               >
                 <div class="py-3 my-5">
-                  <small class="text-center fst-italic fw-bold"
+                  <small
+                    class="text-center fst-italic fw-bold"
+                    style="color: red"
                     >If you only want the resource, please peacefully
-                    unsubscribe when you recieve it</small
+                    unsubscribe when you recieve it (Don't mark us as Spam. We
+                    will never spam you)</small
                   >
                   <div class="input-group no-border">
                     <input
