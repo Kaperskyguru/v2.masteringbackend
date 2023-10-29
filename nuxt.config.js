@@ -378,6 +378,12 @@ export default {
     },
 
     {
+      from: '^academy.masteringbackend.com(.*)$',
+      to: '/academy',
+      statusCode: 301,
+    },
+
+    {
       from: '^/courses/video/advanced-docker(.*)$',
       to: '/hubs/advanced-docker',
       statusCode: 301,
