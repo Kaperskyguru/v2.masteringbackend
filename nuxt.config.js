@@ -378,7 +378,7 @@ export default {
     },
 
     {
-      from: '^academy.masteringbackend.com(.*)$',
+      from: 'http://academy.masteringbackend.com(.*)$',
       to: '/academy',
       statusCode: 301,
     },
