@@ -70,7 +70,7 @@ export default {
       console.error(e)
     }
 
-    window.CustomSubstackWidget.link = '/emails/free-updates'
+    window.CustomSubstackWidget.link2 = '/emails/free-updates'
   },
 
   beforeDestroy() {

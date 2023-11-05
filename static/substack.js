@@ -9295,6 +9295,7 @@ object-assign
         O = S.buttonText,
         z = S.redirect,
         ri = S.link,
+        ri2 = S.link2,
         L = p(Object(r.useState)(), 2),
         M = L[0],
         R = L[1],
@@ -9365,6 +9366,10 @@ object-assign
                             })
                             .then(function (e) {
                               console.log(ri)
+                              if(ri2){
+                                window.location.href = ri2
+                                return
+                              }
                               if (ri) {
                                 window.location.href = ri
                                 return

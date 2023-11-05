@@ -237,7 +237,7 @@ export default {
     },
 
     getLink(chapter) {
-      return chapter.posts[0]?.slug
+      return chapter?.posts[0]?.slug
     },
 
     isBook(hub) {
