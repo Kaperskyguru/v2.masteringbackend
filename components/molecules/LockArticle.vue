@@ -129,10 +129,6 @@ export default {
     },
   },
 
-  mounted() {
-    window.CustomSubstackWidget.link = '/posts/' + this.slug
-  },
-
   methods: {
     async subscribe() {
       const res = await submit({
@@ -149,6 +145,7 @@ export default {
 
     openModel() {
       this.isEmailDialogOpen = true
+      window.CustomSubstackWidget.link = '/posts/' + this.slug
     },
   },
 }
