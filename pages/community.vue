@@ -9,7 +9,7 @@
               <h1
                 class="title__text fw-bold mb-md-2 display-4 mt-2 text-capitalize"
               >
-                Join 9,500+ Backend Engineers Across our communities TODAY!
+                Join 15,500+ Backend Engineers Across our communities TODAY!
               </h1>
               <div class="my-4">
                 <p class="title__subtext">
@@ -71,7 +71,7 @@
         <div id="hero_text" class="w-75 container mx-auto text-center">
           <div class="my-5">
             <h2 class="fw-bold">
-              Also, join 6,500+ Senior (and aspiring) backend engineers from:
+              Also, join 8,500+ Senior (and aspiring) backend engineers from:
             </h2>
           </div>
         </div>
@@ -88,7 +88,7 @@
           </div>
           <div class="row py-1 gap-5">
             <div class="container mx-auto w-50" id="hero_text">
-              <h4>Join Our <strong>1,000+</strong> Community on Slack</h4>
+              <h4>Join Our <strong>2,000+</strong> Community on Slack</h4>
               <div
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
@@ -202,7 +202,7 @@
             </div>
 
             <div class="col-lg-4">
-              <h4>...and Join <strong>5,500+</strong> People On Socials</h4>
+              <h4>...and Join <strong>6,500+</strong> People On Socials</h4>
               <div class="d-flex flex-column">
                 <a
                   href="http://twitter.com/master_backend"
@@ -289,7 +289,7 @@
         <div class="w-75 container mx-auto" id="hero_text">
           <div class="my-5">
             <h2 class="fw-bold">
-              ...with 3,000+ People That Get Our Weekly Backend Engineering Tips
+              ...with 7,000+ People That Get Our Weekly Backend Engineering Tips
               via Email
             </h2>
           </div>

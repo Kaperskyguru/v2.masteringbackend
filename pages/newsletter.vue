@@ -50,7 +50,7 @@
         <div id="hero_text" class="w-75 container mx-auto">
           <div class="my-5">
             <h2 class="fw-bold">
-              Join 3,000+ People That Get Our Weekly Backend Engineering Tips
+              Join 7,000+ People That Get Our Weekly Backend Engineering Tips
               via Email
             </h2>
           </div>
