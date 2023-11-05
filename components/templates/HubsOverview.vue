@@ -11,7 +11,7 @@
             </p>
 
             <div class="mt-5">
-              <div style="color: #0a083b">
+              <div class="mb-1" style="color: #0a083b">
                 Be notified when we publish new {{ $route.name }}.
               </div>
               <div id="custom-substack-embed"></div>
@@ -132,7 +132,7 @@
                       >
                         <nuxt-link
                           v-if="isPDF(hub)"
-                          :to="`${getURL(hub)}/${chapter.slug}`"
+                          :to="`${getURL(hub)}/${getLink(chapter)}`"
                         >
                           <p
                             class="pe-2 font-weight-light d-flex flex-row justify-content-start fs-5"
@@ -234,6 +234,10 @@ export default {
     },
     isPDF(hub) {
       return hub.type === 'pdf'
+    },
+
+    getLink(chapter) {
+      return chapter.posts[0]?.slug
     },
 
     isBook(hub) {
