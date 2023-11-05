@@ -161,10 +161,19 @@ export const actions = {
     }
   },
 
-  async getPDFs({ commit }, { page, count = 22 }) {
+  async getPDFs({ commit }, { page, count = 22, populate }) {
     try {
+      const query = qs.stringify(
+        {
+          populate,
+        },
+        {
+          encodeValuesOnly: true, // prettify URL
+        }
+      )
+
       const res = await this.$axios.get(
-        `/hubs?filters[type][$eq]=pdf&populate=*&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+        `/hubs?filters[type][$eq]=pdf&${query}&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
       )
 
       const { data } = res

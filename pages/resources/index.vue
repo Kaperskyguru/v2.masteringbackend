@@ -19,7 +19,17 @@ export default {
         const data = {}
         data.page = query.page ? query.page : 1
         data.count = 22
-        hubs = await store.dispatch('hubs/getPDFs', data)
+        hubs = await store.dispatch('hubs/getPDFs', {
+          ...data,
+          populate: {
+            image: true,
+            chapters: {
+              populate: {
+                posts: true,
+              },
+            },
+          },
+        })
       }
       return { hubs }
     } catch (error) {
