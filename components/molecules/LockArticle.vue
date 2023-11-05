@@ -68,51 +68,23 @@
           </div>
         </div>
 
-        <form ref="form" method="post" action="#" class="form-slak">
-          <div class="form-group">
-            <label class="text-dark" for="text">
-              <b>E-mail</b>
-            </label>
-            <input
-              class="col-lg-8 col-12 form-control shadow-none fs-5"
-              type="email"
-              required
-              v-model="email"
-              placeholder="Enter your email address"
-            />
-          </div>
+        <div id="custom-substack-embed"></div>
 
-          <div class="text-center mt-2">
-            <Button
-              appearance="purple"
-              class="col-12 py-3 my-2 fw-bold"
-              @click.prevent="subscribe"
-              >Unlock the content</Button
-            >
-          </div>
-
-          <div
-            v-if="res.message || show"
-            class="alert mt-1 fade d-flex font-weight-normal"
-            style="justify-items;: space-between"
-            :class="[`alert-${res.type}`, { show: show }]"
-            role="alert"
-          >
-            <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-            <button
-              v-if="res.message"
-              type="button"
-              data-dismiss="alert"
-              aria-label="Close"
-              @click="
-                show = false
-                res = {}
-              "
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </form>
+        <script>
+          window.CustomSubstackWidget = {
+            substackUrl: 'masteringbackend.substack.com',
+            placeholder: 'Enter your email address...',
+            buttonText: 'Unlock',
+            theme: 'custom',
+            colors: {
+              primary: '#191489',
+              input: '#000000',
+              email: '#FFFFFF',
+              text: '#fff',
+            },
+          }
+        </script>
+        <script src="/substack.js" async></script>
       </template>
     </Dialog>
   </article>
@@ -155,6 +127,10 @@ export default {
           '/img/backend-2023.jpg')
       )
     },
+  },
+
+  mounted() {
+    window.CustomSubstackWidget.link = '/posts/' + this.slug
   },
 
   methods: {

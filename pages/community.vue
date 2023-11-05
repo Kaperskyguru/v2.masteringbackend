@@ -174,9 +174,6 @@
                       </Button>
                     </div>
                   </div>
-
-                  <!-- <div class="text-danger">asjhajshajs</div> -->
-
                   <div
                     class="alert mt-1 fade d-flex font-weight-normal"
                     style="justify-items;: space-between"

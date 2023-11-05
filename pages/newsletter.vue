@@ -20,45 +20,23 @@
             </div>
             <!-- ---------------input--------------------------------------------- -->
             <div class="col-md-8">
-              <div class="input-group mt-4 py-4">
-                <input
-                  class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                  type="email"
-                  v-model="email"
-                  style="border: 2"
-                  required
-                  placeholder="Enter your email address..."
-                />
+              <div id="custom-substack-embed"></div>
 
-                <Button
-                  type="button"
-                  @click.prevent="subscribe"
-                  class="col-lg-4 col-12 start-btn py-3 my-2"
-                >
-                  Try it
-                </Button>
-              </div>
-              <div
-                v-if="res.message || show"
-                class="alert mt-1 fade d-flex font-weight-normal"
-                style="justify-items;: space-between"
-                :class="[`alert-${res.type}`, { show: show }]"
-                role="alert"
-              >
-                <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-                <button
-                  v-if="res.message"
-                  type="button"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                  @click="
-                    show = false
-                    res = {}
-                  "
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
+              <script>
+                window.CustomSubstackWidget = {
+                  substackUrl: 'masteringbackend.substack.com',
+                  placeholder: 'Enter your email address...',
+                  buttonText: 'Try It',
+                  theme: 'custom',
+                  colors: {
+                    primary: '#191489',
+                    input: '#000000',
+                    email: '#FFFFFF',
+                    text: '#fff',
+                  },
+                }
+              </script>
+              <script src="/substack.js" async></script>
             </div>
           </div>
         </div>
@@ -82,45 +60,23 @@
         </div>
         <div id="hero_text" class="w-75 container mx-auto">
           <div class="py-2">
-            <div id="hero_text" class="container mx-auto w-75 input-group">
-              <input
-                class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                type="email"
-                style="border: 2"
-                required
-                v-model="email"
-                placeholder="Enter your email address..."
-              />
+            <div id="custom-substack-embed"></div>
 
-              <Button
-                @click.prevent="subscribe"
-                type="button"
-                class="col-lg-4 col-12 start-btn py-3 my-2"
-              >
-                Try it
-              </Button>
-            </div>
-            <div
-              v-if="res.message || show"
-              class="alert mt-1 fade d-flex font-weight-normal"
-              style="justify-items;: space-between"
-              :class="[`alert-${res.type}`, { show: show }]"
-              role="alert"
-            >
-              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-              <button
-                v-if="res.message"
-                type="button"
-                data-dismiss="alert"
-                aria-label="Close"
-                @click="
-                  show = false
-                  res = {}
-                "
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <script>
+              window.CustomSubstackWidget = {
+                substackUrl: 'masteringbackend.substack.com',
+                placeholder: 'Enter your email address...',
+                buttonText: 'Try It',
+                theme: 'custom',
+                colors: {
+                  primary: '#191489',
+                  input: '#000000',
+                  email: '#FFFFFF',
+                  text: '#fff',
+                },
+              }
+            </script>
+            <script src="/substack.js" async></script>
           </div>
         </div>
       </div>
@@ -129,28 +85,14 @@
 </template>
 
 <script>
-import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'NewsletterPage',
-  data: () => ({ email: '', res: {}, show: false }),
 
-  methods: {
-    async subscribe() {
-      const res = await submit({
-        email: this.email,
-        tags: ['community', 'newsletter'],
-      })
-      this.show = true
-
-      if (res.type === 'info')
-        return this.$router.push('/emails/already-subscribed')
-
-      if (res.type === 'success')
-        return this.$router.push('/emails/free-updates')
-
-      this.res = res
-    },
+  mounted() {
+    window.CustomSubstackWidget.link = '/emails/free-updates'
   },
+
+  methods: {},
 
   head() {
     return {

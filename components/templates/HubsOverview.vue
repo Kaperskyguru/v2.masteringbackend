@@ -14,16 +14,23 @@
               <div style="color: #0a083b">
                 Be notified when we publish new {{ $route.name }}.
               </div>
-              <div class="input-group">
-                <input
-                  type="email"
-                  class="form-control p-3"
-                  placeholder="Enter your Email"
-                />
-                <button class="btn btn-outline-secondary" type="button">
-                  Try it
-                </button>
-              </div>
+              <div id="custom-substack-embed"></div>
+
+              <script>
+                window.CustomSubstackWidget = {
+                  substackUrl: 'masteringbackend.substack.com',
+                  placeholder: 'Enter your email address...',
+                  buttonText: 'Try It',
+                  theme: 'custom',
+                  colors: {
+                    primary: '#191489',
+                    input: '#000000',
+                    email: '#FFFFFF',
+                    text: '#fff',
+                  },
+                }
+              </script>
+              <script src="https://substackapi.com/widget.js" async></script>
             </div>
           </div>
           <div class="col-md-6 hero__image">

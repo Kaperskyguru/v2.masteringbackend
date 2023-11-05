@@ -53,6 +53,12 @@ export default {
         },
       },
 
+      // {
+      //   src: 'https://substackapi.com/widget.js',
+      //   defer: true,
+      //   hid: 'substa',
+      // },
+
       {
         src: 'https://cdn.paddle.com/paddle/paddle.js',
         hid: 'Paddle',

@@ -22,43 +22,23 @@
                   </p>
                 </div>
               </div>
-              <!-- <div class="input-group mt-3 p-2 bg-white no-border">
-                <input
-                  type="email"
-                  v-model="email"
-                  class="form-control p-2 shadow-none"
-                  style="border: 0"
-                  placeholder="Enter your Email"
-                />
-                <Button
-                  class="btn btn-outline-secondary start-btn btn-primaryy"
-                  type="button"
-                  @click.prevent="subscribe"
-                >
-                  Start Now
-                </Button>
-              </div> -->
-            </div>
-            <div
-              v-if="res.message || show"
-              class="alert mt-1 fade d-flex font-weight-normal"
-              style="justify-items;: space-between"
-              :class="[`alert-${res.type}`, { show: show }]"
-              role="alert"
-            >
-              <p class="w-100">{{ res.message }}</p>
-              <button
-                v-if="res.message"
-                type="button"
-                data-dismiss="alert"
-                aria-label="Close"
-                @click="
-                  show = false
-                  res = {}
-                "
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <div id="custom-substack-embed"></div>
+
+              <script>
+                window.CustomSubstackWidget = {
+                  substackUrl: 'masteringbackend.substack.com',
+                  placeholder: 'Enter your email address...',
+                  buttonText: 'Start Now',
+                  theme: 'custom',
+                  colors: {
+                    primary: '#191489',
+                    input: '#000000',
+                    email: '#FFFFFF',
+                    text: '#fff',
+                  },
+                }
+              </script>
+              <script src="https://substackapi.com/widget.js" async></script>
             </div>
           </div>
         </div>
@@ -171,7 +151,6 @@
 </template>
   
 <script>
-import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'PostOverview',
   data() {
@@ -179,12 +158,11 @@ export default {
       page: 1,
       allPosts: [],
       tab: '',
-      res: {},
-      show: false,
+
       searchText: '',
       showSearch: false,
       substack: false,
-      email: '',
+
       removeFeatured: false,
     }
   },
@@ -252,22 +230,6 @@ export default {
   methods: {
     search(value) {
       this.$emit('search', value)
-    },
-
-    async subscribe() {
-      const res = await submit({
-        email: this.email,
-        tags: ['backend'],
-      })
-
-      this.show = true
-
-      if (res.type === 'info')
-        return this.$router.push('/emails/already-subscribed')
-
-      if (res.type === 'success')
-        return this.$router.push('/emails/free-updates')
-      this.res = res
     },
 
     getTab(tab) {

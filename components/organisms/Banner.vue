@@ -10,7 +10,7 @@
             </h1>
             <!--   -->
             <div class="my-4">
-              <!-- <p class="title__subtext fw-bold">
+              <p class="title__subtext fw-bold">
                 Get immediate value: Laravel Breeze Tutorial: The Definitive
                 Guide (2023)
               </p>
@@ -25,68 +25,26 @@
                   Explore different authentication processes generated with
                   Laravel Breeze
                 </li>
-              </ol> -->
+              </ol>
             </div>
           </div>
+          <div id="custom-substack-embed"></div>
 
-          <!-- <div class="col-md-8">
-            <form
-              ref="form"
-              @submit.prevent="onSubmit"
-              id="form-607bce50-9e43-4d2d-87d5-7bfb30cc5b00"
-              action="https://api.encharge.io/v1/forms/607bce50-9e43-4d2d-87d5-7bfb30cc5b00/submission/plain"
-              method="POST"
-            >
-              <div class="mt-4 pt-4 pb-2">
-                <small class="text-center fst-italic fw-bold"
-                  >If you only want the resource, please peacefully unsubscribe
-                  when you recieve it</small
-                >
-                <div class="input-group">
-                  <input
-                    class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                    type="email"
-                    id="2bddc629-7e6f-4d94-9a84-49dd84483fb5"
-                    name="email"
-                    style="border: 2"
-                    required
-                    placeholder="Enter your email address..."
-                  />
-
-                  <Button
-                    type="submit"
-                    class="col-lg-4 col-12 start-btn py-3 my-2"
-                  >
-                    Get the Guide
-                  </Button>
-                </div>
-              </div>
-
-              <div class="sc-jzJRlG hjFAqE">
-                <div
-                  name="nativeFormMarketingConsent"
-                  class="encharge-form-group sc-jTzLTM bPowmp form-group"
-                >
-                  <input
-                    type="checkbox"
-                    id="e86ba201-a845-4bc4-99b9-c01e03545766"
-                    name="nativeFormMarketingConsent"
-                    required
-                    class="encharge-form-checkbox sc-gqjmRU gCOwty form-check-input"
-                  />
-                  <label
-                    for="e86ba201-a845-4bc4-99b9-c01e03545766"
-                    class="encharge-form-label sc-VigVT bSCkYy"
-                  >
-                    <small
-                      >I agree to receive emails from you (unsubscribe
-                      anytime).</small
-                    >
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div> -->
+          <script>
+            window.CustomSubstackWidget = {
+              substackUrl: 'masteringbackend.substack.com',
+              placeholder: 'Enter your email address...',
+              buttonText: 'Get the Guide',
+              theme: 'custom',
+              colors: {
+                primary: '#191489',
+                input: '#000000',
+                email: '#FFFFFF',
+                text: '#fff',
+              },
+            }
+          </script>
+          <script src="/substack.js" async></script>
         </div>
       </div>
     </div>
@@ -111,6 +69,8 @@ export default {
     } catch (e) {
       console.error(e)
     }
+
+    window.CustomSubstackWidget.link = '/emails/free-updates'
   },
 
   beforeDestroy() {
