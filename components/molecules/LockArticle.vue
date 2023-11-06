@@ -72,7 +72,7 @@
 
         <script>
           window.CustomSubstackWidget = {
-            substackUrl: 'masteringbackend.substack.com',
+            substackUrl: 'backendmasters.substack.com',
             placeholder: 'Enter your email address...',
             buttonText: 'Unlock',
             theme: 'custom',
