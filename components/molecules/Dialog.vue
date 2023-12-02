@@ -19,7 +19,7 @@
         <div class="modal-content">
           <div class="col-12 w-100">
             <div class="row p-5" :class="contentClass">
-              <div class="col-lg-5 col-12" v-if="$slots.left">
+              <div class="col-lg-6 col-12" v-if="$slots.left">
                 <slot name="left" />
               </div>
               <div

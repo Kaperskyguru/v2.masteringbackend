@@ -36,10 +36,10 @@
               <p class="art-card-text">
                 {{ desc }}
               </p>
-              <nuxt-link
+              <NuxtLink
                 to="/academy"
                 class="btn btn-lg-primary mb-4 p-3 button"
-                >{{ btnText }}</nuxt-link
+                >{{ btnText }}</NuxtLink
               >
             </div>
 

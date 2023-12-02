@@ -6,7 +6,7 @@
       </h5>
     </div>
     <div class="row g-4">
-      <nuxt-link
+      <NuxtLink
         :to="`/hubs/${hub.slug}`"
         class="col-lg-4"
         v-for="hub in hubs"
@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-      </nuxt-link>
+      </NuxtLink>
     </div>
   </div>
 </template>

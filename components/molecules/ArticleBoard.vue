@@ -13,9 +13,9 @@
       <div class="card-body py-4 px-3">
         <div v-for="(post, i) in posts" :key="i" class="pb-5">
           <h3 class="card-head-text fs-4 mt-3">
-            <nuxt-link class="link" :to="`/posts/${post.slug}`">{{
+            <NuxtLink class="link" :to="`/posts/${post.slug}`">{{
               post.title
-            }}</nuxt-link>
+            }}</NuxtLink>
           </h3>
           <!-- <div class="mb-2">
             <small
@@ -32,12 +32,12 @@
       </div>
 
       <div class="card-footer text-right">
-        <nuxt-link
+        <NuxtLink
           :to="`/posts#${slug}`"
           :style="{ color: color }"
           class="btn btn-sm ms-auto btn-col fs-5"
           >Read more
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
   </div>

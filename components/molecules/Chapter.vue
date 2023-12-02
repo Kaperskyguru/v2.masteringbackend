@@ -4,7 +4,7 @@
       class="col-xl-3 col-lg-12 text-center text-white"
       :style="{ backgroundColor: `${color}` }"
     >
-      <nuxt-link
+      <NuxtLink
         :to="
           shouldActivateWaitingList || isPremium
             ? '#'
@@ -21,9 +21,9 @@
           :data-src="getDesign"
           :alt="chapter.title"
         />
-      </nuxt-link>
+      </NuxtLink>
 
-      <nuxt-link
+      <NuxtLink
         v-else
         :to="
           shouldActivateWaitingList || isPremium
@@ -38,7 +38,7 @@
           :data-src="getDesign"
           :alt="chapter.title"
         />
-      </nuxt-link>
+      </NuxtLink>
     </div>
     <div class="col-xl-9 col-lg-12">
       <div class="row py-5 px-4">
@@ -72,7 +72,7 @@
             >
               <p v-for="(outline, i) in outlines" :key="i">
                 <span class=""
-                  ><nuxt-link
+                  ><NuxtLink
                     class="font-weight-light d-flex flex-row justify-content-start fs-5"
                     :to="
                       shouldActivateWaitingList || isPDF || isPremium
@@ -93,7 +93,7 @@
                       <path d="M16 12l-6 6V6z" />
                     </svg>
 
-                    <span class="flex-fill" v-html="outline"></span></nuxt-link
+                    <span class="flex-fill" v-html="outline"></span></NuxtLink
                 ></span>
               </p>
             </span>
@@ -101,7 +101,7 @@
             <span v-else>
               <p v-for="(post, i) in chapter.posts" :key="i">
                 <span>
-                  <nuxt-link
+                  <NuxtLink
                     class="font-weight-light d-flex flex-row justify-content-start fs-5"
                     :to="
                       shouldActivateWaitingList || isPremium
@@ -121,7 +121,7 @@
                     </svg>
 
                     <span class="flex-fill">{{ post.title }}</span>
-                  </nuxt-link>
+                  </NuxtLink>
                 </span>
               </p>
             </span>

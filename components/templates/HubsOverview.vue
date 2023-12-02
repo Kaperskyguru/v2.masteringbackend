@@ -130,7 +130,7 @@
                         v-for="(chapter, index) in !isBook(hub) && hub.chapters"
                         :key="index"
                       >
-                        <nuxt-link
+                        <NuxtLink
                           v-if="isPDF(hub)"
                           :to="`${getURL(hub)}/${getLink(chapter)}`"
                         >
@@ -150,7 +150,7 @@
 
                             <span class="flex-fill">{{ chapter.title }}</span>
                           </p>
-                        </nuxt-link>
+                        </NuxtLink>
 
                         <p
                           v-else

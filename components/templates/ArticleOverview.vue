@@ -16,8 +16,8 @@
                 >
                   <p class="py-3">
                     This post is part of the
-                    <nuxt-link :to="generateURL"
-                      >"{{ parentPostTitle }}"</nuxt-link
+                    <NuxtLink :to="generateURL"
+                      >"{{ parentPostTitle }}"</NuxtLink
                     >
                     series
                   </p>

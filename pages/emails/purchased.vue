@@ -20,8 +20,8 @@
               You can continue reading with the PDF version or you can to save
               all your PDFs and track all your reading activities. Read more why
               you should
-              <nuxt-link to="/app" style="color: rgb(187, 74, 3) !important">
-                sign up here</nuxt-link
+              <NuxtLink to="/app" style="color: rgb(187, 74, 3) !important">
+                sign up here</NuxtLink
               >.
             </p>
 

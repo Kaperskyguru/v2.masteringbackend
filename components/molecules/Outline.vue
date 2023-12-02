@@ -14,7 +14,7 @@
         isActive(outline) ? { color: '#000000' } : '',
       ]"
     >
-      <nuxt-link
+      <NuxtLink
         class="d-flex flex-row justify-content-start"
         :to="`${getBaseURL}/${$route.params.hub}/${outline.slug}`"
       >
@@ -30,7 +30,7 @@
         </svg>
 
         <span>{{ outline.title }}</span>
-      </nuxt-link>
+      </NuxtLink>
     </li>
   </div>
 </template>

@@ -1,10 +1,13 @@
 <template>
-  <Dialog>
+  <Dialog v-model="show">
     <template #left>
       <!-- title -->
-      <h2>Masteringbackend Academy</h2>
+      <h2>Join the Academy</h2>
       <!-- Image -->
-      <div class="w-100">
+
+      <!-- Add Sliding one line testimony here -->
+
+      <div class="w-100 mt-5">
         <LearnerIcon class="mw-100" />
       </div>
     </template>
@@ -96,6 +99,10 @@ export default {
     LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
     GoogleIcon: () => import('~/assets/icons/googleIcon.svg?inline'),
   },
+
+  data: () => ({
+    show: true,
+  }),
 }
 </script>
 

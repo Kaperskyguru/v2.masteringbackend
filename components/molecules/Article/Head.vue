@@ -1,8 +1,8 @@
 <template>
   <div class="">
     <h1 class="fs-1 fw-bolder mb-1 Career-header-text">
-      <nuxt-link v-if="link" class="title_header" :to="`/posts/${link}`">
-        {{ title }}</nuxt-link
+      <NuxtLink v-if="link" class="title_header" :to="`/posts/${link}`">
+        {{ title }}</NuxtLink
       >
 
       <span v-else @click.prevent="" class="title_header">{{ title }}</span>

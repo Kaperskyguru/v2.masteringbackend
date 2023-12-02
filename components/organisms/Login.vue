@@ -1,19 +1,26 @@
 <template>
-  <Dialog>
+  <Dialog v-model="show" class="p-10">
     <template #left>
       <!-- title -->
       <h3>Welcome back</h3>
       <!-- Image -->
-      <div class="w-100">
+      <div class="w-100 mt-5">
         <LearnerIcon class="mw-100" />
       </div>
     </template>
 
     <template #right>
-      <div class="rounded border">
+      <div class="rounded border mb-2">
         <div class="d-flex justify-content-start align-items-center gap-2 p-1">
           <GoogleIcon />
           <div style="align-self: center">Signin with Google</div>
+        </div>
+      </div>
+
+      <div class="rounded border">
+        <div class="d-flex justify-content-start align-items-center gap-2 p-1">
+          <GithubIcon />
+          <div style="align-self: center">Signin with Github</div>
         </div>
       </div>
 
@@ -81,7 +88,12 @@ export default {
   components: {
     LearnerIcon: () => import('~/assets/icons/mb-learner.svg?inline'),
     GoogleIcon: () => import('~/assets/icons/googleIcon.svg?inline'),
+    GithubIcon: () => import('~/assets/icons/github.svg?inline'),
   },
+
+  data: () => ({
+    show: true,
+  }),
 }
 </script>
     

@@ -43,7 +43,7 @@
             v-for="(chapter, i) in mapChapters"
             :key="i"
           >
-            <nuxt-link :to="`/posts/${post.slug}#${chapter.slug}`">
+            <NuxtLink :to="`/posts/${post.slug}#${chapter.slug}`">
               <div class="d-flex flex-column align-items-center text-center">
                 <div
                   class="rounded-circle border overflow-hidden"
@@ -65,7 +65,7 @@
                   {{ splitChapterTitle(chapter).subtitle }}
                 </p>
               </div>
-            </nuxt-link>
+            </NuxtLink>
           </div>
           <div v-if="hasPDF">
             <CustomAlert :showDownload="hasPDF" :link="generatePdfURL">

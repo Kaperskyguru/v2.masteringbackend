@@ -414,7 +414,7 @@ figure iframe {
 
 article img {
   height: auto;
-  width: 100%;
+  max-width: 100%;
   background-size: cover;
 }
 

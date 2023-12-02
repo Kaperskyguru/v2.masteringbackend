@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`${getBaseURL}/${$route.params.hub}/${post.slug}`">
+  <NuxtLink :to="`${getBaseURL}/${$route.params.hub}/${post.slug}`">
     <div class="col-lg-12 col-12 mt-4 rounded">
       <div class="p-5 box" style="background-color: white">
         <h3 class="fs-4 py-4">{{ post.title }}</h3>
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script>

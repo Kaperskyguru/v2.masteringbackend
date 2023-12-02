@@ -1,7 +1,7 @@
 <template>
   <div class="shadow-sm">
     <div class="container d-flex align-items-center flex-row py-3 flex-wrap">
-      <nuxt-link :to="{ path: `${getBaseURL}/${$route.params.hub}` }">
+      <NuxtLink :to="{ path: `${getBaseURL}/${$route.params.hub}` }">
         <p :style="{ color: `${color}` }" class="fs-5">
           {{ hub.title }}
           <span>
@@ -17,9 +17,9 @@
             </svg>
           </span>
         </p>
-      </nuxt-link>
+      </NuxtLink>
 
-      <nuxt-link
+      <NuxtLink
         v-if="postTitle"
         class="fs-5"
         :to="{ path: `${getBaseURL}/${$route.params.hub}/${chapter.slug}` }"
@@ -39,7 +39,7 @@
             </svg>
           </span>
         </p>
-      </nuxt-link>
+      </NuxtLink>
 
       <p v-else class="fs-5">{{ title }}<span class="mx-4"></span></p>
 
