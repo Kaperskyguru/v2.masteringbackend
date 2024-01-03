@@ -20,7 +20,21 @@
             </div>
             <!-- ---------------input--------------------------------------------- -->
             <div class="col-md-8">
-              <div id="custom-substack-embed"></div>
+              <iframe
+                src="https://embeds.beehiiv.com/e04abcdf-6423-488b-bc7d-1f455e88ce5c?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameborder="0"
+                scrolling="no"
+                style="
+                  margin: 0;
+                  border-radius: 0px !important;
+                  background-color: transparent;
+                  width: 100%;
+                "
+              ></iframe>
+
+              <!-- <div id="custom-substack-embed"></div>
 
               <script>
                 window.CustomSubstackWidget = {
@@ -36,7 +50,7 @@
                   },
                 }
               </script>
-              <script src="/substack.js" async></script>
+              <script src="/substack.js" async></script> -->
             </div>
           </div>
         </div>
@@ -60,23 +74,19 @@
         </div>
         <div id="hero_text" class="w-75 container mx-auto">
           <div class="py-2">
-            <div id="custom-substack-embed"></div>
-
-            <script>
-              window.CustomSubstackWidget = {
-                substackUrl: 'backendmasters.substack.com',
-                placeholder: 'Enter your email address...',
-                buttonText: 'Try It',
-                theme: 'custom',
-                colors: {
-                  primary: '#191489',
-                  input: '#000000',
-                  email: '#FFFFFF',
-                  text: '#fff',
-                },
-              }
-            </script>
-            <script src="/substack.js" async></script>
+            <iframe
+              src="https://embeds.beehiiv.com/e04abcdf-6423-488b-bc7d-1f455e88ce5c?slim=true"
+              data-test-id="beehiiv-embed"
+              height="52"
+              frameborder="0"
+              scrolling="no"
+              style="
+                margin: 0;
+                border-radius: 0px !important;
+                background-color: transparent;
+                width: 100%;
+              "
+            ></iframe>
           </div>
         </div>
       </div>
@@ -89,7 +99,7 @@ export default {
   name: 'NewsletterPage',
 
   mounted() {
-    window.CustomSubstackWidget.link = '/emails/free-updates'
+    // window.CustomSubstackWidget.link = '/emails/free-updates'
   },
 
   methods: {},

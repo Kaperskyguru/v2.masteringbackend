@@ -14,7 +14,21 @@
               <div class="mb-1" style="color: #0a083b">
                 Be notified when we publish new {{ $route.name }}.
               </div>
-              <div id="custom-substack-embed"></div>
+              <iframe
+                src="https://embeds.beehiiv.com/78d77170-5724-4176-ad4a-9b9c6447f3ec?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameborder="0"
+                scrolling="no"
+                style="
+                  margin: 0;
+                  border-radius: 0px !important;
+                  background-color: transparent;
+                  width: 100%;
+                "
+              ></iframe>
+
+              <!-- <div id="custom-substack-embed"></div>
 
               <script>
                 window.CustomSubstackWidget = {
@@ -30,7 +44,7 @@
                   },
                 }
               </script>
-              <script src="https://substackapi.com/widget.js" async></script>
+              <script src="https://substackapi.com/widget.js" async></script> -->
             </div>
           </div>
           <div class="col-md-6 hero__image">

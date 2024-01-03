@@ -34,6 +34,11 @@
               </a>
             </p>
 
+            <a href="https://store.masteringbackend.com" target="_blank"
+              >Click here to visit our store
+            </a>
+            for any resources you're looking for.
+
             <p>With that, welcome to the Mastering Backend community!</p>
 
             <p>
@@ -84,7 +89,7 @@ export default {
 }
 </script>
       
-      <style scoped>
+<style scoped>
 @media (max-width: 991.98px) {
   #hero_text {
     width: 100% !important;

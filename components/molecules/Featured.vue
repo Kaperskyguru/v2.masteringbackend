@@ -41,9 +41,22 @@
 
             <div class="d-grid col-lg mx-auto">
               <div class="py-3 my-5">
-                <div id="custom-substack-embed" class="here"></div>
+                <!-- <div id="custom-substack-embed" class="here"></div> -->
+                <iframe
+                  src="https://embeds.beehiiv.com/5d69366b-1960-40c2-a8dc-49e561c3406a?slim=true"
+                  data-test-id="beehiiv-embed"
+                  height="52"
+                  frameborder="0"
+                  scrolling="no"
+                  style="
+                    margin: 0;
+                    border-radius: 0px !important;
+                    background-color: transparent;
+                    width: 100%;
+                  "
+                ></iframe>
               </div>
-              <script>
+              <!-- <script>
                 window.CustomSubstackWidget = {
                   substackUrl: 'backendmasters.substack.com',
                   placeholder: 'Enter your email address...',
@@ -57,7 +70,7 @@
                   },
                 }
               </script>
-              <script src="/substack.js" async></script>
+              <script src="/substack.js" async></script> -->
             </div>
           </div>
         </div>
@@ -106,7 +119,7 @@ export default {
       console.error(e)
     }
 
-    window.CustomSubstackWidget.link = '/hubs/backend-engineering'
+    // window.CustomSubstackWidget.link = '/hubs/backend-engineering'
   },
 
   beforeDestroy() {

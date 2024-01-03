@@ -28,7 +28,21 @@
               </ol>
             </div>
           </div>
-          <div id="custom-substack-embed"></div>
+
+          <iframe
+            src="https://embeds.beehiiv.com/8f12fd1d-bf52-4a8e-a14f-c33d3745fa49?slim=true"
+            data-test-id="beehiiv-embed"
+            height="52"
+            frameborder="0"
+            scrolling="no"
+            style="
+              margin: 0;
+              border-radius: 0px !important;
+              background-color: transparent;
+            "
+          ></iframe>
+
+          <!-- <div id="custom-substack-embed"></div>
 
           <script>
             window.CustomSubstackWidget = {
@@ -44,7 +58,7 @@
               },
             }
           </script>
-          <script src="/substack.js" async></script>
+          <script src="/substack.js" async></script> -->
         </div>
       </div>
     </div>
@@ -70,7 +84,7 @@ export default {
       console.error(e)
     }
 
-    window.CustomSubstackWidget.link2 = '/emails/free-updates'
+    // window.CustomSubstackWidget.link2 = '/emails/free-updates'
   },
 
   beforeDestroy() {

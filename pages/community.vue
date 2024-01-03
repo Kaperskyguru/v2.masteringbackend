@@ -21,27 +21,6 @@
                 <div class="gradient"></div>
               </div>
             </div>
-            <!-- ---------------input--------------------------------------------- -->
-            <div class="col-md-8">
-              <div class="input-group mt-4 py-4">
-                <input
-                  class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                  type="email"
-                  v-model="user.email"
-                  required
-                  style="border: 2"
-                  placeholder="Enter your email address..."
-                />
-
-                <Button
-                  type="link"
-                  link="#community"
-                  class="col-lg-4 col-12 start-btn py-3 my-2 text-center"
-                >
-                  Try it
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -297,28 +276,6 @@
         <div class="pt-5">
           <Sponsors />
         </div>
-        <div id="hero_text" class="w-75 container mx-auto">
-          <div class="py-2">
-            <div class="container mx-auto w-75 input-group" id="hero_text">
-              <input
-                class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
-                type="email"
-                v-model="user.email"
-                required
-                style="border: 2"
-                placeholder="Enter your email address..."
-              />
-
-              <Button
-                type="link"
-                link="#community"
-                class="col-lg-4 col-12 start-btn py-3 my-2 text-center"
-              >
-                Try it
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -335,7 +292,7 @@ export default {
     show: false,
     show1: false,
     slackMessage: {},
-    newsletter: true,
+    newsletter: false,
     waiting: false,
   }),
 

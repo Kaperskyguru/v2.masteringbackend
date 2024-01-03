@@ -22,7 +22,20 @@
                   </p>
                 </div>
               </div>
-              <div id="custom-substack-embed"></div>
+              <iframe
+                src="https://embeds.beehiiv.com/b9028f46-6399-4a63-8d5c-837fe76a2bee?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameborder="0"
+                scrolling="no"
+                style="
+                  margin: 0;
+                  border-radius: 0px !important;
+                  background-color: transparent;
+                "
+              ></iframe>
+
+              <!-- <div id="custom-substack-embed"></div>
 
               <script>
                 window.CustomSubstackWidget = {
@@ -38,7 +51,7 @@
                   },
                 }
               </script>
-              <script src="https://substackapi.com/widget.js" async></script>
+              <script src="https://substackapi.com/widget.js" async></script> -->
             </div>
           </div>
         </div>
