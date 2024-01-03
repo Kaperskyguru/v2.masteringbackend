@@ -322,7 +322,7 @@ export default {
         }
 
         await this.joinSlack()
-        this.suscribeNewsletter()
+        // this.suscribeNewsletter()
       } else this.error = true
 
       this.waiting = false
