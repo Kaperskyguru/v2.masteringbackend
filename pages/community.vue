@@ -123,7 +123,7 @@
                     <!-- <span class="text-danger">Enter a valid email</span> -->
                   </div>
 
-                  <div class="form-group py-3">
+                  <!-- <div class="form-group py-3">
                     <div class="form-check">
                       <input
                         id="gridCheck"
@@ -135,12 +135,12 @@
                         >Weekly Newsletter</label
                       >
                     </div>
-                  </div>
-                  <small class="text-muted fs-7" style=""
+                  </div> -->
+                  <!-- <small class="text-muted fs-7" style=""
                     >By clicking Newsletter, you agree to receive our Weekly
                     Mastering Backend emails. You can unsubscribe
                     anytime.</small
-                  >
+                  > -->
 
                   <div class="field">
                     <div class="control text-center mt-4">
