@@ -79,7 +79,12 @@
                 </div>
 
                 <h3 class="my-3">{{ chapter.title }}</h3>
-                <p class="fs-6" v-html="chapter.content"></p>
+                <p
+                  class="fs-6"
+                  v-html="
+                    chapter.description ? chapter.description : chapter.excerpt
+                  "
+                ></p>
               </div>
             </div>
           </div>
