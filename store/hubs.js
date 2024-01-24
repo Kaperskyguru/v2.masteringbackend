@@ -327,6 +327,7 @@ export const actions = {
 
 function mapHubs(hubs) {
   return hubs?.map((hub) => {
+    console.log(hub)
     return {
       id: hub.id,
       ...hub.attributes,
@@ -335,6 +336,11 @@ function mapHubs(hubs) {
         id: hub.attributes?.image?.data?.id,
         ...hub.attributes?.image?.data?.attributes,
       },
+
+      topics: hub.attributes?.topics?.data?.map((topic) => ({
+        id: topic.id,
+        ...topic.attributes,
+      })),
 
       chapters: hub.attributes?.chapters?.data?.map((chapter) => ({
         id: chapter.id,

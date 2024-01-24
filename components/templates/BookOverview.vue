@@ -179,7 +179,7 @@ export default {
     },
 
     isPremium() {
-      return this.hub.is_premium
+      return this.hub?.is_premium
     },
 
     link() {
@@ -213,22 +213,20 @@ export default {
       const chapters = this.hub?.chapters
       if (chapters && chapters.length > 1) return chapters ?? []
 
-      return chapters[0].posts ?? []
+      return (chapters && chapters[0].posts) ?? []
     },
 
     animatedBookCover() {
       return (
-        this.hub &&
-        (this.hub?.image?.url ??
-          'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png')
+        (this.hub && this.hub?.image?.url) ??
+        'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png'
       )
     },
 
     bookCover() {
       return (
-        this.hub &&
-        (this.hub?.design_url ??
-          'https://files.selar.co/product-images/2023/products/masteringbackend/technical-writing-the-com-selar.co-64999ea31aafb.png')
+        (this.hub && this.hub?.design_url) ??
+        'https://files.selar.co/product-images/2023/products/masteringbackend/technical-writing-the-com-selar.co-64999ea31aafb.png'
       )
     },
   },

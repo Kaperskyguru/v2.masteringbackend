@@ -56,7 +56,7 @@
             color: '#fff',
           }"
         >
-          {{ activateDownload ? 'Get Notified' : 'Get The Book' }}
+          {{ isWaiting ? 'Get Notified' : 'Get The Book' }}
         </button>
       </div>
     </div>
