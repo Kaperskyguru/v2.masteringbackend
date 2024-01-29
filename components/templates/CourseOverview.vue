@@ -225,7 +225,7 @@
         <PageTitle>
           <template #title>
             <h3 class="sponsor-header-text fw-bold text-sentence text-center">
-              Unlock The Node.js For Backend Engineers Today
+              Unlock {{ title }} Today
             </h3>
           </template>
 
@@ -332,18 +332,15 @@ export default {
       return this.hub?.topics ?? []
     },
 
-    bookCover() {
+    animatedBookCover() {
       return (
         (this.hub && this.hub?.image?.url) ??
         'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png'
       )
     },
 
-    animatedBookCover() {
-      return (
-        (this.hub && this.hub?.design_url) ??
-        'https://files.selar.co/product-images/2023/products/masteringbackend/technical-writing-the-com-selar.co-64999ea31aafb.png'
-      )
+    bookCover() {
+      return this.hub && this.hub?.design_url
     },
   },
 
