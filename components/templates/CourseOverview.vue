@@ -230,7 +230,11 @@
           </template>
 
           <h4 class="text-sentence text-center py-2">
-            Last week, another 107 new students signed up.
+            Last week, another
+            <span class="p-1 rounded" :style="`color: ${color}`"
+              >107 new students</span
+            >
+            signed up.
           </h4>
         </PageTitle>
       </div>
@@ -328,14 +332,14 @@ export default {
       return this.hub?.topics ?? []
     },
 
-    animatedBookCover() {
+    bookCover() {
       return (
         (this.hub && this.hub?.image?.url) ??
         'https://res.cloudinary.com/kaperskydisk/image/upload/v1685032766/masteringbackend/posts/vectors/laravel-design-color.png'
       )
     },
 
-    bookCover() {
+    animatedBookCover() {
       return (
         (this.hub && this.hub?.design_url) ??
         'https://files.selar.co/product-images/2023/products/masteringbackend/technical-writing-the-com-selar.co-64999ea31aafb.png'
