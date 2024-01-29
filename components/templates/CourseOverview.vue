@@ -146,7 +146,7 @@
                     {{ topic.title }}
                   </h3>
                   <p class="fs-5">
-                    {{ topic.summary }}
+                    {{ topic.description }}
                   </p>
                 </div>
 
