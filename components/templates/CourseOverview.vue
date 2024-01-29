@@ -225,7 +225,8 @@
         <PageTitle>
           <template #title>
             <h3 class="sponsor-header-text fw-bold text-sentence text-center">
-              Unlock {{ title }} Today
+              Unlock <strong>{{ title }}</strong
+              >Today
             </h3>
           </template>
 
