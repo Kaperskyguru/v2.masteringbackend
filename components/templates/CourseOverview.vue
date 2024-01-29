@@ -145,9 +145,7 @@
                   <h3 class="my-3 fw-bold">
                     {{ topic.title }}
                   </h3>
-                  <p class="fs-5">
-                    {{ topic.description }}
-                  </p>
+                  <article v-html="topic.description" class="fs-5"></article>
                 </div>
 
                 <div class="">
