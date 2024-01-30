@@ -8,7 +8,7 @@
               class="title__text py-4"
               style="font-size: 52px; font-weight: 800; line-height: 62px"
             >
-              Welcome Super Fan
+              Become A Super Fan
             </h1>
 
             <p class="title__subtext fs-4">

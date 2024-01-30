@@ -225,8 +225,7 @@
         <PageTitle>
           <template #title>
             <h3 class="sponsor-header-text fw-bold text-sentence text-center">
-              Unlock <strong>{{ title }}</strong
-              >Today
+              Unlock <strong>{{ title }}</strong> Today
             </h3>
           </template>
 
@@ -316,7 +315,7 @@ export default {
     },
 
     btnText() {
-      return this.isPremium ? `Access for $${this.price}/m` : 'Get Started'
+      return this.isPremium ? `Access for $${this.price} /m` : 'Get Started'
     },
 
     description() {
