@@ -41,7 +41,7 @@
               </Button>
               <span class="text-center" style="font-size: smaller"
                 >Use <strong>SuperFan</strong> coupon code (expiring on the
-                <strong>1st of Feb, 2024</strong>)</span
+                <strong>7th of Feb, 2024</strong>)</span
               >
             </div>
           </div>
@@ -78,7 +78,7 @@
           </Button>
           <span class="text-center" style="font-size: smaller"
             >Use <strong>SuperFan</strong> coupon code (expiring on the
-            <strong>1st of Feb, 2024</strong>)</span
+            <strong>7th of Feb, 2024</strong>)</span
           >
         </div>
       </div>
@@ -198,7 +198,7 @@
             </Button>
             <span class="text-center" style="font-size: smaller"
               >Use <strong>SuperFan</strong> coupon code (expiring on the
-              <strong>1st of Feb, 2024</strong>)</span
+              <strong>7th of Feb, 2024</strong>)</span
             >
           </div>
         </div>
@@ -274,7 +274,7 @@
             </Button>
             <span class="text-center" style="font-size: smaller"
               >Use <strong>SuperFan</strong> coupon code (expiring on the
-              <strong>1st of Feb, 2024</strong>)</span
+              <strong>7th of Feb, 2024</strong>)</span
             >
           </div>
         </div>
