@@ -112,6 +112,8 @@
             |&nbsp;
             <a href="/disclaimer">Disclaimer</a>
             |&nbsp;
+            <a href="/return-policy">Return Policy</a>
+            |&nbsp;
             <a href="#" @click.prevent="showLogin = !showLogin">Login</a>
             |&nbsp;
             <a href="#" @click.prevent="showRegister = !showRegister"
