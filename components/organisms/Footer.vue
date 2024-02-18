@@ -113,12 +113,12 @@
             <a href="/disclaimer">Disclaimer</a>
             |&nbsp;
             <a href="/return-policy">Return Policy</a>
-            |&nbsp;
+            <!-- |&nbsp;
             <a href="#" @click.prevent="showLogin = !showLogin">Login</a>
             |&nbsp;
             <a href="#" @click.prevent="showRegister = !showRegister"
               >Register</a
-            >
+            > -->
           </div>
         </div>
 
