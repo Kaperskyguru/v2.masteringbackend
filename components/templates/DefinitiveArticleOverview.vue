@@ -81,6 +81,8 @@
       :chapter="chapter"
     />
 
+    <PlatformAd />
+
     <div id="chapter" class="container mx-auto w-75">
       <div id="chapter" class="py-3 d-flex container mx-auto w-md-100 w-75">
         <div style="width: 24px; height: 24px; margin-right: 5px">

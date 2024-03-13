@@ -26,6 +26,8 @@
 
               <ReadArticle :post="post" />
 
+              <PlatformAd />
+
               <div class="text-center text-white my-5" v-if="isASeries">
                 <div
                   class="position-relative"
@@ -58,7 +60,7 @@
                     <a
                       v-for="category in getCategories"
                       :key="category.id"
-                      class="p-2 text-white"
+                      class="p-2 mx-1 text-white"
                       :style="{ backgroundColor: color }"
                       :href="`/categories/${category.slug}`"
                     >
