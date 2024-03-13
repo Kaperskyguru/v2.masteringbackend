@@ -45,6 +45,7 @@
         <div class="ms-5 d-flex">
           <div class="me-2">
             <a
+              target="_blank"
               href="https://app.masteringbackend.com/auth/login?ref=homepage"
               class="px-3 py-3"
               style="
@@ -58,6 +59,7 @@
           </div>
           <div>
             <a
+              target="_blank"
               href="https://app.masteringbackend.com?ref=homepage"
               class="start-btn px-3 py-3"
             >

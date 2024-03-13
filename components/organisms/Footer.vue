@@ -41,6 +41,11 @@
                 <div class="d-md-flex text-white">
                   <ul class="footer-nav fs-6">
                     <li class="mb-3">
+                      <a target="_blank" href="https://app.masteringbackend.com"
+                        >Learn Backend Free</a
+                      >
+                    </li>
+                    <li class="mb-3">
                       <NuxtLink to="/newsletter">Join Our Newsletter</NuxtLink>
                     </li>
                     <li class="mb-3">
