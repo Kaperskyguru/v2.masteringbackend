@@ -42,6 +42,29 @@
             <a href="/community" class="nav-link">Community</a>
           </li>
         </ul>
+        <div class="ms-5 d-flex">
+          <div class="me-2">
+            <a
+              href="https://app.masteringbackend.com/auth/login?ref=homepage"
+              class="px-3 py-3"
+              style="
+                border-radius: 8px;
+                border: 1px solid #191489;
+                background-color: transparent;
+              "
+            >
+              Login
+            </a>
+          </div>
+          <div>
+            <a
+              href="https://app.masteringbackend.com?ref=homepage"
+              class="start-btn px-3 py-3"
+            >
+              Learn Backend Free
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -100,5 +123,17 @@ export default {
 .nav-link {
   color: #57586e;
   font-size: 0.8rem;
+}
+
+.start-btn {
+  background: #191489;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+  background-color: #2119ad;
 }
 </style>
