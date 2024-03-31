@@ -43,20 +43,6 @@
           </li>
         </ul>
         <div class="ms-5 d-flex">
-          <div class="me-2">
-            <a
-              target="_blank"
-              href="https://app.masteringbackend.com/auth/login?ref=homepage"
-              class="px-3 py-3"
-              style="
-                border-radius: 8px;
-                border: 1px solid #191489;
-                background-color: transparent;
-              "
-            >
-              Login
-            </a>
-          </div>
           <div>
             <a
               target="_blank"

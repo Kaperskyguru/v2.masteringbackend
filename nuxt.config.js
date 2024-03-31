@@ -264,7 +264,7 @@ export default {
       'nuxt-highlightjs',
       {
         // Module Options
-        style: 'base16/dracula',
+        style: 'night-owl',
       },
     ],
 
