@@ -16,7 +16,7 @@
           </div>
           <div class="col">
             <div class="row justify-between">
-              <div class="col-md-4 text-col">
+              <div class="col-md-3 text-col">
                 <p class="mb-4">Learn</p>
                 <div class="d-md-flex text-white">
                   <ul class="footer-nav fs-6">
@@ -36,10 +36,44 @@
                 </div>
               </div>
 
-              <div class="col-md-4 text-col">
+              <div class="col-md-3 text-col">
+                <p class="mb-4">Products</p>
+                <div class="d-md-flex text-white">
+                  <ul class="footer-nav fs-6">
+                    <li class="mb-3">
+                      <a target="_blank" href="https://app.masteringbackend.com"
+                        >MB Platform</a
+                      >
+                    </li>
+                    <li class="mb-3">
+                      <a
+                        target="_blank"
+                        href="https://playground.masteringbackend.com"
+                        >Code Playground</a
+                      >
+                    </li>
+                    <li class="mb-3">
+                      <a target="_blank" href="https://getbackendjobs.com"
+                        >Get Backend Jobs</a
+                      >
+                    </li>
+
+                    <li class="mb-3">
+                      <a target="_blank" href="#">Backend Interview Preps</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-3 text-col">
                 <p class="mb-4">Join</p>
                 <div class="d-md-flex text-white">
                   <ul class="footer-nav fs-6">
+                    <li class="mb-3">
+                      <a target="_blank" href="https://app.masteringbackend.com"
+                        >Learn Backend Free</a
+                      >
+                    </li>
                     <li class="mb-3">
                       <NuxtLink to="/newsletter">Join Our Newsletter</NuxtLink>
                     </li>
@@ -54,7 +88,7 @@
                 </div>
               </div>
 
-              <div class="col-md-4 text-col">
+              <div class="col-md-3 text-col">
                 <p class="mb-4">Company</p>
                 <ul class="footer-nav fs-6">
                   <li class="mb-3"><a href="/">Home</a></li>

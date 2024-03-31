@@ -156,7 +156,7 @@ export default {
     },
 
     isPDF() {
-      return this.hub.type === 'pdf'
+      return this.hub?.type === 'pdf'
     },
 
     link() {
@@ -169,7 +169,7 @@ export default {
     },
 
     isPremium() {
-      return this.hub.is_premium
+      return this.hub?.is_premium
     },
 
     isBackend() {

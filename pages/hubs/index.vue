@@ -17,9 +17,12 @@ export default {
         data.count = 22
         hubs = await store.dispatch('hubs/getHubs', data)
       }
+
+      // console.log(hubs)
+
       return { hubs }
     } catch (error) {
-      // console.log(error)
+      console.log(error)
       const hubs = []
       return { hubs }
     }

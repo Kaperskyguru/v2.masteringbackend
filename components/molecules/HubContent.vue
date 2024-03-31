@@ -16,7 +16,7 @@
       }"
     ></ReadArticle>
 
-    <div v-if="showReadMore" :class="{ 'pb-5': !isChapter }">
+    <div v-if="!showReadMore" :class="{ 'pb-5': !isChapter }">
       <CustomAlert
         :bgColor="color"
         :showRead="true"
@@ -31,6 +31,8 @@
         </template>
       </CustomAlert>
     </div>
+
+    <PlatformAd />
 
     <div v-if="isChapter" class="w-100 pt-5">
       <ChapterOutline
