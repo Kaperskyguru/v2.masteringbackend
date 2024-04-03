@@ -236,6 +236,7 @@ export default {
 
   mounted() {
     this.displayCustomReadMoreAlert()
+    this.displayCustomCodeHighligher()
     if (this.isDev()) {
       // eslint-disable-next-line no-undef
       Paddle.Environment.set('sandbox')
@@ -243,44 +244,6 @@ export default {
     // eslint-disable-next-line no-undef
     Paddle.Setup({
       vendor: Number(process.env.PADDLE_VENDOR),
-    })
-
-    document.querySelectorAll('article pre').forEach((element) => {
-      const wrapper = document.createElement('div')
-
-      const header = document.createElement('div')
-      const red = document.createElement('div')
-      const yellow = document.createElement('div')
-      const green = document.createElement('div')
-      const footer = document.createElement('div')
-
-      // Get Language
-
-      const codeElement = element.querySelector('code')
-      const lang = codeElement?.classList[1]?.split('-')[1] ?? 'javascript'
-
-      const text = document.createElement('span')
-      text.innerHTML = `Use the <a href="https://playground.masteringbackend.com/${lang}?ref=masteringbackend" target="_blank">Online Code Editor</a>`
-
-      // Adding CSS classes
-      wrapper.classList.add('custom-highlighter-wrapper')
-      header.classList.add('custom-highlighter-header')
-      green.classList.add('custom-highlighter-green')
-      red.classList.add('custom-highlighter-red')
-      yellow.classList.add('custom-highlighter-yellow')
-      footer.classList.add('custom-highlighter-footer')
-
-      element.insertAdjacentElement('beforebegin', wrapper)
-
-      // Appending
-      header.appendChild(red)
-      header.appendChild(yellow)
-      header.appendChild(green)
-      footer.appendChild(text)
-
-      wrapper.appendChild(header)
-      wrapper.appendChild(element)
-      wrapper.appendChild(footer)
     })
   },
 
@@ -344,6 +307,48 @@ export default {
       }
 
       this.createComponent(element, props)
+    },
+
+    displayCustomCodeHighligher() {
+      document.querySelectorAll('article pre').forEach((element) => {
+        const wrapper = document.createElement('div')
+
+        const header = document.createElement('div')
+        const red = document.createElement('div')
+        const yellow = document.createElement('div')
+        const green = document.createElement('div')
+        const footer = document.createElement('div')
+
+        // Get Language
+
+        const codeElement = element.querySelector('code')
+        const lang = codeElement?.classList[1]?.split('-')[1] ?? 'javascript'
+
+        const text = document.createElement('span')
+        text.innerHTML = `Use our <a href="https://playground.masteringbackend.com/${lang}?ref=masteringbackend" target="_blank">Online Code Editor</a>`
+
+        // Adding CSS classes
+        wrapper.classList.add('custom-highlighter-wrapper')
+        header.classList.add('custom-highlighter-header')
+        green.classList.add('custom-highlighter-green')
+        red.classList.add('custom-highlighter-red')
+        yellow.classList.add('custom-highlighter-yellow')
+        footer.classList.add('custom-highlighter-footer')
+
+        element.insertAdjacentElement('beforebegin', wrapper)
+        // Appending
+        header.appendChild(red)
+        header.appendChild(yellow)
+        header.appendChild(green)
+
+        footer.appendChild(text)
+
+        wrapper.appendChild(header)
+
+        const parentElement = element.parentNode
+        if (parentElement.nodeName === 'ARTICLE') wrapper.appendChild(element)
+        wrapper.appendChild(footer)
+      })
     },
 
     displayCustomReadMoreAlert() {
