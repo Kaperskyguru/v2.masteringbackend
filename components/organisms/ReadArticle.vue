@@ -9,7 +9,11 @@
       v-html="content"
     ></article>
 
-    <span style="display: inline-block; position: relative" v-else>
+    <span
+      class="w-100"
+      style="display: inline-block; position: relative"
+      v-else
+    >
       <div class="overlay p-3 d-flex align-items-center justify-content-center">
         <div class="text-center text-white mt-4">
           <div
@@ -310,6 +314,7 @@ export default {
     },
 
     displayCustomCodeHighligher() {
+      if (this.chapter) return
       document.querySelectorAll('article pre').forEach((element) => {
         const wrapper = document.createElement('div')
 
@@ -342,11 +347,9 @@ export default {
         header.appendChild(green)
 
         footer.appendChild(text)
-
         wrapper.appendChild(header)
 
-        const parentElement = element.parentNode
-        if (parentElement.nodeName === 'ARTICLE') wrapper.appendChild(element)
+        wrapper.appendChild(element)
         wrapper.appendChild(footer)
       })
     },
