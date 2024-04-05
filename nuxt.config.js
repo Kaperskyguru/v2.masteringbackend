@@ -372,6 +372,12 @@ export default {
       statusCode: 301,
     },
 
+    {
+      from: '^/jobs/(.*)$',
+      to: 'https://getbackendjobs.com?ref=masteringbackend',
+      statusCode: 301,
+    },
+
     // {
     //   from: '^/posts/rust-programming-the-ultimate-guide(.*)$',
     //   to: '/books/rust-essentials',
