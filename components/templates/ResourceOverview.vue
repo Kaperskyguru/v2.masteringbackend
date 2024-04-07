@@ -31,6 +31,21 @@
                 {{ 'Grab Your Copy Now' }}
               </Button>
             </div>
+            <!-- Automate this process -->
+            <div class="input-group py-3" v-if="isDocker">
+              <Button
+                v-if="!isPDF"
+                :custom-style="{
+                  backgroundColor: `${color}`,
+                  color: '#fff',
+                }"
+                size="large"
+                type="link"
+                link="https://store.masteringbackend.com/l/docker-ultimate-guide"
+              >
+                {{ 'Grab Your Copy Now' }}
+              </Button>
+            </div>
           </div>
 
           <div class="col-lg-6 ml-auto p-2">
@@ -40,10 +55,19 @@
                 style="background-color: white"
               >
                 <ResourceForm
-                  v-if="!isLaravelBreeze"
+                  v-if="!isLaravelBreeze || !isDocker"
                   :tag="enchargeTag"
                   :color="color"
                   :isWaiting="false"
+                />
+
+                <img
+                  v-else-if="isDocker"
+                  class="img-fluid"
+                  v-lazy-load
+                  data-src="https://public-files.gumroad.com/4b4q5j1x03zq6t19w7wnxizu5048"
+                  alt="Laravel breeze PDF"
+                  srcset=""
                 />
 
                 <img
@@ -206,6 +230,10 @@ export default {
 
     isLaravelBreeze() {
       return this.chapter?.slug === 'laravel-breeze'
+    },
+
+    isDocker() {
+      return this.chapter?.slug === 'docker-guide'
     },
 
     image() {
