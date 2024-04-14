@@ -32,8 +32,6 @@
       </CustomAlert>
     </div>
 
-    <PlatformAd />
-
     <div v-if="isChapter" class="w-100 pt-5">
       <ChapterOutline
         :key="i"
@@ -42,6 +40,8 @@
         :post="{ ...post, hub: hubSlug }"
       />
     </div>
+
+    <PlatformAd />
   </div>
 </template>
 

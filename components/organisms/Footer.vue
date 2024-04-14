@@ -41,19 +41,23 @@
                 <div class="d-md-flex text-white">
                   <ul class="footer-nav fs-6">
                     <li class="mb-3">
-                      <a target="_blank" href="https://app.masteringbackend.com"
+                      <a
+                        target="_blank"
+                        :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
                         >MB Platform</a
                       >
                     </li>
                     <li class="mb-3">
                       <a
                         target="_blank"
-                        href="https://playground.masteringbackend.com"
+                        :href="`https://playground.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
                         >Code Playground</a
                       >
                     </li>
                     <li class="mb-3">
-                      <a target="_blank" href="https://getbackendjobs.com"
+                      <a
+                        target="_blank"
+                        :href="`https://getbackendjobs.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
                         >Get Backend Jobs</a
                       >
                     </li>
@@ -70,7 +74,9 @@
                 <div class="d-md-flex text-white">
                   <ul class="footer-nav fs-6">
                     <li class="mb-3">
-                      <a target="_blank" href="https://app.masteringbackend.com"
+                      <a
+                        target="_blank"
+                        :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer`"
                         >Learn Backend Free</a
                       >
                     </li>

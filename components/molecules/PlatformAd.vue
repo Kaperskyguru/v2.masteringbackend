@@ -3,7 +3,7 @@
     <div class="position-relative pad" :style="{ backgroundColor: white }">
       <div class="py-3" :style="`border-bottom: 4px solid ${bgColor}`">
         <h3>Whenever you're ready</h3>
-        <p>There are 3 ways we can help you become a great backend engineer:</p>
+        <p>There are 4 ways we can help you become a great backend engineer:</p>
       </div>
       <div class="py-3">
         <div
@@ -14,7 +14,10 @@
             <img class="w-100" src="~/assets/img/3.png" alt="" />
           </div>
           <div class="w-100">
-            <a target="_blank" href="https://app.masteringbackend.com">
+            <a
+              target="_blank"
+              :href="`https://app.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
+            >
               <h4 style="color: rgb(187, 74, 3)">The MB Platform</h4>
             </a>
             <p>
@@ -33,7 +36,10 @@
             <img class="w-100" src="~/assets/img/2.png" alt="" />
           </div>
           <div class="w-100">
-            <a target="_blank" href="https://masteringbackend.com/academy">
+            <a
+              target="_blank"
+              :href="`https://masteringbackend.com/academy?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
+            >
               <h4 style="color: rgb(187, 74, 3)">The MB Academy</h4></a
             >
             <p>
@@ -50,7 +56,10 @@
             <img class="w-100" src="~/assets/img/1.png" alt="" />
           </div>
           <div class="w-100">
-            <a target="_blank" href="https://masteringbackend.com/newsletter">
+            <a
+              target="_blank"
+              :href="`https://masteringbackend.com/newsletter?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
+            >
               <h4 style="color: rgb(187, 74, 3)">Join Backend Weekly</h4></a
             >
             <p>
@@ -61,7 +70,7 @@
           </div>
         </div>
 
-        <!-- <div
+        <div
           class="d-flex flex-md-row flex-column align-items-center justify-content-center py-2"
           style="border-bottom: 1px solid #ddd"
         >
@@ -69,16 +78,19 @@
             <img class="w-100" src="~/assets/img/1.png" alt="" />
           </div>
           <div class="w-100">
-            <a target="_blank" href="https://masteringbackend.com/academy">
-              <h4 style="color: rgb(187, 74, 3);">MB Text-Based Courses</h4></a
+            <a
+              target="_blank"
+              :href="`https://getbackendjobs.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
+            >
+              <h4 style="color: rgb(187, 74, 3)">Get Backend Jobs</h4></a
             >
             <p>
-              Access 1000+ resources, including PDF guides, comprehensive
-              reference materials, and text-based courses that cater to learners
-              at various stages of their backend engineering journey.
+              Find over 2,000+ Tailored International Remote Backend Jobs or
+              Reach 50,000+ backend engineers on the #1 Backend Engineering Job
+              Board
             </p>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +102,12 @@ export default {
     bgColor: {
       type: String,
       default: '#5227AD',
+    },
+  },
+
+  computed: {
+    campaign() {
+      return this.$route?.params?.slug ?? 'post_details'
     },
   },
 }
