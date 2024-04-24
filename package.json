@@ -70,7 +70,7 @@
     "prettier": "^2.5.1",
     "sass": "^1.64.1",
     "sass-loader": "10",
-    "storybook-dark-mode": "^1.0.8",
+    "storybook-dark-mode": "^1.0.8"
   },
   "engines": {
     "node": ">=16.x.x"
