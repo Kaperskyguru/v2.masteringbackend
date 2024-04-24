@@ -230,6 +230,7 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
+      '~/components/v2',
       '~/components/atoms',
       '~/components/molecules',
       '~/components/organisms',
@@ -479,5 +480,12 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    },
+  },
 }

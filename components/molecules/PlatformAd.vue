@@ -58,7 +58,7 @@
           <div class="w-100">
             <a
               target="_blank"
-              :href="`https://masteringbackend.com/newsletter?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
+              :href="`https://newsletter.masteringbackend.com/?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=${campaign}`"
             >
               <h4 style="color: rgb(187, 74, 3)">Join Backend Weekly</h4></a
             >
