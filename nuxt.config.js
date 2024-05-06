@@ -230,7 +230,6 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
     dirs: [
-      '~/components/v2',
       '~/components/atoms',
       '~/components/molecules',
       '~/components/organisms',
@@ -323,35 +322,6 @@ export default {
       cacheTime: 1000 * 60 * 15, // How long should the feed be cached
       type: 'rss2', // Can be: rss2, atom1, json1
     },
-    // {
-    //   path: '/jobs.xml', // The route to your feed.
-    //   async create(feed) {
-    //     feed.options = {
-    //       title: 'Mastering Backend',
-    //       link: 'https://masteringbackend.com/jobs.xml',
-    //       description: 'This is Mastering Backend Job feeds!',
-    //     }
-
-    //     const jobs = await Utils.getJobs()
-    //     jobs.forEach((job) => {
-    //       feed.addItem({
-    //         title: job.title,
-    //         id: `https://masteringbackend.com/jobs/${job.slug}`,
-    //         link: `https://masteringbackend.com/jobs/${job.slug}`,
-    //         description: job.location,
-    //         content: job.description,
-    //         date: new Date(job.created_at),
-    //         updated: new Date(job.created_at),
-    //         // author: {
-    //         //   name: post.author.name,
-    //         //   link: 'https://masteringbackend.com/authors/' + post.author.slug,
-    //         // },
-    //       })
-    //     })
-    //   },
-    //   cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-    //   type: 'rss2', // Can be: rss2, atom1, json1
-    // },
   ],
 
   // recaptcha: {

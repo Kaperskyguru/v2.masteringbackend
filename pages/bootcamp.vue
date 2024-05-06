@@ -9,37 +9,21 @@
               <h1
                 class="title__text fw-bold mb-md-2 display-4 mt-2 text-capitalize"
               >
-                Join 15,500+ Backend Engineers Across our communities TODAY!
+                Welcome to the Backend Bootcamp 2.0
               </h1>
               <div class="my-4">
                 <p class="title__subtext">
-                  Chat and share with over a thousand backend engineers
-                  worldwide. We have live discussions. We're building the
-                  biggest Backend Development virtual user group in the world.
-                  Come join the fun.
+                  Use the form below the join our slack channel and our
+                  community of over a thousand backend engineers worldwide. We
+                  have live discussions. We're building the biggest Backend
+                  Development virtual user group in the world. Come join the
+                  fun.
                 </p>
                 <div class="gradient"></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="border my-5"></div>
-
-    <section id="jobs" class="dev-job text-center mt-5">
-      <PageTitle class="col-lg-6 mx-auto p-5 text-center">
-        <template #title>
-          <h2 class="fw-bold">Why you should join now</h2>
-        </template>
-        <p class="dev-text">
-          For vetted backend software engineering jobs for highly skilled and
-          qualified backend engineers like you.
-        </p>
-      </PageTitle>
-      <div class="container">
-        <Jobs />
       </div>
     </section>
 
@@ -332,6 +316,7 @@ export default {
       const data = {}
       data.fullName = this.fullName
       data.email = this.user.email
+      data.isBootcamp = true
 
       this.show1 = true
       this.slackMessage = await join(data)

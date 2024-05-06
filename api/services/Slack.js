@@ -2,7 +2,7 @@ import request from 'request'
 require('dotenv').config()
 class Slack {
   constructor() {}
-  invite({ email, fullName }) {
+  invite({ email, fullName, isBootcamp = false }) {
     const channels = [
       'C0181LSEQKA',
       'C016X3N35RD',
@@ -12,7 +12,10 @@ class Slack {
       'C017AENSHDK',
     ]
 
+    if (isBootcamp) channels.push('C0722UTK7V2')
+
     const token = process.env.SLACK_TOKEN
+
     return new Promise(function (resolve, reject) {
       request.post(
         {
