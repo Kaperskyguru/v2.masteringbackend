@@ -52,7 +52,7 @@ export default {
         feedback: `The course is an excellent resource for beginners. Your explanations of the basics are clear, making it easy for newcomers to grasp. I particularly enjoyed the task management application; it's a practical example that helps solidify the concepts.`,
         name: 'Eshan Shafeeq',
         position: 'Blockchain & Web3 Engineer, Cake Defi',
-        image: '/img/people/eshan',
+        image: '/img/people/eshan.jpeg',
       },
     ],
   }),
