@@ -419,6 +419,8 @@
                     <input
                       class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
                       type="email"
+                      required
+                      name="email"
                       v-model="email"
                       style="border: 2"
                       placeholder="Enter your email address..."
@@ -427,7 +429,7 @@
                     <Button
                       type="button"
                       class="col-lg-4 col-12 start-btn py-3 my-2 fw-bold"
-                      @click="subscribe"
+                      @click.prevent="openDialog"
                     >
                       Join the Waiting List
                     </Button>
@@ -486,83 +488,118 @@
           </div>
         </div>
 
-        <form ref="form" method="post" action="#" class="form-slak">
-          <div class="form-group">
-            <label class="text-dark" for="text">
+        <form
+          ref="form"
+          id="form-773de7a2-8769-4e6d-88ed-e978d69bae4d"
+          action="https://api.encharge.io/v1/forms/773de7a2-8769-4e6d-88ed-e978d69bae4d/submission/plain"
+          method="POST"
+        >
+          <div class="form-group py-3">
+            <label class="text-dark" for="name">
+              <b>Full name</b>
+            </label>
+            <input
+              class="col-lg-8 py-md-2 col-12 form-control shadow-none fs-5 my-2"
+              type="text"
+              id="name"
+              name="name"
+              v-model="name"
+              required
+              style="border: 2"
+              placeholder="Enter your full name..."
+            />
+          </div>
+          <div class="form-group py-3">
+            <label class="text-dark" for="email">
               <b>E-mail</b>
             </label>
             <input
               class="col-lg-8 col-12 form-control shadow-none fs-5"
               type="email"
+              name="email"
+              id="email"
               required
               v-model="email"
               placeholder="Enter your email address"
             />
           </div>
 
-          <!-- <div class="py-3">
-              <div class="form-check py-2">
-                <input
-                  type="radio"
-                  class="form-check-input"
-                  name="track"
-                  id="nodejs"
-                />
-                <label class="form-check-label" for="nodejs"
-                  >Node.js Backend Track</label
-                >
-              </div>
-              <div class="form-check py-2">
-                <input
-                  type="radio"
-                  class="form-check-input"
-                  name="track"
-                  id="php"
-                />
-                <label class="form-check-label" for="php"
-                  >PHP Backend Track</label
-                >
-              </div>
-            </div> -->
-          <div class="text-center mt-2">
-            <Button
-              appearance="purple"
-              class="col-12 py-3 my-2 fw-bold"
-              type="submit"
-              @click.prevent="subscribe"
-              >Join the waiting list</Button
-            >
-
-            <div
-              v-if="res.message || show"
-              class="alert mt-1 fade d-flex font-weight-normal"
-              style="justify-items: space-between"
-              :class="[`alert-${res.type}`, { show: show }]"
-              role="alert"
-            >
-              <p class="w-100 font-weight-normal small">{{ res.message }}</p>
-              <button
-                v-if="res.message"
-                type="button"
-                data-dismiss="alert"
-                aria-label="Close"
-                @click="
-                  show = false
-                  res = {}
-                "
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+          <div class="py-3">
+            <input
+              type="hidden"
+              id="31b47661-eae6-42bd-bc02-df3c004a01f9"
+              name="HiddenTag"
+              :value="track"
+              class="encharge-form-input sc-htoDjs jmyTNa form-control"
+            />
           </div>
         </form>
+        <div class="py-3">
+          <label class="text-dark">
+            <b>Select your backend track</b>
+          </label>
+          <div class="form-check py-2">
+            <input
+              type="radio"
+              class="form-check-input"
+              name="track"
+              v-model="track"
+              value="nodejs"
+              id="nodejs"
+            />
+            <label class="form-check-label" for="nodejs"
+              >Node.js Backend Track</label
+            >
+          </div>
+          <div class="form-check py-2">
+            <input
+              type="radio"
+              v-model="track"
+              class="form-check-input"
+              value="php"
+              name="track"
+              id="php"
+            />
+            <label class="form-check-label" for="php">PHP Backend Track</label>
+          </div>
+        </div>
+        <div class="text-center mt-2">
+          <Button
+            appearance="purple"
+            type="button"
+            class="col-12 py-3 my-2 fw-bold"
+            @click.prevent="subscribe"
+            >Join the waiting list</Button
+          >
+
+          <div
+            v-if="res.message || show"
+            class="alert mt-1 fade d-flex font-weight-normal"
+            style="justify-items: space-between"
+            :class="[`alert-${res.type}`, { show: show }]"
+            role="alert"
+          >
+            <p class="w-100 font-weight-normal small">{{ res.message }}</p>
+            <button
+              v-if="res.message"
+              type="button"
+              data-dismiss="alert"
+              aria-label="Close"
+              @click="
+                show = false
+                res = {}
+              "
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
       </template>
     </Dialog>
   </main>
 </template>
   
   <script>
-import { submit } from '~/helpers/mailchimp'
 export default {
   name: 'AcademyPage',
 
@@ -574,22 +611,50 @@ export default {
     isEmailDialogOpen: false,
     email: '',
     res: {},
+    track: 'nodejs',
     show: false,
   }),
 
   methods: {
-    async subscribe() {
-      const res = await submit({
-        email: this.email,
-        tags: ['advanced-backend-2-0'],
-      })
-      this.show = true
-      this.res = res
+    subscribe() {
+      this.$refs.form.submit()
     },
 
     openDialog() {
       this.isEmailDialogOpen = true
     },
+  },
+
+  head() {
+    return {
+      title: 'Advanced Backend Engineering Training',
+      titleTemplate: null,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
   },
 }
 </script>
