@@ -326,11 +326,12 @@ export default {
 
         // Get Language
 
-        const codeElement = element.querySelector('code')
-        const lang = codeElement?.classList[1]?.split('-')[1] ?? 'javascript'
+        // const codeElement = element.querySelector('code')
+        // const lang = codeElement?.classList[1]?.split('-')[1] ?? 'javascript'
 
+        const lang = 'javascript'
         const text = document.createElement('span')
-        text.innerHTML = `Use our <a href="https://playground.masteringbackend.com/${lang}?ref=masteringbackend&utm_source=masteringbackend&utm_medium=custom_code_editor&utm_campaign=${$route.params.slug}" target="_blank">Online Code Editor</a>`
+        text.innerHTML = `Use our <a href="https://playground.masteringbackend.com/${lang}?ref=masteringbackend&utm_source=masteringbackend&utm_medium=custom_code_editor&utm_campaign=${this.$route.params.slug}" target="_blank">Online Code Editor</a>`
 
         // Adding CSS classes
         wrapper.classList.add('custom-highlighter-wrapper')

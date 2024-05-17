@@ -395,7 +395,7 @@ export default {
 
     {
       from: '^/jobs(.*)$',
-      to: '/community/$1',
+      to: 'https://getbackendjobs.com?ref=masteringbackend',
       statusCode: 301,
     },
 
