@@ -1,13 +1,13 @@
 <template>
   <div style="display: inline-block; position: relative">
-    <div class="overlay p-3 d-flex align-items-center justify-content-center">
+    <div
+      class="overlay p-3 d-flex align-items-center justify-content-center"
+      v-if="!jobs.length"
+    >
       <p class="fs-6 fw-bold">Coming Soon</p>
     </div>
-    <div class="row g-3" style="opacity: 0.1">
-      <Job />
-      <Job />
-      <Job />
-      <Job />
+    <div class="row g-3" :style="[{ 'opacity: 0.1': !jobs.length }]">
+      <Job :job="job" v-for="(job, index) in jobs?.slice(0, 8)" :key="index" />
     </div>
   </div>
 </template>
@@ -16,6 +16,13 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Jobs',
+
+  props: {
+    jobs: {
+      default: () => [],
+      type: Array,
+    },
+  },
 }
 </script>
 

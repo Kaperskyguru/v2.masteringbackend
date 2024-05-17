@@ -2,15 +2,24 @@
   <div class="col-lg-3 col-md-6 col-sm-12">
     <div class="card px-3 py-2">
       <div class="card-img align-self-center mb-3 mt-3">
-        <img class="img-fluid" src="~/assets/img/num5.png" alt="" />
+        <img class="img-fluid" :src="job.company_logo" alt="" />
       </div>
-      <h6 class="card-header-text">Senior Backend Engineer</h6>
+      <h6 class="card-header-text">{{ job.position }}</h6>
       <p class="card-text">
-        We are looking a Senior Backend Engineer with over 5+ years of
-        experience in JavaScript and TypeScript.
+        <span class="fw-bold">{{ job.company_name }}</span> is currently hiring
+        a {{ job.position }}. Click on APPLY to view more information.
       </p>
       <div>
-        <Button appearance="outline-primary" class="mb-3">Read more</Button>
+        <p style="font-size: small; font-weight: bold">
+          Date Posted: {{ timeAgo(job.created_at) }}
+        </p>
+        <Button
+          type="link"
+          :link="`https://getbackendjobs.com/jobs/${job.slug}?ref=masteringbackend&utm_source=masteringbackend&utm_campaign=community&utm_medium=${job.slug}`"
+          appearance="outline-primary"
+          class="mb-3"
+          >Apply</Button
+        >
       </div>
     </div>
   </div>
@@ -20,6 +29,41 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Job',
+
+  props: {
+    job: {
+      default: () => {},
+      type: Object,
+    },
+  },
+
+  methods: {
+    timeAgo(timestamp, locale = 'en') {
+      let value
+      const diff = (new Date().getTime() - new Date(timestamp).getTime()) / 1000
+      const minutes = Math.floor(diff / 60)
+      const hours = Math.floor(minutes / 60)
+      const days = Math.floor(hours / 24)
+      const months = Math.floor(days / 30)
+      const years = Math.floor(months / 12)
+      const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' })
+
+      if (years > 0) {
+        value = rtf.format(0 - years, 'year')
+      } else if (months > 0) {
+        value = rtf.format(0 - months, 'month')
+      } else if (days > 0) {
+        value = rtf.format(0 - days, 'day')
+      } else if (hours > 0) {
+        value = rtf.format(0 - hours, 'hour')
+      } else if (minutes > 0) {
+        value = rtf.format(0 - minutes, 'minute')
+      } else {
+        value = rtf.format(0 - diff, 'second')
+      }
+      return value
+    },
+  },
 }
 </script>
 

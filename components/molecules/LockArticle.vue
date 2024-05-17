@@ -62,29 +62,32 @@
             <h4>Confirm Your Email to Access The Exclusive Content</h4>
 
             <p class="fs-6 my-4">
-              AAlmost there! Please complete this form and click the button
-              below to gain instant access.
+              Almost there! Please complete this form and click the button below
+              to gain instant access.
             </p>
           </div>
         </div>
 
-        <div id="custom-substack-embed"></div>
+        <iframe
+          src="https://embeds.beehiiv.com/c25593aa-4440-4d8e-b2e1-68bfa92636e8"
+          data-test-id="beehiiv-embed"
+          width="100%"
+          height="320"
+          frameborder="0"
+          scrolling="no"
+          style="
+            border-radius: 4px;
+            border: 2px solid #e5e7eb;
+            margin: 0;
+            background-color: transparent;
+          "
+        ></iframe>
 
-        <script>
-          window.CustomSubstackWidget = {
-            substackUrl: 'backendmasters.substack.com',
-            placeholder: 'Enter your email address...',
-            buttonText: 'Unlock',
-            theme: 'custom',
-            colors: {
-              primary: '#191489',
-              input: '#000000',
-              email: '#FFFFFF',
-              text: '#fff',
-            },
-          }
-        </script>
-        <script src="/substack.js" async></script>
+        <div class="text-center pt-3">
+          <nuxt-link class="pt-3" :to="`/posts/${slug}`"
+            >Or just continue to article</nuxt-link
+          >
+        </div>
       </template>
     </Dialog>
   </article>
@@ -145,7 +148,8 @@ export default {
 
     openModel() {
       this.isEmailDialogOpen = true
-      window.CustomSubstackWidget.link = '/posts/' + this.slug
+      // if (window.CustomSubstackWidget && window.CustomSubstackWidget.link)
+      //   window.CustomSubstackWidget.link = '/posts/' + this.slug
     },
   },
 }

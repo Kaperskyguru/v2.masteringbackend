@@ -214,7 +214,7 @@ a:hover {
 }
 
 a.btn {
-  border: 0 !important;
+  border: 0;
 }
 
 .btn:focus,

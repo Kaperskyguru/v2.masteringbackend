@@ -9,7 +9,7 @@
       :style="customStyle"
       v-on="$listeners"
       v-bind="$attrs"
-      class="btn text-white"
+      class="btn"
     >
       <div v-if="waiting" class="custom-icon" role="presentation">
         <SvgLoader class="-my-px" />
@@ -33,7 +33,7 @@
       :aria-label="waiting ? 'Please wait…' : undefined"
       target="_blank"
       :class="classNames"
-      class="btn text-white"
+      class="btn"
     >
       <div v-if="waiting" class="custom-icon" role="presentation">
         <SvgLoader class="-my-px" />
@@ -49,7 +49,7 @@
   </div>
   <button
     v-else
-    class="btn text-white"
+    class="btn"
     v-bind="$attrs"
     :class="classNames"
     :style="customStyle"

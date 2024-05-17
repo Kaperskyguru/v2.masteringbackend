@@ -28,19 +28,28 @@
 
     <div class="border my-5"></div>
 
-    <section id="jobs" class="dev-job text-center mt-5">
+    <section id="job" class="dev-job text-center mt-5">
       <PageTitle class="col-lg-6 mx-auto p-5 text-center">
         <template #title>
           <h2 class="fw-bold">Why you should join now</h2>
         </template>
         <p class="dev-text">
-          For vetted backend software engineering jobs for highly skilled and
-          qualified backend engineers like you.
+          We share vetted backend software engineering jobs for highly skilled
+          and qualified backend engineers like you.
         </p>
       </PageTitle>
       <div class="container">
-        <Jobs />
+        <Jobs :jobs="jobs" />
       </div>
+      <p class="pt-5">
+        Want more Remote Backend Jobs?
+        <a
+          style="text-decoration: underline; color: red"
+          href="`https://getbackendjobs.com/?ref=masteringbackend&utm_source=masteringbackend&utm_campaign=community"
+        >
+          Visit: GetbackendJobs</a
+        >
+      </p>
     </section>
 
     <div class="border my-5"></div>
@@ -282,6 +291,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+// import Superagent from 'superagent'
 import { submit } from '~/helpers/mailchimp'
 import { join } from '~/helpers/slack'
 export default {
@@ -294,6 +305,7 @@ export default {
     slackMessage: {},
     newsletter: false,
     waiting: false,
+    jobs: [],
   }),
 
   computed: {
@@ -302,7 +314,31 @@ export default {
     },
   },
 
+  async mounted() {
+    await this.fetchJobs()
+  },
+
   methods: {
+    async fetchJobs() {
+      try {
+        const response = await axios.get(
+          'https://getbackendjobs.com/api/jobs',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              withCredentials: true,
+              mode: 'no-cors',
+            },
+          }
+        )
+
+        const { data } = response
+        this.jobs = data?.result
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async subscribe(data = {}) {
       const res = await submit({
         email: this.email,
