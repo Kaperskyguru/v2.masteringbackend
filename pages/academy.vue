@@ -634,19 +634,26 @@ export default {
           hid: 'description',
           name: 'description',
           content:
-            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+            'Advanced Backend Engineering Training: a proven way to learn Backend Engineering. Learn from experts. Learn from advanced backend developer/engineer courses',
+        },
+
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content:
+            'backend course, backend engineer course, backend engineering course, backend developer training course,back end courses, backend engineer training, backend developer training, backend masters, backend development course, backend engineering courses, advanced backend development course, backend development courses, backend developer course',
         },
         {
           hid: 'og:title',
           property: 'og:title',
           content:
-            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+            'Advanced Backend Engineering Training: a proven way to learn Backend Engineering. Learn from experts. Learn from advanced backend developer/engineer courses',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'Advanced Backend: a proven way to learn Backend Engineering. Learn from experts.',
+            'Advanced Backend Engineering Training: a proven way to learn Backend Engineering. Learn from experts. Learn from advanced backend developer/engineer courses',
         },
         {
           hid: 'twitter:card',
