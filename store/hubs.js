@@ -5,6 +5,7 @@ export const state = () => ({
   hubs: [],
   pdfs: [],
   books: [],
+  courses: [],
   worldHubs: [],
   hub: [],
   definitiveGuides: [],
@@ -37,6 +38,10 @@ export const getters = {
 
   getBooks: (state) => () => {
     return state.books
+  },
+
+  getCourses: (state) => () => {
+    return state.courses
   },
 
   getRecentHubs: (state) => () => {
@@ -83,6 +88,12 @@ export const mutations = {
 
   setBooks(state, data) {
     state.books = data.hubs
+    state.total_hub_pages = data.pages
+    state.hubState = 'loaded'
+  },
+
+  setCourses(state, data) {
+    state.courses = data.hubs
     state.total_hub_pages = data.pages
     state.hubState = 'loaded'
   },
@@ -207,6 +218,33 @@ export const actions = {
 
       if (data?.data) {
         commit('setBooks', mapHubs(data.data))
+      }
+
+      return mapHubs(data.data)
+    } catch (error) {
+      commit('setHubState', 'error')
+      throw error
+    }
+  },
+
+  async getCourses({ commit }, { page, count = 22, populate }) {
+    try {
+      const query = qs.stringify(
+        {
+          populate,
+        },
+        {
+          encodeValuesOnly: true, // prettify URL
+        }
+      )
+      const res = await this.$axios.get(
+        `/hubs?filters[type][$eq]=course&${query}&pagination[page]=${page}&pagination[pageSize]=${count}&sort[1]=createdAt%3Adesc`
+      )
+
+      const { data } = res
+
+      if (data?.data) {
+        commit('setCourses', mapHubs(data.data))
       }
 
       return mapHubs(data.data)

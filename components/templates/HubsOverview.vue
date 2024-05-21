@@ -243,6 +243,7 @@ export default {
   methods: {
     getURL(hub) {
       if (this.isBook(hub)) return `/books/${hub.slug}`
+      if (this.isCourse(hub)) return `/courses/${hub.slug}`
       if (this.isPDF(hub)) return `/resources/${hub.slug}`
       return `/hubs/${hub.slug}`
     },
@@ -256,6 +257,10 @@ export default {
 
     isBook(hub) {
       return hub.type === 'book'
+    },
+
+    isCourse(hub) {
+      return hub.type === 'course'
     },
 
     isPremium(hub) {

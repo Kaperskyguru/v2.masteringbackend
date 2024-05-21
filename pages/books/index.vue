@@ -40,22 +40,22 @@ export default {
 
   head() {
     return {
-      title: 'Books',
+      title: 'Backend Engineering Books',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
+          content: `Access to a catalog of backend books, backend development books, advanced backend engineering books, nestjs books and backend web development books. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
+          content: `Access to a catalog of backend books, backend development books, advanced backend engineering books, nestjs books and backend web development books. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content: `A great resource for backend engineers. Next-level Backend Engineering books and Exclusive resources.`,
+          content: `Access to a catalog of backend books, backend development books, advanced backend engineering books, nestjs books and backend web development books. Next-level Backend Engineering books and Exclusive resources.`,
         },
         {
           hid: 'twitter:card',
