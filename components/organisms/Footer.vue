@@ -24,6 +24,9 @@
                       <NuxtLink to="/posts">Blog</NuxtLink>
                     </li>
                     <li class="mb-3">
+                      <NuxtLink to="/courses">Courses</NuxtLink>
+                    </li>
+                    <li class="mb-3">
                       <NuxtLink to="/books">Books</NuxtLink>
                     </li>
                     <li class="mb-3">

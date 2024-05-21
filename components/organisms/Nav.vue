@@ -24,6 +24,9 @@
           <li class="nav-item" :class="{ active: isActive('/posts') }">
             <a href="/posts" class="links nav-link">Blog</a>
           </li>
+          <li class="nav-item" :class="{ active: isActive('/courses') }">
+            <a href="/courses" class="links nav-link">Courses</a>
+          </li>
           <li class="nav-item" :class="{ active: isActive('/books') }">
             <a href="/books" class="links nav-link">Books</a>
           </li>

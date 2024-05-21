@@ -84,7 +84,7 @@ export default {
           {
             hid: 'og:url',
             property: 'og:url',
-            content: `${this.BASE_URL}/books/${this.$route.params.slug}`,
+            content: `${this.BASE_URL}/courses/${this.$route.params.slug}`,
           },
           {
             hid: 'og:image:width',
@@ -95,21 +95,6 @@ export default {
             hid: 'og:image:height',
             property: 'og:image:height',
             content: '800',
-          },
-          {
-            hid: 'og:type',
-            property: 'og:type',
-            content: 'article',
-          },
-          {
-            hid: 'article:published_time',
-            property: 'article:published_time',
-            content: this.hub?.createdAt,
-          },
-          {
-            hid: 'article:modified_time',
-            property: 'article:modified_time',
-            content: this.hub?.updatedAt,
           },
           {
             hid: 'twitter:card',
