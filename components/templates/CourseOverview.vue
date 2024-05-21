@@ -315,7 +315,7 @@ export default {
     },
 
     btnText() {
-      return this.isPremium ? `Access for $${this.price} /m` : 'Get Started'
+      return this.isPremium ? `Access for $${this.price}` : 'Get Started'
     },
 
     description() {
