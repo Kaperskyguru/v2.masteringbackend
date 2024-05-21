@@ -96,7 +96,6 @@ export default {
 
   watch: {
     visible(value) {
-      console.log(value, 'watch')
       if (value) {
         this.visibleDialog = value
       }
