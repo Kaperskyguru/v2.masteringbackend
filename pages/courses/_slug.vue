@@ -34,12 +34,14 @@ export default {
   }),
 
   computed: {
+    language() {
+      const text = this.hub?.title?.split('Become A ')[1]
+      return text?.split('Backend Engineer')[0]
+    },
     image() {
-      return (
-        (this.hub && this.hub?.design_url) ??
-        this.hub?.image ??
-        '/img/backend-2023.jpg'
-      )
+      if (this?.hub && this.hub?.design_url) return this.hub?.design_url
+      if (this?.hub && this.hub?.image) return this.hub?.image
+      return '/img/backend-2023.jpg'
     },
   },
 
@@ -59,7 +61,7 @@ export default {
   head() {
     if (this.hub) {
       return {
-        title: `${this.hub?.title}`,
+        title: `Advanced ${this.language}Course: ${this.hub.title}`,
         meta: [
           {
             hid: 'keywords',
@@ -71,14 +73,26 @@ export default {
           {
             hid: 'description',
             name: 'description',
-            content: `${this.stripTags(this.hub?.description)}`,
+            content: `Advanced ${
+              this.language
+            } Course for Backend Engineers: ${this.stripTags(
+              this.hub?.description
+            )}`,
           },
           { hid: 'og:image', property: 'og:image', content: this.image },
-          { hid: 'og:title', property: 'og:title', content: this.hub.title },
+          {
+            hid: 'og:title',
+            property: 'og:title',
+            content: `Advanced ${this.language} Course: ${this.hub.title}`,
+          },
           {
             hid: 'og:description',
             property: 'og:description',
-            content: this.stripTags(this.hub?.description),
+            content: `Advanced ${
+              this.language
+            } Course for Backend Engineers: ${this.stripTags(
+              this.hub?.description
+            )}`,
           },
           { hid: 'og:image', property: 'og:image', content: this.image },
           {
