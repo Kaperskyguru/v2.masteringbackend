@@ -13,6 +13,22 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Default',
+
+  data() {
+    return {
+      baseURL: process.env.BASE_URL || 'https://masteringbackend.com',
+    }
+  },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `${this.baseURL}${this.$route.path}`,
+        },
+      ],
+    }
+  },
 }
 </script>
 

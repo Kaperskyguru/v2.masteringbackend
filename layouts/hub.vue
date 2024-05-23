@@ -13,6 +13,22 @@
 // import '~/assets/css/hub/style.css'
 export default {
   name: 'HubLayout',
+
+  data() {
+    return {
+      baseURL: process.env.BASE_URL || 'https://masteringbackend.com',
+    }
+  },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `${this.baseURL}${this.$route.path}`,
+        },
+      ],
+    }
+  },
 }
 </script>
 
