@@ -8,7 +8,7 @@ export default {
     try {
       const getHub = store.getters['hubs/getHub']
       let hub = await getHub(params.slug)
-      if (!hub?.length) {
+      if (!hub) {
         hub = await store.dispatch('hubs/getHub', {
           slug: params.slug,
           populate: {
@@ -22,10 +22,9 @@ export default {
           },
         })
       }
-
       return { hub }
     } catch (error) {
-      //   console.log(error)
+      // console.log(error)
     }
   },
 

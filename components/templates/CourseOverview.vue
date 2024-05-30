@@ -209,18 +209,19 @@
         </template>
       </PageTitle>
       <div class="row justify-content-center align-items-center">
-        <div class="shadow p-2 border my-4" style="width: 60%">
+        <div class="shadow p-2 border my-4" style="width: 60%; height: 600px">
           <iframe
             v-if="slug === 'become-a-rust-backend-engineer'"
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/i6bGtGC7lWY?si=mpNxXAy31JMEG2m0"
+            src="https://www.youtube.com/embed/i6bGtGC7lWY?si=bRdRD3ApA5nKv8vZ"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           ></iframe>
+
           <img
             v-else
             v-lazy-load
