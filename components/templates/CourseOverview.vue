@@ -212,8 +212,8 @@
         <div class="shadow p-2 border my-4" style="width: 60%">
           <iframe
             v-if="slug === 'become-a-rust-backend-engineer'"
-            width="560"
-            height="315"
+            width="100%"
+            height="100%"
             src="https://www.youtube.com/embed/i6bGtGC7lWY?si=mpNxXAy31JMEG2m0"
             title="YouTube video player"
             frameborder="0"
