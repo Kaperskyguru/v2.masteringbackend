@@ -401,7 +401,7 @@ export default {
 
     {
       from: '^/slack(.*)$',
-      to: '/community/$1',
+      to: '/community',
       statusCode: 301,
     },
   ],

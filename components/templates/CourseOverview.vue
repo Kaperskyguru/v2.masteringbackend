@@ -210,7 +210,19 @@
       </PageTitle>
       <div class="row justify-content-center align-items-center">
         <div class="shadow p-2 border my-4" style="width: 60%">
+          <iframe
+            v-if="slug === 'become-a-rust-backend-engineer'"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/i6bGtGC7lWY?si=mpNxXAy31JMEG2m0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
           <img
+            v-else
             v-lazy-load
             class="img-fluid cover"
             :data-src="animatedBookCover"
