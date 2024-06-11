@@ -19,13 +19,23 @@
               </div>
             </div>
             <!-- ---------------input--------------------------------------------- -->
-            <div class="col-md-8">
+            <div class="col-md-8 d-flex flex-column flex-md-row ga-2">
               <Button
                 type="button"
                 @click.prevent="openDialog"
-                class="col-lg-4 col-12 start-btn py-3 my-2 fw-bold"
+                class="col-lg-4 col-12 start-btn py-3 m-2 fw-bold"
               >
                 Join the Waiting List
+              </Button>
+
+              <Button
+                type="link"
+                target="_blank"
+                style="border: 1px solid #191489; color: #191489"
+                href="https://academy.masteringbackend.com?utm_source=MB_academyPage"
+                class="col-lg-4 col-12 rounded py-2 text-center m-2 fw-bold"
+              >
+                More Bootcamps+
               </Button>
             </div>
           </div>
