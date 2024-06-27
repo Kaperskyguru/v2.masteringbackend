@@ -68,6 +68,13 @@
                     <li class="mb-3">
                       <a target="_blank" href="#">Backend Interview Preps</a>
                     </li>
+                    <li class="mb-3">
+                      <a
+                        target="_blank"
+                        href="https://projects.masteringbackend.com"
+                        >Access 200+ Backend Projects</a
+                      >
+                    </li>
                   </ul>
                 </div>
               </div>
