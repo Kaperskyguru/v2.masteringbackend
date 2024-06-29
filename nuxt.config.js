@@ -21,8 +21,8 @@ export default {
               copyrightYear: new Date(),
               creator: { '@id': '#creator' },
               dateModified: new Date(),
-              datePublished: '2019-06-06T10:10:00-07:00',
-              description: 'A great resource for backend engineers',
+              description:
+                'Advance your backend engineering skills. Become a great backend engineer',
               headline: 'Mastering Backend',
               image: {
                 '@type': 'ImageObject',
@@ -53,12 +53,6 @@ export default {
         },
       },
 
-      // {
-      //   src: 'https://substackapi.com/widget.js',
-      //   defer: true,
-      //   hid: 'substa',
-      // },
-
       {
         src: 'https://cdn.paddle.com/paddle/paddle.js',
         hid: 'Paddle',
@@ -71,17 +65,20 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'A great resource for backend engineers',
+        content:
+          'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: 'A great resource for backend engineers',
+        content:
+          'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
       },
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'A great resource for backend engineers',
+        content:
+          'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
       },
       {
         hid: 'og:site_name',
@@ -191,6 +188,7 @@ export default {
       //   sizes: '96x96',
       //   href: '/favicon/favicon-96x96.png',
       // },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'icon',
         type: 'image/png',

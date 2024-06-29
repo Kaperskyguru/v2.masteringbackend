@@ -8,26 +8,27 @@ export default {
 
   head() {
     return {
-      title: 'Mastering Backend',
+      title:
+        'Learn Backend Engineering, JavaScript, Node.js, PHP, Java, Rust, Ruby and System Design',
       titleTemplate: null,
       meta: [
         {
           hid: 'description',
           name: 'description',
           content:
-            'A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.',
+            'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
         },
         {
           hid: 'og:title',
           property: 'og:title',
           content:
-            'A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.',
+            'Learn Backend Engineering, JavaScript, Node.js, PHP, Java, Rust, Ruby and System Design',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'A great resource for backend engineers. Next-level Backend Engineering training and Exclusive resources.',
+            'Advance your backend engineering and software engineering skills from system design, databases, data structures and algorithms to backend',
         },
         {
           hid: 'twitter:card',
