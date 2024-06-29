@@ -6,9 +6,12 @@
     <div class="sharebox shadow rounded border">
       <div class="content p-3">
         <div class="justify-content-start d-flex flex-column">
-          <vue-goodshare-facebook has_icon />
-          <vue-goodshare-twitter has_icon />
-          <vue-goodshare-linkedin has_icon />
+          <vue-goodshare-facebook has_counter has_icon />
+          <vue-goodshare-twitter
+            has_icon
+            :page_title="post?.title + ' @master_backend'"
+          />
+          <vue-goodshare-linkedin has_counter has_icon />
         </div>
       </div>
     </div>
