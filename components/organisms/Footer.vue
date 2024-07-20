@@ -100,6 +100,14 @@
                     <li class="mb-3">
                       <a href="/academy">Join The Academy </a>
                     </li>
+
+                    <li class="mb-3">
+                      <a
+                        target="_blank"
+                        href="https://backendweekly.dev/podcasts?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                        >Listen to GBE Podcast
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
