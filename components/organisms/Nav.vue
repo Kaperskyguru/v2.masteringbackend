@@ -33,6 +33,14 @@
           <li class="nav-item" :class="{ active: isActive('/hubs') }">
             <a href="/hubs" class="links nav-link">Hubs</a>
           </li>
+          <li class="nav-item" :class="{ active: isActive('/podcasts') }">
+            <a
+              class="links nav-link"
+              target="_blank"
+              href="https://backendweekly.dev/podcasts?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+              >Podcasts</a
+            >
+          </li>
           <li class="nav-item">
             <a
               class="links nav-link"
