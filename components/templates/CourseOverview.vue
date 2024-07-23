@@ -271,7 +271,7 @@
                 >
                   <MarkIcon style="width: 2rem; height: 2rem" />
                   <span class="text-black"
-                    >Deep dive into{{ language }} for backend engineering</span
+                    >Deep dive into {{ language }} for backend engineering</span
                   >
                 </span>
 

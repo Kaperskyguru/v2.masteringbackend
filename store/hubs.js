@@ -201,7 +201,7 @@ export const actions = {
     }
   },
 
-  async fetchCourseContent(slug) {
+  async fetchCourseContent(ctx, { slug }) {
     try {
       const response = await fetch(process.env.MB_API_URL + '/roadmap/' + slug)
 
