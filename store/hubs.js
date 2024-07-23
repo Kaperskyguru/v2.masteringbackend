@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { resolveChapters, resolvePosts } from '../helpers/utils'
+
 export const state = () => ({
   hubState: 1, // ENUM.INIT,
   hubs: [],
@@ -197,6 +198,16 @@ export const actions = {
     } catch (error) {
       commit('setHubState', 'error')
       throw error
+    }
+  },
+
+  async fetchCourseContent(slug) {
+    try {
+      const response = await fetch(process.env.MB_API_URL + '/roadmap/' + slug)
+
+      return await response.json()
+    } catch (error) {
+      console.log(error)
     }
   },
 

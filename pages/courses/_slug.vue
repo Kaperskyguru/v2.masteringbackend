@@ -1,13 +1,14 @@
 <template>
-  <CourseOverview :hub="hub" />
+  <CourseOverview :hub="hub" :course="course" />
 </template>
     
     <script>
 export default {
   async asyncData({ params, store }) {
+    let hub = null
     try {
       const getHub = store.getters['hubs/getHub']
-      let hub = await getHub(params.slug)
+      hub = await getHub(params.slug)
       if (!hub) {
         hub = await store.dispatch('hubs/getHub', {
           slug: params.slug,
@@ -22,10 +23,14 @@ export default {
           },
         })
       }
-      return { hub }
     } catch (error) {
       // console.log(error)
     }
+
+    const course = await store.dispatch('hubs/fetchCourseContent', {
+      slug: params.slug,
+    })
+    return { hub, course }
   },
 
   data: () => ({

@@ -3,6 +3,7 @@
     :custom-style="{
       backgroundColor: `${color}`,
       color: '#fff',
+      ...customStyle,
     }"
     size="large"
     class="py-2 my-2 fs-4 fw-bold"
@@ -21,6 +22,10 @@ export default {
       default: '',
     },
 
+    customStyle: {
+      type: [String, Object],
+      default: '',
+    },
     color: {
       type: String,
       default: '',

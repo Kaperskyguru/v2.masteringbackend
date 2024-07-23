@@ -1,5 +1,5 @@
 <template>
-  <section style="background-color: #fff" class="px-2">
+  <section style="background-color: #fff" class="-2">
     <section class="py-5">
       <div class="container mx-auto">
         <div class="row my-5 d-flex">
@@ -55,16 +55,8 @@
     </section>
 
     <!-- What You'll Learn Inside of the Course -->
-    <section style="background-color: #f7f5fa">
+    <section>
       <section class="container mx-auto my-5 py-5">
-        <PageTitle>
-          <template #title>
-            <h3 class="sponsor-header-text my-5 text-sentence text-center">
-              What You'll Learn Inside of the Course
-            </h3>
-          </template>
-        </PageTitle>
-
         <div id="hero_text" class="">
           <div class="row py-1">
             <div class="col-md-3" v-for="(chapter, i) in chapters" :key="i">
@@ -89,17 +81,11 @@
             </div>
           </div>
         </div>
-
-        <div class="">
-          <div class="py-3 input-group d-flex justify-content-center">
-            <CourseButton :color="color" :link="link" :title="btnText" />
-          </div>
-        </div>
       </section>
     </section>
 
     <!-- Reviews from others -->
-    <section class="container mx-auto my-5 py-5">
+    <!-- <section class="container mx-auto my-5 py-5">
       <div>
         <CourseTestimonials title="Reviews from others" />
       </div>
@@ -109,7 +95,7 @@
           <CourseButton :color="color" :link="link" :title="btnText" />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!--  What will you learn inside? -->
     <section style="background-color: #f7f5fa">
@@ -198,37 +184,162 @@
       </section>
     </section>
 
-    <section class="container mx-auto my-5 py-5">
-      <PageTitle>
-        <template #title>
-          <h3
-            class="sponsor-header-text fw-bold my-5 text-sentence text-center"
-          >
-            Take A Sneak Peek
-          </h3>
-        </template>
-      </PageTitle>
-      <div class="row justify-content-center align-items-center">
-        <div class="shadow p-2 border my-4" style="width: 60%; height: 600px">
-          <iframe
-            v-if="slug === 'become-a-rust-backend-engineer'"
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/i6bGtGC7lWY?si=bRdRD3ApA5nKv8vZ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+    <section class="my-5 py-5" style="background: ">
+      <div class="row justify-content-center align-items-center px-5 mx-auto">
+        <PageTitle>
+          <template #title>
+            <h3 class="fs-1 my-5 text-sentence text-center">What to expect</h3>
+          </template>
+        </PageTitle>
 
-          <img
-            v-else
-            v-lazy-load
-            class="img-fluid cover"
-            :data-src="animatedBookCover"
-            :alt="title"
-          />
+        <Module
+          :color="color"
+          :topic="topic"
+          v-for="(topic, i) in course?.roadmap?.topics"
+          :key="i"
+        />
+        <!-- <Module :color="color" />
+        <Module :color="color" /> -->
+      </div>
+    </section>
+
+    <section class="my-5 py-5" style="background-color: #f7f5fa">
+      <section class="container mx-auto my-5 py-5">
+        <PageTitle>
+          <template #title>
+            <h3
+              class="sponsor-header-text fs-1 fw-bold text-sentence text-center"
+            >
+              Start learning today
+            </h3>
+          </template>
+        </PageTitle>
+        <p class="text-center">
+          {{ description }}
+        </p>
+      </section>
+
+      <div class="container mx-auto" id="pricing">
+        <div class="row justify-content-center px-2 align-items-center">
+          <div class="shadow border p-4 my-4 col-lg-4 col-md-6 col-12">
+            <div>
+              <span class="fs-3 fw-bold">Full Course - Early Access!</span>
+              <div class="d-flex py-4 gap-3">
+                <span class="fs-1 fw-bold"
+                  ><sup class="">$</sup>{{ price }}
+                </span>
+                <div class="d-flex flex-column">
+                  <span :style="`color: ${color}; text`" class="fs-5"
+                    ><del>$270 </del></span
+                  >
+                  <span>USD, one-time </span>
+                </div>
+              </div>
+
+              <div class="w-100">
+                <CourseButton
+                  class="w-100"
+                  :color="color"
+                  :link="link"
+                  :customStyle="{ width: '100%' }"
+                  title="Buy Now"
+                />
+              </div>
+
+              <div>
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black"
+                    >Over 100+ in-depth video tutorials</span
+                  >
+                </span>
+
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black">Lifetime access</span>
+                </span>
+
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black"
+                    >Deep dive into{{ language }} for backend engineering</span
+                  >
+                </span>
+
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black"
+                    >Access to over 10+ modules (coming soon)</span
+                  >
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="border p-4 my-4 col-lg-4 col-md-6 col-12">
+            <div>
+              <div>
+                <span class="fs-3 fw-bold">Team Pricing</span>
+                <select
+                  name="team"
+                  id="team"
+                  style="border: 0px; background: none"
+                  v-model="team"
+                >
+                  <option value="3">3 seats</option>
+                  <option value="5">5 seats</option>
+                  <option value="10">10 seats</option>
+                  <option value="15">15 seats</option>
+                  <option value="25">25 seats</option>
+                </select>
+              </div>
+              <div class="d-flex py-4 gap-3">
+                <span class="fs-1 fw-bold"
+                  ><sup class="">$</sup
+                  >{{ team * price - Math.floor(team * price * (13 / 100)) }}
+                </span>
+                <div class="d-flex flex-column">
+                  <span :style="`color: ${color}; text`" class="fs-5"
+                    ><del>${{ team * price }} </del></span
+                  >
+
+                  <span>USD, one-time </span>
+                </div>
+              </div>
+              <p class="fs-6">
+                We offer team discounts on the full course based on the number
+                of team members you'd like to purchase for.
+              </p>
+              <div class="w-100">
+                <CourseButton
+                  class="w-100"
+                  color="#a7a7a7"
+                  :link="link"
+                  :customStyle="{ width: '100%' }"
+                  title="Buy Now"
+                />
+              </div>
+            </div>
+            <p class="fs-6 fw-light">
+              Need more seats?
+              <a
+                style="text-decoration: underline"
+                href="mailto:info@masteringbackend.com"
+                >Email us.</a
+              >
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -262,7 +373,7 @@
 
     <section class="container mx-auto py-5">
       <div class="text-center fs-6">
-        Need help? Email info@masteringbackend.com
+        Need help? Email info[at]masteringbackend.com
       </div>
     </section>
   </section>
@@ -274,16 +385,30 @@ export default {
   data: () => ({
     message: {},
     res: {},
+    team: 3,
   }),
+
+  components: {
+    MarkIcon: () => import('~/assets/icons/mark.svg?inline'),
+  },
 
   props: {
     hub: {
       type: Object,
       default: () => {},
     },
+
+    course: {
+      type: Object,
+      default: () => {},
+    },
   },
 
   computed: {
+    language() {
+      const text = this.hub?.title?.split('Become A ')[1]
+      return text?.split('Backend Engineer')[0]
+    },
     color() {
       const mixedColor = this.hub?.color ?? '#FF715D'
       if (mixedColor.includes('gradient')) {
@@ -300,8 +425,8 @@ export default {
 
     link() {
       if (this.isWaiting) return `#${this.enchargeTag}`
-      if (this.isPremium) return this.linkToPay
-      return `/hubs/${this.slug}` // TODO:: change URL to `books` instead of `hubs`
+      if (this.isPremium) return '#pricing'
+      return `#pricing` // TODO:: change URL to `books` instead of `hubs`
     },
 
     linkToPay() {
@@ -342,6 +467,42 @@ export default {
     },
 
     topics() {
+      // const arr = [
+      //   {
+      //     module: '1',
+      //     title: 'Java Essentials',
+      //     content: [
+      //       {
+      //         video: 1,
+      //         title: 'Introduction to this course',
+      //         isFree: true,
+      //         duration: '4:30',
+      //       },
+
+      //       {
+      //         video: 1,
+      //         title: 'Introduction to this course',
+      //         isFree: true,
+      //         duration: '4:30',
+      //       },
+
+      //       {
+      //         video: 1,
+      //         title: 'Introduction to this course',
+      //         isFree: true,
+      //         duration: '4:30',
+      //       },
+
+      //       {
+      //         video: 1,
+      //         title: 'Introduction to this course',
+      //         isFree: true,
+      //         duration: '4:30',
+      //       },
+      //     ],
+      //   },
+      // ]
+
       return this.hub?.topics ?? []
     },
 
@@ -370,3 +531,4 @@ export default {
 
 <style>
 </style>
+
