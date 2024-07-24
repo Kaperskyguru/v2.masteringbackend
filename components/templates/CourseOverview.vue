@@ -184,7 +184,11 @@
       </section>
     </section>
 
-    <section class="my-5 py-5" style="background: ">
+    <section
+      class="my-5 py-5"
+      style="background: "
+      v-if="course?.roadmap?.topics"
+    >
       <div class="row justify-content-center align-items-center px-5 mx-auto">
         <PageTitle>
           <template #title>
