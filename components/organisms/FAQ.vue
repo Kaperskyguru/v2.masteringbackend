@@ -115,6 +115,12 @@
 
 <script>
 export default {
+  props: {
+    hub: {
+      type: Object,
+      default: () => {},
+    },
+  },
   computed: {
     language() {
       const text = this.hub?.title?.split('Become A ')[1]

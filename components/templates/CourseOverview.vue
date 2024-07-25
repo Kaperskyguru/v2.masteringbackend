@@ -447,7 +447,7 @@
       </div>
     </section>
 
-    <FAQ />
+    <FAQ :hub="hub" />
 
     <section class="container mx-auto my-5 py-5">
       <div class="mt-5">
