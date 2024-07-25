@@ -203,9 +203,7 @@ export const actions = {
 
   async fetchCourseContent(ctx, { slug }) {
     try {
-      const response = await fetch(
-        process.env.MB_API_URL + '/roadmap/become-a-rust-backend-engineer'
-      ) // + slug)
+      const response = await fetch(process.env.MB_API_URL + '/roadmap/' + slug)
 
       return await response.json()
     } catch (error) {

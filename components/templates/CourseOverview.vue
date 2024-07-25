@@ -199,16 +199,6 @@
         <div v-for="(topic, i) in course?.roadmap?.topics" :key="i">
           <Module :color="color" :topic="topic" />
         </div>
-
-        <div v-for="(topic, i) in course?.roadmap?.topics" :key="i">
-          <Module
-            :color="color"
-            :topic="{
-              ...topic,
-              number: topic.number + 1,
-            }"
-          />
-        </div>
       </div>
     </section>
 
