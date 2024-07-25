@@ -19,7 +19,7 @@
               <h2 class="fs-3">What is the duration of the course?</h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     This self-paced course allows you to fit it into your
                     personal and professional schedule. We suggest allocating at
                     least 5 hours per week to complete it in approximately 12
@@ -34,7 +34,7 @@
               <h2 class="fs-3">Why should I enroll in this course?</h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     You should enroll in the course to expand your skills and
                     become a more competitive engineer. By becoming a Certified
                     {{ language }} Backend Engineer, you’ll be well-equipped to
@@ -50,7 +50,7 @@
               <h2 class="fs-3">Are there any prerequisites for this course?</h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     No prerequisites are required to enroll in the
                     {{ language }} Backend Engineering course. However, because
                     the course covers advanced topics, we recommend that
@@ -64,7 +64,7 @@
               <h2 class="fs-3">What if I am not satisfied with the course?</h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     We are dedicated to providing a high-quality learning
                     experience. If, for any reason, you are not satisfied with
                     the course, please reach out to us within the first 30 days
@@ -80,7 +80,7 @@
               <h2 class="fs-3">Do I get lifetime access?</h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     Absolutely, YES! You can access the course forever,
                     including any future updates, with no extra payment.
                   </p>
@@ -95,7 +95,7 @@
               </h2>
               <div>
                 <div class="py-3">
-                  <p>
+                  <p class="fs-5">
                     After successfully completing the course, you’ll receive a
                     digital certification. You can showcase your certificate
                     virtually or print it. We encourage you to display it on

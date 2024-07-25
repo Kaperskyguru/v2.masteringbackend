@@ -184,12 +184,10 @@
       </section>
     </section>
 
-    <section
-      class="my-5 py-5"
-      style="background: "
-      v-if="course?.roadmap?.topics"
-    >
-      <div class="row justify-content-center align-items-center px-5 mx-auto">
+    <section class="my-5 py-5" v-if="course?.roadmap?.topics">
+      <div
+        class="row justify-content-center align-items-center px-lg-5 mx-auto w-100"
+      >
         <PageTitle>
           <template #title>
             <h3 class="fs-1 my-5 text-sentence text-center">What to expect</h3>
@@ -344,7 +342,7 @@
     </section>
 
     <section class="container mx-auto">
-      <div class="py-5 container mx-auto">
+      <div class="py-5 mx-auto">
         <PageTitle>
           <template #title>
             <h3
@@ -356,8 +354,8 @@
         </PageTitle>
 
         <div
-          class="w-75 container mx-auto"
-          id="hero_text"
+          class="w-75 container mx-auto border-bottom"
+          id="meta"
           v-if="hub?.author?.name"
         >
           <div class="my-5">
@@ -365,8 +363,8 @@
               {{ hub?.author?.description }}
             </h5>
           </div>
-          <div class="row pt-1">
-            <div class="container mx-auto w-50" id="hero_text">
+          <div class="row pt-1 gap-3">
+            <div class="col-lg-5" id="hero_text">
               <div class="shadow px-4 pt-4 border" style="max-width: 300px">
                 <img
                   :src="hub?.author?.image"
@@ -392,7 +390,7 @@
 
         <div
           class="w-75 container mx-auto"
-          id="hero_text"
+          id="meta"
           v-if="hub?.author?.nickname !== 'kaperskyguru'"
         >
           <div class="my-5">
@@ -401,8 +399,8 @@
               developing scalable and innovative softwares.
             </h5>
           </div>
-          <div class="row pt-1">
-            <div class="container mx-auto w-50" id="hero_text">
+          <div class="row gap-3 px-1 pt-1">
+            <div class="col-lg-5" id="hero_text">
               <div class="shadow px-4 pt-4 border" style="max-width: 300px">
                 <img
                   src="~/assets/img/solomon-eseme.jpg"
