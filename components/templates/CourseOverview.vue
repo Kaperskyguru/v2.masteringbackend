@@ -196,14 +196,19 @@
           </template>
         </PageTitle>
 
-        <Module
-          :color="color"
-          :topic="topic"
-          v-for="(topic, i) in course?.roadmap?.topics"
-          :key="i"
-        />
-        <!-- <Module :color="color" />
-        <Module :color="color" /> -->
+        <div v-for="(topic, i) in course?.roadmap?.topics" :key="i">
+          <Module :color="color" :topic="topic" />
+        </div>
+
+        <div v-for="(topic, i) in course?.roadmap?.topics" :key="i">
+          <Module
+            :color="color"
+            :topic="{
+              ...topic,
+              number: topic.number + 1,
+            }"
+          />
+        </div>
       </div>
     </section>
 
@@ -347,6 +352,112 @@
         </div>
       </div>
     </section>
+
+    <section class="container mx-auto">
+      <div class="py-5 container mx-auto">
+        <PageTitle>
+          <template #title>
+            <h3
+              class="sponsor-header-text fs-1 fw-bold text-sentence text-center"
+            >
+              Meet Your Instructors:
+            </h3>
+          </template>
+        </PageTitle>
+
+        <div class="w-75 container mx-auto" id="hero_text" v-if="hub?.author">
+          <div class="my-5">
+            <h5 class="fw-bold">
+              {{ hub?.author?.description }}
+            </h5>
+          </div>
+          <div class="row pt-1">
+            <div class="container mx-auto w-50" id="hero_text">
+              <div class="shadow px-4 pt-4 border" style="max-width: 300px">
+                <img
+                  :src="hub?.author?.image"
+                  class="img-fluid rounded"
+                  alt=""
+                  srcset=""
+                />
+
+                <div class="text-center">
+                  <div class="py-2">
+                    <h3 class="fw-bold fs-4">{{ hub?.author?.name }}</h3>
+                    <span>(Lead Instructor)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div v-html="hub?.author?.content" class="article"></div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-75 container mx-auto"
+          id="hero_text"
+          v-if="hub?.author?.nickname !== 'kaperskyguru'"
+        >
+          <div class="my-5">
+            <h5 class="fw-bold">
+              A Passionate Software Engineer with 6+ years of experience in
+              developing scalable and innovative softwares.
+            </h5>
+          </div>
+          <div class="row pt-1">
+            <div class="container mx-auto w-50" id="hero_text">
+              <div class="shadow px-4 pt-4 border" style="max-width: 300px">
+                <img
+                  src="~/assets/img/solomon-eseme.jpg"
+                  class="img-fluid"
+                  alt=""
+                  srcset=""
+                />
+
+                <div class="text-center">
+                  <div class="py-2">
+                    <h3 class="fw-bold fs-4">Solomon Eseme</h3>
+                    <span>(Assistant Instructor)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="article">
+                <p>
+                  Solomon Eseme is the founder of Mastering Backend and the
+                  author of
+                  <a href="http://enterprisevue.dev" target="_blank"
+                    >Architecting Enterprise Vue</a
+                  >.
+                </p>
+
+                <p>
+                  Solomon Eseme is an experienced Software Engineer specializing
+                  in backend technologies.
+                </p>
+                <p>
+                  After working across different frontend and backend stacks in
+                  a variety of workplaces from start-ups to larger
+                  consultancies,
+                </p>
+                <p>
+                  He founded Masteringbackend to train and share resources on
+                  building high-performing, scalable and innovative applications
+                  following best practices and industry standards
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FAQ />
 
     <section class="container mx-auto my-5 py-5">
       <div class="mt-5">
@@ -534,5 +645,8 @@ export default {
 </script>
 
 <style>
+.article a {
+  color: rgb(187, 74, 3) !important;
+}
 </style>
 

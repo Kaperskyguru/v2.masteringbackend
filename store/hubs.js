@@ -203,7 +203,9 @@ export const actions = {
 
   async fetchCourseContent(ctx, { slug }) {
     try {
-      const response = await fetch(process.env.MB_API_URL + '/roadmap/' + slug)
+      const response = await fetch(
+        process.env.MB_API_URL + '/roadmap/become-a-rust-backend-engineer'
+      ) // + slug)
 
       return await response.json()
     } catch (error) {
@@ -376,7 +378,6 @@ export const actions = {
 
 function mapHubs(hubs) {
   return hubs?.map((hub) => {
-    console.log(hub)
     return {
       id: hub.id,
       ...hub.attributes,
@@ -390,6 +391,11 @@ function mapHubs(hubs) {
         id: topic.id,
         ...topic.attributes,
       })),
+
+      author: {
+        id: hub.attributes?.author?.data?.id,
+        ...hub.attributes?.author?.data?.attributes,
+      },
 
       chapters: hub.attributes?.chapters?.data?.map((chapter) => ({
         id: chapter.id,

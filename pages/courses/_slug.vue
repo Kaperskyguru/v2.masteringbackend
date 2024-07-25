@@ -15,6 +15,7 @@ export default {
           populate: {
             image: true,
             topics: true,
+            author: true,
             chapters: {
               populate: {
                 posts: true,
@@ -26,6 +27,8 @@ export default {
     } catch (error) {
       // console.log(error)
     }
+
+    console.log(hub)
 
     const course = await store.dispatch('hubs/fetchCourseContent', {
       slug: params.slug,
