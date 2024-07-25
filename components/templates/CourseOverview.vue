@@ -355,7 +355,11 @@
           </template>
         </PageTitle>
 
-        <div class="w-75 container mx-auto" id="hero_text" v-if="hub?.author">
+        <div
+          class="w-75 container mx-auto"
+          id="hero_text"
+          v-if="hub?.author?.name"
+        >
           <div class="my-5">
             <h5 class="fw-bold">
               {{ hub?.author?.description }}
