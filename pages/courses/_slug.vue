@@ -28,8 +28,6 @@ export default {
       // console.log(error)
     }
 
-    console.log(hub)
-
     const course = await store.dispatch('hubs/fetchCourseContent', {
       slug: params.slug,
     })

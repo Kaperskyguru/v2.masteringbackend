@@ -574,42 +574,6 @@ export default {
     },
 
     topics() {
-      // const arr = [
-      //   {
-      //     module: '1',
-      //     title: 'Java Essentials',
-      //     content: [
-      //       {
-      //         video: 1,
-      //         title: 'Introduction to this course',
-      //         isFree: true,
-      //         duration: '4:30',
-      //       },
-
-      //       {
-      //         video: 1,
-      //         title: 'Introduction to this course',
-      //         isFree: true,
-      //         duration: '4:30',
-      //       },
-
-      //       {
-      //         video: 1,
-      //         title: 'Introduction to this course',
-      //         isFree: true,
-      //         duration: '4:30',
-      //       },
-
-      //       {
-      //         video: 1,
-      //         title: 'Introduction to this course',
-      //         isFree: true,
-      //         duration: '4:30',
-      //       },
-      //     ],
-      //   },
-      // ]
-
       return this.hub?.topics ?? []
     },
 

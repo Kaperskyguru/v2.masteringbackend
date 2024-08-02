@@ -1,24 +1,35 @@
 <template>
   <section class="modal-container modal" v-if="visible">
-    <section
+    <div
       class="d-flex mw-100 w-100 justify-items-center justify-content-center"
       tabindex="-1"
       role="dialog"
-      v-if="visible"
       ref="dialog"
     >
       <div
-        class="position-relative"
+        class="position-relative w-100"
         style="max-width: 1000px; margin: 29px 10px"
         role="document"
       >
-        <div class="close p-3 text-black" @click.prevent="close">
-          <CloseIcon style="width: 20px; height: 20px" />
-        </div>
-
         <div class="modal-content">
+          <div
+            class="d-flex justify-content-between pb-2 border-b rounded-top"
+            :style="{ backgroundColor: color }"
+            style="padding: 1rem"
+          >
+            <div v-if="title" class="text-white p-8">
+              <h2 class="mb-1 font-bold">{{ title }}</h2>
+              <p v-if="description" class="text-gray-100">
+                {{ description }}
+              </p>
+            </div>
+            <div class="close p-3 text-white" @click.prevent="close">
+              <CloseIcon style="width: 20px; height: 20px; color: #fff" />
+            </div>
+          </div>
+
           <div class="col-12 w-100">
-            <div class="row p-5" :class="contentClass">
+            <div class="row" :class="contentClass">
               <div class="col-lg-6 col-12" v-if="$slots.left">
                 <slot name="left" />
               </div>
@@ -33,7 +44,7 @@
           <slot />
         </div>
       </div>
-    </section>
+    </div>
   </section>
 </template>
 
@@ -56,9 +67,18 @@ export default {
       type: String,
       default: '',
     },
+    color: {
+      type: String,
+    },
     visible: {
       type: Boolean,
       default: false,
+    },
+    title: {
+      type: String,
+    },
+    description: {
+      type: String,
     },
   },
 

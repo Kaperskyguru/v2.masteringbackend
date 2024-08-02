@@ -18,8 +18,6 @@ export default {
         hubs = await store.dispatch('hubs/getHubs', data)
       }
 
-      // console.log(hubs)
-
       return { hubs }
     } catch (error) {
       console.log(error)
