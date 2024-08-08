@@ -237,7 +237,7 @@
                 <CourseButton
                   class="w-100"
                   :color="color"
-                  :link="link"
+                  :link="linkToPay"
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
                 />
@@ -322,7 +322,7 @@
                 <CourseButton
                   class="w-100"
                   color="#a7a7a7"
-                  :link="link"
+                  :link="linkToPay"
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
                 />
@@ -589,7 +589,52 @@ export default {
     },
   },
 
+  // mounted() {
+  //   if (this.isDev()) {
+  //     // eslint-disable-next-line no-undef
+  //     Paddle.Environment.set('sandbox')
+  //   }
+  //   // eslint-disable-next-line no-undef
+  //   Paddle.Setup({
+  //     vendor: Number(process.env.PADDLE_VENDOR),
+  //   })
+  // },
+
   methods: {
+    async buynow() {
+      // let plan = this.hub?.paddlePlanId
+      // if (this.isDev()) plan = '63184'
+      // // eslint-disable-next-line no-undef
+      // await Paddle.Checkout.open({
+      //   product: plan,
+      //   allowQuantity: false,
+      //   disableLogout: true,
+      //   frameInitialHeight: 416,
+      //   successCallback: (data) => this.checkoutComplete(data),
+      //   closeCallback: (data) => this.checkoutClosed(data),
+      // })
+      // this.sendSegment(PREMIUM_UNLOCK, {})
+    },
+
+    isDev() {
+      return ['dev', 'development', 'staging'].includes(process.env.NODE_ENV)
+    },
+
+    checkoutComplete(data) {
+      if (!data?.checkout?.completed) return
+
+      if (!data?.checkout?.redirect_url) return
+
+      this.$router.push(data?.checkout?.redirect_url)
+    },
+    checkoutClosed(data) {
+      // this.sendSegment(PREMIUM_UNLOCK_FAILED, {
+      //   product: data?.product ?? {},
+      //   user: data?.user ?? {},
+      // })
+      // Todo:: Show failed Alert here
+    },
+
     getImage(topic) {
       return (
         topic?.image ??
