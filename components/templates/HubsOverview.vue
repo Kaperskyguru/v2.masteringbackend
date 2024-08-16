@@ -27,24 +27,6 @@
                   width: 100%;
                 "
               ></iframe>
-
-              <!-- <div id="custom-substack-embed"></div>
-
-              <script>
-                window.CustomSubstackWidget = {
-                  substackUrl: 'backendmasters.substack.com',
-                  placeholder: 'Enter your email address...',
-                  buttonText: 'Try It',
-                  theme: 'custom',
-                  colors: {
-                    primary: '#191489',
-                    input: '#000000',
-                    email: '#FFFFFF',
-                    text: '#fff',
-                  },
-                }
-              </script>
-              <script src="https://substackapi.com/widget.js" async></script> -->
             </div>
           </div>
           <div class="col-md-6 hero__image">
@@ -61,8 +43,22 @@
     </section>
     <!-- -------------------------------------------End Hero Section------------------------------------------------------------- -->
 
+    <section class="container">
+      <h2 class="text-center py-5">Featured Single Courses</h2>
+      <div class="row gap-3 p-2">
+        <Course v-for="(course, i) in cFeatured" :key="i" :course="course" />
+      </div>
+
+      <div class="d-flex justify-content-center py-5">
+        <Button type="link" appearance="primary" link="/courses/single">
+          View All Courses
+        </Button>
+      </div>
+    </section>
+
     <!-- -----------------------------------------Start Content Section------------------------------------------------------------------------ -->
     <section class="Content">
+      <h2 class="text-center py-5">Roadmap Courses</h2>
       <div class="container">
         <div v-for="(hub, i) in hubs" :key="i" class="row mt-5 bg-white">
           <div
@@ -106,6 +102,12 @@
                           getPostCount(hub) > 1 ? 's' : ''
                         }}
                       </span>
+
+                      <span v-if="isCourse(hub)">
+                        {{ getChapterCount(hub) }} Module{{
+                          getChapterCount(hub) > 1 ? 's' : ''
+                        }}</span
+                      >
 
                       <span v-else>
                         {{ getChapterCount(hub) }} Chapter{{
@@ -232,11 +234,21 @@ export default {
       type: Array,
       default: () => [],
     },
+
+    featured: {
+      type: Array,
+      default: () => [],
+    },
   },
 
   computed: {
     image() {
       return 'https://res.cloudinary.com/kaperskydisk/image/upload/v1684533784/masteringbackend/posts/vectors/2842680.png'
+    },
+
+    cFeatured() {
+      console.log(this.featured)
+      return this.featured?.slice(0, 4)
     },
   },
 

@@ -3,6 +3,7 @@
     title="Backend Engineerng Courses"
     desc="Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering courses."
     :hubs="courses"
+    :featured="featured"
   />
 </template>
       
@@ -15,6 +16,7 @@ export default {
     try {
       const getCourses = store.getters['hubs/getCourses']
       let courses = await getCourses()
+      const res = await store.dispatch('hubs/fetchAllCourses')
       if (!courses?.length) {
         const data = {}
         data.page = query.page ? query.page : 1
@@ -31,10 +33,11 @@ export default {
           },
         })
       }
-      return { courses }
+
+      return { courses, featured: res?.courses }
     } catch (error) {
-      const courses = []
-      return { courses }
+      console.log(error)
+      return { courses: [], featured: [] }
     }
   },
 

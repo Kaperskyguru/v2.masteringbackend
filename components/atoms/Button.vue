@@ -27,7 +27,6 @@
       v-else
       :style="customStyle"
       v-bind="$attrs"
-      :href="link"
       v-on="$listeners"
       :disabled="disabled || waiting"
       :aria-label="waiting ? 'Please wait…' : undefined"
@@ -282,14 +281,14 @@ export default {
 </script>
 
 <style scoped>
-.m-btn-primary-3 {
+.m-btn-primary {
   background: #0a083b;
   color: #fff;
   border-radius: 5px;
   border: none;
 }
 
-.m-btn-primary-1 {
+.m-btn-primary-2 {
   background: #2178ff;
   color: #fff;
   border-radius: 5px;

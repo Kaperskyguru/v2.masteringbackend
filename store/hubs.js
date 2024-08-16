@@ -212,6 +212,16 @@ export const actions = {
     }
   },
 
+  async fetchAllCourses(ctx) {
+    try {
+      const response = await fetch(process.env.MB_API_URL + '/courses')
+      console.log(response)
+      return await response.json()
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
   async getBooks({ commit }, { page, count = 22, populate }) {
     try {
       const query = qs.stringify(
