@@ -36,7 +36,6 @@ export default {
 
       return { courses, featured: res?.courses }
     } catch (error) {
-      console.log(error)
       return { courses: [], featured: [] }
     }
   },

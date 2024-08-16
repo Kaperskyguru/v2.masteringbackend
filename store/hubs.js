@@ -205,7 +205,6 @@ export const actions = {
     try {
       // slug = 'become-a-rust-backend-engineer'
       const response = await fetch(process.env.MB_API_URL + '/roadmap/' + slug)
-
       return await response.json()
     } catch (error) {
       console.log(error)
@@ -214,8 +213,8 @@ export const actions = {
 
   async fetchAllCourses(ctx) {
     try {
-      const response = await fetch(process.env.MB_API_URL + '/courses')
-      console.log(response)
+      const url = process.env?.MB_API_URL ?? 'https://api.masteringbackend.com'
+      const response = await fetch(url + '/courses')
       return await response.json()
     } catch (error) {
       console.log(error)

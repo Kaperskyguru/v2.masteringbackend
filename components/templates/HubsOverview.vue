@@ -247,7 +247,6 @@ export default {
     },
 
     cFeatured() {
-      console.log(this.featured)
       return this.featured?.slice(0, 4)
     },
   },
