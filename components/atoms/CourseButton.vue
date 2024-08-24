@@ -9,6 +9,7 @@
     class="py-2 my-2 fs-4 fw-bold"
     type="link"
     :link="link"
+    :href="link"
   >
     {{ title }}
   </Button>
