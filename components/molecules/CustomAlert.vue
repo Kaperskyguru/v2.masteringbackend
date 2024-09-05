@@ -9,9 +9,7 @@
         <slot name="title"> {{ title }} </slot>
       </h3>
       <p class="fs-5">
-        <slot name="description">
-          {{ description }}
-        </slot>
+        <slot name="description"> {{ description }} </slot>
       </p>
 
       <slot name="btn">
@@ -22,7 +20,7 @@
             size="large"
             type="link"
             target="_blank"
-            :link="Readlink"
+            :link="readLink"
             :custom-style="{
               backgroundColor: adjust(bgColor, 20),
               color: '#fff',
@@ -65,7 +63,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    Readlink: {
+    readLink: {
       type: String,
       default: '#',
     },

@@ -306,7 +306,7 @@ export default {
         title: data?.title,
         description: data?.description,
         tags: data?.tags,
-        Readlink: data?.url,
+        readLink: data?.url,
         showRead: true,
       }
 
