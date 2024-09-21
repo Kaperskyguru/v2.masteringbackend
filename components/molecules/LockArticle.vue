@@ -3,44 +3,26 @@
   <article class="Career py-5">
     <div class="container mt-5">
       <div class="row">
-        <a
-          href="#"
-          class="col-lg-10 bordder-primary mx-auto"
-          @click.prevent="openModel"
-        >
+        <a href="#" class="col-lg-10 bordder-primary mx-auto" @click.prevent="openModel">
+          <a :href="`/posts/${slug}`"></a>
           <div class="row mt-5">
             <div class="col-md-1 pt-3 ms-3">
-              <img
-                class="d-lg-block pattern"
-                src="~/assets/img/combined-shape.png"
-                alt=""
-              />
+              <img class="d-lg-block pattern" src="~/assets/img/combined-shape.png" alt="" />
             </div>
             <div class="col-lg-10">
               <ArticleHead class="mb-3" :post="post" :show-date="false" />
             </div>
             <div class="blur-text">
-              <div
-                class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test"
-              >
-                <img
-                  class="img-fluid base-img cover"
-                  :src="image"
-                  :alt="title"
-                />
+              <div class="col-lg-10 col-md-10 col-sm-12 mx-auto text-sm-start test">
+                <img class="img-fluid base-img cover" :src="image" :alt="title" />
               </div>
               <div class="col-lg-10 col-md-10 col-sm-12 mx-lg-auto mx-auto">
                 <p class="text lh-md fs-5 mt-4" v-html="excerpt"></p>
               </div>
             </div>
             <div class="d-grid col-lg-10 col-md-10 col-sm-12 mx-auto my-4">
-              <a
-                href="#"
-                class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4"
-                @click.prevent="openModel"
-                >Unlock Now<span
-                  ><img class="lock" src="~/assets/img/Lock.png" alt="" /></span
-              ></a>
+              <a href="#" class="btn btn-primaryy btn-lg mt-4 fs-3 mb-4" @click.prevent="openModel">Unlock Now<span><img
+                    class="lock" src="~/assets/img/Lock.png" alt="" /></span></a>
             </div>
           </div>
         </a>
@@ -68,25 +50,16 @@
           </div>
         </div>
 
-        <iframe
-          src="https://embeds.beehiiv.com/c25593aa-4440-4d8e-b2e1-68bfa92636e8"
-          data-test-id="beehiiv-embed"
-          width="100%"
-          height="320"
-          frameborder="0"
-          scrolling="no"
-          style="
+        <iframe src="https://embeds.beehiiv.com/c25593aa-4440-4d8e-b2e1-68bfa92636e8" data-test-id="beehiiv-embed"
+          width="100%" height="320" frameborder="0" scrolling="no" style="
             border-radius: 4px;
             border: 2px solid #e5e7eb;
             margin: 0;
             background-color: transparent;
-          "
-        ></iframe>
+          "></iframe>
 
         <div class="text-center pt-3">
-          <nuxt-link class="pt-3" :to="`/posts/${slug}`"
-            >Or just continue to article</nuxt-link
-          >
+          <nuxt-link class="pt-3" :to="`/posts/${slug}`">Or just continue to article</nuxt-link>
         </div>
       </template>
     </Dialog>
@@ -99,7 +72,7 @@ export default {
   props: {
     post: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 
