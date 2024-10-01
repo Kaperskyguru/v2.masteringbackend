@@ -70,7 +70,7 @@
                       i + 1
                     }}</span>
                   </div>
-                  <span
+                  <!-- <span
                     v-if="
                       !course?.roadmap?.topics?.find(
                         (t) => t?.title === chapter?.title
@@ -79,7 +79,7 @@
                     class="py-1 px-2 rounded-pill"
                     :style="`background-color: ${color}; color:white; font-size:10px`"
                     >Coming soon</span
-                  >
+                  > -->
                 </div>
                 <h3 class="my-3">{{ chapter.title }}</h3>
                 <p
@@ -243,7 +243,12 @@
                   <span>USD, one-time </span>
                 </div>
               </div>
-
+              <p
+                class="text-center"
+                style="font-style: italic; font-weight: bold; font-size: 12px"
+              >
+                Note that more modules are coming soon
+              </p>
               <div class="w-100">
                 <CourseButton
                   class="w-100"
