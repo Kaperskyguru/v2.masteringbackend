@@ -77,7 +77,7 @@
                       )
                     "
                     class="py-1 px-2 rounded-pill"
-                    :style="`background-color: ${color}; color:white`"
+                    :style="`background-color: ${color}; color:white; font-size:10px`"
                     >Coming soon</span
                   >
                 </div>
