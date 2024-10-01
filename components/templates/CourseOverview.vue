@@ -61,15 +61,26 @@
           <div class="row py-1">
             <div class="col-md-3" v-for="(chapter, i) in chapters" :key="i">
               <div class="d-flex flex-column my-3">
-                <div
-                  class="d-flex justify-content-center align-items-center rounded-circle"
-                  :style="`border: 2px solid ${color}; width: 50px; height: 50px`"
-                >
-                  <span style="font-size: 20px; font-weight: 700">{{
-                    i + 1
-                  }}</span>
+                <div class="d-flex align-items-center gap-3">
+                  <div
+                    class="d-flex justify-content-center align-items-center rounded-circle"
+                    :style="`border: 2px solid ${color}; width: 50px; height: 50px`"
+                  >
+                    <span style="font-size: 20px; font-weight: 700">{{
+                      i + 1
+                    }}</span>
+                  </div>
+                  <span
+                    v-if="
+                      !course?.roadmap?.topics?.find(
+                        (t) => t?.title === chapter?.title
+                      )
+                    "
+                    class="py-1 px-2 rounded-pill"
+                    :style="`background-color: ${color}; color:white`"
+                    >Coming soon</span
+                  >
                 </div>
-
                 <h3 class="my-3">{{ chapter.title }}</h3>
                 <p
                   class="fs-6"
