@@ -33,7 +33,10 @@
                       <NuxtLink to="/hubs">Hubs</NuxtLink>
                     </li>
                     <li>
-                      <a href="https://store.masteringbackend.com">Our Store</a>
+                      <a
+                        href="https://store.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                        >Our Store</a
+                      >
                     </li>
                   </ul>
                 </div>
