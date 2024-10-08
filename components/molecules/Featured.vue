@@ -41,7 +41,6 @@
 
             <div class="d-grid col-lg mx-auto">
               <div class="py-3 my-5">
-                <!-- <div id="custom-substack-embed" class="here"></div> -->
                 <iframe
                   src="https://embeds.beehiiv.com/5d69366b-1960-40c2-a8dc-49e561c3406a?slim=true"
                   data-test-id="beehiiv-embed"
@@ -49,6 +48,7 @@
                   frameborder="0"
                   scrolling="no"
                   style="
+                    border: 0 !important;
                     margin: 0;
                     border-radius: 0px !important;
                     background-color: transparent;
@@ -56,21 +56,6 @@
                   "
                 ></iframe>
               </div>
-              <!-- <script>
-                window.CustomSubstackWidget = {
-                  substackUrl: 'backendmasters.substack.com',
-                  placeholder: 'Enter your email address...',
-                  buttonText: 'Get The Free Guide',
-                  theme: 'custom',
-                  colors: {
-                    primary: '#191489',
-                    input: '#000000',
-                    email: '#FFFFFF',
-                    text: '#fff',
-                  },
-                }
-              </script>
-              <script src="/substack.js" async></script> -->
             </div>
           </div>
         </div>
