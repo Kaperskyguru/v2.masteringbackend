@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 hero__title">
-            <h1 class="title__text">Single Backend Engineerng Courses</h1>
+            <h1 class="title__text">Single Backend Engineering Courses</h1>
             <p class="title__subtext fs-6">
               Whether you're new to backend engineering, or want to scale up,
               this is your home for backend engineering courses

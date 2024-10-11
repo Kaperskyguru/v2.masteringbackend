@@ -1,6 +1,6 @@
 <template>
   <HubsOverview
-    title="Backend Engineerng Courses"
+    title="Backend Engineering Courses"
     desc="Whether you're new to backend engineering, or want to scale up, this is your home for backend engineering courses."
     :hubs="courses"
     :featured="featured"
