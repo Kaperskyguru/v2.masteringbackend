@@ -7,9 +7,11 @@
     }"
     size="large"
     class="py-2 my-2 fs-4 fw-bold"
-    type="link"
+    :type="type"
     :link="link"
     :href="link"
+    v-on="$listeners"
+    v-bind="$attrs"
   >
     {{ title }}
   </Button>
@@ -30,6 +32,10 @@ export default {
     color: {
       type: String,
       default: '',
+    },
+    type: {
+      type: String,
+      default: 'link',
     },
 
     link: {

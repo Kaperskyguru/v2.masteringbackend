@@ -253,9 +253,10 @@
                 <CourseButton
                   class="w-100"
                   :color="color"
-                  :link="linkToPay"
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
+                  type="btn"
+                  @click.prevent="buynow"
                 />
               </div>
 
@@ -605,31 +606,37 @@ export default {
     },
   },
 
-  // mounted() {
-  //   if (this.isDev()) {
-  //     // eslint-disable-next-line no-undef
-  //     Paddle.Environment.set('sandbox')
-  //   }
-  //   // eslint-disable-next-line no-undef
-  //   Paddle.Setup({
-  //     vendor: Number(process.env.PADDLE_VENDOR),
-  //   })
-  // },
+  mounted() {
+    if (this.isDev()) {
+      // eslint-disable-next-line no-undef
+      Paddle.Environment.set('sandbox')
+    }
+    // eslint-disable-next-line no-undef
+    Paddle.Setup({
+      vendor: Number(process.env.PADDLE_VENDOR),
+    })
+  },
 
   methods: {
     async buynow() {
-      // let plan = this.hub?.paddlePlanId
-      // if (this.isDev()) plan = '63184'
-      // // eslint-disable-next-line no-undef
-      // await Paddle.Checkout.open({
-      //   product: plan,
-      //   allowQuantity: false,
-      //   disableLogout: true,
-      //   frameInitialHeight: 416,
-      //   successCallback: (data) => this.checkoutComplete(data),
-      //   closeCallback: (data) => this.checkoutClosed(data),
-      // })
-      // this.sendSegment(PREMIUM_UNLOCK, {})
+      let plan = this.hub?.paddlePlanId
+      if (this.isDev()) plan = '63184'
+      // eslint-disable-next-line no-undef
+      await Paddle.Checkout.open({
+        product: plan,
+        allowQuantity: false,
+        disableLogout: true,
+        frameInitialHeight: 416,
+        passthrough: {
+          type: 'roadmap', //Change this to be dynamic
+          slug: this.slug,
+          isExternal: true,
+        },
+        successCallback: (data) => this.checkoutComplete(data),
+        closeCallback: (data) => this.checkoutClosed(data),
+      })
+
+      // Track buying intent
     },
 
     isDev() {
@@ -639,7 +646,8 @@ export default {
     checkoutComplete(data) {
       if (!data?.checkout?.completed) return
 
-      if (!data?.checkout?.redirect_url) return
+      if (!data?.checkout?.redirect_url)
+        return this.$router.push('/emails/purchased?title=' + this.title)
 
       this.$router.push(data?.checkout?.redirect_url)
     },
