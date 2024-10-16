@@ -628,7 +628,7 @@ export default {
         disableLogout: true,
         frameInitialHeight: 416,
         passthrough: {
-          type: 'roadmap', //Change this to be dynamic
+          type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
           isExternal: true,
         },
