@@ -619,8 +619,11 @@ export default {
 
   methods: {
     async buynow() {
-      let plan = this.hub?.paddlePlanId
+      let plan = this.hub?.paddlePlanId ?? undefined
       if (this.isDev()) plan = '63184'
+
+      if (!plan) return this.$router.push('#' + this.enchargeTag)
+
       // eslint-disable-next-line no-undef
       await Paddle.Checkout.open({
         product: plan,
