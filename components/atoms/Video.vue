@@ -5,13 +5,13 @@
       :style="{
         backgroundColor: '#f7f5fa',
         color: '#eee',
-        cursor: !content?.isPremium ? 'pointer' : '',
+        cursor: content?.video && !content?.isPremium ? 'pointer' : '',
       }"
       class="py-2 px-3 rounded text-black shadow-xs"
       :class="{ 'pe-auto': !content?.isPremium }"
     >
       <span style="font-size: 0.875rem; color: rgb(82 82 91)"
-        >Video {{ content?.index }}</span
+        >{{ content?.video ? 'Video' : 'Article' }} {{ content?.index }}</span
       >
       <div class="d-flex justify-content-between">
         <div class="d-flex gap-2">
@@ -19,18 +19,18 @@
             content?.title
           }}</span>
           <span
-            v-if="!content.isPremium"
+            v-if="content?.video && !content.isPremium"
             class="px-2 py-1 text-white"
             :style="`background-color: ${color}; font-size: 10px`"
             >Free</span
           >
         </div>
-        <div
+        <!-- <div
           class="px-2 py-1"
           style="font-size: 0.75rem; background-color: #f8f6fb"
         >
           4:30
-        </div>
+        </div> -->
       </div>
     </div>
     <Dialog
@@ -85,7 +85,7 @@ export default {
 
   methods: {
     showVideo() {
-      if (!this.content?.isPremium) {
+      if (this.content?.video && !this.content?.isPremium) {
         this.shouldPreview = !this.shouldPreview
       }
     },
