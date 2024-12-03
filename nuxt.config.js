@@ -343,7 +343,7 @@ export default {
 
     {
       from: '^/courses/rust-for-backend-engineering(.*)$',
-      to: 'https://masteringbackend.com/courses/become-a-rust-backend-engineer',
+      to: 'https://masteringbackend.com/courses/become-a-rust-backend-engineer/$1',
       statusCode: 301,
     },
 
