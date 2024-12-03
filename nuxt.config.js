@@ -342,6 +342,12 @@ export default {
     },
 
     {
+      from: '^/courses/rust-for-backend-engineering(.*)$',
+      to: 'https://masteringbackend.com/courses/become-a-rust-backend-engineer',
+      statusCode: 301,
+    },
+
+    {
       from: '^/jobs/(.*)$',
       to: 'https://getbackendjobs.com?ref=masteringbackend',
       statusCode: 301,
