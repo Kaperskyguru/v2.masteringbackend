@@ -92,7 +92,11 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="row">
-                    <h5 class="pb-4" :style="{ color: `${color(hub)}` }">
+                    <h5
+                      class="pb-4"
+                      :style="{ color: `${color(hub)}` }"
+                      v-if="getChapterCount(hub)"
+                    >
                       <span v-if="isPDF(hub)">
                         {{ getChapterCount(hub) }} Resource{{
                           getChapterCount(hub) > 1 ? 's' : ''
@@ -251,10 +255,6 @@ export default {
     cFeatured() {
       return this.featured?.slice(0, 4)
     },
-  },
-
-  mounted() {
-    console.log(this.$route)
   },
 
   methods: {
