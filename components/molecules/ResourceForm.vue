@@ -1,5 +1,19 @@
 <template>
+  <iframe
+    v-if="slug.includes('design-patterns')"
+    src="https://embeds.beehiiv.com/638ed077-b961-4a71-80a7-cefc821c28d4?slim=true"
+    data-test-id="beehiiv-embed"
+    height="52"
+    frameborder="0"
+    scrolling="no"
+    style="
+      margin: 0;
+      border-radius: 0px !important;
+      background-color: transparent;
+    "
+  ></iframe>
   <form
+    v-else
     @submit.prevent="onSubmit"
     ref="form"
     id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
@@ -101,6 +115,11 @@ export default {
     isWaiting: {
       type: Boolean,
       default: true,
+    },
+
+    slug: {
+      type: String,
+      default: '',
     },
   },
 

@@ -114,7 +114,7 @@
                 </h3>
 
                 <p style="color: #121127">
-                  {{ description }}
+                  {{ content }}
                 </p>
                 <hr class="my-4" />
 
@@ -209,6 +209,11 @@ export default {
     description() {
       return this.hub?.description
     },
+
+    content() {
+      return this.hub?.content ?? this.hub?.description
+    },
+
     chapters() {
       const chapters = this.hub?.chapters
       if (chapters && chapters.length > 1) return chapters ?? []
