@@ -1,18 +1,20 @@
 <template>
   <iframe
     v-if="slug.includes('design-patterns')"
-    src="https://embeds.beehiiv.com/638ed077-b961-4a71-80a7-cefc821c28d4?slim=true"
+    src="https://embeds.beehiiv.com/638ed077-b961-4a71-80a7-cefc821c28d4"
     data-test-id="beehiiv-embed"
-    height="52"
+    width="100%"
+    height="320"
     frameborder="0"
     scrolling="no"
     style="
-      width: 100%;
+      border-radius: 4px;
+      border: 2px solid #e5e7eb;
       margin: 0;
-      border-radius: 0px !important;
       background-color: transparent;
     "
   ></iframe>
+
   <form
     v-else
     @submit.prevent="onSubmit"
