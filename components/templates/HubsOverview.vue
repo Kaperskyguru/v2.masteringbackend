@@ -284,7 +284,8 @@ export default {
       const chapters = hub?.chapters
       if (chapters && chapters.length > 1) return chapters ?? []
 
-      return chapters[0].posts ?? []
+      if (chapters[0]) return chapters[0]?.posts
+      return []
     },
 
     color(hub) {
