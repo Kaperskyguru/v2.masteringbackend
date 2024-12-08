@@ -16,7 +16,10 @@
               {{ description }}
             </p>
             <div class="gradient"></div>
-            <div class="py-3 input-group">
+            <div
+              class="py-3 input-group"
+              v-if="!slug.includes('design-patterns')"
+            >
               <Button
                 v-if="!activateDownload"
                 :custom-style="{
@@ -119,7 +122,7 @@
                 </p>
                 <hr class="my-4" />
 
-                <h3 class="my-3">What to expect?</h3>
+                <h3 v-if="chapters?.length" class="my-3">What to expect?</h3>
 
                 <li
                   v-for="(outline, i) in chapters"
