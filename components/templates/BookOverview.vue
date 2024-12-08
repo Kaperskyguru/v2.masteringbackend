@@ -72,6 +72,7 @@
                 :tag="enchargeTag"
                 :color="color"
                 :isWaiting="activateDownload"
+                :slug="slug"
               />
             </div>
           </div>
