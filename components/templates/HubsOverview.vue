@@ -43,7 +43,7 @@
     </section>
     <!-- -------------------------------------------End Hero Section------------------------------------------------------------- -->
 
-    <section class="container">
+    <section class="container" v-if="$route.path.includes('/courses')">
       <h2 class="text-center py-5">Featured Single Courses</h2>
       <div class="row gap-3 p-2">
         <Course v-for="(course, i) in cFeatured" :key="i" :course="course" />
@@ -58,7 +58,9 @@
 
     <!-- -----------------------------------------Start Content Section------------------------------------------------------------------------ -->
     <section class="Content">
-      <h2 class="text-center py-5">Roadmap Courses</h2>
+      <h2 class="text-center py-5" v-if="$route.path.includes('/courses')">
+        Roadmap Courses
+      </h2>
       <div class="container">
         <div v-for="(hub, i) in hubs" :key="i" class="row mt-5 bg-white">
           <div
@@ -249,6 +251,10 @@ export default {
     cFeatured() {
       return this.featured?.slice(0, 4)
     },
+  },
+
+  mounted() {
+    console.log(this.$route)
   },
 
   methods: {
