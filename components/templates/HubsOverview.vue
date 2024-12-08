@@ -105,7 +105,7 @@
                         }}
                       </span>
 
-                      <span v-if="isCourse(hub)">
+                      <span v-else-if="isCourse(hub)">
                         {{ getChapterCount(hub) }} Module{{
                           getChapterCount(hub) > 1 ? 's' : ''
                         }}</span
