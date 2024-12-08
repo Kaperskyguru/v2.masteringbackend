@@ -7,6 +7,7 @@
     frameborder="0"
     scrolling="no"
     style="
+      width: 100%;
       margin: 0;
       border-radius: 0px !important;
       background-color: transparent;
