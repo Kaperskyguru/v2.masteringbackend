@@ -634,6 +634,11 @@ export default {
           type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
           isExternal: true,
+          ref:
+            this.$route.query?.ref ??
+            this.$route.query?.utm_source ??
+            this.$route.query?.source ??
+            'payment_unknown',
         },
         successCallback: (data) => this.checkoutComplete(data),
         closeCallback: (data) => this.checkoutClosed(data),
