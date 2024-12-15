@@ -69,7 +69,9 @@
           <input type="checkbox" id="terms" />
           <label class="form-check-label text-muted" for="terms"
             >I agree to the
-            <a href="#" target="_blank"> Terms & Conditions</a></label
+            <nuxt-link to="/terms-and-conditions" target="_blank">
+              Terms & Conditions</nuxt-link
+            ></label
           >
         </div>
 

@@ -22,16 +22,32 @@
       >
         <ul class="navbar-nav ms-auto">
           <li class="nav-item" :class="{ active: isActive('/posts') }">
-            <a href="/posts" class="links nav-link">Blog</a>
+            <a
+              :href="`/posts?ref=${$route.query?.ref ?? 'homepage'}`"
+              class="links nav-link"
+              >Blog</a
+            >
           </li>
           <li class="nav-item" :class="{ active: isActive('/courses') }">
-            <a href="/courses" class="links nav-link">Courses</a>
+            <a
+              :href="`/courses?ref=${$route.query?.ref ?? 'homepage'}`"
+              class="links nav-link"
+              >Courses</a
+            >
           </li>
           <li class="nav-item" :class="{ active: isActive('/books') }">
-            <a href="/books" class="links nav-link">Books</a>
+            <a
+              :href="`/books?ref=${$route.query?.ref ?? 'homepage'}`"
+              class="links nav-link"
+              >Books</a
+            >
           </li>
           <li class="nav-item" :class="{ active: isActive('/hubs') }">
-            <a href="/hubs" class="links nav-link">Hubs</a>
+            <a
+              :href="`/hubs?ref=${$route.query?.ref ?? 'homepage'}`"
+              class="links nav-link"
+              >Hubs</a
+            >
           </li>
           <li class="nav-item" :class="{ active: isActive('/podcasts') }">
             <a
@@ -50,14 +66,20 @@
             >
           </li>
           <li class="nav-item" :class="{ active: isActive('/community') }">
-            <a href="/community" class="nav-link">Community</a>
+            <a
+              :href="`/community?ref=${$route.query?.ref ?? 'homepage'}`"
+              class="nav-link"
+              >Community</a
+            >
           </li>
         </ul>
         <div class="ms-5 d-flex">
           <div>
             <a
               target="_blank"
-              href="https://app.masteringbackend.com?ref=homepage"
+              :href="`https://app.masteringbackend.com?ref=${
+                $route.query?.ref ?? 'homepage'
+              }`"
               class="start-btn px-3 py-3"
             >
               Learn Backend Free

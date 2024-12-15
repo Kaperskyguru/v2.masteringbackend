@@ -6,8 +6,8 @@
           {{ post.title || '' }}
         </h1>
         <div class="d-flex flex-row justify-content-center gap-3 pb-5">
-          <a :href="'/authors/' + authorSlug" class="subtitle">
-            <p class="text-white fs-6">by {{ authorName }}</p> </a
+          <nuxt-link :to="'/authors/' + authorSlug" class="subtitle">
+            <p class="text-white fs-6">by {{ authorName }}</p> </nuxt-link
           >.
           <p class="text-white fs-6">Updated {{ dateFormat }}</p>
         </div>

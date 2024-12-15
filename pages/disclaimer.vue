@@ -44,7 +44,7 @@
                         <li>
                           <strong>Website</strong> refers to Mastering Backend,
                           accessible from
-                          <a href="/">MasteringBackend.com</a>
+                          <nuxt-link to="/">MasteringBackend.com</nuxt-link>
                         </li>
                       </ul>
                       <h2>Disclaimer</h2>
@@ -180,7 +180,7 @@
                       <ul>
                         <li>
                           By visiting this page on our website:
-                          <a href="/contact"> Contact Us</a>
+                          <nuxt-link to="/contact"> Contact Us</nuxt-link>
                         </li>
                       </ul>
                     </div>

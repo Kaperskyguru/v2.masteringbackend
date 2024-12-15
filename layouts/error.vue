@@ -16,7 +16,7 @@
               <div class="mb-4 lead">
                 The page you are looking for was not found.
               </div>
-              <a href="/" class="btn btn-link">Back to Home</a>
+              <nuxt-link to="/" class="btn btn-link">Back to Home</nuxt-link>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
               <div class="mb-4 lead">
                 An error occurred, please reload the page
               </div>
-              <a href="/" class="btn btn-link">Back to Home</a>
+              <nuxt-link to="/" class="btn btn-link">Back to Home</nuxt-link>
             </div>
           </div>
         </div>

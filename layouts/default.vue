@@ -29,6 +29,14 @@ export default {
       ],
     }
   },
+
+  watch: {
+    $route: {
+      handler(value) {
+        console.log(value)
+      },
+    },
+  },
 }
 </script>
 

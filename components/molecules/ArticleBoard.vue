@@ -17,13 +17,6 @@
               post.title
             }}</NuxtLink>
           </h3>
-          <!-- <div class="mb-2">
-            <small
-              >By<a :href="'/authors/' + authorSlug(post)" class="subtitle">
-                {{ authorName(post) }} </a
-              >. Updated Oct. 12, 2021</small
-            >
-          </div> -->
           <article
             class="card-text mt-4"
             v-html="getPostExcerpt(stripTags(post.excerpt), 150)"

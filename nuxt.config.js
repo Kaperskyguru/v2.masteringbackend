@@ -223,6 +223,7 @@ export default {
     { src: '~/plugins/infiniteloading', ssr: false, mode: 'client' },
     '~/plugins/jsonld',
     { src: '~/plugins/disqus', ssr: false },
+    '~/plugins/persistRefLinks.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -444,6 +445,10 @@ export default {
     },
     SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     SEGMENT_USE_ROUTER: process.env.SEGMENT_USE_ROUTER || true,
+  },
+
+  router: {
+    middleware: 'keepParams',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

@@ -62,7 +62,9 @@
           >
             <span :class="{ active: tab === '' }">
               <li class="ps-4 my-4 fw-bold fs-8">
-                <a class="text-decoration-none text-dark" href="/posts">All</a>
+                <nuxt-link class="text-decoration-none text-dark" to="/posts"
+                  >All</nuxt-link
+                >
               </li>
             </span>
             <!-- <span :class="{ active: tab === 'hub' }">

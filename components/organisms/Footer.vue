@@ -74,7 +74,7 @@
                     <li class="mb-3">
                       <a
                         target="_blank"
-                        href="https://projects.masteringbackend.com"
+                        href="https://projects.masteringbackend.com?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
                         >Access 200+ Backend Projects</a
                       >
                     </li>
@@ -97,11 +97,11 @@
                       <NuxtLink to="/newsletter">Join Our Newsletter</NuxtLink>
                     </li>
                     <li class="mb-3">
-                      <a href="/community">Join Our Community</a>
+                      <nuxt-link to="/community">Join Our Community</nuxt-link>
                     </li>
 
                     <li class="mb-3">
-                      <a href="/academy">Join The Academy </a>
+                      <nuxt-link to="/academy">Join The Academy </nuxt-link>
                     </li>
 
                     <li class="mb-3">
@@ -118,9 +118,11 @@
               <div class="col-md-3 text-col">
                 <p class="mb-4">Company</p>
                 <ul class="footer-nav fs-6">
-                  <li class="mb-3"><a href="/">Home</a></li>
-                  <li class="mb-3"><a href="/about">About</a></li>
-                  <li class="mb-3"><a href="/contact">Contact</a></li>
+                  <li class="mb-3"><nuxt-link to="/">Home</nuxt-link></li>
+                  <li class="mb-3"><nuxt-link to="/about">About</nuxt-link></li>
+                  <li class="mb-3">
+                    <nuxt-link to="/contact">Contact</nuxt-link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -167,17 +169,19 @@
         </div>
         <div class="col-md-8">
           <div>
-            <a href="/terms-and-conditions">Terms and Conditions</a>
+            <nuxt-link to="/terms-and-conditions"
+              >Terms and Conditions</nuxt-link
+            >
             |&nbsp;
-            <a href="/privacy-policy">Privacy</a>
+            <nuxt-link to="/privacy-policy">Privacy</nuxt-link>
             |&nbsp;
-            <a href="/disclaimer">Disclaimer</a>
+            <nuxt-link to="/disclaimer">Disclaimer</nuxt-link>
             |&nbsp;
-            <a href="/return-policy">Return Policy</a>
+            <nuxt-link to="/return-policy">Return Policy</nuxt-link>
             <!-- |&nbsp;
-            <a href="#" @click.prevent="showLogin = !showLogin">Login</a>
+            <nuxt-link to="#" @click.prevent="showLogin = !showLogin">Login</nuxt-link>
             |&nbsp;
-            <a href="#" @click.prevent="showRegister = !showRegister"
+            <nuxt-link to="#" @click.prevent="showRegister = !showRegister"
               >Register</a
             > -->
           </div>
@@ -185,8 +189,13 @@
 
         <small
           >This site is protected by reCAPTCHA and the Google
-          <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-          <a href="https://policies.google.com/terms">Terms of Service</a>
+          <nuxt-link to="https://policies.google.com/privacy"
+            >Privacy Policy</nuxt-link
+          >
+          and
+          <nuxt-link to="https://policies.google.com/terms"
+            >Terms of Service</nuxt-link
+          >
           apply.
         </small>
       </div>

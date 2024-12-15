@@ -1,5 +1,5 @@
 <template>
-  <a href="/">
+  <nuxt-link to="/">
     <img
       data-not-lazy
       v-if="isWhite"
@@ -19,7 +19,7 @@
       height="auto"
       class="d-inline-block align-text-top"
     />
-  </a>
+  </nuxt-link>
 </template>
 <script>
 export default {

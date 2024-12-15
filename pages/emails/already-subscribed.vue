@@ -23,13 +23,13 @@
 
             <ul class="list-unstyled" style="color: rgb(187, 74, 3) !important">
               <li class="py-2">
-                <a href="/posts/backend-development"
-                  >Backend Engineering Hub: The Ultimate Guide</a
+                <nuxt-link to="/posts/backend-development"
+                  >Backend Engineering Hub: The Ultimate Guide</nuxt-link
                 >
               </li>
               <li class="py-2">
-                <a href="/posts/api-security-best-practices">
-                  API Security Best Practices</a
+                <nuxt-link to="/posts/api-security-best-practices">
+                  API Security Best Practices</nuxt-link
                 >
               </li>
             </ul>

@@ -91,9 +91,13 @@
           <TagIcon />
         </div>
         <div id="article" class="chapter">
-          <a v-for="tag in post.tags" :key="tag.id" :href="`/tags/${tag.slug}`">
+          <nuxt-link
+            v-for="tag in post.tags"
+            :key="tag.id"
+            :to="`/tags/${tag.slug}`"
+          >
             {{ tag.name }},
-          </a>
+          </nuxt-link>
         </div>
       </div>
       <!-- </div> -->
