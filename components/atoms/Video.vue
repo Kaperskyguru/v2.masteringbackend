@@ -208,7 +208,7 @@ export default {
               HiddenTag: this.tag,
             },
           ]),
-          mode: 'cors',
+          mode: 'no-cors',
           headers: {
             'X-Encharge-Token': process.env.ENCHARGE_KEY,
           },
