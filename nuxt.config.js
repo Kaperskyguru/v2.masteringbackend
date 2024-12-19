@@ -213,6 +213,7 @@ export default {
     SEGMENT_WRITE_KEY: process.env.SEGMENT_WRITE_KEY,
     PADDLE_VENDOR: process.env.PADDLE_VENDOR,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
+    ENCHARGE_KEY: process.env.ENCHARGE_KEY,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

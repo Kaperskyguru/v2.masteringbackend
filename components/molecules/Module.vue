@@ -27,6 +27,7 @@
         :key="i"
       >
         <Video
+          :tag="tag"
           :color="color"
           :content="{
             ...content,
@@ -53,7 +54,7 @@ export default {
     color: {
       type: String,
     },
-
+    tag: { type: String },
     topic: {
       type: Object,
       default: () => {},

@@ -206,7 +206,7 @@
         </PageTitle>
 
         <div v-for="(topic, i) in course?.roadmap?.topics" :key="i">
-          <Module :color="color" :topic="topic" />
+          <Module :tag="enchargeTag" :color="color" :topic="topic" />
         </div>
       </div>
     </section>
@@ -303,14 +303,15 @@
           </div>
           <div class="border p-4 my-4 col-lg-4 col-md-6 col-12">
             <div>
-              <div>
-                <span class="fs-3 fw-bold">Team Pricing</span>
+              <div class="d-flex gap-2">
+                <span class="fs-4 fw-bold">Cohort & Team Pricing</span>
                 <select
                   name="team"
                   id="team"
                   style="border: 0px; background: none"
                   v-model="team"
                 >
+                  <option value="cohort">Cohort</option>
                   <option value="3">3 seats</option>
                   <option value="5">5 seats</option>
                   <option value="10">10 seats</option>
@@ -319,34 +320,64 @@
                 </select>
               </div>
               <div class="d-flex py-4 gap-3">
-                <span class="fs-1 fw-bold"
+                <span class="fs-1 fw-bold" v-if="team == 'cohort'"
+                  ><sup class="">$</sup>500
+                </span>
+                <span class="fs-1 fw-bold" v-else
                   ><sup class="">$</sup
                   >{{ team * price - Math.floor(team * price * (13 / 100)) }}
                 </span>
                 <div class="d-flex flex-column">
-                  <span :style="`color: ${color}; text`" class="fs-5"
-                    ><del>${{ team * price }} </del></span
-                  >
+                  <span :style="`color: ${color}; text`" class="fs-5">
+                    <del v-if="team == 'cohort'">$1000 </del>
+                    <del v-else>${{ team * price }} </del>
+                  </span>
 
                   <span>USD, one-time </span>
                 </div>
               </div>
-              <p class="fs-6">
+              <p class="fs-6" v-if="team == 'cohort'">
+                Join our comprehensive backend engineering cohort and learn from
+                the instructor directly.
+              </p>
+              <p class="fs-6" v-else>
                 We offer team discounts on the full course based on the number
                 of team members you'd like to purchase for.
               </p>
+
               <div class="w-100">
                 <CourseButton
                   class="w-100"
-                  color="#a7a7a7"
                   :link="linkToPay"
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
+                  type="btn"
+                  @click.prevent="buynow"
                 />
               </div>
+
+              <div v-if="team == 'cohort'">
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black">Everything in Course plan</span>
+                </span>
+
+                <span
+                  class="d-flex gap-1 align-items-center"
+                  :style="`color: ${color};`"
+                >
+                  <MarkIcon style="width: 2rem; height: 2rem" />
+                  <span class="text-black"
+                    >3-month access to the instructor</span
+                  >
+                </span>
+              </div>
             </div>
-            <p class="fs-6 fw-light">
-              Need more seats?
+            <p class="fs-6 pt-3 fw-light">
+              Need more seats or info?
               <a
                 style="text-decoration: underline"
                 href="mailto:info@masteringbackend.com"
@@ -620,6 +651,12 @@ export default {
   methods: {
     async buynow() {
       let plan = this.hub?.paddlePlanId ?? undefined
+      if (this.team === 'cohort') plan = '902344'
+      if (this.team === 3) plan = '902345'
+      if (this.team === 5) plan = '902346'
+      if (this.team === 10) plan = '902347'
+      if (this.team === 15) plan = '902348'
+      if (this.team === 25) plan = '902349'
       if (this.isDev()) plan = '63184'
 
       if (!plan) return this.$router.push('#' + this.enchargeTag)

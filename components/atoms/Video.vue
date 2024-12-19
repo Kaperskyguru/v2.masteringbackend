@@ -40,7 +40,83 @@
       :title="content?.title"
     >
       <div class="w-100 px-4 pb-4 pt-2">
-        <div class="!m- rounded-xl overflow-hidden">
+        <div v-if="isLocked" style="background-color: #eee">
+          <div class="w-100">
+            <div
+              style="position: relative; padding: 56.25% 0 0 0"
+              class="d-flex top-50 start-50 translate-middle w-100 h-100 flex-column justify-content-center align-items-center"
+            >
+              <div
+                style="position: absolute"
+                class="flex-column justify-content-center align-items-center d-flex"
+              >
+                <div style="height: 25px; width: 25px">
+                  <LockIcon />
+                </div>
+                <div class="pt-3"><h4 class="fs-2">Watch for free</h4></div>
+                <div>Enter your email below to watch this video</div>
+                <!--  -->
+                <div class="w-100">
+                  <form
+                    @submit.prevent="onSubmit"
+                    ref="form"
+                    class="w-100"
+                    id="form-bacf371b-b382-4024-9adb-99ea3c829eae"
+                    method="POST"
+                  >
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="pt-3">
+                        <input
+                          id="7dbc4ccf-238b-4128-9250-634cccb01176"
+                          name="email"
+                          class="encharge-form-input sc-gqjmRU liSvtx shadow-none form-control fs-5 my-"
+                          type="email"
+                          required
+                          v-model="email"
+                          placeholder="Email"
+                        />
+                      </div>
+
+                      <div class="pt-3">
+                        <div class="">
+                          <Button
+                            :waiting="loading"
+                            class="col- px-2 py-2 fs-6 fw-bold rounded"
+                            type="submit"
+                            :style="{
+                              backgroundColor: `${color}`,
+                              color: '#fff',
+                            }"
+                          >
+                            Play video
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sc-jzJRlG hjFAqE text-center">
+                      <div
+                        name="nativeFormMarketingConsent"
+                        class="encharge-form-group sc-jTzLTM bPowmp"
+                      >
+                        <label
+                          for="193ff0f2-d701-4df3-a0bf-e9d1e1f30aa4"
+                          class="encharge-form-label sc-VigVT bSCkYy"
+                        >
+                          <small style="font-size: xx-small"
+                            >By clicking, I agree to receive emails from you
+                            (unsubscribe anytime).</small
+                          >
+                        </label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="!m- rounded-xl overflow-hidden">
           <div class="w-100">
             <div style="position: relative; padding: 56.25% 0 0 0">
               <iframe
@@ -68,20 +144,42 @@
 </template>
 
 <script>
+import { recaptcha } from '~/helpers/recaptcha'
+import LockIcon from '~/assets/icons/lock.svg?inline'
 export default {
   name: 'VideoC',
+  components: {
+    LockIcon,
+  },
   props: {
     color: {
       type: String,
     },
-
+    tag: { type: String },
     content: {
       type: Object,
       default: () => {},
     },
   },
 
-  data: () => ({ shouldPreview: false }),
+  async mounted() {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.error(e)
+    }
+  },
+
+  beforeDestroy() {
+    this.$recaptcha.destroy()
+  },
+
+  data: () => ({
+    shouldPreview: false,
+    isLocked: true,
+    email: '',
+    loading: false,
+  }),
 
   methods: {
     showVideo() {
@@ -89,9 +187,41 @@ export default {
         this.shouldPreview = !this.shouldPreview
       }
     },
+
+    async onSubmit() {
+      try {
+        this.loading = true
+        const token = await this.$recaptcha.execute('login')
+
+        const data = await recaptcha({ token })
+
+        if (!data?.success) return
+
+        this.isLocked = false
+
+        this.loading = true
+        await this.$axios.post(
+          `https://api.encharge.io/v1/people`,
+          [
+            {
+              email: this.email,
+              HiddenTag: this.tag,
+            },
+          ],
+          {
+            headers: {
+              'X-Encharge-Token': process.env.ENCHARGE_KEY,
+            },
+          }
+        )
+      } catch (error) {
+        this.isLocked = false
+        this.loading = false
+        console.log('Login error:', error)
+      }
+    },
   },
 }
 </script>
-
 <style>
 </style>
