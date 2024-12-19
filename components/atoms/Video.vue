@@ -210,6 +210,9 @@ export default {
           ]),
           mode: 'no-cors',
           headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            withCredentials: true,
             'X-Encharge-Token': process.env.ENCHARGE_KEY,
           },
         })
