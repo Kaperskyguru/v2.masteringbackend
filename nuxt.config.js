@@ -214,6 +214,7 @@ export default {
     PADDLE_VENDOR: process.env.PADDLE_VENDOR,
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
     ENCHARGE_KEY: process.env.ENCHARGE_KEY,
+    MB_API_URL: process.env.MB_API_URL,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
