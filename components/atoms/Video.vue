@@ -200,7 +200,7 @@ export default {
         this.isLocked = false
 
         this.loading = true
-        await fetch.post(`https://api.encharge.io/v1/people`, {
+        await fetch(`https://api.encharge.io/v1/people`, {
           method: 'POST',
           body: JSON.stringify([
             {
