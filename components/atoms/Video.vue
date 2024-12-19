@@ -200,20 +200,18 @@ export default {
         this.isLocked = false
 
         this.loading = true
-        await this.$axios.post(
-          `https://api.encharge.io/v1/people`,
-          [
+        await fetch.post(`https://api.encharge.io/v1/people`, {
+          method: 'POST',
+          body: JSON.stringify([
             {
               email: this.email,
               HiddenTag: this.tag,
             },
-          ],
-          {
-            headers: {
-              'X-Encharge-Token': process.env.ENCHARGE_KEY,
-            },
-          }
-        )
+          ]),
+          headers: {
+            'X-Encharge-Token': process.env.ENCHARGE_KEY,
+          },
+        })
       } catch (error) {
         this.isLocked = false
         this.loading = false
