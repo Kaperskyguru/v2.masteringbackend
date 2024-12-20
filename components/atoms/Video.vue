@@ -199,8 +199,6 @@ export default {
 
         this.isLocked = false
 
-        console.log(process.env.ENCHARGE_KEY)
-
         this.loading = true
         await fetch(`https://api.encharge.io/v1/people`, {
           method: 'POST',
@@ -212,9 +210,6 @@ export default {
           ]),
           mode: 'no-cors',
           headers: {
-            // 'Content-Type': 'application/json',
-            // 'Access-Control-Allow-Origin': '*',
-            // withCredentials: true,
             'X-Encharge-Token': process.env.ENCHARGE_KEY,
           },
         })
