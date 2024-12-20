@@ -11,6 +11,30 @@ router.get('/mailchimp/lists', async function (req, res, next) {
   res.json(data)
 })
 
+router.post('/encharge/subscribe', async (req, res) => {
+  try {
+    if (!validateEmail(req.body.email)) {
+      return res.json({
+        message: 'Please enter a valid email address',
+        status: 422,
+      })
+    }
+    const mailchimp = await new Mailchimp().subscribeToEncharge({
+      email: req.body.email,
+      tag: req.body.tag,
+    })
+
+    res.json(mailchimp)
+    return
+  } catch (error) {
+    return res.json({
+      message: 'An error occurred',
+      status: 400,
+      error: error,
+    })
+  }
+})
+
 router.post('/substack/subscribe', async (req, res, next) => {
   const baseURL = process.env.SUBSTACK ?? 'https://kaperskyguru.substack.com'
   const headers = {

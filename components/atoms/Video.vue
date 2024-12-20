@@ -144,9 +144,9 @@
 </template>
 
 <script>
-import { recaptcha } from '~/helpers/recaptcha'
+import Superagent from 'superagent'
+// import { recaptcha } from '~/helpers/recaptcha'
 import LockIcon from '~/assets/icons/lock.svg?inline'
-import request from 'request'
 export default {
   name: 'VideoC',
   components: {
@@ -192,62 +192,28 @@ export default {
     async onSubmit() {
       try {
         this.loading = true
-        const token = await this.$recaptcha.execute('login')
+        // const token = await this.$recaptcha.execute('login')
 
-        const data = await recaptcha({ token })
+        // const data = await recaptcha({ token })
 
-        if (!data?.success) return
+        // if (!data?.success) {
+        //   this.loading = false
+        //   return
+        // }
 
         this.isLocked = false
 
         this.loading = true
-        this.subscribe({ email: this.email, tag: this.tag })
-        // await fetch(`https://api.encharge.io/v1/people`, {
-        //   method: 'POST',
-        //   body: JSON.stringify([
-        //     {
-        //       email: this.email,
-        //       HiddenTag: this.tag,
-        //     },
-        //   ]),
-        //   headers: {
-        //     'X-Encharge-Token': process.env.ENCHARGE_KEY,
-        //   },
-        //   mode: 'no-cors',
-        // })
+
+        await Superagent.post('/api/encharge/subscribe').send({
+          email: this.email,
+          tag: this.tag,
+        })
       } catch (error) {
         this.isLocked = false
         this.loading = false
         console.log('Login error:', error)
       }
-    },
-
-    subscribe({ email, tag }) {
-      return new Promise(function (resolve, reject) {
-        request.post(
-          {
-            url: 'https://api.encharge.io/v1/people',
-            body: {
-              email: email,
-              HiddenTag: tag,
-            },
-            json: true,
-            dataType: 'jsonp',
-            headers: {
-              'X-Encharge-Token': process.env.ENCHARGE_KEY,
-            },
-          },
-          function (err, httpResponse, body) {
-            console.log(err, httpResponse, body)
-            if (err) {
-              console.log(err)
-              reject(err)
-            }
-            body = JSON.parse(body)
-            resolve(body)
-          }
-        )
-      })
     },
   },
 }

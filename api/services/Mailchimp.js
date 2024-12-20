@@ -167,6 +167,34 @@ class Mailchimp {
       )
     })
   }
+
+  subscribeToEncharge({ email, tag }) {
+    return new Promise(function (resolve, reject) {
+      request.post(
+        {
+          url: 'https://api.encharge.io/v1/people',
+          body: {
+            email: email,
+            HiddenTag: tag,
+          },
+          json: true,
+          dataType: 'jsonp',
+          headers: {
+            'X-Encharge-Token': process.env.ENCHARGE_KEY,
+          },
+        },
+        function (err, httpResponse, body) {
+          console.log(body)
+          if (err) {
+            console.log(err)
+            reject(err)
+          }
+
+          resolve(body)
+        }
+      )
+    })
+  }
 }
 
 export default Mailchimp
