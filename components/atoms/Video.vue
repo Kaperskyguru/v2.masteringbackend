@@ -201,7 +201,7 @@ export default {
         this.isLocked = false
 
         this.loading = true
-        subscribe({ email: this.email, tag: this.tag })
+        this.subscribe({ email: this.email, tag: this.tag })
         // await fetch(`https://api.encharge.io/v1/people`, {
         //   method: 'POST',
         //   body: JSON.stringify([
