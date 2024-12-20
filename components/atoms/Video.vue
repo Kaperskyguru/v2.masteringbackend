@@ -145,7 +145,7 @@
 
 <script>
 import Superagent from 'superagent'
-// import { recaptcha } from '~/helpers/recaptcha'
+import { recaptcha } from '~/helpers/recaptcha'
 import LockIcon from '~/assets/icons/lock.svg?inline'
 export default {
   name: 'VideoC',
@@ -192,17 +192,16 @@ export default {
     async onSubmit() {
       try {
         this.loading = true
-        // const token = await this.$recaptcha.execute('login')
+        const token = await this.$recaptcha.execute('login')
 
-        // const data = await recaptcha({ token })
+        const data = await recaptcha({ token })
 
-        // if (!data?.success) {
-        //   this.loading = false
-        //   return
-        // }
+        if (!data?.success) {
+          this.loading = false
+          return
+        }
 
         this.isLocked = false
-
         this.loading = true
 
         await Superagent.post('/api/encharge/subscribe').send({
