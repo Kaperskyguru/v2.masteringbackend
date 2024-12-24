@@ -90,9 +90,11 @@ export default {
       return `/posts/${this.post.slug}`
     },
     generatePdfURL() {
-      return this.isBook
-        ? '#'
-        : `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
+      if (this.isBook) {
+        const chapter = this.post.chapters[0]
+        return '/books/' + chapter?.hub?.slug
+      }
+      return `/resources/${this.post?.chapter?.hub?.slug}/${this.post?.slug}`
     },
     hubSlug() {
       return this.post?.hub?.slug ?? ''
