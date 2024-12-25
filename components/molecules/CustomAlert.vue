@@ -14,7 +14,6 @@
 
       <slot name="btn">
         <div class="d-flex justify-content-center gap-4">
-          {{ readLink }}{{ showRead }}
           <Button
             v-if="showRead"
             appearance="primary"
