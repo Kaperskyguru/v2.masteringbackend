@@ -21,7 +21,7 @@
         :bgColor="color"
         :showRead="true"
         :showDownload="hasPDF"
-        :Readlink="generateReadLink"
+        :readLink="generateReadLink"
         :link="generatePdfURL"
       >
         <template #title> Access the {{ title }} </template>
