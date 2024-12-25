@@ -83,6 +83,7 @@ export default {
       )
     },
     generateReadLink() {
+      console.log(this.isBook, 'Read')
       if (this.isBook) {
         const chapter = this.post.chapters[0]
         return '/books/' + chapter?.hub?.slug
@@ -90,6 +91,7 @@ export default {
       return `/posts/${this.post.slug}`
     },
     generatePdfURL() {
+      console.log(this.isBook, 'PDF')
       if (this.isBook) {
         const chapter = this.post.chapters[0]
         return '/books/' + chapter?.hub?.slug
