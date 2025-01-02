@@ -212,7 +212,7 @@
     </section>
 
     <section class="my-5 py-5" style="background-color: #f7f5fa">
-      <section class="container mx-auto my-5 py-5">
+      <div class="container mx-auto mt-5 py-3">
         <PageTitle>
           <template #title>
             <h3
@@ -225,7 +225,38 @@
         <p class="text-center">
           {{ description }}
         </p>
-      </section>
+      </div>
+
+      <div class="mb-3 container mx-auto text-center">
+        <h4 class="text-xl fw-bold">Limited Offer:</h4>
+        <p class="fw-bold">44% off for PRESALE orders</p>
+        <span
+          class="text-white px-3 py-2 rounded"
+          :style="`background-color:${color}; font-weight: bold;`"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            aria-hidden="true"
+            role="img"
+            class="icon"
+            data-v-16c05a91=""
+            style=""
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            data-v-bd832875=""
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8m7.75-4.25a.75.75 0 0 0-1.5 0V8c0 .414.336.75.75.75h3.25a.75.75 0 0 0 0-1.5h-2.5z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <em> Next 100 orders only (49 left)</em></span
+        >
+      </div>
 
       <div class="container mx-auto" id="pricing">
         <div class="row justify-content-center px-2 align-items-center">
@@ -674,6 +705,7 @@ export default {
         allowQuantity: false,
         disableLogout: true,
         frameInitialHeight: 416,
+        discountCode: package1 === 'single' ? 'PRESALE' : '',
         passthrough: {
           type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
