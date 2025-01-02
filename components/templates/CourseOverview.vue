@@ -688,13 +688,14 @@ export default {
 
   methods: {
     async buynow(package1 = 'single') {
-      let plan = this.hub?.paddlePlanId ?? undefined
+      let plan = ''
       if (this.team === 'cohort') plan = '902344'
       if (this.team === 3) plan = '902345'
       if (this.team === 5) plan = '902346'
       if (this.team === 10) plan = '902347'
       if (this.team === 15) plan = '902348'
       if (this.team === 25) plan = '902349'
+      if (package1 === 'single') plan = this.hub?.paddlePlanId
       if (this.isDev()) plan = '63184'
 
       if (!plan) return this.$router.push('#' + this.enchargeTag)
