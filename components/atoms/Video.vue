@@ -208,9 +208,9 @@ export default {
           email: this.email,
           tag: this.tag,
         })
-
-        // eslint-disable-next-line no-undef
-        fbq('track', 'Lead')
+        if (!this.isDev())
+          // eslint-disable-next-line no-undef
+          fbq('track', 'Lead')
       } catch (error) {
         this.isLocked = false
         this.loading = false

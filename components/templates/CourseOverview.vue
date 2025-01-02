@@ -670,11 +670,12 @@ export default {
   },
 
   mounted() {
-    // eslint-disable-next-line no-undef
-    fbq('track', 'ViewContent', {
-      content_name: 'Landing Page',
-      content_type: this.slug,
-    })
+    if (!this.isDev())
+      // eslint-disable-next-line no-undef
+      fbq('track', 'ViewContent', {
+        content_name: 'Landing Page',
+        content_type: this.slug,
+      })
 
     if (this.isDev()) {
       // eslint-disable-next-line no-undef
@@ -706,7 +707,7 @@ export default {
         allowQuantity: false,
         disableLogout: true,
         frameInitialHeight: 416,
-        discountCode: package1 === 'single' ? 'PRESALE' : '',
+        coupon: package1 === 'single' ? 'PRESALE' : '',
         passthrough: {
           type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
@@ -724,12 +725,13 @@ export default {
 
       // Track buying intent
       // eslint-disable-next-line no-undef
-      fbq('track', 'InitiateCheckout')
+      if (!this.isDev()) fbq('track', 'InitiateCheckout')
     },
 
     onSelected() {
-      // eslint-disable-next-line no-undef
-      fbq('track', 'CustomizeProduct')
+      if (!this.isDev())
+        // eslint-disable-next-line no-undef
+        fbq('track', 'CustomizeProduct')
     },
 
     isDev() {
@@ -744,11 +746,12 @@ export default {
         data?.checkout?.prices?.vendor?.total_tax
 
       // Track purchase
-      // eslint-disable-next-line no-undef
-      fbq('track', 'Purchase', {
-        value: price,
-        currency: data?.checkout?.prices?.vendor?.currency ?? 'USD',
-      })
+      if (!this.isDev())
+        // eslint-disable-next-line no-undef
+        fbq('track', 'Purchase', {
+          value: price,
+          currency: data?.checkout?.prices?.vendor?.currency ?? 'USD',
+        })
 
       if (!data?.checkout?.redirect_url)
         return this.$router.push('/emails/purchased?title=' + this.title)
