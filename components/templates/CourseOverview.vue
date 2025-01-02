@@ -287,7 +287,7 @@
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
                   type="btn"
-                  @click.prevent="buynow"
+                  @click.prevent="() => buynow('single')"
                 />
               </div>
 
@@ -696,9 +696,7 @@ export default {
       if (this.team === 15) plan = '902348'
       if (this.team === 25) plan = '902349'
       if (package1 === 'single') plan = this.hub?.paddlePlanId
-      // if (this.isDev()) plan = '63184'
-
-      console.log(plan, this.team, package1)
+      if (this.isDev()) plan = '63184'
 
       if (!plan) return this.$router.push('#' + this.enchargeTag)
 
@@ -726,7 +724,7 @@ export default {
 
       // Track buying intent
       // eslint-disable-next-line no-undef
-      // fbq('track', 'InitiateCheckout')
+      fbq('track', 'InitiateCheckout')
     },
 
     onSelected() {
