@@ -8,6 +8,9 @@ module.exports = {
     parser: '@babel/eslint-parser',
     requireConfigFile: false,
   },
+  globals: {
+    fbq: true,
+  },
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
   // add your custom rules here

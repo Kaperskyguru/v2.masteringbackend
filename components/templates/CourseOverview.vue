@@ -310,6 +310,7 @@
                   id="team"
                   style="border: 0px; background: none"
                   v-model="team"
+                  @change="onSelected"
                 >
                   <option value="cohort">Cohort</option>
                   <option value="3">3 seats</option>
@@ -352,7 +353,7 @@
                   :customStyle="{ width: '100%' }"
                   title="Buy Now"
                   type="btn"
-                  @click.prevent="buynow"
+                  @click.prevent="() => buynow('team')"
                 />
               </div>
 
@@ -638,6 +639,12 @@ export default {
   },
 
   mounted() {
+    // eslint-disable-next-line no-undef
+    fbq('track', 'ViewContent', {
+      content_name: 'Landing Page',
+      content_type: this.slug,
+    })
+
     if (this.isDev()) {
       // eslint-disable-next-line no-undef
       Paddle.Environment.set('sandbox')
@@ -649,7 +656,7 @@ export default {
   },
 
   methods: {
-    async buynow() {
+    async buynow(package1 = 'single') {
       let plan = this.hub?.paddlePlanId ?? undefined
       if (this.team === 'cohort') plan = '902344'
       if (this.team === 3) plan = '902345'
@@ -671,6 +678,7 @@ export default {
           type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
           isExternal: true,
+          package: package1,
           ref:
             this.$route.query?.ref ??
             this.$route.query?.utm_source ??
@@ -682,6 +690,13 @@ export default {
       })
 
       // Track buying intent
+      // eslint-disable-next-line no-undef
+      fbq('track', 'InitiateCheckout')
+    },
+
+    onSelected() {
+      // eslint-disable-next-line no-undef
+      fbq('track', 'CustomizeProduct')
     },
 
     isDev() {
@@ -691,12 +706,24 @@ export default {
     checkoutComplete(data) {
       if (!data?.checkout?.completed) return
 
+      const price =
+        data?.checkout?.prices?.vendor?.total -
+        data?.checkout?.prices?.vendor?.total_tax
+
+      // Track purchase
+      // eslint-disable-next-line no-undef
+      fbq('track', 'Purchase', {
+        value: price,
+        currency: data?.checkout?.prices?.vendor?.currency ?? 'USD',
+      })
+
       if (!data?.checkout?.redirect_url)
         return this.$router.push('/emails/purchased?title=' + this.title)
 
       this.$router.push(data?.checkout?.redirect_url)
     },
     checkoutClosed(data) {
+      console.log(data)
       // this.sendSegment(PREMIUM_UNLOCK_FAILED, {
       //   product: data?.product ?? {},
       //   user: data?.user ?? {},
