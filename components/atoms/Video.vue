@@ -169,6 +169,8 @@ export default {
     } catch (e) {
       console.error(e)
     }
+
+    this.isLead()
   },
 
   beforeDestroy() {
@@ -186,6 +188,17 @@ export default {
     showVideo() {
       if (this.content?.video && !this.content?.isPremium) {
         this.shouldPreview = !this.shouldPreview
+      }
+    },
+
+    isLead() {
+      try {
+        const value = localStorage.getItem('MB_Lead_User')
+        if (!value || value === '' || !value.includes(this.$route.params?.slug))
+          return
+        this.isLocked = false
+      } catch (error) {
+        console.log(error)
       }
     },
 
@@ -211,6 +224,9 @@ export default {
         if (!this.isDev())
           // eslint-disable-next-line no-undef
           fbq('track', 'Lead')
+
+        // Set local storage
+        localStorage.setItem('MB_Lead_User', this.$route.params?.slug ?? '')
       } catch (error) {
         this.isLocked = false
         this.loading = false
