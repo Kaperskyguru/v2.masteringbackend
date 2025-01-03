@@ -191,6 +191,10 @@ export default {
       }
     },
 
+    isDev() {
+      return ['dev', 'development', 'staging'].includes(process.env.NODE_ENV)
+    },
+
     isLead() {
       try {
         const value = localStorage.getItem('MB_Lead_User')
