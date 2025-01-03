@@ -198,8 +198,11 @@ export default {
     isLead() {
       try {
         const value = localStorage.getItem('MB_Lead_User')
+        console.log(value, this.$route.params?.slug)
         if (!value || value === '' || !value.includes(this.$route.params?.slug))
           return
+
+        console.log('here')
         this.isLocked = false
       } catch (error) {
         console.log(error)
