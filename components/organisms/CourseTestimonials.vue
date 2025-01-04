@@ -10,13 +10,21 @@
         </h3>
       </template>
     </PageTitle>
-    <div class="row justify-content-center">
-      <div
-        class="col-lg-4 px-2 col-md-5 col-12"
-        v-for="(testimonial, index) in allTestimonials"
-        :key="index"
-      >
-        <CourseTestimonial :showImage="showImage" :testimonial="testimonial" />
+    <div class="flex-column d-flex">
+      <div class="w-100 mx-auto">
+        <div class="masonry-grid">
+          <div
+            :style="{ 'grid-row': 'span ' + 3 * index }"
+            class="gri"
+            v-for="(testimonial, index) in allTestimonials"
+            :key="index"
+          >
+            <CourseTestimonial
+              :showImage="showImage"
+              :testimonial="testimonial"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -74,4 +82,17 @@ export default {
 </script>
   
   <style>
+.masonry-grid {
+  display: grid;
+  justify-content: center;
+  gap: 1px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: masonry;
+}
+.gri {
+  /* grid-row: span 20; */
+  opacity: 1;
+  padding-left: 7px;
+  padding-right: 7px;
+}
 </style>

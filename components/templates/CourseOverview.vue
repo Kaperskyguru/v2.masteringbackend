@@ -73,7 +73,7 @@
                       i + 1
                     }}</span>
                   </div>
-                  <!-- <span
+                  <span
                     v-if="
                       !course?.roadmap?.topics?.find(
                         (t) => t?.title === chapter?.title
@@ -81,8 +81,8 @@
                     "
                     class="py-1 px-2 rounded-pill"
                     :style="`background-color: ${color}; color:white; font-size:10px`"
-                    >Coming soon</span
-                  > -->
+                    >In progress</span
+                  >
                 </div>
                 <h3 class="my-3">{{ chapter.title }}</h3>
                 <p
@@ -703,7 +703,7 @@ export default {
     },
 
     btnText() {
-      return this.isPremium ? `Access for $${this.price}` : 'Get Started'
+      return this.isPremium ? `Start Learning Now` : 'Get Started'
     },
 
     description() {
