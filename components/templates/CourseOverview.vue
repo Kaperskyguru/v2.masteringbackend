@@ -73,7 +73,7 @@
                       i + 1
                     }}</span>
                   </div>
-                  <span
+                  <!-- <span
                     v-if="
                       !course?.roadmap?.topics?.find(
                         (t) => t?.title === chapter?.title
@@ -82,7 +82,7 @@
                     class="py-1 px-2 rounded-pill"
                     :style="`background-color: ${color}; color:white; font-size:10px`"
                     >In progress</span
-                  >
+                  > -->
                 </div>
                 <h3 class="my-3">{{ chapter.title }}</h3>
                 <p
