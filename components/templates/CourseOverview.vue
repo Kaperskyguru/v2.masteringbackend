@@ -583,7 +583,7 @@ export default {
     testimonials: [
       {
         feedback:
-          "The course stood out because of its practical approach, clear structure, and focus on real-world projects. The reviews highlighted the instructor's expertise, and the curriculum covered both fundamentals and advanced topics, which seemed comprehensive.",
+          "The course stood out because of its practical approach, clear structure, and focus on real-world projects. The instructor's expertise shines through every module, and the curriculum covered both fundamentals and advanced topics, which seemed comprehensive.",
         name: 'Imran Munawar',
         position: 'Backend Engineer (Node.js)',
         image: '',
