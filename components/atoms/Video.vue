@@ -11,7 +11,9 @@
       :class="{ 'pe-auto': !content?.isPremium }"
     >
       <span style="font-size: 0.875rem; color: rgb(82 82 91)"
-        >{{ content?.video ? 'Video' : 'Article' }} {{ content?.index }}</span
+        >{{ content?.video ? 'Video' : 'Article' }} {{ content?.index }} ({{
+          content?.chapter?.title
+        }})</span
       >
       <div class="d-flex justify-content-between">
         <div class="d-flex gap-2">
