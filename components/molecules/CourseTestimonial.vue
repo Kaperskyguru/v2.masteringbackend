@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div style="margin-top: 150px" class="">
+  <div :style="[showImage ? { 'margin-top': '150px' } : '']" class="shadow">
     <div class="position-relative mt-5">
       <div
-        class="bordder-primary text-center"
-        style="max-width: 950px; height: 500px"
+        class="bordder-primary text-center d-flex flex-column justify-content-center align-items-center"
+        :style="[showImage ? { 'max-width': '950px', height: '500px' } : '']"
       >
-        <div style="width: 200px; margin: -100px auto 30px">
+        <div style="width: 200px; margin: -100px auto 30px" v-if="showImage">
           <img
             class="hero-img rounded-circle img-fluid w-80"
             :src="image"
@@ -14,16 +14,14 @@
           />
         </div>
 
-        <div class="p-lg-3 w- p-2" style="width: auto">
+        <div
+          class="p-lg-3 w- p-2 pt-10 d-flex flex-column justify-content-center align-items-center"
+        >
           <div class="w-100">
             <p
               class="text lh-md"
-              style="
-                text-align: left;
-                font-size: 16px;
-                font-weight: 700;
-                font-style: italic;
-              "
+              style="font-size: 16px; font-weight: 500; text-align: left"
+              :style="[showImage ? { 'text-align': 'left' } : '']"
               v-html="feedback"
             ></p>
           </div>
@@ -47,6 +45,10 @@ export default {
   name: 'TestimonialComponent',
 
   props: {
+    showImage: {
+      type: Boolean,
+      default: true,
+    },
     testimonial: {
       type: Object,
       default: () => {},
@@ -64,7 +66,7 @@ export default {
     },
 
     feedback() {
-      return this.testimonial?.feedback ?? ''
+      return `"${this.testimonial?.feedback ?? ''}"`
     },
 
     name() {
@@ -89,7 +91,7 @@ p {
 }
 
 .bordder-primary {
-  border: 2px solid #1c168c;
+  border: 1px solid #1c168c;
   border-radius: 5px;
 }
 

@@ -12,11 +12,11 @@
     </PageTitle>
     <div class="row justify-content-center">
       <div
-        class="col-lg-4 col-md-5 col-12"
-        v-for="(testimonial, index) in testimonials"
+        class="col-lg-4 px-2 col-md-5 col-12"
+        v-for="(testimonial, index) in allTestimonials"
         :key="index"
       >
-        <CourseTestimonial :testimonial="testimonial" />
+        <CourseTestimonial :showImage="showImage" :testimonial="testimonial" />
       </div>
     </div>
   </section>
@@ -25,16 +25,24 @@
   <script>
 export default {
   props: {
+    showImage: {
+      type: Boolean,
+      default: true,
+    },
     title: {
       type: String,
       default: 'What students are saying about the course',
+    },
+
+    data: {
+      type: Array,
+      default: () => [],
     },
   },
   name: 'TestimonialComponent',
   data: () => ({
     testimonials: [
       {
-        // Mastering Backend has evolved from a blog into an all-encompassing learning hub, providing valuable resources, courses, and tools to help individuals advance their knowledge and skills.
         feedback:
           'I strongly recommend exploring Mastering Backend as a resource for your personal and/or professional growth.',
         name: 'Agoro, Adegbenga. B',
@@ -56,6 +64,12 @@ export default {
       },
     ],
   }),
+
+  computed: {
+    allTestimonials() {
+      return [...this.testimonials, ...this.data]
+    },
+  },
 }
 </script>
   
