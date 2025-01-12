@@ -69,10 +69,11 @@
                   <p class="fs-5">
                     We are dedicated to providing a high-quality learning
                     experience. If, for any reason, you are not satisfied with
-                    the course, please reach out to us within the first 7 days
-                    of enrollment for a full refund. Your feedback is invaluable
-                    as it helps us improve our offerings and better meet the
-                    needs of our learners.
+                    the course, please reach out to us for your feedback. But we
+                    do not offer refunds for the course since you already have
+                    access to it. Your feedback is invaluable as it helps us
+                    improve our offerings and better meet the needs of our
+                    learners.
                   </p>
                 </div>
               </div>
