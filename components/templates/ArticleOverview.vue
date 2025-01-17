@@ -28,9 +28,9 @@
 
               <!-- Show Course here -->
               <div class="card mb-3 flex-row" v-if="getRoadmapCategory">
-                <div class="w-25">
+                <div class="w-50">
                   <img
-                    class="card-img-left img-fluid"
+                    class="card-img-left w-100 h-100 img-fluid"
                     src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
                     alt="Course image "
                   />
