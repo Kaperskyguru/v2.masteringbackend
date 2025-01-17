@@ -35,8 +35,8 @@
                 <div class="w-75">
                   <img
                     class="card-img-left w-100 h-100 img-fluid"
-                    src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
-                    alt="Course image "
+                    src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/become-a-backend-engineer.png"
+                    alt="Course image"
                   />
                 </div>
                 <div class="card-body">
