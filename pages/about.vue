@@ -146,7 +146,10 @@
                 </p>
               </div>
               <div class="d-flex flex-row gap-3">
-                <a href="https://kap.codes" target="_blank">
+                <a
+                  href="https://solomoneseme.com?ref=masteringbackend"
+                  target="_blank"
+                >
                   <div class="py-3 d-flex gap-1 align-items-baseline">
                     <div style="max-width: 30px">
                       <img

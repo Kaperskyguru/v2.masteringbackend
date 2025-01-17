@@ -26,6 +26,30 @@
 
               <ReadArticle :post="post" />
 
+              <!-- Show Course here -->
+              <div class="card mb-3" v-if="getRoadmapCategory">
+                <img
+                  class="card-img-left"
+                  src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
+                  alt="Course image "
+                />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Become a {{ getRoadmapCategory }} Backend Engineeer today
+                  </h5>
+                  <p class="card-text">
+                    All-in-one {{ getRoadmapCategory }} course for learning
+                    backend engineering with {{ getRoadmapCategory }}. This
+                    comprehensive course is designed for
+                    {{ getRoadmapCategory }} developers seeking proficiency in
+                    {{ getRoadmapCategory }}.
+                  </p>
+                  <p class="card-text">
+                    <a href="#" class="btn btn-primary">Start Learning Now</a>
+                  </p>
+                </div>
+              </div>
+
               <PlatformAd />
 
               <div class="text-center text-white my-5" v-if="isASeries">
@@ -167,6 +191,24 @@ export default {
 
     chapter() {
       return this.post?.chapter
+    },
+
+    getRoadmapCategory() {
+      return this.getCategories.includes('Java')
+        ? 'Java'
+        : this.getCategories.includes('Python')
+        ? 'Python'
+        : this.getCategories.includes('Nodejs')
+        ? 'Nodejs'
+        : this.getCategories.includes('Ruby')
+        ? 'Ruby'
+        : this.getCategories.includes('PHP')
+        ? 'PHP'
+        : this.getCategories.includes('Golang')
+        ? 'Go'
+        : this.getCategories.includes('Rust')
+        ? 'Rust'
+        : false
     },
   },
 
