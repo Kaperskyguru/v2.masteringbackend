@@ -27,9 +27,9 @@
               <ReadArticle :post="post" />
 
               <!-- Show Course here -->
-              <div class="card mb-3 d-flex flex-row" v-if="getRoadmapCategory">
+              <div class="card mb-3 flex-row" v-if="getRoadmapCategory">
                 <img
-                  class="card-img-left"
+                  class="card-img-sm-left"
                   src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
                   alt="Course image "
                 />
