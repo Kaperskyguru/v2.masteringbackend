@@ -216,31 +216,32 @@ export default {
     },
 
     roadmapURL() {
-      console.log(
-        this.$route.query?.ref ?? this.$route.params?.slug,
-        this.$route.params?.slug,
-        this.$route.query?.ref
-      )
       return this.getRoadmapCategory.includes('Java')
-        ? 'https://masteringbackend.com/courses/become-a-java-spring-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-java-spring-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : this.getRoadmapCategory.includes('Python')
-        ? 'https://masteringbackend.com/courses/become-a-python-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-python-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : this.getRoadmapCategory.includes('Nodejs')
-        ? 'https://masteringbackend.com/courses/become-a-nodejs-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-nodejs-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : this.getRoadmapCategory.includes('Ruby')
-        ? 'https://masteringbackend.com/courses/become-a-ruby-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-ruby-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : this.getRoadmapCategory.includes('PHP')
         ? '#'
         : this.getRoadmapCategory.includes('Go')
-        ? 'https://masteringbackend.com/courses/become-a-golang-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-golang-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : this.getRoadmapCategory.includes('Rust')
-        ? 'https://masteringbackend.com/courses/become-a-rust-backend-engineer?ref=' +
+        ? `https://masteringbackend.com/courses/become-a-rust-backend-engineer?ref=${
             this.$route.query?.ref ?? this.$route.params?.slug
+          }`
         : '#'
     },
   },
