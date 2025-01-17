@@ -28,11 +28,13 @@
 
               <!-- Show Course here -->
               <div class="card mb-3 flex-row" v-if="getRoadmapCategory">
-                <img
-                  class="card-img-sm-left"
-                  src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
-                  alt="Course image "
-                />
+                <div class="w-25">
+                  <img
+                    class="card-img-left img-fluid"
+                    src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
+                    alt="Course image "
+                  />
+                </div>
                 <div class="card-body">
                   <h5 class="card-title">
                     Become a {{ getRoadmapCategory }} Backend Engineeer today
