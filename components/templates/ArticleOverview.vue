@@ -194,19 +194,20 @@ export default {
     },
 
     getRoadmapCategory() {
-      return this.getCategories.includes('Java')
+      console.log(this.getCategories)
+      return this.getCategories.find((ca) => ca.name.includes('Java'))
         ? 'Java'
-        : this.getCategories.includes('Python')
+        : this.getCategories.find((ca) => ca.name.includes('Python'))
         ? 'Python'
-        : this.getCategories.includes('Nodejs')
+        : this.getCategories.find((ca) => ca.name.includes('Nodejs'))
         ? 'Nodejs'
-        : this.getCategories.includes('Ruby')
+        : this.getCategories.find((ca) => ca.name.includes('Ruby'))
         ? 'Ruby'
-        : this.getCategories.includes('PHP')
+        : this.getCategories.find((ca) => ca.name.includes('PHP'))
         ? 'PHP'
-        : this.getCategories.includes('Golang')
+        : this.getCategories.find((ca) => ca.name.includes('Golang'))
         ? 'Go'
-        : this.getCategories.includes('Rust')
+        : this.getCategories.find((ca) => ca.name.includes('Rust'))
         ? 'Rust'
         : false
     },
