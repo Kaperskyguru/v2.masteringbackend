@@ -30,7 +30,7 @@
               <div
                 class="card mb-3 flex-row"
                 v-if="getRoadmapCategory"
-                style="border: 4px solid #5227ad"
+                style="border: 1px solid #5227ad"
               >
                 <div class="w-75">
                   <img
