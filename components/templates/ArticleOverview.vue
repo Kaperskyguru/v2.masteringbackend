@@ -27,7 +27,7 @@
               <ReadArticle :post="post" />
 
               <!-- Show Course here -->
-              <div class="card mb-3 d-flex" v-if="getRoadmapCategory">
+              <div class="card mb-3 d-flex flex-row" v-if="getRoadmapCategory">
                 <img
                   class="card-img-left"
                   src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
@@ -214,6 +214,11 @@ export default {
     },
 
     roadmapURL() {
+      console.log(
+        this.$route.query?.ref ?? this.$route.params?.slug,
+        this.$route.params?.slug,
+        this.$route.query?.ref
+      )
       return this.getRoadmapCategory.includes('Java')
         ? 'https://masteringbackend.com/courses/become-a-java-spring-backend-engineer?ref=' +
             this.$route.query?.ref ?? this.$route.params?.slug
