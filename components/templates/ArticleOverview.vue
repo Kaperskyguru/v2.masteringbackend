@@ -27,7 +27,11 @@
               <ReadArticle :post="post" />
 
               <!-- Show Course here -->
-              <div class="card mb-3 flex-row" v-if="getRoadmapCategory">
+              <div
+                class="card mb-3 flex-row"
+                v-if="getRoadmapCategory"
+                style="border: 4px solid #5227ad"
+              >
                 <div class="w-75">
                   <img
                     class="card-img-left w-100 h-100 img-fluid"
