@@ -27,7 +27,7 @@
               <ReadArticle :post="post" />
 
               <!-- Show Course here -->
-              <div class="card mb-3" v-if="getRoadmapCategory">
+              <div class="card mb-3 d-flex" v-if="getRoadmapCategory">
                 <img
                   class="card-img-left"
                   src="https://pub-63da695b9ece47c5b3b49bd78b86d884.r2.dev/Become%20a%20python%20engineer.png"
@@ -45,7 +45,9 @@
                     {{ getRoadmapCategory }}.
                   </p>
                   <p class="card-text">
-                    <a href="#" class="btn btn-primary">Start Learning Now</a>
+                    <a :href="roadmapURL" class="btn btn-primary"
+                      >Start Learning Now</a
+                    >
                   </p>
                 </div>
               </div>
@@ -194,7 +196,6 @@ export default {
     },
 
     getRoadmapCategory() {
-      console.log(this.getCategories)
       return this.getCategories.find((ca) => ca.name.includes('Java'))
         ? 'Java'
         : this.getCategories.find((ca) => ca.name.includes('Python'))
@@ -210,6 +211,30 @@ export default {
         : this.getCategories.find((ca) => ca.name.includes('Rust'))
         ? 'Rust'
         : false
+    },
+
+    roadmapURL() {
+      return this.getRoadmapCategory.includes('Java')
+        ? 'https://masteringbackend.com/courses/become-a-java-spring-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : this.getRoadmapCategory.includes('Python')
+        ? 'https://masteringbackend.com/courses/become-a-python-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : this.getRoadmapCategory.includes('Nodejs')
+        ? 'https://masteringbackend.com/courses/become-a-nodejs-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : this.getRoadmapCategory.includes('Ruby')
+        ? 'https://masteringbackend.com/courses/become-a-ruby-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : this.getRoadmapCategory.includes('PHP')
+        ? '#'
+        : this.getRoadmapCategory.includes('Go')
+        ? 'https://masteringbackend.com/courses/become-a-golang-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : this.getRoadmapCategory.includes('Rust')
+        ? 'https://masteringbackend.com/courses/become-a-rust-backend-engineer?ref=' +
+            this.$route.query?.ref ?? this.$route.params?.slug
+        : '#'
     },
   },
 
