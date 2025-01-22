@@ -189,13 +189,9 @@
 
         <small
           >This site is protected by reCAPTCHA and the Google
-          <nuxt-link to="https://policies.google.com/privacy"
-            >Privacy Policy</nuxt-link
-          >
+          <a href="https://policies.google.com/privacy">Privacy Policy</a>
           and
-          <nuxt-link to="https://policies.google.com/terms"
-            >Terms of Service</nuxt-link
-          >
+          <a href="https://policies.google.com/terms">Terms of Service</a>
           apply.
         </small>
       </div>
