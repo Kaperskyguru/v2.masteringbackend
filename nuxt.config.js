@@ -259,6 +259,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/redirect-module',
     '@nuxtjs/feed',
+    '@nuxtjs/sitemap',
     'nuxt-goodshare',
     'vue-social-sharing/nuxt',
     [
@@ -338,11 +339,11 @@ export default {
 
   redirect: [
     // Redirect opt`ions here
-    {
-      from: '^/posts/backend-development-the-ultimate-guide(.*)$',
-      to: 'https://blog.boot.dev/backend/become-backend-developer',
-      statusCode: 301,
-    },
+    // {
+    //   from: '^/posts/backend-development-the-ultimate-guide(.*)$',
+    //   to: 'https://blog.boot.dev/backend/become-backend-developer',
+    //   statusCode: 301,
+    // },
 
     {
       from: '^/courses/rust-for-backend-engineering(.*)$',
