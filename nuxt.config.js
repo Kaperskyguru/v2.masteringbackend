@@ -269,7 +269,7 @@ export default {
         style: 'night-owl',
       },
     ],
-
+    '@nuxtjs/robots',
     [
       'nuxt-compress',
       {
@@ -326,6 +326,19 @@ export default {
     },
   ],
 
+  robots: {
+    rules: [
+      {
+        UserAgent: '*',
+        Disallow: 'https://app.masteringbackend.com/',
+      },
+
+      {
+        UserAgent: '*',
+        Disallow: 'https://api.masteringbackend.com/',
+      },
+    ],
+  },
   // recaptcha: {
   //   siteKey: process.env.RECAPTCHA_SITE_KEY,
   //   version: 3,
