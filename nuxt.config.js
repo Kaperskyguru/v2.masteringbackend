@@ -393,6 +393,12 @@ export default {
     },
 
     {
+      from: 'https://v1.masteringbackend.com(.*)$',
+      to: 'https://masteringbackend.com$1',
+      statusCode: 301,
+    },
+
+    {
       from: '^/courses/video/advanced-docker(.*)$',
       to: '/hubs/advanced-docker',
       statusCode: 301,
