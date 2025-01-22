@@ -33,7 +33,8 @@ export const substack = (email) => {}
 export const getPosts = async () => {
   try {
     const response = await axios.get(
-      process.env.BASE_ENDPOINT_URL + '/posts?filters[is_public][$eq]=true',
+      process.env.BASE_ENDPOINT_URL +
+        '/posts?filters[is_public][$eq]=true&pagination[page]=-1',
       {
         headers: {
           Authorization: `bearer ${process.env.STRAPI_TOKEN}`,
