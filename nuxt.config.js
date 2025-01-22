@@ -357,11 +357,11 @@ export default {
       statusCode: 301,
     },
 
-    // {
-    //   from: '^/posts/rust-programming-the-ultimate-guide(.*)$',
-    //   to: '/books/rust-essentials',
-    //   statusCode: 301,
-    // },
+    {
+      from: '^/posts/posts(.*)$',
+      to: '/posts$1',
+      statusCode: 301,
+    },
     {
       from: '^/courses/text/advanced-docker(.*)$',
       to: '/hubs/advanced-docker',
@@ -410,6 +410,23 @@ export default {
     {
       from: '^/slack(.*)$',
       to: '/community',
+      statusCode: 301,
+    },
+
+    {
+      from: '^/write-for-us(.*)$',
+      to: '/contact',
+      statusCode: 301,
+    },
+    {
+      from: '^/aboutus(.*)$',
+      to: '/about',
+      statusCode: 301,
+    },
+
+    {
+      from: '^/live(.*)$',
+      to: 'https://backendweekly.dev/podcasts?ref=masteringbackend',
       statusCode: 301,
     },
   ],
