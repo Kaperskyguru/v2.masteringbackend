@@ -459,7 +459,7 @@ export default {
     hostname: 'https://masteringbackend.com',
     exclude: ['/maintenance'],
     cacheTime: 1000 * 60 * 60 * 2,
-    trailingSlash: true,
+    trailingSlash: false,
     gzip: true,
     async routes() {
       const posts = await Utils.getPosts()
