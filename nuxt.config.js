@@ -337,6 +337,11 @@ export default {
         UserAgent: '*',
         Disallow: 'https://api.masteringbackend.com/',
       },
+
+      {
+        UserAgent: '*',
+        Disallow: '/cdn-cgi/*',
+      },
     ],
   },
   // recaptcha: {
