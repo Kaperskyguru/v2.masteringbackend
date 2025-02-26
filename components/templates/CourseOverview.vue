@@ -593,7 +593,7 @@ export default {
         feedback:
           'There is order to the way your topics are handled making sure necessary concepts are learned before the next one because the previous concept is needed for understand the upcoming one.',
         name: 'Orevaoghene Eguwe',
-        position: 'Backend Engineer (Python)',
+        position: 'Backend Engineer',
         image: '',
       },
 
@@ -601,7 +601,7 @@ export default {
         feedback:
           'The practical approach to learning Java backend development, especially through real-world examples, makes a lot of sense and helps me connect concepts to real scenarios. This course stood out because it comes with hands-on, structured learning path tailored for backend engineering rather than generic software development.',
         name: 'Deepak Vishwakarma',
-        position: 'Software Engineer (Java)',
+        position: 'Software Engineer',
         image: '',
       },
 
@@ -609,7 +609,7 @@ export default {
         feedback:
           'This course is exhaustive and covers basic to professional level Python that is needed in real life software development due to the in-depth course content',
         name: 'Mohammad Imteyaz Mohsin',
-        position: 'Software Engineer (Python)',
+        position: 'Software Engineer',
         image: '',
       },
 
@@ -617,14 +617,14 @@ export default {
         feedback:
           'The course covers from Basics to Advanced concepts breaking each concepts down with proper practical examples and projects. I think this is the best course to learn backend engineering.',
         name: 'Debasish Mohanta',
-        position: 'Backend Engineer (Python)',
+        position: 'Backend Engineer',
         image: '',
       },
       {
         feedback:
           "I love the course because it's project based and there are lots tasks.",
         name: 'Anuoluwapo Hammed',
-        position: 'Software Engineer (Node.js)',
+        position: 'Software Engineer',
         image: '',
       },
 
@@ -632,8 +632,16 @@ export default {
         feedback:
           'The course structure and progression make sense, especially the clear explanations of core Node.js concepts like modules, event-driven architecture, and asynchronous programming. The hands-on coding examples also help solidify the concepts.',
         name: 'Imran Munawar',
-        position: 'Software Engineer (Python)',
+        position: 'Software Engineer',
         image: '',
+      },
+
+      {
+        feedback:
+          'I truly appreciate the high-quality material in this course. The structured lessons, hands-on projects, and clear explanations make learning a great experience. I look forward to future additions and updates! Thanks for your polite and friendly attitude.',
+        name: 'Lyle Christine',
+        position: 'A Happy Student from Scotland',
+        image: '/img/people/lyle.webp',
       },
     ],
   }),
