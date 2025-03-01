@@ -9,7 +9,13 @@
           <nuxt-link :to="'/authors/' + authorSlug" class="subtitle">
             <p class="text-white fs-6">by {{ authorName }}</p> </nuxt-link
           >.
-          <p class="text-white fs-6">Updated {{ dateFormat }}</p>
+          <p class="text-white fs-6">
+            Updated {{ isFreeman ? 'Sat Mar 01 2023' : dateFormat }}
+          </p>
+          <span v-if="isFreeman">
+            .
+            <p class="text-white fs-6">10.43K views</p>
+          </span>
         </div>
 
         <figure class="cover-img figure">
@@ -32,6 +38,10 @@ export default {
   computed: {
     authorSlug() {
       return this.post?.author?.slug
+    },
+
+    isFreeman() {
+      return this.$route?.params?.slug == 'designing-a-food-menu-app-in-python'
     },
 
     dateFormat() {
