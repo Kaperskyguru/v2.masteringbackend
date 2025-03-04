@@ -21,7 +21,7 @@
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
               >
-                <form ref="form" method="post" @submit.prevent="submit">
+                <!-- <form ref="form" method="post" @submit.prevent="submit">
                   <div class="form-group py-3">
                     <label class="text-dark" for="text">
                       <b>Full Name</b>
@@ -77,7 +77,18 @@
                       </button>
                     </div>
                   </div>
-                </form>
+                </form> -->
+
+                <iframe
+                  data-tally-src="https://tally.so/embed/3jkdRY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                  loading="lazy"
+                  width="100%"
+                  height="200"
+                  frameborder="0"
+                  marginheight="0"
+                  marginwidth="0"
+                  title="MB Contact"
+                ></iframe>
               </div>
             </div>
 
@@ -178,6 +189,10 @@ export default {
   name: 'ContactPage',
   data: () => ({ message: {} }),
 
+  mounted() {
+    // eslint-disable-next-line no-undef
+    Tally.loadEmbeds()
+  },
   head() {
     return {
       title: 'Contact Us',
