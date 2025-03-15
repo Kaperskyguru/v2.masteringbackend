@@ -213,7 +213,9 @@ export const actions = {
 
   async fetchAllCourses(ctx) {
     try {
-      const url = process.env?.MB_API_URL ?? 'https://api.masteringbackend.com'
+      const url = process
+        ? process?.env?.MB_API_URL
+        : 'https://api.masteringbackend.com'
       const response = await fetch(url + '/courses')
       return await response.json()
     } catch (error) {
