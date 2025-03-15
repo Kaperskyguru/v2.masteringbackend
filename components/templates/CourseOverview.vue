@@ -424,6 +424,16 @@
               >
             </p>
           </div>
+
+          <p class="text-center">
+            Prefer a payment plan? Join for 3 payments of
+            <a
+              :style="`color: ${color};`"
+              @click.prevent="showPlans = true"
+              href="#"
+              >${{ price / 3 + 10 }}/month <small>(click here)</small></a
+            >
+          </p>
         </div>
       </div>
     </section>
@@ -570,6 +580,37 @@
         Need help? Email info[at]masteringbackend.com
       </div>
     </section>
+
+    <Dialog
+      :color="color"
+      :visible="showPlans"
+      @update:visible="showPlans = false"
+      title="Prefer a payment plan? Join for 3 payments"
+    >
+      <div class="w-100 px-4 pb-4 pt-2">
+        <div style="background-color: #eee">
+          <div class="w-100">
+            <div
+              style="position: relative; padding: 56.25% 0 0 0"
+              class="d-flex top-50 start-50 translate-middle w-100 h-100 flex-column justify-content-center align-items-center"
+            >
+              <div
+                style="position: absolute"
+                class="flex-column justify-content-center align-items-center d-flex"
+              >
+                <div style="height: 25px; width: 25px">
+                  <LockIcon />
+                </div>
+                <div class="pt-3">
+                  <h4 class="fs-2">Want a 3-month payment plan?</h4>
+                </div>
+                <div>Shoot us an email at: info@masteringbackend.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Dialog>
   </section>
 </template>
 
@@ -580,6 +621,7 @@ export default {
     message: {},
     res: {},
     team: 3,
+    showPlans: false,
     testimonials: [
       {
         feedback:
