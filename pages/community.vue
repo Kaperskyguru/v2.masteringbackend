@@ -295,6 +295,7 @@ import axios from 'axios'
 // import Superagent from 'superagent'
 import { submit } from '~/helpers/mailchimp'
 import { join } from '~/helpers/slack'
+import { recaptcha } from '~/helpers/recaptcha'
 export default {
   name: 'CommunityPage',
   data: () => ({
@@ -314,7 +315,16 @@ export default {
     },
   },
 
+  beforeDestroy() {
+    this.$recaptcha.destroy()
+  },
+
   async mounted() {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.error(e)
+    }
     await this.fetchJobs()
   },
 
@@ -352,6 +362,16 @@ export default {
 
     async submit() {
       this.waiting = true
+
+      const token = await this.$recaptcha.execute('community')
+
+      const data = await recaptcha({ token })
+
+      if (!data?.success) {
+        this.loading = false
+        return
+      }
+
       if (this.validateEmail(this.user.email)) {
         if (!this.newsletter) {
           return await this.joinSlack()
