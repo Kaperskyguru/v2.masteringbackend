@@ -292,8 +292,6 @@
 
 <script>
 import axios from 'axios'
-// import Superagent from 'superagent'
-import { submit } from '~/helpers/mailchimp'
 import { join } from '~/helpers/slack'
 import { recaptcha } from '~/helpers/recaptcha'
 export default {
@@ -349,16 +347,6 @@ export default {
         console.log(error)
       }
     },
-    async subscribe(data = {}) {
-      const res = await submit({
-        email: this.email,
-        lastname: this.user.lastname,
-        firstname: this.user.firstname,
-        tags: ['community'].push(...(data?.tags ?? [])),
-      })
-      this.show = true
-      this.res = res
-    },
 
     async submit() {
       this.waiting = true
@@ -378,7 +366,6 @@ export default {
         }
 
         await this.joinSlack()
-        // this.suscribeNewsletter()
       } else this.error = true
 
       this.waiting = false
@@ -393,9 +380,9 @@ export default {
       this.slackMessage = await join(data)
     },
 
-    suscribeNewsletter() {
-      this.$refs.form.submit()
-    },
+    // suscribeNewsletter() {
+    //   this.$refs.form.submit()
+    // },
 
     validateEmail(email) {
       if (email) {
