@@ -81,12 +81,9 @@
                 class="shadow border p-4 mt-4"
                 style="background-color: white"
               >
-                <form
-                  ref="form"
-                  id="form-43ce4e74-ed43-4522-a242-2cb57dd9490f"
-                  action="https://api.encharge.io/v1/forms/43ce4e74-ed43-4522-a242-2cb57dd9490f/submission/plain"
-                  method="POST"
-                >
+                <!--  action="https://api.encharge.io/v1/forms/43ce4e74-ed43-4522-a242-2cb57dd9490f/submission/plain"
+                  method="POST" -->
+                <form ref="form" id="form-43ce4e74-ed43-4522-a242-2cb57dd9490f">
                   <div class="form-group py-3">
                     <label class="text-dark" for="text">
                       <b>First Name</b>
