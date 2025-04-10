@@ -45,7 +45,7 @@
         Want more Remote Backend Jobs?
         <a
           style="text-decoration: underline; color: red"
-          href="`https://getbackendjobs.com/?ref=masteringbackend&utm_source=masteringbackend&utm_campaign=community"
+          href="https://getbackendjobs.com/?ref=masteringbackend&utm_source=masteringbackend&utm_campaign=community"
         >
           Visit: GetbackendJobs</a
         >
