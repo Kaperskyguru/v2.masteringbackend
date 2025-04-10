@@ -327,6 +327,7 @@ export default {
   ],
 
   robots: {
+    disallow: ['/_nuxt'],
     rules: [
       {
         UserAgent: '*',
@@ -336,6 +337,10 @@ export default {
       {
         UserAgent: '*',
         Disallow: 'https://api.masteringbackend.com/',
+      },
+      {
+        UserAgent: '*',
+        Disallow: 'https://store.masteringbackend.com/',
       },
 
       {
