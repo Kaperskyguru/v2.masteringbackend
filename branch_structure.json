@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "Kaperskyguru-patch-1",
+    "Kaperskyguru-patch-2",
+    "Kaperskyguru-patch-3",
+    "feat/hub",
+    "feature/add-premium-payment",
+    "feature/new-platform",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "Kaperskyguru-patch-1": "main",
+    "Kaperskyguru-patch-2": "main",
+    "Kaperskyguru-patch-3": "main",
+    "feat/hub": "main",
+    "feature/add-premium-payment": "main",
+    "feature/new-platform": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "Kaperskyguru-patch-1",
+    "Kaperskyguru-patch-2",
+    "Kaperskyguru-patch-3",
+    "feat/hub",
+    "feature/add-premium-payment",
+    "feature/new-platform",
+    "origin"
+  ]
+}
