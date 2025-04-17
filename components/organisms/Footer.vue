@@ -111,6 +111,14 @@
                         >Listen to GBE Podcast
                       </a>
                     </li>
+
+                    <li class="mb-3">
+                      <a
+                        target="_blank"
+                        href="https://masteringbackend.featurebase.app/?ref=masteringbackend&utm_source=masteringbackend&utm_medium=blog&utm_campaign=footer"
+                        >Add or Vote for the next Course
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
