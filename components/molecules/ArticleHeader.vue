@@ -10,7 +10,7 @@
             <p class="text-white fs-6">by {{ authorName }}</p> </nuxt-link
           >.
           <p class="text-white fs-6">
-            Updated {{ isFreeman ? 'Sat Mar 01 2023' : dateFormat }}
+            Updated {{ isFreeman ? 'Sat Mar 01 2023' : isAdelekan?'Wed Feb 01 2023': dateFormat }}
           </p>
           .
           <p v-if="isFreeman" class="text-white fs-6">10.43K views</p>
@@ -40,6 +40,10 @@ export default {
 
     isFreeman() {
       return this.$route?.params?.slug == 'designing-a-food-menu-app-in-python'
+    },
+
+    isAdelekan() {
+      return this.$route.params?.slug == 'building-an-enterprise-grade-kafka-messaging-system-with-the-outbox-pattern-on-kubernetes-using-strimzi-java-and-my-sql'
     },
 
     dateFormat() {
