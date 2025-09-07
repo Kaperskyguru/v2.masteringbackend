@@ -801,10 +801,10 @@ export default {
     //   vendor: Number(process.env.PADDLE_VENDOR),
     // })
 
-    console.log(process.env)
+    console.log(process.env, 'test')
 
     initializePaddle({
-      token: process.env?.PADDLE_TOKEN,
+      token: process.env?.NUXT_PUBLIC_PADDLE_TOKEN,
       eventCallback: function (data) {
         switch (data.name) {
           case 'checkout.closed':
