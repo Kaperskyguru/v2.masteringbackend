@@ -832,7 +832,7 @@ export default {
       if (this.team === 10) priceId = 'pri_01k4h91ecbwc2s93pbe9k3n4ry'
       if (this.team === 15) priceId = 'pri_01k4h92b968k864nqw3k28q1e6'
       if (this.team === 25) priceId = 'pri_01k4h93746fkbphm9h044c0jfr'
-      if (package1 === 'single') priceId = this.hub?.paddlePlanId
+      if (package1 === 'single') priceId = this.hub?.paddle_plan_id
       if (this.isDev()) priceId = 'pri_01k44zz0g2v7g5q3kqb2chv303'
 
       if (!priceId) return this.$router.push('#' + this.enchargeTag)
