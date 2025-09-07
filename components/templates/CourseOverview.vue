@@ -801,15 +801,17 @@ export default {
     //   vendor: Number(process.env.PADDLE_VENDOR),
     // })
 
+    console.log(process.env)
+
     initializePaddle({
       token: process.env?.PADDLE_TOKEN,
       eventCallback: function (data) {
         switch (data.name) {
           case 'checkout.closed':
-            checkoutClosed(data)
+            this.checkoutClosed(data)
             break
           case 'checkout.completed':
-            checkoutComplete(data)
+            this.checkoutComplete(data)
             break
         }
       },
@@ -822,7 +824,7 @@ export default {
   },
 
   methods: {
-    async buynow(package1 = 'single') {
+    buynow(package1 = 'single') {
       let priceId = ''
       if (this.team === 'cohort') priceId = 'pri_01k4h94naarbwfwew78qd5xmpr'
       if (this.team === 3) priceId = 'pri_01k4h90625rvq6ew242dbwthpf'
