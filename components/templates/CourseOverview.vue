@@ -792,16 +792,6 @@ export default {
     })
 
     const PADDLE_ENVIRONMENT = this.isDev() ? 'sandbox' : 'production'
-    // if (this.isDev()) {
-    //   // eslint-disable-next-line no-undef
-    //   Paddle.Environment.set('sandbox')
-    // }
-    // // eslint-disable-next-line no-undef
-    // Paddle.Setup({
-    //   vendor: Number(process.env.PADDLE_VENDOR),
-    // })
-
-    console.log(process.env, 'test')
 
     initializePaddle({
       token: process.env?.PADDLE_TOKEN,
@@ -837,28 +827,6 @@ export default {
 
       if (!priceId) return this.$router.push('#' + this.enchargeTag)
 
-      // eslint-disable-next-line no-undef
-      // await Paddle.Checkout.open({
-      //   product: plan,
-      //   allowQuantity: false,
-      //   disableLogout: true,
-      //   frameInitialHeight: 416,
-      //   coupon: package1 === 'single' ? 'PRESALE' : '',
-      //   passthrough: {
-      //     type: 'roadmap', // Change this to be dynamic
-      //     slug: this.slug,
-      //     isExternal: true,
-      //     package: package1,
-      //     ref:
-      //       this.$route.query?.ref ??
-      //       this.$route.query?.utm_source ??
-      //       this.$route.query?.source ??
-      //       'payment_unknown',
-      //   },
-      //   successCallback: (data) => this.checkoutComplete(data),
-      //   closeCallback: (data) => this.checkoutClosed(data),
-      // })
-
       this.paddle?.Checkout.open({
         settings: {
           allowedPaymentMethods: [
@@ -878,6 +846,7 @@ export default {
           slug: this.slug,
           isExternal: true,
           package: package1,
+          team: this.team,
           ref:
             this.$route.query?.ref ??
             this.$route.query?.utm_source ??
