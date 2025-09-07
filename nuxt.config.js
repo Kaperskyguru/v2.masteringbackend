@@ -215,6 +215,7 @@ export default {
     RECAPTCHA_SITE_KEY: process.env.RECAPTCHA_SITE_KEY,
     ENCHARGE_KEY: process.env.ENCHARGE_KEY,
     MB_API_URL: process.env.MB_API_URL,
+    PADDLE_TOKEN: process.env?.PADDLE_TOKEN,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -804,7 +804,7 @@ export default {
     console.log(process.env, 'test')
 
     initializePaddle({
-      token: process.env?.NUXT_PUBLIC_PADDLE_TOKEN,
+      token: process.env?.PADDLE_TOKEN,
       eventCallback: function (data) {
         switch (data.name) {
           case 'checkout.closed':
