@@ -25,7 +25,7 @@ export default {
         })
       }
     } catch (error) {
-      // console.log(error)
+      console.log(error)
     }
 
     const course = await store.dispatch('hubs/fetchCourseContent', {

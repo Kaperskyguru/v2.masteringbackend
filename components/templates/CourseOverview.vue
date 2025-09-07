@@ -616,10 +616,13 @@
 
 
 <script>
+import { initializePaddle } from '@paddle/paddle-js'
+
 export default {
   data: () => ({
     message: {},
     res: {},
+    paddle: null,
     team: 3,
     showPlans: false,
     testimonials: [
@@ -783,45 +786,92 @@ export default {
   },
 
   mounted() {
-    if (!this.isDev())
-      // eslint-disable-next-line no-undef
-      fbq('track', 'ViewContent', {
-        content_name: 'Landing Page',
-        content_type: this.slug,
-      })
+    this.track('ViewContent', {
+      content_name: 'Landing Page',
+      content_type: this.slug,
+    })
 
-    if (this.isDev()) {
-      // eslint-disable-next-line no-undef
-      Paddle.Environment.set('sandbox')
-    }
-    // eslint-disable-next-line no-undef
-    Paddle.Setup({
-      vendor: Number(process.env.PADDLE_VENDOR),
+    const PADDLE_ENVIRONMENT = this.isDev() ? 'sandbox' : 'production'
+    // if (this.isDev()) {
+    //   // eslint-disable-next-line no-undef
+    //   Paddle.Environment.set('sandbox')
+    // }
+    // // eslint-disable-next-line no-undef
+    // Paddle.Setup({
+    //   vendor: Number(process.env.PADDLE_VENDOR),
+    // })
+
+    initializePaddle({
+      token: process.env?.PADDLE_TOKEN,
+      eventCallback: function (data) {
+        switch (data.name) {
+          case 'checkout.closed':
+            checkoutClosed(data)
+            break
+          case 'checkout.completed':
+            checkoutComplete(data)
+            break
+        }
+      },
+      environment: PADDLE_ENVIRONMENT,
+    }).then((paddleInstance) => {
+      if (paddleInstance) {
+        this.paddle = paddleInstance
+      }
     })
   },
 
   methods: {
     async buynow(package1 = 'single') {
-      let plan = ''
-      if (this.team === 'cohort') plan = '902344'
-      if (this.team === 3) plan = '902345'
-      if (this.team === 5) plan = '902346'
-      if (this.team === 10) plan = '902347'
-      if (this.team === 15) plan = '902348'
-      if (this.team === 25) plan = '902349'
-      if (package1 === 'single') plan = this.hub?.paddlePlanId
-      if (this.isDev()) plan = '63184'
+      let priceId = ''
+      if (this.team === 'cohort') priceId = 'pri_01k4h94naarbwfwew78qd5xmpr'
+      if (this.team === 3) priceId = 'pri_01k4h90625rvq6ew242dbwthpf'
+      if (this.team === 5) priceId = 'pri_01k4h90w13v8748cmkdgvxsced'
+      if (this.team === 10) priceId = 'pri_01k4h91ecbwc2s93pbe9k3n4ry'
+      if (this.team === 15) priceId = 'pri_01k4h92b968k864nqw3k28q1e6'
+      if (this.team === 25) priceId = 'pri_01k4h93746fkbphm9h044c0jfr'
+      if (package1 === 'single') priceId = this.hub?.paddlePlanId
+      if (this.isDev()) priceId = 'pri_01k44zz0g2v7g5q3kqb2chv303'
 
-      if (!plan) return this.$router.push('#' + this.enchargeTag)
+      if (!priceId) return this.$router.push('#' + this.enchargeTag)
 
       // eslint-disable-next-line no-undef
-      await Paddle.Checkout.open({
-        product: plan,
-        allowQuantity: false,
-        disableLogout: true,
-        frameInitialHeight: 416,
-        coupon: package1 === 'single' ? 'PRESALE' : '',
-        passthrough: {
+      // await Paddle.Checkout.open({
+      //   product: plan,
+      //   allowQuantity: false,
+      //   disableLogout: true,
+      //   frameInitialHeight: 416,
+      //   coupon: package1 === 'single' ? 'PRESALE' : '',
+      //   passthrough: {
+      //     type: 'roadmap', // Change this to be dynamic
+      //     slug: this.slug,
+      //     isExternal: true,
+      //     package: package1,
+      //     ref:
+      //       this.$route.query?.ref ??
+      //       this.$route.query?.utm_source ??
+      //       this.$route.query?.source ??
+      //       'payment_unknown',
+      //   },
+      //   successCallback: (data) => this.checkoutComplete(data),
+      //   closeCallback: (data) => this.checkoutClosed(data),
+      // })
+
+      this.paddle?.Checkout.open({
+        settings: {
+          allowedPaymentMethods: [
+            'alipay',
+            'apple_pay',
+            'bancontact',
+            'card',
+            'google_pay',
+            'ideal',
+            'paypal',
+          ],
+        },
+        discountCode: package1 === 'single' ? 'PRESALE' : '',
+        items: [{ priceId }],
+        customData: {
           type: 'roadmap', // Change this to be dynamic
           slug: this.slug,
           isExternal: true,
@@ -832,19 +882,21 @@ export default {
             this.$route.query?.source ??
             'payment_unknown',
         },
-        successCallback: (data) => this.checkoutComplete(data),
-        closeCallback: (data) => this.checkoutClosed(data),
       })
 
       // Track buying intent
       // eslint-disable-next-line no-undef
-      if (!this.isDev()) fbq('track', 'InitiateCheckout')
+      this.track('InitiateCheckout')
+    },
+
+    track(name, data = {}) {
+      if (!this.isDev())
+        // eslint-disable-next-line no-undef
+        fbq('track', name, data)
     },
 
     onSelected() {
-      if (!this.isDev())
-        // eslint-disable-next-line no-undef
-        fbq('track', 'CustomizeProduct')
+      this.track('CustomizeProduct')
     },
 
     isDev() {
@@ -852,24 +904,17 @@ export default {
     },
 
     checkoutComplete(data) {
-      if (!data?.checkout?.completed) return
+      if (data?.status !== 'completed') return
 
-      const price =
-        data?.checkout?.prices?.vendor?.total -
-        data?.checkout?.prices?.vendor?.total_tax
+      const price = data?.totals?.total
 
       // Track purchase
-      if (!this.isDev())
-        // eslint-disable-next-line no-undef
-        fbq('track', 'Purchase', {
-          value: price,
-          currency: data?.checkout?.prices?.vendor?.currency ?? 'USD',
-        })
+      this.track('Purchase', {
+        value: price,
+        currency: data?.currency_code ?? 'USD',
+      })
 
-      if (!data?.checkout?.redirect_url)
-        return this.$router.push('/emails/purchased?title=' + this.title)
-
-      this.$router.push(data?.checkout?.redirect_url)
+      return this.$router.push('/emails/purchased?title=' + this.title)
     },
     checkoutClosed(data) {
       console.log(data)
