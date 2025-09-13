@@ -794,7 +794,7 @@ export default {
     const PADDLE_ENVIRONMENT = this.isDev() ? 'sandbox' : 'production'
 
     initializePaddle({
-      token: process.env?.PADDLE_TOKEN,
+      token: 'live_e6671360951102dbb63e7be42b2', // process.env?.PADDLE_TOKEN,
       eventCallback: function (data) {
         switch (data.name) {
           case 'checkout.closed':
