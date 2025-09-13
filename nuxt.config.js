@@ -362,10 +362,16 @@ export default {
   },
 
   redirect: [
-    // Redirect opt`ions here
+    // Redirect options here
     // {
-    //   from: '^/posts/backend-development-the-ultimate-guide(.*)$',
-    //   to: 'https://blog.boot.dev/backend/become-backend-developer',
+    //   from: '^/hubs(.*)$',
+    //   to: (from, req) => {
+    //     const pages = req.url.split('?')[0]
+    //     const queries = req.url.split('?')[1]
+    //     const _page = pages?.split('/hubs')[1]
+
+    //     return `https://hubs.masteringbackend.com${_page}?${queries}`
+    //   },
     //   statusCode: 301,
     // },
 
